@@ -4,51 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="CTWalk — QA/SDET engineer working across web, API, data, mobile, automation, and product debugging." />
-  <meta name="theme-color" content="#f5f4ef" />
+  <meta name="theme-color" content="#0b0d0f" />
   <title>CTWalk — QA / SDET Engineer</title>
   <style>
     :root {
-      --paper:#f5f4ef;
-      --paper-rgb:245,244,239;
-      --ink:#171717;
-      --soft:#55585c;
-      --muted:#777a7e;
-      --line:rgba(23,23,23,.14);
-      --accent:#315fbb;
-      --max:960px;
-      --measure:700px;
+      --ink:#f5f4ef;
+      --soft:rgba(245,244,239,.76);
+      --muted:rgba(245,244,239,.52);
+      --line:rgba(255,255,255,.18);
+      --accent:#b7c9ff;
+      --nav-h:72px;
+      --pad:clamp(22px,4vw,64px);
+      --content:1180px;
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{background:#0b0d0f;scroll-behavior:smooth}
     body{
       margin:0;
       color:var(--ink);
-      background:var(--paper);
+      background:#0b0d0f;
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif;
-      line-height:1.68;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
+      overflow-x:hidden;
     }
-
-    ::selection{background:rgba(49,95,187,.16)}
+    ::selection{background:rgba(183,201,255,.28)}
     a{color:inherit;text-decoration:none}
-    a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-    .wrap{width:min(calc(100% - 44px),var(--max));margin:0 auto}
+    a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:5px}
 
-    nav{
+    .nav{
       position:fixed;
       inset:0 0 auto 0;
-      z-index:30;
-      background:linear-gradient(to bottom,rgba(var(--paper-rgb),.92),rgba(var(--paper-rgb),.72) 72%,transparent);
-      backdrop-filter:blur(8px);
-      -webkit-backdrop-filter:blur(8px);
+      z-index:60;
+      height:var(--nav-h);
+      pointer-events:none;
+      background:linear-gradient(to bottom,rgba(7,8,10,.48),transparent);
     }
-    .nav-row{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{font-weight:800;letter-spacing:-.03em}
-    .nav-actions{display:flex;align-items:center;gap:20px}
-    .github{color:var(--soft);font-size:.92rem}
-    .github:hover{color:var(--ink)}
+    .nav-inner{
+      width:min(calc(100% - 2*var(--pad)),var(--content));
+      height:100%;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      pointer-events:auto;
+    }
+    .brand{font-weight:820;letter-spacing:-.04em;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+    .nav-actions{display:flex;align-items:center;gap:22px}
+    .github{font-size:.88rem;color:var(--soft)}
+    .github:hover{color:#fff}
     .lang-switch{display:flex;align-items:center;gap:12px}
     .lang-switch button{
       padding:5px 0;
@@ -57,135 +63,344 @@
       color:var(--muted);
       background:transparent;
       font:inherit;
-      font-size:.82rem;
-      font-weight:700;
+      font-size:.8rem;
+      font-weight:760;
       cursor:pointer;
     }
-    .lang-switch button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+    .lang-switch button[aria-pressed="true"]{color:#fff;border-color:#fff}
 
-    header{
+    .experience{
       position:relative;
-      height:132vh;
-      min-height:760px;
+      height:calc(var(--scene-count) * 100vh);
+      height:calc(var(--scene-count) * 100svh);
+      background:#0b0d0f;
     }
-    .hero-sticky{
+    .stage{
       position:sticky;
       top:0;
       height:100vh;
-      min-height:640px;
+      height:100svh;
+      min-height:620px;
       overflow:hidden;
-      border-bottom:1px solid transparent;
+      isolation:isolate;
+      background:#0b0d0f;
     }
-    .hero-motion{
+
+    .scene{
       position:absolute;
       inset:0;
+      opacity:0;
       pointer-events:none;
+      will-change:opacity,transform;
+      overflow:hidden;
+    }
+    .scene.is-active{pointer-events:auto}
+    .scene-base{position:absolute;inset:0;background:var(--scene-bg,#111)}
+    .scene-bg{
+      position:absolute;
+      inset:-5%;
+      width:110%;
+      height:110%;
+      object-fit:cover;
+      object-position:var(--image-pos,center);
+      opacity:var(--image-opacity,.9);
+      filter:brightness(var(--image-brightness,.58)) saturate(var(--image-sat,.82)) contrast(var(--image-contrast,1.05));
+      transform:scale(1.035);
+      will-change:transform,opacity;
+    }
+    .scene-blur{
+      position:absolute;
+      inset:-8%;
+      width:116%;
+      height:116%;
+      object-fit:cover;
+      object-position:var(--image-pos,center);
       opacity:.58;
-      mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.22) 34%,#000 58%,#000 100%);
-      -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.22) 34%,#000 58%,#000 100%);
+      filter:blur(24px) brightness(.42) saturate(.72);
+      transform:scale(1.08);
+      will-change:transform,opacity;
     }
-    .hero-motion canvas{display:block;width:100%;height:100%}
-    .hero-shade{
+    .scene-shade{
       position:absolute;
       inset:0;
-      pointer-events:none;
       background:
-        linear-gradient(90deg,rgba(var(--paper-rgb),1) 0%,rgba(var(--paper-rgb),.96) 30%,rgba(var(--paper-rgb),.58) 55%,rgba(var(--paper-rgb),.03) 100%),
-        linear-gradient(to bottom,rgba(var(--paper-rgb),.18),transparent 55%,rgba(var(--paper-rgb),.5));
+        linear-gradient(90deg,rgba(7,8,10,.90) 0%,rgba(7,8,10,.62) 34%,rgba(7,8,10,.18) 66%,rgba(7,8,10,.38) 100%),
+        linear-gradient(to bottom,rgba(7,8,10,.18),rgba(7,8,10,.02) 48%,rgba(7,8,10,.72));
+      z-index:3;
     }
-    .hero{
-      position:relative;
-      z-index:2;
-      min-height:100%;
-      display:flex;
-      align-items:center;
-      padding:96px 0 80px;
+    .scene.right .scene-shade{
+      background:
+        linear-gradient(270deg,rgba(7,8,10,.88) 0%,rgba(7,8,10,.64) 33%,rgba(7,8,10,.16) 68%,rgba(7,8,10,.34) 100%),
+        linear-gradient(to bottom,rgba(7,8,10,.16),rgba(7,8,10,.02) 48%,rgba(7,8,10,.72));
     }
-    .hero-copy{max-width:780px;will-change:transform,opacity}
-    .role{
-      margin:0 0 20px;
-      color:var(--accent);
-      font-size:.8rem;
+    .scene.center .scene-shade{
+      background:radial-gradient(circle at 50% 48%,rgba(7,8,10,.18),rgba(7,8,10,.78) 76%),linear-gradient(to bottom,rgba(7,8,10,.12),rgba(7,8,10,.7));
+    }
+
+    .scene-content{
+      position:absolute;
+      z-index:15;
+      left:max(var(--pad),calc((100% - var(--content))/2));
+      bottom:clamp(50px,9vh,104px);
+      width:min(640px,calc(100% - 2*var(--pad)));
+      will-change:transform,opacity;
+      text-shadow:0 2px 30px rgba(0,0,0,.28);
+    }
+    .scene.right .scene-content{
+      left:auto;
+      right:max(var(--pad),calc((100% - var(--content))/2));
+    }
+    .scene.center .scene-content{
+      left:50%;
+      right:auto;
+      bottom:50%;
+      width:min(880px,calc(100% - 2*var(--pad)));
+      text-align:center;
+      transform:translate(-50%,50%);
+    }
+    .kicker{
+      margin:0 0 16px;
+      color:rgba(255,255,255,.62);
+      font-size:.76rem;
       font-weight:800;
-      letter-spacing:.12em;
+      letter-spacing:.15em;
       text-transform:uppercase;
     }
-    h1{
+    .scene-title{
       margin:0;
-      max-width:860px;
-      font-size:clamp(3.15rem,7vw,6rem);
-      line-height:1;
-      letter-spacing:-.058em;
+      max-width:920px;
+      font-size:clamp(2.9rem,6.4vw,6.5rem);
+      line-height:.97;
+      letter-spacing:-.065em;
       text-wrap:balance;
     }
-    .lead{
-      max-width:var(--measure);
-      margin:30px 0 0;
+    .project-scene .scene-title{font-size:clamp(2.7rem,5.7vw,5.7rem)}
+    .scene-copy{
+      max-width:620px;
+      margin:24px 0 0;
       color:var(--soft);
-      font-size:clamp(1.08rem,1.9vw,1.25rem);
+      font-size:clamp(1rem,1.55vw,1.2rem);
+      line-height:1.62;
+      text-wrap:pretty;
     }
+    .scene-link{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin-top:25px;
+      padding-bottom:4px;
+      border-bottom:1px solid rgba(255,255,255,.5);
+      color:#fff;
+      font-size:.9rem;
+      font-weight:730;
+    }
+    .scene-link .arrow{transition:transform .18s ease}
+    .scene-link:hover .arrow,.scene-link:focus-visible .arrow{transform:translate(4px,-3px)}
 
-    main section{padding:88px 0}
-    .section-title{
+    .plate{
+      position:absolute;
+      z-index:8;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:clamp(16px,2vw,28px);
+      background:rgba(8,9,11,.42);
+      box-shadow:0 36px 120px rgba(0,0,0,.42);
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+      will-change:transform,opacity;
+    }
+    .plate img{display:block;width:100%;height:100%;object-fit:cover}
+    .plate.contain img{object-fit:contain;background:rgba(8,9,11,.72)}
+
+    .commerce-plate{
+      top:14%;right:max(4vw,calc((100% - var(--content))/2));
+      width:min(54vw,740px);height:min(67vh,680px);
+    }
+    .commerce-plate img{object-position:center top}
+
+    .code-plate{
+      left:max(4vw,calc((100% - var(--content))/2));
+      top:14%;
+      width:min(52vw,660px);
+      min-height:54vh;
+      padding:clamp(22px,3vw,42px);
+      display:flex;
+      align-items:center;
+      border-color:rgba(183,201,255,.22);
+      background:rgba(11,15,23,.82);
+    }
+    .code-plate pre{
       margin:0;
-      font-size:clamp(1.8rem,3.2vw,2.55rem);
-      line-height:1.15;
-      letter-spacing:-.04em;
+      color:#dce5ff;
+      font:500 clamp(.78rem,1.2vw,1rem)/1.75 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      white-space:pre-wrap;
+    }
+    .code-plate .dim{color:#8190b8}
+    .code-plate .key{color:#c2d2ff}
+    .code-plate .value{color:#f2d7a3}
+
+    .social-card{
+      right:max(5vw,calc((100% - var(--content))/2));
+      top:16%;
+      width:min(48vw,650px);
+      height:min(60vh,580px);
+    }
+    .social-splash{
+      position:absolute;
+      z-index:9;
+      right:clamp(7vw,12vw,180px);
+      bottom:8%;
+      width:min(20vw,260px);
+      aspect-ratio:9/16;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.26);
+      box-shadow:0 30px 90px rgba(0,0,0,.44);
+      background:#111;
+      will-change:transform,opacity;
+    }
+    .social-splash img{width:100%;height:100%;object-fit:cover}
+
+    .cuesheet-desktop{
+      left:max(3vw,calc((100% - var(--content))/2));
+      top:12%;
+      width:min(58vw,780px);
+      height:min(68vh,660px);
+    }
+    .phone{
+      position:absolute;
+      z-index:10;
+      width:min(15vw,205px);
+      aspect-ratio:9/18.7;
+      overflow:hidden;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow:0 28px 80px rgba(0,0,0,.48);
+      background:#111;
+      will-change:transform,opacity;
+    }
+    .phone img{width:100%;height:100%;object-fit:cover}
+    .phone.one{left:clamp(4vw,8vw,130px);bottom:6%}
+    .phone.two{left:clamp(18vw,24vw,360px);bottom:2%}
+
+    .approach-collage{position:absolute;inset:0;z-index:4;opacity:.9}
+    .approach-collage img{
+      position:absolute;
+      width:42vw;
+      max-width:680px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 32px 100px rgba(0,0,0,.42);
+      filter:brightness(.62) saturate(.72);
+      will-change:transform,opacity;
+    }
+    .approach-collage img:first-child{left:6%;top:12%;transform:rotate(-5deg)}
+    .approach-collage img:last-child{right:4%;bottom:8%;transform:rotate(5deg)}
+
+    .recent-card{
+      left:max(5vw,calc((100% - var(--content))/2));
+      top:17%;
+      width:min(52vw,700px);
+      height:min(58vh,560px);
     }
 
-    #work{position:relative;background:var(--paper)}
-    .work-list{margin-top:44px;border-top:1px solid var(--line)}
-    .project{padding:30px 0 32px;border-bottom:1px solid var(--line)}
-    .project-link{display:inline-flex;align-items:baseline;gap:8px}
-    .project-name{font-size:clamp(1.35rem,2.3vw,1.82rem);font-weight:760;letter-spacing:-.03em}
-    .arrow{color:var(--accent);transition:transform .16s ease}
-    .project-link:hover .arrow,.project-link:focus-visible .arrow{transform:translate(3px,-2px)}
-    .project p{max-width:var(--measure);margin:12px 0 0;color:var(--soft)}
+    .webgl{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      opacity:.82;
+      pointer-events:none;
+    }
+    .webgl canvas{display:block;width:100%;height:100%}
+    .intro-grid{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        radial-gradient(circle at 72% 42%,rgba(80,110,190,.18),transparent 28rem),
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:auto,72px 72px,72px 72px;
+      mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%);
+      -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%);
+    }
+    .scroll-hint{
+      position:absolute;
+      z-index:20;
+      right:max(var(--pad),calc((100% - var(--content))/2));
+      bottom:28px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:rgba(255,255,255,.48);
+      font-size:.7rem;
+      font-weight:780;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      will-change:opacity;
+    }
+    .scroll-hint::after{content:"";width:48px;height:1px;background:currentColor}
 
-    .approach{max-width:var(--measure)}
-    .approach p{margin:22px 0 0;color:var(--soft);font-size:1.06rem}
+    .scene-no{
+      position:absolute;
+      z-index:20;
+      left:max(var(--pad),calc((100% - var(--content))/2));
+      top:calc(var(--nav-h) + 16px);
+      color:rgba(255,255,255,.44);
+      font:700 .72rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+      letter-spacing:.08em;
+    }
 
-    .recent{max-width:var(--measure);padding-bottom:104px}
-    .recent p{margin:20px 0 0;color:var(--soft)}
-    .recent a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+    html[lang^="zh"] .scene-title{line-height:1.09;letter-spacing:-.045em}
+    html[lang^="zh"] .scene-copy{line-height:1.78;max-width:590px}
+    html[lang^="zh"] .kicker{letter-spacing:.08em}
 
-    footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.88rem}
-    .footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .footer-row a{color:var(--ink)}
-
-    html[lang^="zh"] body{line-height:1.8}
-    html[lang^="zh"] h1{line-height:1.08;letter-spacing:-.042em;max-width:880px}
-    html[lang^="zh"] .section-title{line-height:1.22;letter-spacing:-.03em}
-    html[lang^="zh"] .lead{max-width:650px}
-
-    @media(max-width:700px){
-      .wrap{width:min(calc(100% - 30px),var(--max))}
-      .nav-row{min-height:66px}
+    @media(max-width:760px){
+      :root{--nav-h:64px;--pad:18px}
       .github{display:none}
-      header{height:112vh;min-height:680px}
-      .hero-sticky{min-height:600px}
-      .hero{padding:82px 0 62px;align-items:center}
-      .hero-motion{opacity:.32;mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 18%,#000 44%,#000 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 18%,#000 44%,#000 100%)}
-      .hero-shade{background:linear-gradient(to bottom,rgba(var(--paper-rgb),1) 0%,rgba(var(--paper-rgb),.94) 46%,rgba(var(--paper-rgb),.48) 72%,rgba(var(--paper-rgb),.16) 100%)}
-      h1{font-size:clamp(2.65rem,13vw,4.2rem)}
-      .lead{max-width:92%}
-      main section{padding:66px 0}
-      .work-list{margin-top:34px}
-      .project{padding:25px 0 27px}
-      .recent{padding-bottom:78px}
+      .stage{min-height:560px}
+      .scene-content,.scene.right .scene-content{
+        left:var(--pad);right:auto;bottom:58px;width:calc(100% - 2*var(--pad));
+      }
+      .scene.center .scene-content{left:var(--pad);right:auto;bottom:62px;transform:none;text-align:left;width:calc(100% - 2*var(--pad))}
+      .scene-title,.project-scene .scene-title{font-size:clamp(2.4rem,12.6vw,4.4rem);max-width:95%}
+      .scene-copy{font-size:1rem;max-width:94%;margin-top:18px}
+      .kicker{margin-bottom:12px}
+      .scene-shade,.scene.right .scene-shade,.scene.center .scene-shade{
+        background:linear-gradient(to bottom,rgba(7,8,10,.16),rgba(7,8,10,.2) 38%,rgba(7,8,10,.94) 76%,rgba(7,8,10,.98));
+      }
+      .scene-bg,.scene-blur{object-position:center}
+      .commerce-plate,.code-plate,.social-card,.cuesheet-desktop,.recent-card{
+        left:7vw;right:auto;top:12%;width:86vw;height:48vh;min-height:0;
+      }
+      .code-plate{padding:20px;align-items:flex-start;overflow:hidden}
+      .code-plate pre{font-size:.72rem;line-height:1.55}
+      .social-splash{width:24vw;right:8vw;bottom:34%;border-radius:16px}
+      .phone{width:23vw;border-radius:15px}
+      .phone.one{left:8vw;bottom:34%}
+      .phone.two{left:34vw;bottom:31%}
+      .approach-collage img{width:72vw;max-width:none}
+      .approach-collage img:first-child{left:-12%;top:12%}
+      .approach-collage img:last-child{right:-14%;bottom:27%}
+      .scroll-hint{right:var(--pad);bottom:18px}
+      .scene-no{left:var(--pad);top:calc(var(--nav-h) + 10px)}
     }
 
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
-      *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
-      header{height:auto;min-height:0}
-      .hero-sticky{position:relative;height:auto;min-height:680px}
+      .experience{height:auto}
+      .stage{position:relative;height:auto;min-height:0;overflow:visible}
+      .scene{position:relative;min-height:100vh;min-height:100svh;opacity:1!important;pointer-events:auto!important}
+      .scene + .scene{border-top:1px solid rgba(255,255,255,.12)}
+      .scene-content,.scene.right .scene-content,.scene.center .scene-content{transform:none!important}
+      .webgl{display:none}
+      .scroll-hint{display:none}
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="wrap nav-row">
+  <nav class="nav">
+    <div class="nav-inner">
       <a class="brand" href="#top">CTWalk</a>
       <div class="nav-actions">
         <a class="github" href="https://github.com/CTWalk" target="_blank" rel="noreferrer">GitHub ↗</a>
@@ -198,296 +413,371 @@
   </nav>
 
   <main id="top">
-    <header id="hero-scroll">
-      <div class="hero-sticky">
-        <div class="hero-motion" id="hero-motion" aria-hidden="true"></div>
-        <div class="hero-shade" aria-hidden="true"></div>
-        <div class="wrap hero">
-          <div class="hero-copy" id="hero-copy">
-            <p class="role" data-i18n="role">QA / SDET ENGINEER</p>
-            <h1 data-i18n="heroTitle">QA / SDET across web, API, data and mobile.</h1>
-            <p class="lead" data-i18n="heroLead">I build automation, investigate failures end to end, and stay close enough to the product to fix the problem when it is not the test.</p>
+    <section class="experience" id="experience" style="--scene-count:8">
+      <div class="stage" id="stage">
+
+        <article class="scene center is-active" data-scene="0" data-tone="#0b0d0f">
+          <div class="scene-base"></div>
+          <div class="intro-grid"></div>
+          <div class="webgl" id="webgl" aria-hidden="true"></div>
+          <div class="scene-shade"></div>
+          <div class="scene-content">
+            <p class="kicker" data-i18n="introKicker">QA / SDET ENGINEER</p>
+            <h1 class="scene-title" data-i18n="introTitle">QA / SDET across web, API, data and mobile.</h1>
+            <p class="scene-copy" data-i18n="introBody">I build automation, investigate failures end to end, and work close enough to the product to fix the problem when it is not the test.</p>
           </div>
-        </div>
-      </div>
-    </header>
+          <div class="scroll-hint" id="scroll-hint" data-i18n="scroll">Scroll</div>
+        </article>
 
-    <section id="work">
-      <div class="wrap">
-        <h2 class="section-title" data-i18n="workTitle">Selected work</h2>
+        <article class="scene project-scene" data-scene="1" data-tone="#161513" style="--image-pos:center top;--image-brightness:.34;--image-opacity:.9">
+          <div class="scene-base"></div>
+          <img class="scene-blur" src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="" aria-hidden="true" />
+          <div class="scene-shade"></div>
+          <div class="plate contain commerce-plate scene-object">
+            <img src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="CommerceOps visual regression report" />
+          </div>
+          <div class="scene-no">01 / 06</div>
+          <div class="scene-content">
+            <p class="kicker" data-i18n="commerceKicker">END-TO-END QA</p>
+            <h2 class="scene-title">CommerceOps QA Demo</h2>
+            <p class="scene-copy" data-i18n="commerceBody">One commerce flow checked from browser action to API, database, webhooks and notifications.</p>
+            <a class="scene-link" href="https://github.com/CTWalk/Shooting_App_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
+          </div>
+        </article>
 
-        <div class="work-list">
-          <article class="project">
-            <a class="project-link" href="https://github.com/CTWalk/Shooting_App_demo" target="_blank" rel="noreferrer">
-              <span class="project-name">CommerceOps QA Demo</span><span class="arrow">↗</span>
-            </a>
-            <p data-i18n="w1">A commerce QA demo that checks one flow across the browser, API, database, webhooks and notifications. Built to show why a green UI result is not enough.</p>
-          </article>
+        <article class="scene project-scene right" data-scene="2" data-tone="#0d1420" style="--image-brightness:.28;--image-sat:.65;--image-opacity:.64">
+          <div class="scene-base"></div>
+          <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-nocodee2e/CTWalk/NoCodeE2E-public" alt="" aria-hidden="true" />
+          <div class="scene-shade"></div>
+          <div class="plate code-plate scene-object" aria-hidden="true">
+<pre><span class="dim"># readable intent, stable locators</span>
+<span class="key">name:</span> <span class="value">Fixture login status</span>
+<span class="key">steps:</span>
+  - <span class="key">open:</span> /
+  - <span class="key">fill:</span>
+      <span class="key">target:</span> login.username
+      <span class="key">value:</span> "${username}"
+  - <span class="key">click:</span> login.submit
+  - <span class="key">expectText:</span>
+      <span class="key">target:</span> dashboard.status
+      <span class="key">value:</span> Welcome demo_user</pre>
+          </div>
+          <div class="scene-no">02 / 06</div>
+          <div class="scene-content">
+            <p class="kicker" data-i18n="nocodeKicker">TEST TOOLING</p>
+            <h2 class="scene-title">noCodeE2E</h2>
+            <p class="scene-copy" data-i18n="nocodeBody">A YAML-driven Playwright runner that keeps readable test intent separate from locator maintenance and failure evidence.</p>
+            <a class="scene-link" href="https://github.com/CTWalk/NoCodeE2E-public" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
+          </div>
+        </article>
 
-          <article class="project">
-            <a class="project-link" href="https://github.com/CTWalk/NoCodeE2E-public" target="_blank" rel="noreferrer">
-              <span class="project-name">noCodeE2E</span><span class="arrow">↗</span>
-            </a>
-            <p data-i18n="w2">A YAML-driven Playwright runner for readable test flows and maintainable locators, with failure evidence and CI built in.</p>
-          </article>
+        <article class="scene project-scene" data-scene="3" data-tone="#10181a" style="--image-brightness:.26;--image-sat:.72;--image-opacity:.72">
+          <div class="scene-base"></div>
+          <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-social/CTWalk/SocialPlatform" alt="" aria-hidden="true" />
+          <div class="scene-shade"></div>
+          <div class="plate social-card scene-object">
+            <img src="https://opengraph.githubassets.com/ctwalk-social-card/CTWalk/SocialPlatform" alt="SocialPlatform repository preview" />
+          </div>
+          <div class="social-splash scene-object" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/CTWalk/SocialPlatform/main/android/app/src/main/res/drawable-land-xxxhdpi/splash.png" alt="" />
+          </div>
+          <div class="scene-no">03 / 06</div>
+          <div class="scene-content">
+            <p class="kicker" data-i18n="socialKicker">RELEASE QUALITY</p>
+            <h2 class="scene-title">SocialPlatform</h2>
+            <p class="scene-copy" data-i18n="socialBody">A role-based product with web, API, database, performance and mobile checks connected into one release flow.</p>
+            <a class="scene-link" href="https://github.com/CTWalk/SocialPlatform" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
+          </div>
+        </article>
 
-          <article class="project">
-            <a class="project-link" href="https://github.com/CTWalk/SocialPlatform" target="_blank" rel="noreferrer">
-              <span class="project-name">SocialPlatform</span><span class="arrow">↗</span>
-            </a>
-            <p data-i18n="w3">A role-based product used to connect web, API, database, performance and mobile checks into one release flow.</p>
-          </article>
+        <article class="scene project-scene right" data-scene="4" data-tone="#171412" style="--image-pos:center;--image-brightness:.38;--image-sat:.76;--image-opacity:.86">
+          <div class="scene-base"></div>
+          <img class="scene-bg scene-object" src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png" alt="" aria-hidden="true" />
+          <div class="scene-shade"></div>
+          <div class="plate cuesheet-desktop scene-object">
+            <img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png" alt="CueSheet production workspace" />
+          </div>
+          <div class="phone one scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-stage-call-sheet.png" alt="" /></div>
+          <div class="phone two scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-cast-member.png" alt="" /></div>
+          <div class="scene-no">04 / 06</div>
+          <div class="scene-content">
+            <p class="kicker" data-i18n="cueKicker">PRODUCT ENGINEERING</p>
+            <h2 class="scene-title">CueSheet</h2>
+            <p class="scene-copy" data-i18n="cueBody">A full-stack scheduling product. When availability changes, the new plan aims to disturb as little of the existing schedule as possible.</p>
+            <a class="scene-link" href="https://github.com/CTWalk/CueSheet_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
+          </div>
+        </article>
 
-          <article class="project">
-            <a class="project-link" href="https://github.com/CTWalk/CueSheet_demo" target="_blank" rel="noreferrer">
-              <span class="project-name">CueSheet</span><span class="arrow">↗</span>
-            </a>
-            <p data-i18n="w4">A scheduling product I built and deployed end to end. When availability changes, it aims to keep the new schedule as close as possible to the original.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <article class="scene center" data-scene="5" data-tone="#111214">
+          <div class="scene-base"></div>
+          <div class="approach-collage" aria-hidden="true">
+            <img class="scene-object" src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="" />
+            <img class="scene-object" src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/conflict-status.png" alt="" />
+          </div>
+          <div class="scene-shade"></div>
+          <div class="scene-no">05 / 06</div>
+          <div class="scene-content">
+            <p class="kicker" data-i18n="approachKicker">HOW I WORK</p>
+            <h2 class="scene-title" data-i18n="approachTitle">QA that stays close to the product.</h2>
+            <p class="scene-copy" data-i18n="approachBody">I choose the layer where the failure can actually be seen, keep test state controlled, leave useful evidence, and read product code when the problem crosses the test boundary.</p>
+          </div>
+        </article>
 
-    <section>
-      <div class="wrap approach">
-        <h2 class="section-title" data-i18n="approachTitle">How I work</h2>
-        <p data-i18n="approachBody">I first decide where a failure can actually be observed, then choose the test layer that makes sense. I keep test data controlled, collect enough evidence to debug quickly, and stay close to frontend, backend and data code so QA does not stop at reporting a bug.</p>
-      </div>
-    </section>
+        <article class="scene project-scene right" data-scene="6" data-tone="#17150e" style="--image-brightness:.27;--image-sat:.62;--image-opacity:.7">
+          <div class="scene-base"></div>
+          <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-decision/CTWalk/decision-contract-audit" alt="" aria-hidden="true" />
+          <div class="scene-shade"></div>
+          <div class="plate recent-card scene-object">
+            <img src="https://opengraph.githubassets.com/ctwalk-decision-card/CTWalk/decision-contract-audit" alt="Decision Contract Audit repository preview" />
+          </div>
+          <div class="scene-no">06 / 06</div>
+          <div class="scene-content">
+            <p class="kicker" data-i18n="recentKicker">RECENTLY</p>
+            <h2 class="scene-title" data-i18n="recentTitle">Applying the same QA habits to AI tooling.</h2>
+            <p class="scene-copy" data-i18n="recentBody">I check what was actually evaluated, what happens when information is missing, and whether failures can be reproduced. It is an extension, not the main track.</p>
+            <a class="scene-link" href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer"><span>Decision Contract Audit</span><span class="arrow">↗</span></a>
+          </div>
+        </article>
 
-    <section>
-      <div class="wrap recent">
-        <h2 class="section-title" data-i18n="recentTitle">Recently</h2>
-        <p data-i18n="recentBody">I have also been looking at reliability problems in AI tooling through small experiments and open-source work. It is an extension of my QA work, not the main focus.</p>
-        <p><a href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer">Decision Contract Audit ↗</a> &nbsp; <a href="https://github.com/CTWalk" target="_blank" rel="noreferrer" data-i18n="openSource">Open-source activity ↗</a></p>
+        <article class="scene center" data-scene="7" data-tone="#090a0c">
+          <div class="scene-base"></div>
+          <div class="intro-grid"></div>
+          <div class="scene-shade"></div>
+          <div class="scene-content">
+            <p class="kicker">CTWalk</p>
+            <h2 class="scene-title" data-i18n="outroTitle">More work lives on GitHub.</h2>
+            <a class="scene-link" href="https://github.com/CTWalk" target="_blank" rel="noreferrer"><span data-i18n="openGithub">Open GitHub</span><span class="arrow">↗</span></a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="wrap footer-row">
-      <span>© <span id="year"></span> CTWalk</span>
-      <a href="https://github.com/CTWalk" target="_blank" rel="noreferrer">GitHub ↗</a>
-    </div>
-  </footer>
 
   <script>
     const copy={
       en:{
         title:'CTWalk — QA / SDET Engineer',
         description:'CTWalk — QA/SDET engineer working across web, API, data, mobile, automation, and product debugging.',
-        role:'QA / SDET ENGINEER',
-        heroTitle:'QA / SDET across web, API, data and mobile.',
-        heroLead:'I build automation, investigate failures end to end, and stay close enough to the product to fix the problem when it is not the test.',
-        workTitle:'Selected work',
-        w1:'A commerce QA demo that checks one flow across the browser, API, database, webhooks and notifications. Built to show why a green UI result is not enough.',
-        w2:'A YAML-driven Playwright runner for readable test flows and maintainable locators, with failure evidence and CI built in.',
-        w3:'A role-based product used to connect web, API, database, performance and mobile checks into one release flow.',
-        w4:'A scheduling product I built and deployed end to end. When availability changes, it aims to keep the new schedule as close as possible to the original.',
-        approachTitle:'How I work',
-        approachBody:'I first decide where a failure can actually be observed, then choose the test layer that makes sense. I keep test data controlled, collect enough evidence to debug quickly, and stay close to frontend, backend and data code so QA does not stop at reporting a bug.',
-        recentTitle:'Recently',
-        recentBody:'I have also been looking at reliability problems in AI tooling through small experiments and open-source work. It is an extension of my QA work, not the main focus.',
-        openSource:'Open-source activity ↗'
+        introKicker:'QA / SDET ENGINEER',
+        introTitle:'QA / SDET across web, API, data and mobile.',
+        introBody:'I build automation, investigate failures end to end, and work close enough to the product to fix the problem when it is not the test.',
+        scroll:'Scroll',
+        commerceKicker:'END-TO-END QA',
+        commerceBody:'One commerce flow checked from browser action to API, database, webhooks and notifications.',
+        nocodeKicker:'TEST TOOLING',
+        nocodeBody:'A YAML-driven Playwright runner that keeps readable test intent separate from locator maintenance and failure evidence.',
+        socialKicker:'RELEASE QUALITY',
+        socialBody:'A role-based product with web, API, database, performance and mobile checks connected into one release flow.',
+        cueKicker:'PRODUCT ENGINEERING',
+        cueBody:'A full-stack scheduling product. When availability changes, the new plan aims to disturb as little of the existing schedule as possible.',
+        approachKicker:'HOW I WORK',
+        approachTitle:'QA that stays close to the product.',
+        approachBody:'I choose the layer where the failure can actually be seen, keep test state controlled, leave useful evidence, and read product code when the problem crosses the test boundary.',
+        recentKicker:'RECENTLY',
+        recentTitle:'Applying the same QA habits to AI tooling.',
+        recentBody:'I check what was actually evaluated, what happens when information is missing, and whether failures can be reproduced. It is an extension, not the main track.',
+        viewRepo:'View repository',
+        outroTitle:'More work lives on GitHub.',
+        openGithub:'Open GitHub'
       },
       zh:{
         title:'CTWalk — QA / SDET 工程師',
         description:'CTWalk — QA / SDET 工程師，工作範圍涵蓋網頁、API、資料、手機端、自動化測試與產品除錯。',
-        role:'QA / SDET 工程師',
-        heroTitle:'從網頁、API、資料到手機端，我都會測，也會把問題追到底。',
-        heroLead:'我做自動化測試，也處理測試背後的工程問題。從失敗紀錄、測試資料到產品程式，哪一層出問題，就往哪一層查。',
-        workTitle:'作品',
-        w1:'用一套接近真實電商流程的系統做端到端 QA：畫面成功之後，繼續核對 API、資料庫、Webhook 與通知，確認整條流程真的完成。',
-        w2:'我做的 YAML 測試工具。測試步驟和定位方式分開管理，讓流程容易閱讀，同時保留 Playwright 的可維護性與失敗證據。',
-        w3:'用多角色社群產品，把網頁、API、資料庫、效能與手機端檢查放進同一套交付流程，讓上線前的狀態更清楚。',
-        w4:'我從頭做到部署的排練排程工具。有人臨時不能來時，不只要排出新版本，還要盡量少改原本已經安排好的內容。',
-        approachTitle:'我怎麼做 QA',
-        approachBody:'我會先問：這個問題在哪裡最容易被準確看見？有時是畫面，有時是 API 或資料庫。測試要穩定，也要在失敗時留下足夠線索，讓除錯不用靠猜。若最後發現問題在產品程式，我會直接往那一層處理。',
-        recentTitle:'最近',
-        recentBody:'最近也把同一套做法用在 AI 工具：確認它到底測了什麼、缺資料時會不會誤判，以及錯誤能不能重現。這是 QA 工作的延伸，不是主軸。',
-        openSource:'其他開源活動 ↗'
+        introKicker:'QA / SDET 工程師',
+        introTitle:'從網頁、API、資料到手機端，我都會測，也會一路追到問題真正發生的地方。',
+        introBody:'我做自動化測試，也會把失敗原因一路查清楚；如果問題不在測試，而在產品程式，我也會直接修。',
+        scroll:'向下',
+        commerceKicker:'端到端 QA',
+        commerceBody:'同一條電商流程，從畫面操作一路核對 API、資料庫、Webhook 與通知結果。',
+        nocodeKicker:'測試工具',
+        nocodeBody:'用 YAML 寫測試流程，Playwright 負責執行；定位方式與失敗證據分開管理，讓測試比較好讀，也比較好維護。',
+        socialKicker:'交付前的品質檢查',
+        socialBody:'用多角色社群產品，把網頁、API、資料庫、效能與手機端檢查串進同一套交付流程。',
+        cueKicker:'產品開發',
+        cueBody:'我做並部署的排練排程工具。有人臨時不能來時，除了要重新排得出來，也要盡量少動原本的安排。',
+        approachKicker:'我怎麼做 QA',
+        approachTitle:'QA 不應該只停在測試腳本。',
+        approachBody:'我先判斷問題在哪一層最看得清楚，再決定怎麼測。測試資料要能控制，失敗要留足夠線索；問題跨到產品程式時，我也會直接往裡面查。',
+        recentKicker:'最近',
+        recentTitle:'也把同一套 QA 做法用在 AI 工具。',
+        recentBody:'我會確認它到底測了什麼、缺資料時會不會誤判，以及錯誤能不能重現。這只是延伸，不是主軸。',
+        viewRepo:'查看專案',
+        outroTitle:'更多實作都在 GitHub。',
+        openGithub:'查看 GitHub'
       }
     };
 
     const meta=document.querySelector('meta[name="description"]');
-    const langButtons=[...document.querySelectorAll('[data-lang]')];
-
-    function setLanguage(lang){
+    const buttons=[...document.querySelectorAll('[data-lang]')];
+    function applyLanguage(lang){
       const selected=copy[lang]?lang:'en';
       const strings=copy[selected];
       document.documentElement.lang=selected==='zh'?'zh-Hant-TW':'en';
       document.title=strings.title;
       meta.setAttribute('content',strings.description);
       document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const value=strings[node.dataset.i18n];
-        if(value)node.textContent=value;
+        const key=node.dataset.i18n;
+        if(strings[key]) node.textContent=strings[key];
       });
-      langButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===selected)));
-      try{localStorage.setItem('ctwalk-lang',selected)}catch(_){}
+      buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===selected)));
+      try{localStorage.setItem('ctwalk-lang',selected)}catch(_){ }
     }
-
-    langButtons.forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));
+    buttons.forEach(button=>button.addEventListener('click',()=>applyLanguage(button.dataset.lang)));
     let initial='en';
     try{
       const saved=localStorage.getItem('ctwalk-lang');
-      if(saved==='en'||saved==='zh')initial=saved;
-      else if((navigator.language||'').toLowerCase().startsWith('zh'))initial='zh';
-    }catch(_){}
-    setLanguage(initial);
-    document.getElementById('year').textContent=new Date().getFullYear();
+      if(saved==='en'||saved==='zh') initial=saved;
+      else if((navigator.language||'').toLowerCase().startsWith('zh')) initial='zh';
+    }catch(_){ }
+    applyLanguage(initial);
+
+    const experience=document.getElementById('experience');
+    const stage=document.getElementById('stage');
+    const scenes=[...document.querySelectorAll('.scene')];
+    const scrollHint=document.getElementById('scroll-hint');
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pointer={x:0,y:0};
+    const pointerTarget={x:0,y:0};
+    let currentStep=0;
+    let raf=0;
+
+    const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v));
+    const smooth=t=>t*t*(3-2*t);
+    function alphaFor(distance){
+      const d=Math.abs(distance);
+      if(d<=.28) return 1;
+      if(d>=.78) return 0;
+      return 1-smooth((d-.28)/.5);
+    }
+
+    function renderExperience(){
+      if(reduced) return;
+      const rect=experience.getBoundingClientRect();
+      const travel=Math.max(1,experience.offsetHeight-window.innerHeight);
+      const progress=clamp(-rect.top/travel);
+      const step=progress*(scenes.length-1);
+      currentStep=step;
+      pointer.x+=(pointerTarget.x-pointer.x)*.065;
+      pointer.y+=(pointerTarget.y-pointer.y)*.065;
+
+      scenes.forEach((scene,index)=>{
+        const rel=step-index;
+        const opacity=alphaFor(rel);
+        scene.style.opacity=opacity.toFixed(3);
+        scene.classList.toggle('is-active',opacity>.55);
+        scene.style.zIndex=String(10-Math.min(9,Math.round(Math.abs(rel)*2)));
+
+        const content=scene.querySelector('.scene-content');
+        const isCenter=scene.classList.contains('center');
+        if(content){
+          const y=rel*64;
+          const x=(scene.classList.contains('right')?-1:1)*rel*18;
+          if(isCenter) content.style.transform=`translate(-50%,calc(50% + ${y*.38}px))`;
+          else content.style.transform=`translate3d(${x}px,${y}px,0)`;
+          content.style.opacity=String(clamp(opacity*1.08));
+        }
+
+        const bg=scene.querySelector('.scene-bg');
+        if(bg){
+          const scale=1.045+Math.min(.07,Math.abs(rel)*.045);
+          bg.style.transform=`translate3d(${pointer.x*10-rel*16}px,${pointer.y*8+rel*12}px,0) scale(${scale})`;
+        }
+        const blur=scene.querySelector('.scene-blur');
+        if(blur){
+          blur.style.transform=`translate3d(${pointer.x*6-rel*10}px,${pointer.y*5+rel*9}px,0) scale(${1.09+Math.abs(rel)*.03})`;
+        }
+        scene.querySelectorAll('.scene-object').forEach((object,objectIndex)=>{
+          const dir=objectIndex%2===0?1:-1;
+          const px=pointer.x*(7+objectIndex*2)*dir;
+          const py=pointer.y*(5+objectIndex);
+          const tx=rel*(18+objectIndex*5)*dir;
+          const ty=rel*(24+objectIndex*4);
+          const scale=1-Math.min(.08,Math.abs(rel)*.04);
+          object.style.transform=`translate3d(${px+tx}px,${py+ty}px,0) scale(${scale})`;
+          object.style.opacity=String(clamp(opacity*1.12));
+        });
+      });
+
+      if(scrollHint) scrollHint.style.opacity=String(clamp(1-step*2.4));
+      raf=requestAnimationFrame(renderExperience);
+    }
+
+    if(!reduced){
+      window.addEventListener('pointermove',event=>{
+        pointerTarget.x=(event.clientX/Math.max(1,window.innerWidth)-.5)*2;
+        pointerTarget.y=(event.clientY/Math.max(1,window.innerHeight)-.5)*2;
+      },{passive:true});
+      raf=requestAnimationFrame(renderExperience);
+      document.addEventListener('visibilitychange',()=>{
+        if(document.hidden) cancelAnimationFrame(raf);
+        else raf=requestAnimationFrame(renderExperience);
+      });
+    }else{
+      scenes.forEach(scene=>scene.classList.add('is-active'));
+    }
   </script>
 
   <script type="module">
-    const host=document.getElementById('hero-motion');
-    const heroScroll=document.getElementById('hero-scroll');
-    const heroCopy=document.getElementById('hero-copy');
-    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if(host&&heroScroll){
+    const host=document.getElementById('webgl');
+    if(host&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       try{
-        const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js');
+        const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.169.0/+esm');
         const scene=new THREE.Scene();
-        const camera=new THREE.PerspectiveCamera(38,1,.1,100);
-        camera.position.set(0,0,10.5);
-
+        const camera=new THREE.PerspectiveCamera(44,1,.1,100);
+        camera.position.set(0,0,10);
         const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
         renderer.setClearColor(0x000000,0);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
         host.appendChild(renderer.domElement);
 
         const group=new THREE.Group();
+        group.position.x=3.1;
         scene.add(group);
 
-        const start=[
-          [-3.3,2.4,.4],[-1.3,2.8,-.5],[.7,2.2,.3],[2.8,2.7,-.4],
-          [-2.6,.5,-.2],[-.5,.9,.7],[1.7,.4,-.3],[3.3,.8,.4],
-          [-3.1,-1.7,.5],[-1.0,-2.1,-.4],[1.2,-1.6,.6],[3.1,-2.2,-.2]
-        ];
-        const end=start.map((_,i)=>{
-          const t=i/(start.length-1);
-          return [-1.4+t*3.7,-2.5+t*5.0,(i%3-1)*.05];
-        });
-        const edges=[[0,1],[1,2],[2,3],[0,4],[1,5],[2,5],[2,6],[3,7],[4,5],[5,6],[6,7],[4,8],[5,9],[6,10],[7,11],[8,9],[9,10],[10,11]];
-
-        const current=start.map(p=>new THREE.Vector3(...p));
-        const pointGeo=new THREE.BufferGeometry().setFromPoints(current);
-        const pointMat=new THREE.PointsMaterial({color:0x171717,size:.085,transparent:true,opacity:.52,sizeAttenuation:true});
-        const points=new THREE.Points(pointGeo,pointMat);
-        group.add(points);
-
-        const lineGeo=new THREE.BufferGeometry();
-        lineGeo.setAttribute('position',new THREE.Float32BufferAttribute(new Float32Array(edges.length*6),3));
-        const lineMat=new THREE.LineBasicMaterial({color:0x315fbb,transparent:true,opacity:.22});
-        const lines=new THREE.LineSegments(lineGeo,lineMat);
+        const pts=[];
+        for(let i=0;i<42;i++){
+          const a=i*.72;
+          const r=1.7+(i%7)*.27;
+          pts.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a*1.13)*r*.72,(i%5-2)*.34));
+        }
+        const line=[];
+        for(let i=0;i<pts.length-1;i++){
+          const p=pts[i],q=pts[i+1];
+          line.push(p.x,p.y,p.z,q.x,q.y,q.z);
+          if(i+6<pts.length&&i%2===0){const r=pts[i+6];line.push(p.x,p.y,p.z,r.x,r.y,r.z)}
+        }
+        const geo=new THREE.BufferGeometry();
+        geo.setAttribute('position',new THREE.Float32BufferAttribute(line,3));
+        const lines=new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:0x8ea9ff,transparent:true,opacity:.18}));
         group.add(lines);
-
-        const pulse=new THREE.Mesh(
-          new THREE.SphereGeometry(.075,12,12),
-          new THREE.MeshBasicMaterial({color:0x315fbb,transparent:true,opacity:.72})
-        );
-        group.add(pulse);
-
-        let width=1,height=1;
-        let rawProgress=0,smoothProgress=0;
-        const pointer={x:0,y:0};
-        const targetPointer={x:0,y:0};
-        let raf=0;
-        let running=true;
-
-        const clamp=v=>Math.max(0,Math.min(1,v));
-        const ease=t=>t*t*(3-2*t);
+        const pointGeo=new THREE.BufferGeometry().setFromPoints(pts);
+        const points=new THREE.Points(pointGeo,new THREE.PointsMaterial({color:0xe5ebff,size:.055,transparent:true,opacity:.58,sizeAttenuation:true}));
+        group.add(points);
 
         function resize(){
           const rect=host.getBoundingClientRect();
-          width=Math.max(1,rect.width);
-          height=Math.max(1,rect.height);
-          renderer.setSize(width,height,false);
-          camera.aspect=width/height;
+          renderer.setSize(Math.max(1,rect.width),Math.max(1,rect.height),false);
+          camera.aspect=Math.max(1,rect.width)/Math.max(1,rect.height);
           camera.updateProjectionMatrix();
-          const mobile=width<700;
-          group.scale.setScalar(mobile?.78:1);
-          group.position.set(mobile?1.25:3.0,mobile?-1.25:.05,0);
+          group.scale.setScalar(rect.width<760?.72:1);
+          group.position.x=rect.width<760?1.15:3.1;
         }
-
-        function measureScroll(){
-          const rect=heroScroll.getBoundingClientRect();
-          const travel=Math.max(1,heroScroll.offsetHeight-window.innerHeight);
-          rawProgress=clamp((-rect.top)/travel);
-        }
-
-        function updateGeometry(progress){
-          const morph=ease(clamp((progress-.12)/.78));
-          current.forEach((v,i)=>{
-            const a=start[i],b=end[i];
-            v.set(
-              THREE.MathUtils.lerp(a[0],b[0],morph),
-              THREE.MathUtils.lerp(a[1],b[1],morph),
-              THREE.MathUtils.lerp(a[2],b[2],morph)
-            );
-          });
-          pointGeo.setFromPoints(current);
-          const arr=lineGeo.attributes.position.array;
-          edges.forEach(([a,b],i)=>{
-            const p1=current[a],p2=current[b],o=i*6;
-            arr[o]=p1.x;arr[o+1]=p1.y;arr[o+2]=p1.z;
-            arr[o+3]=p2.x;arr[o+4]=p2.y;arr[o+5]=p2.z;
-          });
-          lineGeo.attributes.position.needsUpdate=true;
-        }
-
-        function onPointerMove(event){
-          targetPointer.x=(event.clientX/Math.max(window.innerWidth,1)-.5)*.24;
-          targetPointer.y=(event.clientY/Math.max(window.innerHeight,1)-.5)*.16;
-        }
-
-        function draw(time=0){
-          smoothProgress+=((reduced?0:rawProgress)-smoothProgress)*.075;
-          pointer.x+=(targetPointer.x-pointer.x)*.045;
-          pointer.y+=(targetPointer.y-pointer.y)*.045;
-
-          updateGeometry(smoothProgress);
-          const p=ease(smoothProgress);
-          camera.position.z=THREE.MathUtils.lerp(10.5,7.7,p);
-          group.rotation.y=(1-p)*pointer.x+p*.18;
-          group.rotation.x=-(1-p)*pointer.y*.6+p*.05;
-          group.rotation.z=p*-.08;
-          group.position.x+=( (width<700?1.25:THREE.MathUtils.lerp(3.0,4.15,p)) - group.position.x )*.08;
-
-          const edgeIndex=Math.min(edges.length-1,Math.floor(p*(edges.length-1)));
-          const [a,b]=edges[edgeIndex];
-          const local=(time*.00016)%1;
-          pulse.position.copy(current[a]).lerp(current[b],local);
-
-          const fade=1-ease(clamp((smoothProgress-.68)/.32));
-          pointMat.opacity=.52*fade;
-          lineMat.opacity=.22*fade;
-          pulse.material.opacity=.72*fade;
-          host.style.opacity=String(.58*fade+.02);
-
-          if(heroCopy&&!reduced){
-            const copyFade=1-ease(clamp((smoothProgress-.48)/.48));
-            heroCopy.style.opacity=String(.18+.82*copyFade);
-            heroCopy.style.transform=`translate3d(0,${-28*ease(smoothProgress)}px,0)`;
-          }
-
+        let frame=0;
+        function draw(t=0){
+          group.rotation.z=Math.sin(t*.00012)*.035;
+          group.rotation.y=Math.cos(t*.0001)*.06;
           renderer.render(scene,camera);
-          if(running&&!reduced)raf=requestAnimationFrame(draw);
+          frame=requestAnimationFrame(draw);
         }
-
         resize();
-        measureScroll();
-        window.addEventListener('resize',()=>{resize();measureScroll()},{passive:true});
-        window.addEventListener('scroll',measureScroll,{passive:true});
-        window.addEventListener('pointermove',onPointerMove,{passive:true});
+        window.addEventListener('resize',resize,{passive:true});
+        frame=requestAnimationFrame(draw);
         document.addEventListener('visibilitychange',()=>{
-          running=!document.hidden;
-          if(running&&!reduced){cancelAnimationFrame(raf);raf=requestAnimationFrame(draw)}
+          if(document.hidden) cancelAnimationFrame(frame);
+          else frame=requestAnimationFrame(draw);
         });
-
-        if(reduced){updateGeometry(0);draw(0)}
-        else raf=requestAnimationFrame(draw);
       }catch(_){
-        host.style.background='radial-gradient(circle at 78% 48%,rgba(49,95,187,.12),transparent 27rem)';
+        host.style.background='radial-gradient(circle at 72% 42%,rgba(80,110,190,.16),transparent 28rem)';
       }
     }
   </script>
