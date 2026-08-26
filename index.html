@@ -3,211 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CTWalk — reliability-focused software engineering across test architecture, AI evaluation, browser automation, and evidence-driven delivery." />
+  <meta name="description" content="CTWalk — QA/SDET-focused software engineering, test automation, CI/CD, product quality, and selected AI reliability work." />
   <meta name="theme-color" content="#0a0d12" />
-  <title>CTWalk — Reliability Engineering for Software & AI</title>
+  <title>CTWalk — QA / SDET & Software Quality Engineering</title>
   <style>
     :root {
-      --bg: #0a0d12;
-      --surface: #11161f;
-      --surface-2: #161d28;
-      --text: #f3f6fb;
-      --muted: #9ea9ba;
-      --soft: #c7cfdb;
-      --line: #27303e;
-      --accent: #8ab4ff;
-      --green: #9ce4c2;
-      --amber: #f1cf8b;
-      --max: 1120px;
+      --bg:#0a0d12; --surface:#11161f; --surface2:#161d28; --text:#f3f6fb;
+      --muted:#9ea9ba; --soft:#c8d0dc; --line:#27303e; --accent:#8ab4ff;
+      --green:#9ce4c2; --amber:#f1cf8b; --max:1120px;
     }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 18% -8%, rgba(91, 135, 255, .15), transparent 34rem),
-        radial-gradient(circle at 92% 10%, rgba(86, 215, 166, .07), transparent 28rem),
-        var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
-    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(10, 13, 18, .82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-    .brand { font-weight: 820; letter-spacing: -.035em; }
-    .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: .94rem; }
-    .nav-links a:hover { color: var(--text); }
-
-    header { padding: 96px 0 74px; }
-    .hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 58px; }
-    .eyebrow {
-      margin-bottom: 18px;
-      color: var(--green);
-      font-size: .78rem;
-      font-weight: 760;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-    h1 {
-      margin: 0;
-      max-width: 850px;
-      font-size: clamp(3.1rem, 7.6vw, 6.7rem);
-      line-height: .97;
-      letter-spacing: -.064em;
-    }
-    .lead {
-      max-width: 790px;
-      margin: 28px 0 0;
-      color: var(--soft);
-      font-size: clamp(1.08rem, 2vw, 1.28rem);
-    }
-    .lead strong { color: var(--text); font-weight: 700; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 18px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--surface);
-      font-weight: 680;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    .button.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
-    .button:hover { transform: translateY(-2px); border-color: #55637a; }
-    .avatar {
-      width: clamp(150px, 20vw, 220px);
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 30px;
-      border: 1px solid var(--line);
-      box-shadow: 0 28px 90px rgba(0,0,0,.34);
-    }
-
-    .signal-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 38px;
-    }
-    .signal {
-      padding: 7px 11px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      background: rgba(17,22,31,.68);
-      font-size: .84rem;
-    }
-
-    section { padding: 76px 0; border-top: 1px solid var(--line); }
-    .section-head {
-      display: grid;
-      grid-template-columns: 210px minmax(0, 1fr);
-      gap: 38px;
-      margin-bottom: 38px;
-    }
-    h2 { margin: 0; color: var(--muted); font-size: .98rem; font-weight: 680; }
-    .section-intro { margin: 0; max-width: 820px; font-size: clamp(1.4rem, 3vw, 2.18rem); line-height: 1.2; letter-spacing: -.035em; }
-    .section-note { margin: 15px 0 0; max-width: 780px; color: var(--muted); }
-
-    .capabilities { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
-    .capability {
-      min-height: 255px;
-      padding: 26px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: linear-gradient(180deg, var(--surface), rgba(17,22,31,.65));
-    }
-    .capability .num { display: block; margin-bottom: 26px; color: var(--green); font-size: .8rem; font-weight: 760; letter-spacing: .08em; }
-    .capability h3 { margin: 0 0 10px; font-size: 1.32rem; letter-spacing: -.025em; }
-    .capability p { margin: 0; color: var(--muted); }
-    .capability .tools { margin-top: 18px; color: var(--soft); font-size: .9rem; }
-
-    .projects { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
-    .card {
-      min-height: 255px;
-      padding: 27px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: linear-gradient(180deg, var(--surface), rgba(17,22,31,.62));
-      display: flex;
-      flex-direction: column;
-      transition: transform .16s ease, border-color .16s ease, background .16s ease;
-    }
-    .card:hover { transform: translateY(-3px); border-color: #4c5970; background: var(--surface-2); }
-    .card small { color: var(--green); font-weight: 760; letter-spacing: .06em; text-transform: uppercase; }
-    .card h3 { margin: 14px 0 9px; font-size: 1.42rem; letter-spacing: -.03em; }
-    .card p { margin: 0; color: var(--muted); }
-    .card .proof { margin-top: 15px; color: var(--soft); font-size: .9rem; }
-    .card .arrow { margin-top: auto; padding-top: 26px; color: var(--accent); font-weight: 680; }
-
-    .contrib-list { border-top: 1px solid var(--line); }
-    .contrib {
-      display: grid;
-      grid-template-columns: 180px minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: baseline;
-      padding: 22px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .contrib .project { color: var(--soft); font-weight: 680; }
-    .contrib .finding { color: var(--muted); }
-    .contrib .link { color: var(--accent); white-space: nowrap; font-weight: 650; }
-    .contrib:hover .finding { color: var(--soft); }
-
-    .principles { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
-    .principle {
-      padding: 22px 24px;
-      border-left: 2px solid #3f4b60;
-      background: rgba(17,22,31,.45);
-      border-radius: 0 12px 12px 0;
-    }
-    .principle strong { display: block; margin-bottom: 5px; }
-    .principle span { color: var(--muted); }
-
-    .closing {
-      display: grid;
-      grid-template-columns: 210px minmax(0,1fr);
-      gap: 38px;
-      align-items: start;
-    }
-    .closing p { margin: 0; max-width: 800px; color: var(--soft); font-size: 1.12rem; }
-
-    footer { padding: 42px 0 58px; color: var(--muted); font-size: .92rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer a { color: var(--text); }
-
-    @media (max-width: 900px) {
-      .capabilities { grid-template-columns: 1fr; }
-      .capability { min-height: auto; }
-    }
-
-    @media (max-width: 760px) {
-      .nav-links a:nth-child(2), .nav-links a:nth-child(3) { display: none; }
-      header { padding-top: 66px; }
-      .hero { grid-template-columns: 1fr; gap: 34px; }
-      .avatar { order: -1; width: 112px; border-radius: 22px; }
-      .section-head, .closing { grid-template-columns: 1fr; gap: 14px; }
-      .projects, .principles { grid-template-columns: 1fr; }
-      .contrib { grid-template-columns: 1fr; gap: 5px; }
-      .contrib .link { margin-top: 5px; }
-      section { padding: 58px 0; }
-    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;color:var(--text);background:radial-gradient(circle at 18% -8%,rgba(91,135,255,.14),transparent 34rem),radial-gradient(circle at 90% 10%,rgba(86,215,166,.06),transparent 28rem),var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none} a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}.wrap{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+    nav{position:sticky;top:0;z-index:20;background:rgba(10,13,18,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:22px}.brand{font-weight:820;letter-spacing:-.035em}.nav-links{display:flex;gap:22px;color:var(--muted);font-size:.94rem}.nav-links a:hover{color:var(--text)}
+    header{padding:96px 0 76px}.hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:58px;align-items:center}.eyebrow{margin-bottom:18px;color:var(--green);font-size:.78rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase}
+    h1{margin:0;max-width:880px;font-size:clamp(3rem,7.5vw,6.5rem);line-height:.97;letter-spacing:-.064em}.lead{max-width:820px;margin:28px 0 0;color:var(--soft);font-size:clamp(1.08rem,2vw,1.28rem)}.lead strong{color:var(--text)}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-weight:680;transition:.15s}.button.primary{background:var(--text);color:var(--bg);border-color:var(--text)}.button:hover{transform:translateY(-2px);border-color:#55637a}
+    .avatar{width:clamp(150px,20vw,220px);aspect-ratio:1;object-fit:cover;border-radius:30px;border:1px solid var(--line);box-shadow:0 28px 90px rgba(0,0,0,.34)}
+    .signal-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:38px}.signal{padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:var(--muted);background:rgba(17,22,31,.68);font-size:.84rem}
+    section{padding:76px 0;border-top:1px solid var(--line)}.section-head{display:grid;grid-template-columns:210px minmax(0,1fr);gap:38px;margin-bottom:38px}h2{margin:0;color:var(--muted);font-size:.98rem;font-weight:680}.section-intro{margin:0;max-width:830px;font-size:clamp(1.4rem,3vw,2.18rem);line-height:1.2;letter-spacing:-.035em}.section-note{margin:15px 0 0;max-width:800px;color:var(--muted)}
+    .capabilities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.capability{min-height:250px;padding:26px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--surface),rgba(17,22,31,.65))}.capability .num{display:block;margin-bottom:24px;color:var(--green);font-size:.79rem;font-weight:760;letter-spacing:.08em}.capability h3{margin:0 0 10px;font-size:1.34rem;letter-spacing:-.025em}.capability p{margin:0;color:var(--muted)}.capability .tools{margin-top:18px;color:var(--soft);font-size:.9rem}
+    .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{min-height:255px;padding:27px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--surface),rgba(17,22,31,.62));display:flex;flex-direction:column;transition:.16s}.card:hover{transform:translateY(-3px);border-color:#4c5970;background:var(--surface2)}.card small{color:var(--green);font-weight:760;letter-spacing:.06em;text-transform:uppercase}.card h3{margin:14px 0 9px;font-size:1.42rem;letter-spacing:-.03em}.card p{margin:0;color:var(--muted)}.card .proof{margin-top:15px;color:var(--soft);font-size:.9rem}.card .arrow{margin-top:auto;padding-top:26px;color:var(--accent);font-weight:680}
+    .quality-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.quality{padding:22px;border:1px solid var(--line);border-radius:15px;background:rgba(17,22,31,.5)}.quality strong{display:block;margin-bottom:7px}.quality span{color:var(--muted)}
+    .adjacent{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:16px}.adj-card{padding:28px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}.adj-card small{color:var(--amber);font-weight:760;letter-spacing:.06em;text-transform:uppercase}.adj-card h3{margin:12px 0 9px;font-size:1.45rem;letter-spacing:-.03em}.adj-card p{margin:0;color:var(--muted)}.adj-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.adj-links a{color:var(--accent);font-weight:650}
+    footer{padding:42px 0 58px;color:var(--muted);font-size:.92rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer a{color:var(--text)}
+    @media(max-width:900px){.quality-grid{grid-template-columns:1fr}.adjacent{grid-template-columns:1fr}}
+    @media(max-width:760px){.nav-links a:nth-child(2),.nav-links a:nth-child(3){display:none}header{padding-top:66px}.hero{grid-template-columns:1fr;gap:34px}.avatar{order:-1;width:112px;border-radius:22px}.section-head{grid-template-columns:1fr;gap:14px}.capabilities,.projects{grid-template-columns:1fr}section{padding:58px 0}}
   </style>
 </head>
 <body>
@@ -217,7 +39,7 @@
       <div class="nav-links">
         <a href="#capabilities">Capabilities</a>
         <a href="#work">Work</a>
-        <a href="#opensource">Open source</a>
+        <a href="#quality">Quality approach</a>
         <a href="https://github.com/CTWalk" target="_blank" rel="noreferrer">GitHub ↗</a>
       </div>
     </div>
@@ -227,22 +49,23 @@
     <header>
       <div class="wrap hero">
         <div>
-          <div class="eyebrow">Reliability Engineering · AI Evaluation · Test Architecture</div>
-          <h1>I make software and AI systems harder to fool.</h1>
-          <p class="lead">I’m CTWalk, a <strong>reliability-focused software engineer</strong>. I design test systems that expose false greens, validate behavior against durable sources of truth, and turn ambiguous failures into reproducible evidence.</p>
+          <div class="eyebrow">QA / SDET · Automation · Software Quality</div>
+          <h1>I build reliable software—and the test systems that prove it.</h1>
+          <p class="lead">I’m CTWalk, a <strong>QA/SDET-focused software engineer</strong>. I design automation across web, API, database, and mobile layers; build CI/CD quality gates and test tooling; and debug failures from product behavior down to the test infrastructure itself. AI/LLM reliability is one area I explore, not the center of my work.</p>
           <div class="actions">
-            <a class="button primary" href="#work">See the evidence</a>
-            <a class="button" href="#opensource">Upstream contributions</a>
+            <a class="button primary" href="#capabilities">What I can do</a>
+            <a class="button" href="#work">Selected projects</a>
             <a class="button" href="https://github.com/CTWalk" target="_blank" rel="noreferrer">GitHub profile</a>
           </div>
           <div class="signal-row" aria-label="Engineering areas">
-            <span class="signal">Browser / Playwright</span>
-            <span class="signal">API / OpenAPI</span>
-            <span class="signal">PostgreSQL / DB truth</span>
-            <span class="signal">Native / hybrid E2E</span>
-            <span class="signal">Visual / pixel assertions</span>
-            <span class="signal">LLM evaluation</span>
-            <span class="signal">CI / evidence gates</span>
+            <span class="signal">Playwright / Web E2E</span>
+            <span class="signal">API / Contract Testing</span>
+            <span class="signal">PostgreSQL / DB Verification</span>
+            <span class="signal">Mobile / Hybrid E2E</span>
+            <span class="signal">CI/CD Quality Gates</span>
+            <span class="signal">Test Frameworks & Tooling</span>
+            <span class="signal">Spec / Code Alignment</span>
+            <span class="signal">AI-assisted Engineering</span>
           </div>
         </div>
         <img class="avatar" src="https://avatars.githubusercontent.com/u/100585900?v=4" alt="CTWalk GitHub avatar" />
@@ -254,31 +77,38 @@
         <div class="section-head">
           <h2>At a glance</h2>
           <div>
-            <p class="section-intro">My work sits where product engineering, QA, and AI reliability meet.</p>
-            <p class="section-note">The recurring theme across my repositories and upstream work is simple: a passing result is only useful when the system can explain what was actually measured.</p>
+            <p class="section-intro">My core capability is software quality engineering across the whole delivery stack.</p>
+            <p class="section-note">I’m strongest when a team needs more than UI automation: test strategy, reliable environments, meaningful assertions, CI gates, debugging, and the engineering work required to make the system testable.</p>
           </div>
         </div>
 
         <div class="capabilities">
           <article class="capability">
-            <span class="num">01 — TEST ARCHITECTURE</span>
-            <h3>Cross-layer verification</h3>
-            <p>I build test strategies that put each assertion at the right source of truth instead of forcing everything through the UI. Browser behavior, API contracts, database state, native navigation, webhooks, and rendered pixels each get their own evidence layer.</p>
-            <div class="tools">Playwright · pytest · OpenAPI · PostgreSQL · Appium/Maestro · OpenCV</div>
+            <span class="num">01 — QA / SDET</span>
+            <h3>Cross-layer test architecture</h3>
+            <p>I place verification at the right layer: browser journeys for user behavior, APIs for business contracts, databases for persisted truth, and native tests for platform-specific behavior. The goal is coverage that is fast enough to run and strong enough to trust.</p>
+            <div class="tools">Playwright · pytest · OpenAPI · PostgreSQL · Appium · Maestro · visual checks</div>
           </article>
 
           <article class="capability">
-            <span class="num">02 — AI RELIABILITY</span>
-            <h3>Evaluation that fails honestly</h3>
-            <p>I audit LLM and agent evaluation paths for cases where missing data, partial scoring, or unevaluated behavior can look like success. I prefer keyless reproducers, explicit contracts, regression tests, and fail-closed semantics.</p>
-            <div class="tools">Inspect AI · agent runtimes · evaluators · guardrails · decision contracts</div>
+            <span class="num">02 — AUTOMATION ENGINEERING</span>
+            <h3>Frameworks, fixtures, and test tooling</h3>
+            <p>I build the machinery around tests: semantic locator layers, deterministic reset flows, reusable helpers, failure artifacts, test-data controls, and custom runners. I care about maintainability and diagnosability as much as the happy-path pass rate.</p>
+            <div class="tools">TypeScript · Node.js · Python · YAML-driven automation · reusable test libraries</div>
           </article>
 
           <article class="capability">
-            <span class="num">03 — DELIVERY DISCIPLINE</span>
-            <h3>Evidence before confidence</h3>
-            <p>I use AI-assisted engineering, but I do not treat generated code or a green rerun as proof. Changes are tied to executable acceptance criteria, source-of-truth documents, regression evidence, and checks that are designed to fail when the claim is false.</p>
-            <div class="tools">GitHub Actions · CI gates · deterministic fixtures · mutation/revert checks · documented baselines</div>
+            <span class="num">03 — DELIVERY QUALITY</span>
+            <h3>CI/CD, regression gates, and release evidence</h3>
+            <p>I turn quality expectations into executable gates: build checks, API/DB verification, browser suites, mobile smoke, performance checks, and evidence workflows. I also work on spec-to-code alignment, RBAC boundaries, environment drift, and flaky-test diagnosis.</p>
+            <div class="tools">GitHub Actions · Docker · deterministic seeds · baselines · regression triage</div>
+          </article>
+
+          <article class="capability">
+            <span class="num">04 — SOFTWARE ENGINEERING</span>
+            <h3>I can fix the product, not only the test</h3>
+            <p>When verification exposes a real defect, I’m comfortable tracing it into frontend, backend, state, routing, database, or build behavior and making the product change. My QA work is engineering-led rather than limited to test scripting.</p>
+            <div class="tools">Angular · React/Next.js · Node.js · FastAPI · SQL · auth/RBAC · product debugging</div>
           </article>
         </div>
       </div>
@@ -289,114 +119,92 @@
         <div class="section-head">
           <h2>Selected work</h2>
           <div>
-            <p class="section-intro">Projects that show the capability rather than just the stack.</p>
-            <p class="section-note">These are original public projects or public evidence packages for work I created.</p>
+            <p class="section-intro">Public projects that show different sides of my QA/SDET and engineering work.</p>
+            <p class="section-note">I’m using projects here as evidence of capability, not as a list of every repository I have touched.</p>
           </div>
         </div>
 
         <div class="projects">
-          <a class="card" href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer">
-            <small>LLM reliability</small>
-            <h3>Decision Contract Audit</h3>
-            <p>An Inspect AI extension that replays frozen decisions against validity, stability, invariant, monotonicity, representation, and cage contracts—without model calls or API keys.</p>
-            <div class="proof">Proof signal: machine-checkable reports, fail-closed malformed input, and reproducible upstream audit records.</div>
-            <span class="arrow">View repository →</span>
-          </a>
-
           <a class="card" href="https://github.com/CTWalk/Shooting_App_demo" target="_blank" rel="noreferrer">
-            <small>QA engineering</small>
+            <small>End-to-end QA architecture</small>
             <h3>CommerceOps QA Demo</h3>
-            <p>A realistic e-commerce test target designed around durable evidence rather than UI optimism, with browser, API, database, visual, webhook, and notification verification.</p>
-            <div class="proof">Proof signal: deterministic resets, cross-layer oracles, and failure-proof evidence showing tests fail for the intended regressions.</div>
+            <p>A realistic e-commerce test target with browser, API, database, visual, webhook, and notification verification across customer and operations workflows.</p>
+            <div class="proof">Shows: Playwright, pytest, OpenAPI, PostgreSQL, Docker, test isolation, failure-proof evidence, CI.</div>
             <span class="arrow">View repository →</span>
           </a>
 
           <a class="card" href="https://github.com/CTWalk/NoCodeE2E-public" target="_blank" rel="noreferrer">
             <small>Test tooling</small>
             <h3>noCodeE2E</h3>
-            <p>A YAML-driven Playwright runner that separates semantic test intent from locator implementation, validates tests before browser execution, and makes fallback-locator use visible instead of silently hiding drift.</p>
-            <div class="proof">Proof signal: semantic targets, validation without browser startup, structured result/evidence output.</div>
+            <p>A YAML-driven Playwright runner that separates readable test flows from semantic locator definitions, with validation, fallback reporting, evidence output, and public CI.</p>
+            <div class="proof">Shows: framework design, locator abstraction, validation, reporting, developer experience, automation architecture.</div>
+            <span class="arrow">View repository →</span>
+          </a>
+
+          <a class="card" href="https://github.com/CTWalk/SocialPlatform" target="_blank" rel="noreferrer">
+            <small>QA + CI/CD</small>
+            <h3>SocialPlatform</h3>
+            <p>An internal social-platform prototype used to demonstrate layered quality gates for role-based workflows and moderation behavior.</p>
+            <div class="proof">Shows: build/API/DB/performance/web/mobile pipelines, Playwright E2E, database integrity, CI gate design.</div>
             <span class="arrow">View repository →</span>
           </a>
 
           <a class="card" href="https://github.com/CTWalk/CueSheet_demo" target="_blank" rel="noreferrer">
-            <small>Product engineering</small>
+            <small>Product engineering + verification</small>
             <h3>CueSheet</h3>
-            <p>A deployed rehearsal-scheduling product using CP-SAT optimization to find conflict-free schedules while minimizing disruption when availability changes.</p>
-            <div class="proof">Proof signal: measured 500-run solver evidence, versioned schedule review, production-style identity, CI, monitoring, and deployment checks.</div>
-            <span class="arrow">View public evidence →</span>
+            <p>A deployed rehearsal-scheduling product that optimizes for minimal disruption when cast availability changes, with measurable solver and delivery evidence.</p>
+            <div class="proof">Shows: full-stack product work, backend/API design, PostgreSQL, optimization, Playwright, CI/CD, deployment and operational quality.</div>
+            <span class="arrow">View repository →</span>
           </a>
         </div>
       </div>
     </section>
 
-    <section id="opensource">
+    <section id="quality">
       <div class="wrap">
         <div class="section-head">
-          <h2>Recent upstream work</h2>
+          <h2>How I approach quality</h2>
           <div>
-            <p class="section-intro">I also audit the reliability assumptions inside established AI and developer tools.</p>
-            <p class="section-note">These recent pull requests use concrete reproducers and regression tests to show where a system can report more confidence than the underlying evidence justifies.</p>
+            <p class="section-intro">A green test is useful only when I understand why it is green.</p>
+            <p class="section-note">Recent work across my repositories repeatedly focuses on eliminating test-state drift, stale builds, incomplete migrations, misleading evidence, and gaps between specifications and actual behavior.</p>
           </div>
         </div>
 
-        <div class="contrib-list">
-          <a class="contrib" href="https://github.com/langwatch/scenario/pull/906" target="_blank" rel="noreferrer">
-            <span class="project">LangWatch Scenario</span>
-            <span class="finding">Evaluation score divided passes by failures, allowing half-failing results to score like perfect ones.</span>
-            <span class="link">PR #906 ↗</span>
-          </a>
-          <a class="contrib" href="https://github.com/langchain-ai/openevals/pull/237" target="_blank" rel="noreferrer">
-            <span class="project">LangChain OpenEvals</span>
-            <span class="finding">A missing trajectory could be normalized into an empty trajectory and scored as a passing subset match.</span>
-            <span class="link">PR #237 ↗</span>
-          </a>
-          <a class="contrib" href="https://github.com/NVIDIA/garak/pull/2080" target="_blank" rel="noreferrer">
-            <span class="project">NVIDIA garak</span>
-            <span class="finding">A file the detector could not examine could be converted into a no-hit score instead of an explicit unevaluated result.</span>
-            <span class="link">PR #2080 ↗</span>
-          </a>
-          <a class="contrib" href="https://github.com/google/adk-python/pull/6564" target="_blank" rel="noreferrer">
-            <span class="project">Google ADK</span>
-            <span class="finding">Closing a synchronous agent stream could leave the background invocation running and mutating session history.</span>
-            <span class="link">PR #6564 ↗</span>
-          </a>
-          <a class="contrib" href="https://github.com/truera/trulens/pull/2698" target="_blank" rel="noreferrer">
-            <span class="project">TruLens</span>
-            <span class="finding">Leaderboard means could hide how few records were actually scored, making incomplete metrics look stronger.</span>
-            <span class="link">PR #2698 ↗</span>
-          </a>
-          <a class="contrib" href="https://github.com/earthtojake/text-to-cad/pull/280" target="_blank" rel="noreferrer">
-            <span class="project">text-to-cad</span>
-            <span class="finding">A Python test group that collected no tests could still return success and disappear from keep-going failure summaries.</span>
-            <span class="link">PR #280 ↗</span>
-          </a>
+        <div class="quality-grid">
+          <div class="quality"><strong>Make tests deterministic</strong><span>Reset state, control fixtures, pin environments, and remove hidden dependencies between runs.</span></div>
+          <div class="quality"><strong>Assert the real source of truth</strong><span>Use UI assertions for UI behavior, API contracts for services, and database checks when persistence is what matters.</span></div>
+          <div class="quality"><strong>Treat test failures as engineering signals</strong><span>Separate product defects, test drift, environment problems, and infrastructure failures instead of patching every red result the same way.</span></div>
+          <div class="quality"><strong>Protect against false greens</strong><span>Check that the intended build actually ran, the intended tests actually collected, and evidence was not silently overwritten or skipped.</span></div>
+          <div class="quality"><strong>Keep specs and tests aligned</strong><span>Audit contracts, routes, RBAC, acceptance criteria, and test assumptions as the product evolves.</span></div>
+          <div class="quality"><strong>Build observability into automation</strong><span>Failure output should tell the next engineer what happened without requiring a forensic session just to reproduce context.</span></div>
         </div>
       </div>
     </section>
 
-    <section id="method">
+    <section id="ai">
       <div class="wrap">
         <div class="section-head">
-          <h2>How I work</h2>
-          <p class="section-intro">The method matters because reliability claims are easy to make and surprisingly easy to fake by accident.</p>
+          <h2>AI as part of the toolbox</h2>
+          <div>
+            <p class="section-intro">I also apply the same QA mindset to AI and agent systems.</p>
+            <p class="section-note">This is an adjacent area of interest—not my primary identity. I use it to extend my SDET practice into newer systems where evaluation, missing data, and failure semantics can be surprisingly easy to get wrong.</p>
+          </div>
         </div>
 
-        <div class="principles">
-          <div class="principle"><strong>Reproduce before fixing.</strong><span>Reduce the failure to something deterministic and explain the control case.</span></div>
-          <div class="principle"><strong>Assert durable truth.</strong><span>Use the API, database, rendered pixels, or runtime state when UI messaging is not authoritative.</span></div>
-          <div class="principle"><strong>Prove the test has teeth.</strong><span>Revert or mutate the fix and confirm the new regression test actually fails.</span></div>
-          <div class="principle"><strong>Separate observation from conclusion.</strong><span>A clean rerun is evidence; it is not automatically proof that the underlying race or defect is gone.</span></div>
-          <div class="principle"><strong>Make drift visible.</strong><span>Prefer semantic contracts, explicit ownership, pinned baselines, and mechanized checks over tribal knowledge.</span></div>
-          <div class="principle"><strong>Use AI, keep accountability.</strong><span>AI can accelerate implementation and investigation; executable evidence remains the authority.</span></div>
+        <div class="adjacent">
+          <div class="adj-card">
+            <small>AI / reliability</small>
+            <h3>Decision Contract Audit</h3>
+            <p>An Inspect AI extension that replays frozen decisions against explicit reliability contracts without requiring model calls. It reflects the same principle I use in normal QA: make the expected behavior testable, reproducible, and machine-checkable.</p>
+            <div class="adj-links"><a href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer">View project →</a></div>
+          </div>
+          <div class="adj-card">
+            <small>Open source</small>
+            <h3>Upstream reliability findings</h3>
+            <p>I occasionally contribute focused fixes to agent/evaluation tooling when I find concrete correctness gaps—typically with a small reproducer and regression test rather than broad AI research.</p>
+            <div class="adj-links"><a href="https://github.com/CTWalk?tab=repositories" target="_blank" rel="noreferrer">Browse GitHub →</a></div>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap closing">
-        <h2>What I’m aiming at</h2>
-        <p>I’m interested in engineering roles and collaborations where correctness is not just “the tests are green,” but a system of evidence: AI/LLM evaluation, agent reliability, test architecture, QA automation, developer tooling, and product delivery where failure modes need to be understood rather than hidden.</p>
       </div>
     </section>
   </main>
@@ -404,10 +212,9 @@
   <footer>
     <div class="wrap footer-inner">
       <span>© <span id="year"></span> CTWalk</span>
-      <span><a href="https://github.com/CTWalk" target="_blank" rel="noreferrer">GitHub</a> · Hosted with GitHub Pages</span>
+      <span>QA / SDET · Software Quality · Automation · Engineering</span>
     </div>
   </footer>
-
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
