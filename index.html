@@ -9,22 +9,21 @@
   <style>
     :root{
       --ink:#fff;
-      --soft:rgba(255,255,255,.88);
-      --muted:rgba(255,255,255,.62);
-      --line:rgba(255,255,255,.18);
+      --soft:rgba(255,255,255,.9);
+      --muted:rgba(255,255,255,.64);
       --accent:#c8d5ff;
       --nav-h:72px;
       --pad:clamp(22px,4vw,64px);
       --content:1180px;
     }
-
     *{box-sizing:border-box}
     html{background:#0b0d0f;scroll-behavior:smooth}
     body{
       margin:0;
       color:var(--ink);
       background:#0b0d0f;
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+      font-kerning:normal;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
       overflow-x:hidden;
@@ -33,405 +32,100 @@
     a{color:inherit;text-decoration:none}
     a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:5px}
 
-    .nav{
-      position:fixed;
-      inset:0 0 auto 0;
-      z-index:60;
-      height:var(--nav-h);
-      pointer-events:none;
-      background:linear-gradient(to bottom,rgba(5,6,8,.68),rgba(5,6,8,.16) 74%,transparent);
-    }
-    .nav-inner{
-      width:min(calc(100% - 2*var(--pad)),var(--content));
-      height:100%;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-      pointer-events:auto;
-    }
-    .brand{font-weight:820;letter-spacing:-.04em;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+    .nav{position:fixed;inset:0 0 auto 0;z-index:60;height:var(--nav-h);pointer-events:none;background:linear-gradient(to bottom,rgba(5,6,8,.68),rgba(5,6,8,.16) 74%,transparent)}
+    .nav-inner{width:min(calc(100% - 2*var(--pad)),var(--content));height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;pointer-events:auto}
+    .brand{font-weight:720;letter-spacing:-.015em;text-shadow:0 2px 18px rgba(0,0,0,.45)}
     .nav-actions{display:flex;align-items:center;gap:22px}
-    .github{font-size:.88rem;color:var(--soft)}
+    .github{font-size:.9rem;color:var(--soft)}
     .github:hover{color:#fff}
     .lang-switch{display:flex;align-items:center;gap:12px}
-    .lang-switch button{
-      padding:5px 0;
-      border:0;
-      border-bottom:1px solid transparent;
-      color:var(--muted);
-      background:transparent;
-      font:inherit;
-      font-size:.8rem;
-      font-weight:760;
-      cursor:pointer;
-    }
+    .lang-switch button{padding:5px 0;border:0;border-bottom:1px solid transparent;color:var(--muted);background:transparent;font:inherit;font-size:.82rem;font-weight:650;cursor:pointer}
     .lang-switch button[aria-pressed="true"]{color:#fff;border-color:#fff}
 
-    .experience{
-      position:relative;
-      height:calc(var(--scene-count) * 112vh);
-      height:calc(var(--scene-count) * 112svh);
-      background:#0b0d0f;
-    }
-    .stage{
-      position:sticky;
-      top:0;
-      height:100vh;
-      height:100svh;
-      min-height:620px;
-      overflow:hidden;
-      isolation:isolate;
-      background:#0b0d0f;
-    }
-    .scene{
-      position:absolute;
-      inset:0;
-      opacity:0;
-      pointer-events:none;
-      will-change:opacity,transform;
-      overflow:hidden;
-    }
+    .experience{position:relative;height:calc(var(--scene-count) * 112vh);height:calc(var(--scene-count) * 112svh);background:#0b0d0f}
+    .stage{position:sticky;top:0;height:100vh;height:100svh;min-height:620px;overflow:hidden;isolation:isolate;background:#0b0d0f}
+    .scene{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:opacity,transform;overflow:hidden}
     .scene.is-active{pointer-events:auto}
     .scene-base{position:absolute;inset:0;background:var(--scene-bg,#111)}
-    .scene-bg{
-      position:absolute;
-      inset:-5%;
-      width:110%;
-      height:110%;
-      object-fit:cover;
-      object-position:var(--image-pos,center);
-      opacity:var(--image-opacity,.9);
-      filter:brightness(var(--image-brightness,.55)) saturate(var(--image-sat,.8)) contrast(var(--image-contrast,1.05));
-      transform:scale(1.035);
-      will-change:transform,opacity;
-    }
-    .scene-blur{
-      position:absolute;
-      inset:-8%;
-      width:116%;
-      height:116%;
-      object-fit:cover;
-      object-position:var(--image-pos,center);
-      opacity:.58;
-      filter:blur(24px) brightness(.36) saturate(.68);
-      transform:scale(1.08);
-      will-change:transform,opacity;
-    }
-    .scene-shade{
-      position:absolute;
-      inset:0;
-      z-index:3;
-      background:
-        linear-gradient(90deg,rgba(5,6,8,.94) 0%,rgba(5,6,8,.79) 30%,rgba(5,6,8,.24) 61%,rgba(5,6,8,.42) 100%),
-        linear-gradient(to bottom,rgba(5,6,8,.2),rgba(5,6,8,.02) 48%,rgba(5,6,8,.76));
-    }
-    .scene.right .scene-shade{
-      background:
-        linear-gradient(270deg,rgba(5,6,8,.94) 0%,rgba(5,6,8,.8) 30%,rgba(5,6,8,.23) 62%,rgba(5,6,8,.4) 100%),
-        linear-gradient(to bottom,rgba(5,6,8,.18),rgba(5,6,8,.02) 48%,rgba(5,6,8,.76));
-    }
-    .scene.center .scene-shade{
-      background:
-        radial-gradient(circle at 50% 48%,rgba(5,6,8,.25),rgba(5,6,8,.84) 72%),
-        linear-gradient(to bottom,rgba(5,6,8,.18),rgba(5,6,8,.72));
-    }
+    .scene-bg{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;object-position:var(--image-pos,center);opacity:var(--image-opacity,.9);filter:brightness(var(--image-brightness,.55)) saturate(var(--image-sat,.8)) contrast(var(--image-contrast,1.05));transform:scale(1.035);will-change:transform,opacity}
+    .scene-blur{position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;object-position:var(--image-pos,center);opacity:.58;filter:blur(24px) brightness(.36) saturate(.68);transform:scale(1.08);will-change:transform,opacity}
+    .scene-shade{position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(5,6,8,.95) 0%,rgba(5,6,8,.8) 32%,rgba(5,6,8,.24) 64%,rgba(5,6,8,.42) 100%),linear-gradient(to bottom,rgba(5,6,8,.2),rgba(5,6,8,.02) 48%,rgba(5,6,8,.76))}
+    .scene.right .scene-shade{background:linear-gradient(270deg,rgba(5,6,8,.95) 0%,rgba(5,6,8,.81) 32%,rgba(5,6,8,.23) 64%,rgba(5,6,8,.4) 100%),linear-gradient(to bottom,rgba(5,6,8,.18),rgba(5,6,8,.02) 48%,rgba(5,6,8,.76))}
+    .scene.center .scene-shade{background:radial-gradient(circle at 50% 48%,rgba(5,6,8,.28),rgba(5,6,8,.86) 72%),linear-gradient(to bottom,rgba(5,6,8,.18),rgba(5,6,8,.72))}
 
-    .scene-content{
-      position:absolute;
-      z-index:15;
-      left:max(var(--pad),calc((100% - var(--content))/2));
-      bottom:clamp(58px,9vh,104px);
-      width:min(560px,calc(100% - 2*var(--pad)));
-      will-change:transform,opacity;
-      text-shadow:0 2px 22px rgba(0,0,0,.48);
-      isolation:isolate;
-    }
-    .scene-content::before{
-      content:"";
-      position:absolute;
-      z-index:-1;
-      inset:-32px -44px;
-      background:radial-gradient(ellipse at 42% 55%,rgba(4,5,7,.7) 0%,rgba(4,5,7,.42) 46%,transparent 74%);
-      filter:blur(7px);
-      pointer-events:none;
-    }
-    .scene.right .scene-content{
-      left:auto;
-      right:max(var(--pad),calc((100% - var(--content))/2));
-    }
-    .scene.right .scene-content::before{
-      background:radial-gradient(ellipse at 58% 55%,rgba(4,5,7,.72) 0%,rgba(4,5,7,.44) 46%,transparent 74%);
-    }
-    .scene.center .scene-content{
-      left:50%;
-      right:auto;
-      bottom:50%;
-      width:min(760px,calc(100% - 2*var(--pad)));
-      text-align:center;
-      transform:translate(-50%,50%);
-    }
-    .scene.center .scene-content::before{
-      inset:-48px -70px;
-      background:radial-gradient(ellipse at center,rgba(4,5,7,.66),rgba(4,5,7,.34) 52%,transparent 76%);
-    }
+    .scene-content{position:absolute;z-index:15;left:max(var(--pad),calc((100% - var(--content))/2));bottom:clamp(58px,9vh,104px);width:min(610px,calc(100% - 2*var(--pad)));will-change:transform,opacity;text-shadow:0 2px 22px rgba(0,0,0,.5);isolation:isolate}
+    .scene-content::before{content:"";position:absolute;z-index:-1;inset:-34px -50px;background:radial-gradient(ellipse at 42% 55%,rgba(4,5,7,.74) 0%,rgba(4,5,7,.46) 48%,transparent 75%);filter:blur(7px);pointer-events:none}
+    .scene.right .scene-content{left:auto;right:max(var(--pad),calc((100% - var(--content))/2))}
+    .scene.right .scene-content::before{background:radial-gradient(ellipse at 58% 55%,rgba(4,5,7,.75) 0%,rgba(4,5,7,.46) 48%,transparent 75%)}
+    .scene.center .scene-content{left:50%;right:auto;bottom:50%;width:min(800px,calc(100% - 2*var(--pad)));text-align:center;transform:translate(-50%,50%)}
+    .scene.center .scene-content::before{inset:-50px -76px;background:radial-gradient(ellipse at center,rgba(4,5,7,.7),rgba(4,5,7,.36) 54%,transparent 77%)}
 
-    .scene-label{
-      margin:0 0 14px;
-      color:rgba(255,255,255,.68);
-      font-size:.74rem;
-      font-weight:800;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-    }
-    .scene-title{
-      margin:0;
-      max-width:15ch;
-      font-size:clamp(2.55rem,5vw,4.9rem);
-      line-height:1.01;
-      letter-spacing:-.055em;
-      text-wrap:balance;
-    }
-    .intro .scene-title{max-width:13ch;font-size:clamp(3rem,6vw,5.7rem)}
-    .scene.center .scene-title{margin-inline:auto;max-width:17ch}
-    .scene-copy{
-      max-width:48ch;
-      margin:21px 0 0;
-      color:var(--soft);
-      font-size:clamp(1.02rem,1.4vw,1.16rem);
-      line-height:1.58;
-      text-wrap:pretty;
-    }
+    .scene-label{margin:0 0 15px;color:rgba(255,255,255,.7);font-size:.76rem;font-weight:650;letter-spacing:.1em;text-transform:uppercase}
+    .scene-title{margin:0;max-width:16ch;font-size:clamp(2.45rem,4.7vw,4.55rem);line-height:1.07;letter-spacing:-.025em;font-weight:650;white-space:pre-line;text-wrap:initial}
+    .intro .scene-title{max-width:14ch;font-size:clamp(2.85rem,5.55vw,5.25rem)}
+    .scene.center .scene-title{margin-inline:auto;max-width:18ch}
+    .scene-copy{max-width:43ch;margin:22px 0 0;color:var(--soft);font-size:clamp(1.04rem,1.28vw,1.16rem);line-height:1.7;letter-spacing:.005em;font-weight:400;white-space:pre-line;text-wrap:initial}
     .scene.center .scene-copy{margin-inline:auto}
-    .scene-link{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      margin-top:23px;
-      padding-bottom:4px;
-      border-bottom:1px solid rgba(255,255,255,.58);
-      color:#fff;
-      font-size:.9rem;
-      font-weight:730;
-    }
+    .scene-link{display:inline-flex;align-items:center;gap:9px;margin-top:24px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.58);color:#fff;font-size:.92rem;font-weight:600}
     .scene-link .arrow{transition:transform .18s ease}
     .scene-link:hover .arrow,.scene-link:focus-visible .arrow{transform:translate(4px,-3px)}
 
-    .plate{
-      position:absolute;
-      z-index:8;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:clamp(16px,2vw,28px);
-      background:rgba(8,9,11,.42);
-      box-shadow:0 36px 120px rgba(0,0,0,.42);
-      backdrop-filter:blur(4px);
-      -webkit-backdrop-filter:blur(4px);
-      will-change:transform,opacity;
-    }
+    .plate{position:absolute;z-index:8;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:clamp(16px,2vw,28px);background:rgba(8,9,11,.42);box-shadow:0 36px 120px rgba(0,0,0,.42);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);will-change:transform,opacity}
     .plate img{display:block;width:100%;height:100%;object-fit:cover}
     .plate.contain img{object-fit:contain;background:rgba(8,9,11,.72)}
-
-    .commerce-plate{
-      top:13%;right:max(4vw,calc((100% - var(--content))/2));
-      width:min(53vw,720px);height:min(67vh,670px);
-    }
+    .commerce-plate{top:13%;right:max(4vw,calc((100% - var(--content))/2));width:min(53vw,720px);height:min(67vh,670px)}
     .commerce-plate img{object-position:center top}
-
-    .code-plate{
-      left:max(4vw,calc((100% - var(--content))/2));
-      top:14%;
-      width:min(50vw,640px);
-      min-height:53vh;
-      padding:clamp(22px,3vw,40px);
-      display:flex;
-      align-items:center;
-      border-color:rgba(200,213,255,.22);
-      background:rgba(11,15,23,.86);
-    }
-    .code-plate pre{
-      margin:0;
-      color:#e4eaff;
-      font:500 clamp(.78rem,1.16vw,.98rem)/1.72 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-      white-space:pre-wrap;
-    }
-    .code-plate .dim{color:#8795bb}
-    .code-plate .key{color:#cad7ff}
-    .code-plate .value{color:#f4d9a8}
-
-    .social-card{
-      right:max(5vw,calc((100% - var(--content))/2));
-      top:15%;
-      width:min(47vw,630px);
-      height:min(59vh,560px);
-    }
-    .social-splash{
-      position:absolute;
-      z-index:9;
-      right:clamp(7vw,12vw,180px);
-      bottom:8%;
-      width:min(19vw,250px);
-      aspect-ratio:9/16;
-      border-radius:28px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.24);
-      box-shadow:0 30px 90px rgba(0,0,0,.44);
-      background:#111;
-      will-change:transform,opacity;
-    }
+    .code-plate{left:max(4vw,calc((100% - var(--content))/2));top:14%;width:min(50vw,640px);min-height:53vh;padding:clamp(22px,3vw,40px);display:flex;align-items:center;border-color:rgba(200,213,255,.22);background:rgba(11,15,23,.86)}
+    .code-plate pre{margin:0;color:#e4eaff;font:500 clamp(.78rem,1.16vw,.98rem)/1.72 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap}
+    .code-plate .dim{color:#8795bb}.code-plate .key{color:#cad7ff}.code-plate .value{color:#f4d9a8}
+    .social-card{right:max(5vw,calc((100% - var(--content))/2));top:15%;width:min(47vw,630px);height:min(59vh,560px)}
+    .social-splash{position:absolute;z-index:9;right:clamp(7vw,12vw,180px);bottom:8%;width:min(19vw,250px);aspect-ratio:9/16;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.24);box-shadow:0 30px 90px rgba(0,0,0,.44);background:#111;will-change:transform,opacity}
     .social-splash img{width:100%;height:100%;object-fit:cover}
+    .cuesheet-desktop{left:max(3vw,calc((100% - var(--content))/2));top:12%;width:min(57vw,760px);height:min(66vh,640px)}
+    .phone{position:absolute;z-index:10;width:min(14vw,195px);aspect-ratio:9/18.7;overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.25);box-shadow:0 28px 80px rgba(0,0,0,.48);background:#111;will-change:transform,opacity}
+    .phone img{width:100%;height:100%;object-fit:cover}.phone.one{left:clamp(4vw,8vw,130px);bottom:6%}.phone.two{left:clamp(18vw,24vw,360px);bottom:2%}
+    .approach-collage{position:absolute;inset:0;z-index:4;opacity:.76}
+    .approach-collage img{position:absolute;width:40vw;max-width:650px;border-radius:24px;border:1px solid rgba(255,255,255,.14);box-shadow:0 32px 100px rgba(0,0,0,.42);filter:brightness(.48) saturate(.66);will-change:transform,opacity}
+    .approach-collage img:first-child{left:5%;top:12%;transform:rotate(-5deg)}.approach-collage img:last-child{right:4%;bottom:8%;transform:rotate(5deg)}
+    .recent-card{left:max(5vw,calc((100% - var(--content))/2));top:17%;width:min(50vw,680px);height:min(56vh,540px)}
 
-    .cuesheet-desktop{
-      left:max(3vw,calc((100% - var(--content))/2));
-      top:12%;
-      width:min(57vw,760px);
-      height:min(66vh,640px);
-    }
-    .phone{
-      position:absolute;
-      z-index:10;
-      width:min(14vw,195px);
-      aspect-ratio:9/18.7;
-      overflow:hidden;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.25);
-      box-shadow:0 28px 80px rgba(0,0,0,.48);
-      background:#111;
-      will-change:transform,opacity;
-    }
-    .phone img{width:100%;height:100%;object-fit:cover}
-    .phone.one{left:clamp(4vw,8vw,130px);bottom:6%}
-    .phone.two{left:clamp(18vw,24vw,360px);bottom:2%}
-
-    .approach-collage{position:absolute;inset:0;z-index:4;opacity:.78}
-    .approach-collage img{
-      position:absolute;
-      width:40vw;
-      max-width:650px;
-      border-radius:24px;
-      border:1px solid rgba(255,255,255,.14);
-      box-shadow:0 32px 100px rgba(0,0,0,.42);
-      filter:brightness(.5) saturate(.68);
-      will-change:transform,opacity;
-    }
-    .approach-collage img:first-child{left:5%;top:12%;transform:rotate(-5deg)}
-    .approach-collage img:last-child{right:4%;bottom:8%;transform:rotate(5deg)}
-
-    .recent-card{
-      left:max(5vw,calc((100% - var(--content))/2));
-      top:17%;
-      width:min(50vw,680px);
-      height:min(56vh,540px);
-    }
-
-    .webgl{
-      position:absolute;
-      inset:0;
-      z-index:2;
-      opacity:.74;
-      pointer-events:none;
-    }
-    .webgl canvas{display:block;width:100%;height:100%}
-    .intro-grid{
-      position:absolute;
-      inset:0;
-      z-index:1;
-      background:
-        radial-gradient(circle at 72% 42%,rgba(80,110,190,.18),transparent 28rem),
-        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-      background-size:auto,72px 72px,72px 72px;
-      mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%);
-      -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%);
-    }
-    .scroll-hint{
-      position:absolute;
-      z-index:20;
-      right:max(var(--pad),calc((100% - var(--content))/2));
-      bottom:28px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color:rgba(255,255,255,.52);
-      font-size:.7rem;
-      font-weight:780;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-      will-change:opacity;
-    }
+    .webgl{position:absolute;inset:0;z-index:2;opacity:.74;pointer-events:none}.webgl canvas{display:block;width:100%;height:100%}
+    .intro-grid{position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 72% 42%,rgba(80,110,190,.18),transparent 28rem),linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:auto,72px 72px,72px 72px;mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%);-webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%)}
+    .scroll-hint{position:absolute;z-index:20;right:max(var(--pad),calc((100% - var(--content))/2));bottom:28px;display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.52);font-size:.72rem;font-weight:650;letter-spacing:.1em;text-transform:uppercase;will-change:opacity}
     .scroll-hint::after{content:"";width:48px;height:1px;background:currentColor}
-    .scene-no{
-      position:absolute;
-      z-index:20;
-      left:max(var(--pad),calc((100% - var(--content))/2));
-      top:calc(var(--nav-h) + 16px);
-      color:rgba(255,255,255,.42);
-      font:700 .7rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-      letter-spacing:.08em;
-    }
+    .scene-no{position:absolute;z-index:20;left:max(var(--pad),calc((100% - var(--content))/2));top:calc(var(--nav-h) + 16px);color:rgba(255,255,255,.42);font:600 .7rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em}
 
-    html[lang^="zh"] .scene-title{
-      max-width:13em;
-      line-height:1.13;
-      letter-spacing:-.035em;
-      font-weight:760;
-    }
-    html[lang^="zh"] .intro .scene-title{max-width:14em}
-    html[lang^="zh"] .scene-copy{max-width:31em;line-height:1.76}
-    html[lang^="zh"] .scene-label{letter-spacing:.06em}
+    html[lang^="zh"] body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    html[lang^="zh"] .scene-label{text-transform:none;letter-spacing:.04em;font-weight:550}
+    html[lang^="zh"] .scene-title{max-width:12.5em;line-height:1.2;letter-spacing:.015em;font-weight:600;word-break:keep-all;overflow-wrap:normal}
+    html[lang^="zh"] .intro .scene-title{max-width:13em}
+    html[lang^="zh"] .scene.center .scene-title{max-width:13em}
+    html[lang^="zh"] .scene-copy{max-width:29em;line-height:1.82;letter-spacing:.012em;font-weight:400;word-break:normal;line-break:strict}
+    html[lang^="zh"] .scene-link{font-weight:550}
 
     @media(max-width:760px){
       :root{--nav-h:64px;--pad:18px}
-      .github{display:none}
-      .stage{min-height:560px}
-      .scene-content,.scene.right .scene-content{
-        left:var(--pad);right:auto;bottom:54px;width:calc(100% - 2*var(--pad));
-      }
-      .scene.center .scene-content{
-        left:var(--pad);right:auto;bottom:58px;transform:none;text-align:left;width:calc(100% - 2*var(--pad));
-      }
-      .scene-content::before,.scene.right .scene-content::before,.scene.center .scene-content::before{
-        inset:-24px -20px;
-        background:linear-gradient(to right,rgba(4,5,7,.84),rgba(4,5,7,.52) 72%,transparent);
-        filter:blur(5px);
-      }
-      .scene-title,.intro .scene-title{font-size:clamp(2.25rem,10.7vw,3.7rem);max-width:12ch}
-      .scene.center .scene-title{margin-inline:0;max-width:13ch}
-      .scene-copy,.scene.center .scene-copy{font-size:1rem;max-width:92%;margin:17px 0 0;line-height:1.55}
-      .scene-label{margin-bottom:10px}
-      .scene-link{margin-top:18px}
-      .scene-shade,.scene.right .scene-shade,.scene.center .scene-shade{
-        background:linear-gradient(to bottom,rgba(5,6,8,.12),rgba(5,6,8,.2) 34%,rgba(5,6,8,.92) 68%,rgba(5,6,8,.99));
-      }
+      .github{display:none}.stage{min-height:560px}
+      .scene-content,.scene.right .scene-content{left:var(--pad);right:auto;bottom:52px;width:calc(100% - 2*var(--pad))}
+      .scene.center .scene-content{left:var(--pad);right:auto;bottom:56px;transform:none;text-align:left;width:calc(100% - 2*var(--pad))}
+      .scene-content::before,.scene.right .scene-content::before,.scene.center .scene-content::before{inset:-24px -20px;background:linear-gradient(to right,rgba(4,5,7,.88),rgba(4,5,7,.56) 74%,transparent);filter:blur(5px)}
+      .scene-title,.intro .scene-title{font-size:clamp(2.15rem,9.8vw,3.45rem);max-width:13ch;line-height:1.1}
+      .scene.center .scene-title{margin-inline:0;max-width:14ch}
+      .scene-copy,.scene.center .scene-copy{font-size:1rem;max-width:90%;margin:17px 0 0;line-height:1.66}
+      .scene-label{margin-bottom:11px}.scene-link{margin-top:18px}
+      .scene-shade,.scene.right .scene-shade,.scene.center .scene-shade{background:linear-gradient(to bottom,rgba(5,6,8,.12),rgba(5,6,8,.2) 34%,rgba(5,6,8,.94) 67%,rgba(5,6,8,.99))}
       .scene-bg,.scene-blur{object-position:center}
-      .commerce-plate,.code-plate,.social-card,.cuesheet-desktop,.recent-card{
-        left:7vw;right:auto;top:11%;width:86vw;height:45vh;min-height:0;
-      }
-      .code-plate{padding:18px;align-items:flex-start;overflow:hidden}
-      .code-plate pre{font-size:.7rem;line-height:1.5}
-      .social-splash{width:23vw;right:8vw;bottom:36%;border-radius:15px}
-      .phone{width:22vw;border-radius:14px}
-      .phone.one{left:8vw;bottom:36%}
-      .phone.two{left:34vw;bottom:33%}
-      .approach-collage img{width:70vw;max-width:none}
-      .approach-collage img:first-child{left:-12%;top:11%}
-      .approach-collage img:last-child{right:-14%;bottom:31%}
-      .scroll-hint{right:var(--pad);bottom:18px}
-      .scene-no{left:var(--pad);top:calc(var(--nav-h) + 10px)}
-      html[lang^="zh"] .scene-title,html[lang^="zh"] .intro .scene-title{max-width:14em;font-size:clamp(2rem,9.2vw,3.25rem)}
-      html[lang^="zh"] .scene-copy{max-width:94%;line-height:1.7}
+      .commerce-plate,.code-plate,.social-card,.cuesheet-desktop,.recent-card{left:7vw;right:auto;top:10%;width:86vw;height:44vh;min-height:0}
+      .code-plate{padding:18px;align-items:flex-start;overflow:hidden}.code-plate pre{font-size:.7rem;line-height:1.5}
+      .social-splash{width:23vw;right:8vw;bottom:36%;border-radius:15px}.phone{width:22vw;border-radius:14px}.phone.one{left:8vw;bottom:36%}.phone.two{left:34vw;bottom:33%}
+      .approach-collage img{width:70vw;max-width:none}.approach-collage img:first-child{left:-12%;top:11%}.approach-collage img:last-child{right:-14%;bottom:31%}
+      .scroll-hint{right:var(--pad);bottom:18px}.scene-no{left:var(--pad);top:calc(var(--nav-h) + 10px)}
+      html[lang^="zh"] .scene-title,html[lang^="zh"] .intro .scene-title,html[lang^="zh"] .scene.center .scene-title{max-width:none;font-size:clamp(1.95rem,8.4vw,2.85rem);line-height:1.26;letter-spacing:.01em}
+      html[lang^="zh"] .scene-copy{max-width:94%;font-size:.98rem;line-height:1.74;letter-spacing:.008em}
     }
 
     @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      .experience{height:auto}
-      .stage{position:relative;height:auto;min-height:0;overflow:visible}
-      .scene{position:relative;min-height:100vh;min-height:100svh;opacity:1!important;pointer-events:auto!important}
-      .scene + .scene{border-top:1px solid rgba(255,255,255,.12)}
-      .scene-content,.scene.right .scene-content,.scene.center .scene-content{transform:none!important}
-      .webgl{display:none}
-      .scroll-hint{display:none}
+      html{scroll-behavior:auto}.experience{height:auto}.stage{position:relative;height:auto;min-height:0;overflow:visible}.scene{position:relative;min-height:100vh;min-height:100svh;opacity:1!important;pointer-events:auto!important}.scene+.scene{border-top:1px solid rgba(255,255,255,.12)}.scene-content,.scene.right .scene-content,.scene.center .scene-content{transform:none!important}.webgl{display:none}.scroll-hint{display:none}
     }
   </style>
 </head>
@@ -452,41 +146,28 @@
   <main id="top">
     <section class="experience" id="experience" style="--scene-count:8">
       <div class="stage" id="stage">
-        <article class="scene center intro is-active" data-scene="0" data-tone="#0b0d0f">
-          <div class="scene-base"></div>
-          <div class="intro-grid"></div>
-          <div class="webgl" id="webgl" aria-hidden="true"></div>
-          <div class="scene-shade"></div>
+        <article class="scene center intro is-active" data-scene="0">
+          <div class="scene-base"></div><div class="intro-grid"></div><div class="webgl" id="webgl" aria-hidden="true"></div><div class="scene-shade"></div>
           <div class="scene-content">
             <p class="scene-label" data-i18n="introLabel">QA / SDET · SOFTWARE ENGINEERING</p>
-            <h1 class="scene-title" data-i18n="introTitle">I test software from the UI down to the data.</h1>
+            <h1 class="scene-title" data-i18n="introTitle">I test software
+from the UI down to the data.</h1>
             <p class="scene-copy" data-i18n="introBody">I build automation across web, API, database, mobile and CI. When something fails, I trace it to the source—and fix the product when the test is not the problem.</p>
           </div>
           <div class="scroll-hint" id="scroll-hint" data-i18n="scroll">Scroll</div>
         </article>
 
-        <article class="scene" data-scene="1" data-tone="#161513" style="--image-pos:center top;--image-brightness:.3;--image-opacity:.9">
-          <div class="scene-base"></div>
-          <img class="scene-blur" src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="" aria-hidden="true" />
-          <div class="scene-shade"></div>
-          <div class="plate contain commerce-plate scene-object">
-            <img src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="CommerceOps visual regression report" />
-          </div>
+        <article class="scene" data-scene="1" style="--scene-bg:#161513;--image-pos:center top;--image-brightness:.3;--image-opacity:.9">
+          <div class="scene-base"></div><img class="scene-blur" src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="" aria-hidden="true" /><div class="scene-shade"></div>
+          <div class="plate contain commerce-plate scene-object"><img src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="CommerceOps visual regression report" /></div>
           <div class="scene-no">01 / 06</div>
-          <div class="scene-content">
-            <p class="scene-label">CommerceOps QA Demo</p>
-            <h2 class="scene-title" data-i18n="commerceTitle">One flow, checked all the way through.</h2>
-            <p class="scene-copy" data-i18n="commerceBody">Browser → API → database → webhook → notification. The test only passes when the full path agrees.</p>
-            <a class="scene-link" href="https://github.com/CTWalk/Shooting_App_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
-          </div>
+          <div class="scene-content"><p class="scene-label">CommerceOps QA Demo</p><h2 class="scene-title" data-i18n="commerceTitle">One flow.
+Checked all the way through.</h2><p class="scene-copy" data-i18n="commerceBody">Browser → API → database → webhook → notification. The test only passes when the full path agrees.</p><a class="scene-link" href="https://github.com/CTWalk/Shooting_App_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a></div>
         </article>
 
-        <article class="scene right" data-scene="2" data-tone="#0d1420" style="--image-brightness:.24;--image-sat:.62;--image-opacity:.62">
-          <div class="scene-base"></div>
-          <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-nocodee2e/CTWalk/NoCodeE2E-public" alt="" aria-hidden="true" />
-          <div class="scene-shade"></div>
-          <div class="plate code-plate scene-object" aria-hidden="true">
-<pre><span class="dim"># readable intent, stable locators</span>
+        <article class="scene right" data-scene="2" style="--scene-bg:#0d1420;--image-brightness:.24;--image-sat:.62;--image-opacity:.62">
+          <div class="scene-base"></div><img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-nocodee2e/CTWalk/NoCodeE2E-public" alt="" aria-hidden="true" /><div class="scene-shade"></div>
+          <div class="plate code-plate scene-object" aria-hidden="true"><pre><span class="dim"># readable intent, stable locators</span>
 <span class="key">name:</span> <span class="value">Fixture login status</span>
 <span class="key">steps:</span>
   - <span class="key">open:</span> /
@@ -496,94 +177,46 @@
   - <span class="key">click:</span> login.submit
   - <span class="key">expectText:</span>
       <span class="key">target:</span> dashboard.status
-      <span class="key">value:</span> Welcome demo_user</pre>
-          </div>
+      <span class="key">value:</span> Welcome demo_user</pre></div>
           <div class="scene-no">02 / 06</div>
-          <div class="scene-content">
-            <p class="scene-label">noCodeE2E</p>
-            <h2 class="scene-title" data-i18n="nocodeTitle">Readable tests. Maintainable locators.</h2>
-            <p class="scene-copy" data-i18n="nocodeBody">YAML describes intent. Playwright runs it. Locators, failure evidence and CI stay separate so the suite is easier to maintain.</p>
-            <a class="scene-link" href="https://github.com/CTWalk/NoCodeE2E-public" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
-          </div>
+          <div class="scene-content"><p class="scene-label">noCodeE2E</p><h2 class="scene-title" data-i18n="nocodeTitle">Readable tests.
+Maintainable locators.</h2><p class="scene-copy" data-i18n="nocodeBody">YAML describes intent. Playwright runs it. Locators, failure evidence and CI stay separate so the suite is easier to maintain.</p><a class="scene-link" href="https://github.com/CTWalk/NoCodeE2E-public" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a></div>
         </article>
 
-        <article class="scene" data-scene="3" data-tone="#10181a" style="--image-brightness:.23;--image-sat:.68;--image-opacity:.68">
-          <div class="scene-base"></div>
-          <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-social/CTWalk/SocialPlatform" alt="" aria-hidden="true" />
-          <div class="scene-shade"></div>
-          <div class="plate social-card scene-object">
-            <img src="https://opengraph.githubassets.com/ctwalk-social-card/CTWalk/SocialPlatform" alt="SocialPlatform repository preview" />
-          </div>
-          <div class="social-splash scene-object" aria-hidden="true">
-            <img src="https://raw.githubusercontent.com/CTWalk/SocialPlatform/main/android/app/src/main/res/drawable-land-xxxhdpi/splash.png" alt="" />
-          </div>
+        <article class="scene" data-scene="3" style="--scene-bg:#10181a;--image-brightness:.23;--image-sat:.68;--image-opacity:.68">
+          <div class="scene-base"></div><img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-social/CTWalk/SocialPlatform" alt="" aria-hidden="true" /><div class="scene-shade"></div>
+          <div class="plate social-card scene-object"><img src="https://opengraph.githubassets.com/ctwalk-social-card/CTWalk/SocialPlatform" alt="SocialPlatform repository preview" /></div><div class="social-splash scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/SocialPlatform/main/android/app/src/main/res/drawable-land-xxxhdpi/splash.png" alt="" /></div>
           <div class="scene-no">03 / 06</div>
-          <div class="scene-content">
-            <p class="scene-label">SocialPlatform</p>
-            <h2 class="scene-title" data-i18n="socialTitle">One release path, many layers of evidence.</h2>
-            <p class="scene-copy" data-i18n="socialBody">Build, API, database, performance, web and mobile checks work together instead of living as isolated test suites.</p>
-            <a class="scene-link" href="https://github.com/CTWalk/SocialPlatform" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
-          </div>
+          <div class="scene-content"><p class="scene-label">SocialPlatform</p><h2 class="scene-title" data-i18n="socialTitle">One release path.
+Evidence at every layer.</h2><p class="scene-copy" data-i18n="socialBody">Build, API, database, performance, web and mobile checks work together instead of living as isolated test suites.</p><a class="scene-link" href="https://github.com/CTWalk/SocialPlatform" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a></div>
         </article>
 
-        <article class="scene right" data-scene="4" data-tone="#171412" style="--image-pos:center;--image-brightness:.32;--image-sat:.72;--image-opacity:.82">
-          <div class="scene-base"></div>
-          <img class="scene-bg scene-object" src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png" alt="" aria-hidden="true" />
-          <div class="scene-shade"></div>
-          <div class="plate cuesheet-desktop scene-object">
-            <img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png" alt="CueSheet production workspace" />
-          </div>
-          <div class="phone one scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-stage-call-sheet.png" alt="" /></div>
-          <div class="phone two scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-cast-member.png" alt="" /></div>
+        <article class="scene right" data-scene="4" style="--scene-bg:#171412;--image-pos:center;--image-brightness:.32;--image-sat:.72;--image-opacity:.82">
+          <div class="scene-base"></div><img class="scene-bg scene-object" src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png" alt="" aria-hidden="true" /><div class="scene-shade"></div>
+          <div class="plate cuesheet-desktop scene-object"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png" alt="CueSheet production workspace" /></div><div class="phone one scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-stage-call-sheet.png" alt="" /></div><div class="phone two scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-cast-member.png" alt="" /></div>
           <div class="scene-no">04 / 06</div>
-          <div class="scene-content">
-            <p class="scene-label">CueSheet</p>
-            <h2 class="scene-title" data-i18n="cueTitle">I build the product, too.</h2>
-            <p class="scene-copy" data-i18n="cueBody">CueSheet is a full-stack rehearsal scheduler. When availability changes, it replans while keeping as much of the existing schedule as possible.</p>
-            <a class="scene-link" href="https://github.com/CTWalk/CueSheet_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
-          </div>
+          <div class="scene-content"><p class="scene-label">CueSheet</p><h2 class="scene-title" data-i18n="cueTitle">I test products.
+I build them too.</h2><p class="scene-copy" data-i18n="cueBody">CueSheet is a full-stack rehearsal scheduler. When availability changes, it replans while keeping as much of the existing schedule as possible.</p><a class="scene-link" href="https://github.com/CTWalk/CueSheet_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a></div>
         </article>
 
-        <article class="scene center" data-scene="5" data-tone="#111214">
-          <div class="scene-base"></div>
-          <div class="approach-collage" aria-hidden="true">
-            <img class="scene-object" src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="" />
-            <img class="scene-object" src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/conflict-status.png" alt="" />
-          </div>
-          <div class="scene-shade"></div>
+        <article class="scene center" data-scene="5" style="--scene-bg:#111214">
+          <div class="scene-base"></div><div class="approach-collage" aria-hidden="true"><img class="scene-object" src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="" /><img class="scene-object" src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/conflict-status.png" alt="" /></div><div class="scene-shade"></div>
           <div class="scene-no">05 / 06</div>
-          <div class="scene-content">
-            <p class="scene-label" data-i18n="approachLabel">How I work</p>
-            <h2 class="scene-title" data-i18n="approachTitle">I choose the test layer before I choose the test tool.</h2>
-            <p class="scene-copy" data-i18n="approachBody">I use the layer that can actually prove the behavior, keep test state controlled, and leave enough evidence to debug a failure. QA stays connected to the product code.</p>
-          </div>
+          <div class="scene-content"><p class="scene-label" data-i18n="approachLabel">How I work</p><h2 class="scene-title" data-i18n="approachTitle">Choose the layer first.
+Then choose the tool.</h2><p class="scene-copy" data-i18n="approachBody">I test where the result can actually be proven, control the test state, and leave enough evidence to debug a failure. QA stays connected to the product code.</p></div>
         </article>
 
-        <article class="scene right" data-scene="6" data-tone="#17150e" style="--image-brightness:.23;--image-sat:.58;--image-opacity:.64">
-          <div class="scene-base"></div>
-          <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-decision/CTWalk/decision-contract-audit" alt="" aria-hidden="true" />
-          <div class="scene-shade"></div>
-          <div class="plate recent-card scene-object">
-            <img src="https://opengraph.githubassets.com/ctwalk-decision-card/CTWalk/decision-contract-audit" alt="Decision Contract Audit repository preview" />
-          </div>
+        <article class="scene right" data-scene="6" style="--scene-bg:#17150e;--image-brightness:.23;--image-sat:.58;--image-opacity:.64">
+          <div class="scene-base"></div><img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-decision/CTWalk/decision-contract-audit" alt="" aria-hidden="true" /><div class="scene-shade"></div><div class="plate recent-card scene-object"><img src="https://opengraph.githubassets.com/ctwalk-decision-card/CTWalk/decision-contract-audit" alt="Decision Contract Audit repository preview" /></div>
           <div class="scene-no">06 / 06</div>
-          <div class="scene-content">
-            <p class="scene-label" data-i18n="recentLabel">Recently</p>
-            <h2 class="scene-title" data-i18n="recentTitle">The same QA questions, applied to AI tooling.</h2>
-            <p class="scene-copy" data-i18n="recentBody">What was evaluated? What happens when data is missing? Can the failure be reproduced? This is a side area of my QA work, not the main focus.</p>
-            <a class="scene-link" href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer"><span>Decision Contract Audit</span><span class="arrow">↗</span></a>
-          </div>
+          <div class="scene-content"><p class="scene-label" data-i18n="recentLabel">Recently</p><h2 class="scene-title" data-i18n="recentTitle">The same QA questions.
+A newer kind of system.</h2><p class="scene-copy" data-i18n="recentBody">What was evaluated? What happens when data is missing? Can the failure be reproduced? AI tooling is a side area of my QA work, not the main focus.</p><a class="scene-link" href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer"><span>Decision Contract Audit</span><span class="arrow">↗</span></a></div>
         </article>
 
-        <article class="scene center" data-scene="7" data-tone="#090a0c">
-          <div class="scene-base"></div>
-          <div class="intro-grid"></div>
-          <div class="scene-shade"></div>
-          <div class="scene-content">
-            <p class="scene-label">CTWalk</p>
-            <h2 class="scene-title" data-i18n="outroTitle">More projects and engineering history live on GitHub.</h2>
-            <a class="scene-link" href="https://github.com/CTWalk" target="_blank" rel="noreferrer"><span data-i18n="openGithub">Open GitHub</span><span class="arrow">↗</span></a>
-          </div>
+        <article class="scene center" data-scene="7" style="--scene-bg:#090a0c">
+          <div class="scene-base"></div><div class="intro-grid"></div><div class="scene-shade"></div>
+          <div class="scene-content"><p class="scene-label">CTWalk</p><h2 class="scene-title" data-i18n="outroTitle">More projects and engineering history
+live on GitHub.</h2><a class="scene-link" href="https://github.com/CTWalk" target="_blank" rel="noreferrer"><span data-i18n="openGithub">Open GitHub</span><span class="arrow">↗</span></a></div>
         </article>
       </div>
     </section>
@@ -595,50 +228,50 @@
         title:'CTWalk — QA / SDET Engineer',
         description:'CTWalk — QA/SDET engineer working across web, API, data, mobile, automation, and product debugging.',
         introLabel:'QA / SDET · SOFTWARE ENGINEERING',
-        introTitle:'I test software from the UI down to the data.',
+        introTitle:'I test software\nfrom the UI down to the data.',
         introBody:'I build automation across web, API, database, mobile and CI. When something fails, I trace it to the source—and fix the product when the test is not the problem.',
         scroll:'Scroll',
-        commerceTitle:'One flow, checked all the way through.',
+        commerceTitle:'One flow.\nChecked all the way through.',
         commerceBody:'Browser → API → database → webhook → notification. The test only passes when the full path agrees.',
-        nocodeTitle:'Readable tests. Maintainable locators.',
+        nocodeTitle:'Readable tests.\nMaintainable locators.',
         nocodeBody:'YAML describes intent. Playwright runs it. Locators, failure evidence and CI stay separate so the suite is easier to maintain.',
-        socialTitle:'One release path, many layers of evidence.',
+        socialTitle:'One release path.\nEvidence at every layer.',
         socialBody:'Build, API, database, performance, web and mobile checks work together instead of living as isolated test suites.',
-        cueTitle:'I build the product, too.',
+        cueTitle:'I test products.\nI build them too.',
         cueBody:'CueSheet is a full-stack rehearsal scheduler. When availability changes, it replans while keeping as much of the existing schedule as possible.',
         approachLabel:'How I work',
-        approachTitle:'I choose the test layer before I choose the test tool.',
-        approachBody:'I use the layer that can actually prove the behavior, keep test state controlled, and leave enough evidence to debug a failure. QA stays connected to the product code.',
+        approachTitle:'Choose the layer first.\nThen choose the tool.',
+        approachBody:'I test where the result can actually be proven, control the test state, and leave enough evidence to debug a failure. QA stays connected to the product code.',
         recentLabel:'Recently',
-        recentTitle:'The same QA questions, applied to AI tooling.',
-        recentBody:'What was evaluated? What happens when data is missing? Can the failure be reproduced? This is a side area of my QA work, not the main focus.',
+        recentTitle:'The same QA questions.\nA newer kind of system.',
+        recentBody:'What was evaluated? What happens when data is missing? Can the failure be reproduced? AI tooling is a side area of my QA work, not the main focus.',
         viewRepo:'View repository',
-        outroTitle:'More projects and engineering history live on GitHub.',
+        outroTitle:'More projects and engineering history\nlive on GitHub.',
         openGithub:'Open GitHub'
       },
       zh:{
         title:'CTWalk — QA / SDET 工程師',
         description:'CTWalk — QA / SDET 工程師，工作範圍涵蓋網頁、API、資料庫、手機端、自動化測試與產品除錯。',
         introLabel:'QA / SDET · 軟體工程',
-        introTitle:'我做 QA / SDET，從畫面一路驗證到 API、資料庫與手機端。',
-        introBody:'我負責自動化測試，也會追查失敗真正出在哪一層。問題如果不在測試，而在產品程式，我也會直接往下修。',
+        introTitle:'我做 QA / SDET\n從畫面一路驗證到 API、資料庫與手機端',
+        introBody:'我做自動化測試，也會一路追查失敗原因。\n如果問題不在測試，而在產品程式，我會直接修。',
         scroll:'向下滑',
-        commerceTitle:'一條流程，從畫面一路驗證到最後。',
-        commerceBody:'瀏覽器、API、資料庫、Webhook、通知都要對得起來。不是畫面顯示成功，就算測完。',
-        nocodeTitle:'測試流程好讀，定位方式也能獨立維護。',
-        nocodeBody:'YAML 負責描述操作，Playwright 負責執行。Locator、失敗證據與 CI 分開管理，改版時比較容易維護。',
-        socialTitle:'不同層的檢查，收進同一條交付流程。',
-        socialBody:'Build、API、資料庫、效能、網頁與手機端，各自負責適合的檢查，最後一起判斷這個版本能不能交付。',
-        cueTitle:'我不只測產品，也會把產品做出來。',
-        cueBody:'CueSheet 是我做並部署的排練排程工具。有人臨時不能來時，系統會重新排程，同時盡量保留原本的安排。',
+        commerceTitle:'一條流程\n從畫面一路驗證到最後',
+        commerceBody:'瀏覽器、API、資料庫、Webhook、通知都要一致。\n畫面顯示成功，不代表整條流程真的成功。',
+        nocodeTitle:'測試流程好讀\n定位方式也好維護',
+        nocodeBody:'YAML 寫操作流程，Playwright 負責執行。\n定位、失敗證據與 CI 分開管理，改版時比較好維護。',
+        socialTitle:'不同層的檢查\n收進同一條交付流程',
+        socialBody:'Build、API、資料庫、效能、網頁與手機端各自檢查。\n最後一起判斷這個版本能不能交付。',
+        cueTitle:'我不只測產品\n也會把產品做出來',
+        cueBody:'CueSheet 是我做並部署的排練排程工具。\n有人臨時不能來時，系統會重排，同時盡量保留原本安排。',
         approachLabel:'我怎麼做 QA',
-        approachTitle:'先決定要在哪一層驗證，再決定用什麼工具。',
-        approachBody:'我會選能真正證明行為的層級，控制測試資料，並保留足夠的 log、截圖或 trace。查到問題跨進產品程式時，就繼續往裡面看。',
+        approachTitle:'先決定在哪一層驗證\n再決定用什麼工具',
+        approachBody:'我會選真正能確認結果的地方來測，控制測試資料，也留下足夠線索。\n問題進到產品程式，就繼續往裡面查。',
         recentLabel:'最近',
-        recentTitle:'同一套 QA 問題，也能用來檢查 AI 工具。',
-        recentBody:'到底測到了什麼？資料缺少時會不會誤判？錯誤能不能重現？這是 QA 工作的延伸，不是我的主軸。',
+        recentTitle:'同一套 QA 問題\n也能用來檢查 AI 工具',
+        recentBody:'到底測到了什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 工作的延伸，不是主軸。',
         viewRepo:'查看專案',
-        outroTitle:'更多專案與實作紀錄都在 GitHub。',
+        outroTitle:'更多專案與實作紀錄\n都在 GitHub',
         openGithub:'查看 GitHub'
       }
     };
@@ -651,103 +284,67 @@
       document.documentElement.lang=selected==='zh'?'zh-Hant-TW':'en';
       document.title=strings.title;
       meta.setAttribute('content',strings.description);
-      document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const key=node.dataset.i18n;
-        if(strings[key]) node.textContent=strings[key];
-      });
+      document.querySelectorAll('[data-i18n]').forEach(node=>{const key=node.dataset.i18n;if(strings[key])node.textContent=strings[key]});
       buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===selected)));
       try{localStorage.setItem('ctwalk-lang',selected)}catch(_){ }
     }
     buttons.forEach(button=>button.addEventListener('click',()=>applyLanguage(button.dataset.lang)));
     let initial='en';
-    try{
-      const saved=localStorage.getItem('ctwalk-lang');
-      if(saved==='en'||saved==='zh') initial=saved;
-      else if((navigator.language||'').toLowerCase().startsWith('zh')) initial='zh';
-    }catch(_){ }
+    try{const saved=localStorage.getItem('ctwalk-lang');if(saved==='en'||saved==='zh')initial=saved;else if((navigator.language||'').toLowerCase().startsWith('zh'))initial='zh'}catch(_){ }
     applyLanguage(initial);
 
     const experience=document.getElementById('experience');
     const scenes=[...document.querySelectorAll('.scene')];
     const scrollHint=document.getElementById('scroll-hint');
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const pointer={x:0,y:0};
-    const pointerTarget={x:0,y:0};
+    const pointer={x:0,y:0},pointerTarget={x:0,y:0};
     let raf=0;
-
     const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v));
     const smooth=t=>t*t*(3-2*t);
-    function alphaFor(distance){
-      const d=Math.abs(distance);
-      if(d<=.36) return 1;
-      if(d>=.60) return 0;
-      return 1-smooth((d-.36)/.24);
-    }
+    function alphaFor(distance){const d=Math.abs(distance);if(d<=.36)return 1;if(d>=.60)return 0;return 1-smooth((d-.36)/.24)}
 
     function renderExperience(){
-      if(reduced) return;
+      if(reduced)return;
       const rect=experience.getBoundingClientRect();
       const travel=Math.max(1,experience.offsetHeight-window.innerHeight);
       const progress=clamp(-rect.top/travel);
       const step=progress*(scenes.length-1);
-      pointer.x+=(pointerTarget.x-pointer.x)*.055;
-      pointer.y+=(pointerTarget.y-pointer.y)*.055;
+      const mobile=window.innerWidth<=760;
+      pointer.x+=(pointerTarget.x-pointer.x)*.055;pointer.y+=(pointerTarget.y-pointer.y)*.055;
 
       scenes.forEach((scene,index)=>{
-        const rel=step-index;
-        const opacity=alphaFor(rel);
+        const rel=step-index,opacity=alphaFor(rel);
         scene.style.opacity=opacity.toFixed(3);
         scene.classList.toggle('is-active',opacity>.7);
         scene.style.zIndex=String(10-Math.min(9,Math.round(Math.abs(rel)*2)));
-
         const content=scene.querySelector('.scene-content');
         const isCenter=scene.classList.contains('center');
         if(content){
-          const y=rel*20;
-          const x=(scene.classList.contains('right')?-1:1)*rel*8;
-          if(isCenter) content.style.transform=`translate(-50%,calc(50% + ${y*.25}px))`;
-          else content.style.transform=`translate3d(${x}px,${y}px,0)`;
+          const y=rel*18,x=(scene.classList.contains('right')?-1:1)*rel*7;
+          if(isCenter&&!mobile)content.style.transform=`translate(-50%,calc(50% + ${y*.22}px))`;
+          else content.style.transform=`translate3d(${mobile?0:x}px,${y*.32}px,0)`;
           content.style.opacity=String(clamp(opacity*1.12));
         }
-
         const bg=scene.querySelector('.scene-bg');
-        if(bg){
-          const scale=1.045+Math.min(.07,Math.abs(rel)*.045);
-          bg.style.transform=`translate3d(${pointer.x*8-rel*15}px,${pointer.y*6+rel*10}px,0) scale(${scale})`;
-        }
+        if(bg){const scale=1.045+Math.min(.07,Math.abs(rel)*.045);bg.style.transform=`translate3d(${pointer.x*8-rel*15}px,${pointer.y*6+rel*10}px,0) scale(${scale})`}
         const blur=scene.querySelector('.scene-blur');
-        if(blur){
-          blur.style.transform=`translate3d(${pointer.x*5-rel*9}px,${pointer.y*4+rel*8}px,0) scale(${1.09+Math.abs(rel)*.03})`;
-        }
+        if(blur)blur.style.transform=`translate3d(${pointer.x*5-rel*9}px,${pointer.y*4+rel*8}px,0) scale(${1.09+Math.abs(rel)*.03})`;
         scene.querySelectorAll('.scene-object').forEach((object,objectIndex)=>{
           const dir=objectIndex%2===0?1:-1;
-          const px=pointer.x*(6+objectIndex*1.5)*dir;
-          const py=pointer.y*(4+objectIndex);
-          const tx=rel*(18+objectIndex*5)*dir;
-          const ty=rel*(22+objectIndex*4);
-          const scale=1-Math.min(.07,Math.abs(rel)*.035);
+          const px=pointer.x*(6+objectIndex*1.5)*dir,py=pointer.y*(4+objectIndex),tx=rel*(18+objectIndex*5)*dir,ty=rel*(22+objectIndex*4),scale=1-Math.min(.07,Math.abs(rel)*.035);
           object.style.transform=`translate3d(${px+tx}px,${py+ty}px,0) scale(${scale})`;
           object.style.opacity=String(clamp(opacity*1.12));
         });
       });
-
-      if(scrollHint) scrollHint.style.opacity=String(clamp(1-step*2.7));
+      if(scrollHint)scrollHint.style.opacity=String(clamp(1-step*2.7));
       raf=requestAnimationFrame(renderExperience);
     }
 
     if(!reduced){
-      window.addEventListener('pointermove',event=>{
-        pointerTarget.x=(event.clientX/Math.max(1,window.innerWidth)-.5)*2;
-        pointerTarget.y=(event.clientY/Math.max(1,window.innerHeight)-.5)*2;
-      },{passive:true});
+      window.addEventListener('pointermove',event=>{pointerTarget.x=(event.clientX/Math.max(1,window.innerWidth)-.5)*2;pointerTarget.y=(event.clientY/Math.max(1,window.innerHeight)-.5)*2},{passive:true});
       raf=requestAnimationFrame(renderExperience);
-      document.addEventListener('visibilitychange',()=>{
-        if(document.hidden) cancelAnimationFrame(raf);
-        else raf=requestAnimationFrame(renderExperience);
-      });
-    }else{
-      scenes.forEach(scene=>scene.classList.add('is-active'));
-    }
+      document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else raf=requestAnimationFrame(renderExperience)});
+    }else scenes.forEach(scene=>scene.classList.add('is-active'));
   </script>
 
   <script type="module">
@@ -755,60 +352,17 @@
     if(host&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       try{
         const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.169.0/+esm');
-        const scene=new THREE.Scene();
-        const camera=new THREE.PerspectiveCamera(44,1,.1,100);
-        camera.position.set(0,0,10);
-        const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
-        renderer.setClearColor(0x000000,0);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
-        host.appendChild(renderer.domElement);
-
-        const group=new THREE.Group();
-        group.position.x=3.1;
-        scene.add(group);
-        const pts=[];
-        for(let i=0;i<42;i++){
-          const a=i*.72;
-          const r=1.7+(i%7)*.27;
-          pts.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a*1.13)*r*.72,(i%5-2)*.34));
-        }
-        const line=[];
-        for(let i=0;i<pts.length-1;i++){
-          const p=pts[i],q=pts[i+1];
-          line.push(p.x,p.y,p.z,q.x,q.y,q.z);
-          if(i+6<pts.length&&i%2===0){const r=pts[i+6];line.push(p.x,p.y,p.z,r.x,r.y,r.z)}
-        }
-        const geo=new THREE.BufferGeometry();
-        geo.setAttribute('position',new THREE.Float32BufferAttribute(line,3));
-        group.add(new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:0x8ea9ff,transparent:true,opacity:.16})));
-        const pointGeo=new THREE.BufferGeometry().setFromPoints(pts);
-        group.add(new THREE.Points(pointGeo,new THREE.PointsMaterial({color:0xe5ebff,size:.052,transparent:true,opacity:.5,sizeAttenuation:true})));
-
-        function resize(){
-          const rect=host.getBoundingClientRect();
-          renderer.setSize(Math.max(1,rect.width),Math.max(1,rect.height),false);
-          camera.aspect=Math.max(1,rect.width)/Math.max(1,rect.height);
-          camera.updateProjectionMatrix();
-          group.scale.setScalar(rect.width<760?.72:1);
-          group.position.x=rect.width<760?1.15:3.1;
-        }
-        let frame=0;
-        function draw(t=0){
-          group.rotation.z=Math.sin(t*.00012)*.03;
-          group.rotation.y=Math.cos(t*.0001)*.05;
-          renderer.render(scene,camera);
-          frame=requestAnimationFrame(draw);
-        }
-        resize();
-        window.addEventListener('resize',resize,{passive:true});
-        frame=requestAnimationFrame(draw);
-        document.addEventListener('visibilitychange',()=>{
-          if(document.hidden) cancelAnimationFrame(frame);
-          else frame=requestAnimationFrame(draw);
-        });
-      }catch(_){
-        host.style.background='radial-gradient(circle at 72% 42%,rgba(80,110,190,.16),transparent 28rem)';
-      }
+        const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(44,1,.1,100);camera.position.set(0,0,10);
+        const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});renderer.setClearColor(0x000000,0);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));host.appendChild(renderer.domElement);
+        const group=new THREE.Group();group.position.x=3.1;scene.add(group);
+        const pts=[];for(let i=0;i<42;i++){const a=i*.72,r=1.7+(i%7)*.27;pts.push(new THREE.Vector3(Math.cos(a)*r,Math.sin(a*1.13)*r*.72,(i%5-2)*.34))}
+        const line=[];for(let i=0;i<pts.length-1;i++){const p=pts[i],q=pts[i+1];line.push(p.x,p.y,p.z,q.x,q.y,q.z);if(i+6<pts.length&&i%2===0){const r=pts[i+6];line.push(p.x,p.y,p.z,r.x,r.y,r.z)}}
+        const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(line,3));group.add(new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:0x8ea9ff,transparent:true,opacity:.16})));
+        const pointGeo=new THREE.BufferGeometry().setFromPoints(pts);group.add(new THREE.Points(pointGeo,new THREE.PointsMaterial({color:0xe5ebff,size:.052,transparent:true,opacity:.5,sizeAttenuation:true})));
+        function resize(){const rect=host.getBoundingClientRect();renderer.setSize(Math.max(1,rect.width),Math.max(1,rect.height),false);camera.aspect=Math.max(1,rect.width)/Math.max(1,rect.height);camera.updateProjectionMatrix();group.scale.setScalar(rect.width<760?.72:1);group.position.x=rect.width<760?1.15:3.1}
+        let frame=0;function draw(t=0){group.rotation.z=Math.sin(t*.00012)*.03;group.rotation.y=Math.cos(t*.0001)*.05;renderer.render(scene,camera);frame=requestAnimationFrame(draw)}
+        resize();window.addEventListener('resize',resize,{passive:true});frame=requestAnimationFrame(draw);document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(frame);else frame=requestAnimationFrame(draw)});
+      }catch(_){host.style.background='radial-gradient(circle at 72% 42%,rgba(80,110,190,.16),transparent 28rem)'}
     }
   </script>
 </body>
