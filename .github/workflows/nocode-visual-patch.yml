@@ -44,7 +44,7 @@ jobs:
 
           if 'nocode-wire' in s:
               raise SystemExit('Old noCodeE2E curve animation still present')
-          if s.count('data-nocode-step=') != 3:
+          if s.count('<span class="nocode-step" data-nocode-step=') != 3:
               raise SystemExit('Expected exactly three highlighted YAML commands')
 
           p.write_text(s)
