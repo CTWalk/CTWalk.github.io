@@ -8,134 +8,178 @@
   <title>CTWalk — QA / SDET Engineer</title>
   <style>
     :root {
-      --paper: #f5f4ef;
-      --ink: #171717;
-      --soft: #55585c;
-      --muted: #777a7e;
-      --line: rgba(23, 23, 23, .15);
-      --accent: #315fbb;
-      --max: 960px;
-      --measure: 700px;
+      --paper:#f5f4ef;
+      --paper-rgb:245,244,239;
+      --ink:#171717;
+      --soft:#55585c;
+      --muted:#777a7e;
+      --line:rgba(23,23,23,.14);
+      --accent:#315fbb;
+      --max:960px;
+      --measure:700px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
-      line-height: 1.68;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif;
+      line-height:1.68;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
 
-    ::selection { background: rgba(49, 95, 187, .16); }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-    .wrap { width: min(calc(100% - 44px), var(--max)); margin: 0 auto; }
+    ::selection{background:rgba(49,95,187,.16)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+    .wrap{width:min(calc(100% - 44px),var(--max));margin:0 auto}
 
-    nav { padding: 26px 0; }
-    .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { font-weight: 800; letter-spacing: -.03em; }
-    .nav-actions { display: flex; align-items: center; gap: 20px; }
-    .github { color: var(--soft); font-size: .92rem; }
-    .github:hover { color: var(--ink); }
-    .lang-switch { display: flex; align-items: center; gap: 12px; }
-    .lang-switch button {
-      padding: 5px 0;
-      border: 0;
-      border-bottom: 1px solid transparent;
-      color: var(--muted);
-      background: transparent;
-      font: inherit;
-      font-size: .82rem;
-      font-weight: 700;
-      cursor: pointer;
+    nav{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:30;
+      background:linear-gradient(to bottom,rgba(var(--paper-rgb),.92),rgba(var(--paper-rgb),.72) 72%,transparent);
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
     }
-    .lang-switch button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
-
-    header { position: relative; overflow: hidden; }
-    .hero-motion { position: absolute; inset: 0; pointer-events: none; opacity: .28; }
-    .hero-motion canvas { display: block; width: 100%; height: 100%; }
-    .hero {
-      position: relative;
-      z-index: 1;
-      padding: 112px 0 118px;
+    .nav-row{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-weight:800;letter-spacing:-.03em}
+    .nav-actions{display:flex;align-items:center;gap:20px}
+    .github{color:var(--soft);font-size:.92rem}
+    .github:hover{color:var(--ink)}
+    .lang-switch{display:flex;align-items:center;gap:12px}
+    .lang-switch button{
+      padding:5px 0;
+      border:0;
+      border-bottom:1px solid transparent;
+      color:var(--muted);
+      background:transparent;
+      font:inherit;
+      font-size:.82rem;
+      font-weight:700;
+      cursor:pointer;
     }
-    .role {
-      margin: 0 0 20px;
-      color: var(--accent);
-      font-size: .8rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+    .lang-switch button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink)}
+
+    header{
+      position:relative;
+      height:132vh;
+      min-height:760px;
     }
-    h1 {
-      margin: 0;
-      max-width: 870px;
-      font-size: clamp(3.1rem, 7vw, 6rem);
-      line-height: 1;
-      letter-spacing: -.058em;
-      text-wrap: balance;
+    .hero-sticky{
+      position:sticky;
+      top:0;
+      height:100vh;
+      min-height:640px;
+      overflow:hidden;
+      border-bottom:1px solid transparent;
     }
-    .lead {
-      max-width: var(--measure);
-      margin: 30px 0 0;
-      color: var(--soft);
-      font-size: clamp(1.08rem, 1.9vw, 1.25rem);
+    .hero-motion{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.58;
+      mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.22) 34%,#000 58%,#000 100%);
+      -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.22) 34%,#000 58%,#000 100%);
     }
-
-    main section { padding: 88px 0; }
-    .section-title {
-      margin: 0;
-      font-size: clamp(1.8rem, 3.2vw, 2.55rem);
-      line-height: 1.15;
-      letter-spacing: -.04em;
+    .hero-motion canvas{display:block;width:100%;height:100%}
+    .hero-shade{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(90deg,rgba(var(--paper-rgb),1) 0%,rgba(var(--paper-rgb),.96) 30%,rgba(var(--paper-rgb),.58) 55%,rgba(var(--paper-rgb),.03) 100%),
+        linear-gradient(to bottom,rgba(var(--paper-rgb),.18),transparent 55%,rgba(var(--paper-rgb),.5));
     }
-
-    .work-list { margin-top: 44px; border-top: 1px solid var(--line); }
-    .project { padding: 30px 0 32px; border-bottom: 1px solid var(--line); }
-    .project-link { display: inline-flex; align-items: baseline; gap: 8px; }
-    .project-name {
-      font-size: clamp(1.35rem, 2.3vw, 1.82rem);
-      font-weight: 760;
-      letter-spacing: -.03em;
+    .hero{
+      position:relative;
+      z-index:2;
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      padding:96px 0 80px;
     }
-    .arrow { color: var(--accent); transition: transform .16s ease; }
-    .project-link:hover .arrow, .project-link:focus-visible .arrow { transform: translate(3px, -2px); }
-    .project p { max-width: var(--measure); margin: 12px 0 0; color: var(--soft); }
-
-    .approach { max-width: var(--measure); }
-    .approach p { margin: 22px 0 0; color: var(--soft); font-size: 1.06rem; }
-
-    .recent { max-width: var(--measure); padding-bottom: 106px; }
-    .recent p { margin: 20px 0 0; color: var(--soft); }
-    .recent a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-
-    footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .88rem; }
-    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    .footer-row a { color: var(--ink); }
-
-    html[lang^="zh"] body { line-height: 1.78; }
-    html[lang^="zh"] h1 { line-height: 1.08; letter-spacing: -.042em; }
-    html[lang^="zh"] .section-title { line-height: 1.22; letter-spacing: -.03em; }
-
-    @media (max-width: 700px) {
-      .wrap { width: min(calc(100% - 30px), var(--max)); }
-      .github { display: none; }
-      .hero { padding: 72px 0 84px; }
-      .hero-motion { opacity: .18; }
-      h1 { font-size: clamp(2.65rem, 13vw, 4.2rem); }
-      main section { padding: 66px 0; }
-      .work-list { margin-top: 34px; }
-      .project { padding: 25px 0 27px; }
-      .recent { padding-bottom: 78px; }
+    .hero-copy{max-width:780px;will-change:transform,opacity}
+    .role{
+      margin:0 0 20px;
+      color:var(--accent);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:0;
+      max-width:860px;
+      font-size:clamp(3.15rem,7vw,6rem);
+      line-height:1;
+      letter-spacing:-.058em;
+      text-wrap:balance;
+    }
+    .lead{
+      max-width:var(--measure);
+      margin:30px 0 0;
+      color:var(--soft);
+      font-size:clamp(1.08rem,1.9vw,1.25rem);
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    main section{padding:88px 0}
+    .section-title{
+      margin:0;
+      font-size:clamp(1.8rem,3.2vw,2.55rem);
+      line-height:1.15;
+      letter-spacing:-.04em;
+    }
+
+    #work{position:relative;background:var(--paper)}
+    .work-list{margin-top:44px;border-top:1px solid var(--line)}
+    .project{padding:30px 0 32px;border-bottom:1px solid var(--line)}
+    .project-link{display:inline-flex;align-items:baseline;gap:8px}
+    .project-name{font-size:clamp(1.35rem,2.3vw,1.82rem);font-weight:760;letter-spacing:-.03em}
+    .arrow{color:var(--accent);transition:transform .16s ease}
+    .project-link:hover .arrow,.project-link:focus-visible .arrow{transform:translate(3px,-2px)}
+    .project p{max-width:var(--measure);margin:12px 0 0;color:var(--soft)}
+
+    .approach{max-width:var(--measure)}
+    .approach p{margin:22px 0 0;color:var(--soft);font-size:1.06rem}
+
+    .recent{max-width:var(--measure);padding-bottom:104px}
+    .recent p{margin:20px 0 0;color:var(--soft)}
+    .recent a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+
+    footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.88rem}
+    .footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-row a{color:var(--ink)}
+
+    html[lang^="zh"] body{line-height:1.8}
+    html[lang^="zh"] h1{line-height:1.08;letter-spacing:-.042em;max-width:880px}
+    html[lang^="zh"] .section-title{line-height:1.22;letter-spacing:-.03em}
+    html[lang^="zh"] .lead{max-width:650px}
+
+    @media(max-width:700px){
+      .wrap{width:min(calc(100% - 30px),var(--max))}
+      .nav-row{min-height:66px}
+      .github{display:none}
+      header{height:112vh;min-height:680px}
+      .hero-sticky{min-height:600px}
+      .hero{padding:82px 0 62px;align-items:center}
+      .hero-motion{opacity:.32;mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 18%,#000 44%,#000 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.2) 18%,#000 44%,#000 100%)}
+      .hero-shade{background:linear-gradient(to bottom,rgba(var(--paper-rgb),1) 0%,rgba(var(--paper-rgb),.94) 46%,rgba(var(--paper-rgb),.48) 72%,rgba(var(--paper-rgb),.16) 100%)}
+      h1{font-size:clamp(2.65rem,13vw,4.2rem)}
+      .lead{max-width:92%}
+      main section{padding:66px 0}
+      .work-list{margin-top:34px}
+      .project{padding:25px 0 27px}
+      .recent{padding-bottom:78px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+      header{height:auto;min-height:0}
+      .hero-sticky{position:relative;height:auto;min-height:680px}
     }
   </style>
 </head>
@@ -154,12 +198,17 @@
   </nav>
 
   <main id="top">
-    <header>
-      <div class="hero-motion" id="hero-motion" aria-hidden="true"></div>
-      <div class="wrap hero">
-        <p class="role" data-i18n="role">QA / SDET ENGINEER</p>
-        <h1 data-i18n="heroTitle">QA / SDET across web, API, data and mobile.</h1>
-        <p class="lead" data-i18n="heroLead">I build automation, investigate failures end to end, and stay close enough to the product to fix the problem when it is not the test.</p>
+    <header id="hero-scroll">
+      <div class="hero-sticky">
+        <div class="hero-motion" id="hero-motion" aria-hidden="true"></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="wrap hero">
+          <div class="hero-copy" id="hero-copy">
+            <p class="role" data-i18n="role">QA / SDET ENGINEER</p>
+            <h1 data-i18n="heroTitle">QA / SDET across web, API, data and mobile.</h1>
+            <p class="lead" data-i18n="heroLead">I build automation, investigate failures end to end, and stay close enough to the product to fix the problem when it is not the test.</p>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -209,7 +258,7 @@
     <section>
       <div class="wrap recent">
         <h2 class="section-title" data-i18n="recentTitle">Recently</h2>
-        <p data-i18n="recentBody">I have also been looking at reliability problems in AI and agent tooling through small experiments and open-source work. It is an extension of my QA work, not the main focus.</p>
+        <p data-i18n="recentBody">I have also been looking at reliability problems in AI tooling through small experiments and open-source work. It is an extension of my QA work, not the main focus.</p>
         <p><a href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer">Decision Contract Audit ↗</a> &nbsp; <a href="https://github.com/CTWalk" target="_blank" rel="noreferrer" data-i18n="openSource">Open-source activity ↗</a></p>
       </div>
     </section>
@@ -223,153 +272,222 @@
   </footer>
 
   <script>
-    const copy = {
-      en: {
-        title: 'CTWalk — QA / SDET Engineer',
-        description: 'CTWalk — QA/SDET engineer working across web, API, data, mobile, automation, and product debugging.',
-        role: 'QA / SDET ENGINEER',
-        heroTitle: 'QA / SDET across web, API, data and mobile.',
-        heroLead: 'I build automation, investigate failures end to end, and stay close enough to the product to fix the problem when it is not the test.',
-        workTitle: 'Selected work',
-        w1: 'A commerce QA demo that checks one flow across the browser, API, database, webhooks and notifications. Built to show why a green UI result is not enough.',
-        w2: 'A YAML-driven Playwright runner for readable test flows and maintainable locators, with failure evidence and CI built in.',
-        w3: 'A role-based product used to connect web, API, database, performance and mobile checks into one release flow.',
-        w4: 'A scheduling product I built and deployed end to end. When availability changes, it aims to keep the new schedule as close as possible to the original.',
-        approachTitle: 'How I work',
-        approachBody: 'I first decide where a failure can actually be observed, then choose the test layer that makes sense. I keep test data controlled, collect enough evidence to debug quickly, and stay close to frontend, backend and data code so QA does not stop at reporting a bug.',
-        recentTitle: 'Recently',
-        recentBody: 'I have also been looking at reliability problems in AI and agent tooling through small experiments and open-source work. It is an extension of my QA work, not the main focus.',
-        openSource: 'Open-source activity ↗'
+    const copy={
+      en:{
+        title:'CTWalk — QA / SDET Engineer',
+        description:'CTWalk — QA/SDET engineer working across web, API, data, mobile, automation, and product debugging.',
+        role:'QA / SDET ENGINEER',
+        heroTitle:'QA / SDET across web, API, data and mobile.',
+        heroLead:'I build automation, investigate failures end to end, and stay close enough to the product to fix the problem when it is not the test.',
+        workTitle:'Selected work',
+        w1:'A commerce QA demo that checks one flow across the browser, API, database, webhooks and notifications. Built to show why a green UI result is not enough.',
+        w2:'A YAML-driven Playwright runner for readable test flows and maintainable locators, with failure evidence and CI built in.',
+        w3:'A role-based product used to connect web, API, database, performance and mobile checks into one release flow.',
+        w4:'A scheduling product I built and deployed end to end. When availability changes, it aims to keep the new schedule as close as possible to the original.',
+        approachTitle:'How I work',
+        approachBody:'I first decide where a failure can actually be observed, then choose the test layer that makes sense. I keep test data controlled, collect enough evidence to debug quickly, and stay close to frontend, backend and data code so QA does not stop at reporting a bug.',
+        recentTitle:'Recently',
+        recentBody:'I have also been looking at reliability problems in AI tooling through small experiments and open-source work. It is an extension of my QA work, not the main focus.',
+        openSource:'Open-source activity ↗'
       },
-      zh: {
-        title: 'CTWalk — QA / SDET 工程師',
-        description: 'CTWalk — QA / SDET 工程師，工作範圍涵蓋網頁、API、資料、手機端、自動化測試與產品除錯。',
-        role: 'QA / SDET 工程師',
-        heroTitle: '從網頁、API、資料到手機端，我都會測，也會一路追到問題真正發生的地方。',
-        heroLead: '我做自動化測試，也會把失敗原因一路查清楚；如果問題不在測試，而在產品程式，我也會直接修。',
-        workTitle: '作品',
-        w1: '用完整的電商流程做 QA 示範，從使用者操作一路檢查到 API、資料庫、Webhook 與通知。畫面顯示成功，不代表整條流程真的成功。',
-        w2: '用 YAML 寫測試步驟、Playwright 執行；定位方式、失敗證據與 CI 分開管理，讓流程好讀，也比較好維護。',
-        w3: '以多角色社群產品為例，把網頁、API、資料庫、效能與手機端檢查串進同一套交付流程。',
-        w4: '我做並部署了一套排練排程工具。臨時有人不能來時，除了要重新排得出來，也要盡量少改原本的安排。',
-        approachTitle: '我怎麼做 QA',
-        approachBody: '我通常先判斷問題要在哪一層看才準，再決定怎麼測。測試資料要可控，失敗時要留下夠用的資訊；需要時，我會直接看前端、後端或資料層，把原因找清楚，而不是只停在「測試失敗」這一步。',
-        recentTitle: '最近',
-        recentBody: '最近也把同樣的 QA 習慣拿去看 AI / agent 工具：什麼真的有被測到、錯誤能不能重現、結果會不會誤判。這只是延伸，不是主軸。',
-        openSource: '其他開源活動 ↗'
+      zh:{
+        title:'CTWalk — QA / SDET 工程師',
+        description:'CTWalk — QA / SDET 工程師，工作範圍涵蓋網頁、API、資料、手機端、自動化測試與產品除錯。',
+        role:'QA / SDET 工程師',
+        heroTitle:'從網頁、API、資料到手機端，我都會測，也會把問題追到底。',
+        heroLead:'我做自動化測試，也處理測試背後的工程問題。從失敗紀錄、測試資料到產品程式，哪一層出問題，就往哪一層查。',
+        workTitle:'作品',
+        w1:'用一套接近真實電商流程的系統做端到端 QA：畫面成功之後，繼續核對 API、資料庫、Webhook 與通知，確認整條流程真的完成。',
+        w2:'我做的 YAML 測試工具。測試步驟和定位方式分開管理，讓流程容易閱讀，同時保留 Playwright 的可維護性與失敗證據。',
+        w3:'用多角色社群產品，把網頁、API、資料庫、效能與手機端檢查放進同一套交付流程，讓上線前的狀態更清楚。',
+        w4:'我從頭做到部署的排練排程工具。有人臨時不能來時，不只要排出新版本，還要盡量少改原本已經安排好的內容。',
+        approachTitle:'我怎麼做 QA',
+        approachBody:'我會先問：這個問題在哪裡最容易被準確看見？有時是畫面，有時是 API 或資料庫。測試要穩定，也要在失敗時留下足夠線索，讓除錯不用靠猜。若最後發現問題在產品程式，我會直接往那一層處理。',
+        recentTitle:'最近',
+        recentBody:'最近也把同一套做法用在 AI 工具：確認它到底測了什麼、缺資料時會不會誤判，以及錯誤能不能重現。這是 QA 工作的延伸，不是主軸。',
+        openSource:'其他開源活動 ↗'
       }
     };
 
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const buttons = [...document.querySelectorAll('[data-lang]')];
+    const meta=document.querySelector('meta[name="description"]');
+    const langButtons=[...document.querySelectorAll('[data-lang]')];
 
-    function setLanguage(lang) {
-      const selected = copy[lang] ? lang : 'en';
-      const strings = copy[selected];
-      document.documentElement.lang = selected === 'zh' ? 'zh-Hant-TW' : 'en';
-      document.title = strings.title;
-      metaDescription.setAttribute('content', strings.description);
-      document.querySelectorAll('[data-i18n]').forEach((node) => {
-        const value = strings[node.dataset.i18n];
-        if (value) node.textContent = value;
+    function setLanguage(lang){
+      const selected=copy[lang]?lang:'en';
+      const strings=copy[selected];
+      document.documentElement.lang=selected==='zh'?'zh-Hant-TW':'en';
+      document.title=strings.title;
+      meta.setAttribute('content',strings.description);
+      document.querySelectorAll('[data-i18n]').forEach(node=>{
+        const value=strings[node.dataset.i18n];
+        if(value)node.textContent=value;
       });
-      buttons.forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.lang === selected)));
-      try { localStorage.setItem('ctwalk-lang', selected); } catch (_) {}
+      langButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===selected)));
+      try{localStorage.setItem('ctwalk-lang',selected)}catch(_){}
     }
 
-    buttons.forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
-
-    let initial = 'en';
-    try {
-      const saved = localStorage.getItem('ctwalk-lang');
-      if (saved === 'en' || saved === 'zh') initial = saved;
-      else if ((navigator.language || '').toLowerCase().startsWith('zh')) initial = 'zh';
-    } catch (_) {}
+    langButtons.forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));
+    let initial='en';
+    try{
+      const saved=localStorage.getItem('ctwalk-lang');
+      if(saved==='en'||saved==='zh')initial=saved;
+      else if((navigator.language||'').toLowerCase().startsWith('zh'))initial='zh';
+    }catch(_){}
     setLanguage(initial);
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent=new Date().getFullYear();
   </script>
 
   <script type="module">
-    const host = document.getElementById('hero-motion');
-    if (host) {
-      try {
-        const THREE = await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(42, 1, .1, 100);
-        camera.position.set(0, 0, 10);
+    const host=document.getElementById('hero-motion');
+    const heroScroll=document.getElementById('hero-scroll');
+    const heroCopy=document.getElementById('hero-copy');
+    const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setClearColor(0x000000, 0);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.4));
+    if(host&&heroScroll){
+      try{
+        const THREE=await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js');
+        const scene=new THREE.Scene();
+        const camera=new THREE.PerspectiveCamera(38,1,.1,100);
+        camera.position.set(0,0,10.5);
+
+        const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+        renderer.setClearColor(0x000000,0);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.5));
         host.appendChild(renderer.domElement);
 
-        const group = new THREE.Group();
+        const group=new THREE.Group();
         scene.add(group);
 
-        const points = [
-          [-2.8, 1.5, .2], [-1.0, 2.2, -.3], [1.2, 1.5, .3], [3.0, 2.1, -.2],
-          [-2.0, -.1, -.2], [.1, .2, .4], [2.3, -.2, -.2], [-1.0, -1.9, .2], [1.4, -1.6, -.2]
-        ].map(([x, y, z]) => new THREE.Vector3(x, y, z));
-        const edges = [[0,1],[1,2],[2,3],[0,4],[1,5],[2,5],[2,6],[3,6],[4,5],[5,6],[4,7],[5,7],[5,8],[6,8],[7,8]];
-
-        const positions = [];
-        edges.forEach(([a, b]) => {
-          const p1 = points[a], p2 = points[b];
-          positions.push(p1.x, p1.y, p1.z, p2.x, p2.y, p2.z);
+        const start=[
+          [-3.3,2.4,.4],[-1.3,2.8,-.5],[.7,2.2,.3],[2.8,2.7,-.4],
+          [-2.6,.5,-.2],[-.5,.9,.7],[1.7,.4,-.3],[3.3,.8,.4],
+          [-3.1,-1.7,.5],[-1.0,-2.1,-.4],[1.2,-1.6,.6],[3.1,-2.2,-.2]
+        ];
+        const end=start.map((_,i)=>{
+          const t=i/(start.length-1);
+          return [-1.4+t*3.7,-2.5+t*5.0,(i%3-1)*.05];
         });
+        const edges=[[0,1],[1,2],[2,3],[0,4],[1,5],[2,5],[2,6],[3,7],[4,5],[5,6],[6,7],[4,8],[5,9],[6,10],[7,11],[8,9],[9,10],[10,11]];
 
-        const lineGeo = new THREE.BufferGeometry();
-        lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-        const lineMat = new THREE.LineBasicMaterial({ color: 0x315fbb, transparent: true, opacity: .16 });
-        group.add(new THREE.LineSegments(lineGeo, lineMat));
+        const current=start.map(p=>new THREE.Vector3(...p));
+        const pointGeo=new THREE.BufferGeometry().setFromPoints(current);
+        const pointMat=new THREE.PointsMaterial({color:0x171717,size:.085,transparent:true,opacity:.52,sizeAttenuation:true});
+        const points=new THREE.Points(pointGeo,pointMat);
+        group.add(points);
 
-        const pointGeo = new THREE.BufferGeometry().setFromPoints(points);
-        const pointMat = new THREE.PointsMaterial({ color: 0x171717, size: .07, transparent: true, opacity: .42, sizeAttenuation: true });
-        group.add(new THREE.Points(pointGeo, pointMat));
+        const lineGeo=new THREE.BufferGeometry();
+        lineGeo.setAttribute('position',new THREE.Float32BufferAttribute(new Float32Array(edges.length*6),3));
+        const lineMat=new THREE.LineBasicMaterial({color:0x315fbb,transparent:true,opacity:.22});
+        const lines=new THREE.LineSegments(lineGeo,lineMat);
+        group.add(lines);
 
-        const pointer = { x: 0, y: 0 };
-        const target = { x: 0, y: 0 };
-        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        let raf = 0;
+        const pulse=new THREE.Mesh(
+          new THREE.SphereGeometry(.075,12,12),
+          new THREE.MeshBasicMaterial({color:0x315fbb,transparent:true,opacity:.72})
+        );
+        group.add(pulse);
 
-        function resize() {
-          const rect = host.getBoundingClientRect();
-          const width = Math.max(1, rect.width);
-          const height = Math.max(1, rect.height);
-          renderer.setSize(width, height, false);
-          camera.aspect = width / height;
+        let width=1,height=1;
+        let rawProgress=0,smoothProgress=0;
+        const pointer={x:0,y:0};
+        const targetPointer={x:0,y:0};
+        let raf=0;
+        let running=true;
+
+        const clamp=v=>Math.max(0,Math.min(1,v));
+        const ease=t=>t*t*(3-2*t);
+
+        function resize(){
+          const rect=host.getBoundingClientRect();
+          width=Math.max(1,rect.width);
+          height=Math.max(1,rect.height);
+          renderer.setSize(width,height,false);
+          camera.aspect=width/height;
           camera.updateProjectionMatrix();
-          const mobile = width < 720;
-          group.position.set(mobile ? 1.5 : 3.4, mobile ? -.2 : .1, 0);
-          group.scale.setScalar(mobile ? .72 : 1);
+          const mobile=width<700;
+          group.scale.setScalar(mobile?.78:1);
+          group.position.set(mobile?1.25:3.0,mobile?-1.25:.05,0);
         }
 
-        function onPointerMove(event) {
-          target.x = (event.clientX / Math.max(window.innerWidth, 1) - .5) * .16;
-          target.y = (event.clientY / Math.max(window.innerHeight, 1) - .5) * .10;
+        function measureScroll(){
+          const rect=heroScroll.getBoundingClientRect();
+          const travel=Math.max(1,heroScroll.offsetHeight-window.innerHeight);
+          rawProgress=clamp((-rect.top)/travel);
         }
 
-        function draw(time = 0) {
-          pointer.x += (target.x - pointer.x) * .025;
-          pointer.y += (target.y - pointer.y) * .025;
-          group.rotation.y = pointer.x + (reduced ? 0 : Math.sin(time * .00012) * .025);
-          group.rotation.x = -pointer.y * .5;
-          renderer.render(scene, camera);
-          if (!reduced) raf = requestAnimationFrame(draw);
+        function updateGeometry(progress){
+          const morph=ease(clamp((progress-.12)/.78));
+          current.forEach((v,i)=>{
+            const a=start[i],b=end[i];
+            v.set(
+              THREE.MathUtils.lerp(a[0],b[0],morph),
+              THREE.MathUtils.lerp(a[1],b[1],morph),
+              THREE.MathUtils.lerp(a[2],b[2],morph)
+            );
+          });
+          pointGeo.setFromPoints(current);
+          const arr=lineGeo.attributes.position.array;
+          edges.forEach(([a,b],i)=>{
+            const p1=current[a],p2=current[b],o=i*6;
+            arr[o]=p1.x;arr[o+1]=p1.y;arr[o+2]=p1.z;
+            arr[o+3]=p2.x;arr[o+4]=p2.y;arr[o+5]=p2.z;
+          });
+          lineGeo.attributes.position.needsUpdate=true;
+        }
+
+        function onPointerMove(event){
+          targetPointer.x=(event.clientX/Math.max(window.innerWidth,1)-.5)*.24;
+          targetPointer.y=(event.clientY/Math.max(window.innerHeight,1)-.5)*.16;
+        }
+
+        function draw(time=0){
+          smoothProgress+=((reduced?0:rawProgress)-smoothProgress)*.075;
+          pointer.x+=(targetPointer.x-pointer.x)*.045;
+          pointer.y+=(targetPointer.y-pointer.y)*.045;
+
+          updateGeometry(smoothProgress);
+          const p=ease(smoothProgress);
+          camera.position.z=THREE.MathUtils.lerp(10.5,7.7,p);
+          group.rotation.y=(1-p)*pointer.x+p*.18;
+          group.rotation.x=-(1-p)*pointer.y*.6+p*.05;
+          group.rotation.z=p*-.08;
+          group.position.x+=( (width<700?1.25:THREE.MathUtils.lerp(3.0,4.15,p)) - group.position.x )*.08;
+
+          const edgeIndex=Math.min(edges.length-1,Math.floor(p*(edges.length-1)));
+          const [a,b]=edges[edgeIndex];
+          const local=(time*.00016)%1;
+          pulse.position.copy(current[a]).lerp(current[b],local);
+
+          const fade=1-ease(clamp((smoothProgress-.68)/.32));
+          pointMat.opacity=.52*fade;
+          lineMat.opacity=.22*fade;
+          pulse.material.opacity=.72*fade;
+          host.style.opacity=String(.58*fade+.02);
+
+          if(heroCopy&&!reduced){
+            const copyFade=1-ease(clamp((smoothProgress-.48)/.48));
+            heroCopy.style.opacity=String(.18+.82*copyFade);
+            heroCopy.style.transform=`translate3d(0,${-28*ease(smoothProgress)}px,0)`;
+          }
+
+          renderer.render(scene,camera);
+          if(running&&!reduced)raf=requestAnimationFrame(draw);
         }
 
         resize();
-        window.addEventListener('resize', resize, { passive: true });
-        window.addEventListener('pointermove', onPointerMove, { passive: true });
-        if (reduced) draw(0);
-        else raf = requestAnimationFrame(draw);
-
-        document.addEventListener('visibilitychange', () => {
-          if (document.hidden) cancelAnimationFrame(raf);
-          else if (!reduced) raf = requestAnimationFrame(draw);
+        measureScroll();
+        window.addEventListener('resize',()=>{resize();measureScroll()},{passive:true});
+        window.addEventListener('scroll',measureScroll,{passive:true});
+        window.addEventListener('pointermove',onPointerMove,{passive:true});
+        document.addEventListener('visibilitychange',()=>{
+          running=!document.hidden;
+          if(running&&!reduced){cancelAnimationFrame(raf);raf=requestAnimationFrame(draw)}
         });
-      } catch (_) {
-        host.style.background = 'radial-gradient(circle at 80% 30%, rgba(49,95,187,.06), transparent 28rem)';
+
+        if(reduced){updateGeometry(0);draw(0)}
+        else raf=requestAnimationFrame(draw);
+      }catch(_){
+        host.style.background='radial-gradient(circle at 78% 48%,rgba(49,95,187,.12),transparent 27rem)';
       }
     }
   </script>
