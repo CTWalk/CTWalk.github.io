@@ -1,0 +1,75 @@
+name: One-time remove section five
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/remove-section-five.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove How I work scene and close numbering gap
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('index.html')
+          s = p.read_text()
+
+          if 'data-scene="5" style="--scene-bg:#111214"' not in s:
+              raise SystemExit('Section 5 target not found')
+
+          s = s.replace('style="--scene-count:8"', 'style="--scene-count:7"', 1)
+
+          pattern = re.compile(
+              r'\n    <article class="scene center" data-scene="5" style="--scene-bg:#111214">.*?</article>\n\n    <article class="scene right audit-scene" data-scene="6"',
+              re.S,
+          )
+          s, count = pattern.subn(
+              '\n    <article class="scene right audit-scene" data-scene="5"',
+              s,
+              count=1,
+          )
+          if count != 1:
+              raise SystemExit('Expected exactly one section 5 scene removal')
+
+          s = s.replace('<article class="scene center" data-scene="7"', '<article class="scene center" data-scene="6"', 1)
+          s = s.replace(' / 06', ' / 05')
+          s = s.replace('>06 / 05<', '>05 / 05<', 1)
+
+          if 'data-scene="5" style="--scene-bg:#111214"' in s:
+              raise SystemExit('Section 5 still present')
+          if 'approach-collage" aria-hidden="true"' in s:
+              raise SystemExit('Section 5 collage still present')
+          if 'style="--scene-count:8"' in s:
+              raise SystemExit('Old scene count still present')
+          if s.count('class="scene') < 7:
+              raise SystemExit('Unexpectedly removed too many scenes')
+
+          p.write_text(s)
+          PY
+
+          git diff --check
+
+      - name: Commit cleanup and remove helper
+        shell: bash
+        run: |
+          rm .github/workflows/remove-section-five.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html .github/workflows/remove-section-five.yml
+          git commit -m 'Remove How I work section'
+          git push
+
+# trigger
