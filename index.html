@@ -7,12 +7,12 @@
   <meta name="theme-color" content="#0b0d0f" />
   <title>CTWalk — QA / SDET Engineer</title>
   <style>
-    :root {
-      --ink:#f5f4ef;
-      --soft:rgba(245,244,239,.76);
-      --muted:rgba(245,244,239,.52);
+    :root{
+      --ink:#fff;
+      --soft:rgba(255,255,255,.88);
+      --muted:rgba(255,255,255,.62);
       --line:rgba(255,255,255,.18);
-      --accent:#b7c9ff;
+      --accent:#c8d5ff;
       --nav-h:72px;
       --pad:clamp(22px,4vw,64px);
       --content:1180px;
@@ -29,7 +29,7 @@
       text-rendering:optimizeLegibility;
       overflow-x:hidden;
     }
-    ::selection{background:rgba(183,201,255,.28)}
+    ::selection{background:rgba(200,213,255,.3)}
     a{color:inherit;text-decoration:none}
     a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:5px}
 
@@ -39,7 +39,7 @@
       z-index:60;
       height:var(--nav-h);
       pointer-events:none;
-      background:linear-gradient(to bottom,rgba(7,8,10,.48),transparent);
+      background:linear-gradient(to bottom,rgba(5,6,8,.68),rgba(5,6,8,.16) 74%,transparent);
     }
     .nav-inner{
       width:min(calc(100% - 2*var(--pad)),var(--content));
@@ -51,7 +51,7 @@
       gap:24px;
       pointer-events:auto;
     }
-    .brand{font-weight:820;letter-spacing:-.04em;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+    .brand{font-weight:820;letter-spacing:-.04em;text-shadow:0 2px 18px rgba(0,0,0,.45)}
     .nav-actions{display:flex;align-items:center;gap:22px}
     .github{font-size:.88rem;color:var(--soft)}
     .github:hover{color:#fff}
@@ -71,8 +71,8 @@
 
     .experience{
       position:relative;
-      height:calc(var(--scene-count) * 100vh);
-      height:calc(var(--scene-count) * 100svh);
+      height:calc(var(--scene-count) * 112vh);
+      height:calc(var(--scene-count) * 112svh);
       background:#0b0d0f;
     }
     .stage{
@@ -85,7 +85,6 @@
       isolation:isolate;
       background:#0b0d0f;
     }
-
     .scene{
       position:absolute;
       inset:0;
@@ -104,7 +103,7 @@
       object-fit:cover;
       object-position:var(--image-pos,center);
       opacity:var(--image-opacity,.9);
-      filter:brightness(var(--image-brightness,.58)) saturate(var(--image-sat,.82)) contrast(var(--image-contrast,1.05));
+      filter:brightness(var(--image-brightness,.55)) saturate(var(--image-sat,.8)) contrast(var(--image-contrast,1.05));
       transform:scale(1.035);
       will-change:transform,opacity;
     }
@@ -116,80 +115,102 @@
       object-fit:cover;
       object-position:var(--image-pos,center);
       opacity:.58;
-      filter:blur(24px) brightness(.42) saturate(.72);
+      filter:blur(24px) brightness(.36) saturate(.68);
       transform:scale(1.08);
       will-change:transform,opacity;
     }
     .scene-shade{
       position:absolute;
       inset:0;
-      background:
-        linear-gradient(90deg,rgba(7,8,10,.90) 0%,rgba(7,8,10,.62) 34%,rgba(7,8,10,.18) 66%,rgba(7,8,10,.38) 100%),
-        linear-gradient(to bottom,rgba(7,8,10,.18),rgba(7,8,10,.02) 48%,rgba(7,8,10,.72));
       z-index:3;
+      background:
+        linear-gradient(90deg,rgba(5,6,8,.94) 0%,rgba(5,6,8,.79) 30%,rgba(5,6,8,.24) 61%,rgba(5,6,8,.42) 100%),
+        linear-gradient(to bottom,rgba(5,6,8,.2),rgba(5,6,8,.02) 48%,rgba(5,6,8,.76));
     }
     .scene.right .scene-shade{
       background:
-        linear-gradient(270deg,rgba(7,8,10,.88) 0%,rgba(7,8,10,.64) 33%,rgba(7,8,10,.16) 68%,rgba(7,8,10,.34) 100%),
-        linear-gradient(to bottom,rgba(7,8,10,.16),rgba(7,8,10,.02) 48%,rgba(7,8,10,.72));
+        linear-gradient(270deg,rgba(5,6,8,.94) 0%,rgba(5,6,8,.8) 30%,rgba(5,6,8,.23) 62%,rgba(5,6,8,.4) 100%),
+        linear-gradient(to bottom,rgba(5,6,8,.18),rgba(5,6,8,.02) 48%,rgba(5,6,8,.76));
     }
     .scene.center .scene-shade{
-      background:radial-gradient(circle at 50% 48%,rgba(7,8,10,.18),rgba(7,8,10,.78) 76%),linear-gradient(to bottom,rgba(7,8,10,.12),rgba(7,8,10,.7));
+      background:
+        radial-gradient(circle at 50% 48%,rgba(5,6,8,.25),rgba(5,6,8,.84) 72%),
+        linear-gradient(to bottom,rgba(5,6,8,.18),rgba(5,6,8,.72));
     }
 
     .scene-content{
       position:absolute;
       z-index:15;
       left:max(var(--pad),calc((100% - var(--content))/2));
-      bottom:clamp(50px,9vh,104px);
-      width:min(640px,calc(100% - 2*var(--pad)));
+      bottom:clamp(58px,9vh,104px);
+      width:min(560px,calc(100% - 2*var(--pad)));
       will-change:transform,opacity;
-      text-shadow:0 2px 30px rgba(0,0,0,.28);
+      text-shadow:0 2px 22px rgba(0,0,0,.48);
+      isolation:isolate;
+    }
+    .scene-content::before{
+      content:"";
+      position:absolute;
+      z-index:-1;
+      inset:-32px -44px;
+      background:radial-gradient(ellipse at 42% 55%,rgba(4,5,7,.7) 0%,rgba(4,5,7,.42) 46%,transparent 74%);
+      filter:blur(7px);
+      pointer-events:none;
     }
     .scene.right .scene-content{
       left:auto;
       right:max(var(--pad),calc((100% - var(--content))/2));
     }
+    .scene.right .scene-content::before{
+      background:radial-gradient(ellipse at 58% 55%,rgba(4,5,7,.72) 0%,rgba(4,5,7,.44) 46%,transparent 74%);
+    }
     .scene.center .scene-content{
       left:50%;
       right:auto;
       bottom:50%;
-      width:min(880px,calc(100% - 2*var(--pad)));
+      width:min(760px,calc(100% - 2*var(--pad)));
       text-align:center;
       transform:translate(-50%,50%);
     }
-    .kicker{
-      margin:0 0 16px;
-      color:rgba(255,255,255,.62);
-      font-size:.76rem;
+    .scene.center .scene-content::before{
+      inset:-48px -70px;
+      background:radial-gradient(ellipse at center,rgba(4,5,7,.66),rgba(4,5,7,.34) 52%,transparent 76%);
+    }
+
+    .scene-label{
+      margin:0 0 14px;
+      color:rgba(255,255,255,.68);
+      font-size:.74rem;
       font-weight:800;
-      letter-spacing:.15em;
+      letter-spacing:.13em;
       text-transform:uppercase;
     }
     .scene-title{
       margin:0;
-      max-width:920px;
-      font-size:clamp(2.9rem,6.4vw,6.5rem);
-      line-height:.97;
-      letter-spacing:-.065em;
+      max-width:15ch;
+      font-size:clamp(2.55rem,5vw,4.9rem);
+      line-height:1.01;
+      letter-spacing:-.055em;
       text-wrap:balance;
     }
-    .project-scene .scene-title{font-size:clamp(2.7rem,5.7vw,5.7rem)}
+    .intro .scene-title{max-width:13ch;font-size:clamp(3rem,6vw,5.7rem)}
+    .scene.center .scene-title{margin-inline:auto;max-width:17ch}
     .scene-copy{
-      max-width:620px;
-      margin:24px 0 0;
+      max-width:48ch;
+      margin:21px 0 0;
       color:var(--soft);
-      font-size:clamp(1rem,1.55vw,1.2rem);
-      line-height:1.62;
+      font-size:clamp(1.02rem,1.4vw,1.16rem);
+      line-height:1.58;
       text-wrap:pretty;
     }
+    .scene.center .scene-copy{margin-inline:auto}
     .scene-link{
       display:inline-flex;
       align-items:center;
       gap:9px;
-      margin-top:25px;
+      margin-top:23px;
       padding-bottom:4px;
-      border-bottom:1px solid rgba(255,255,255,.5);
+      border-bottom:1px solid rgba(255,255,255,.58);
       color:#fff;
       font-size:.9rem;
       font-weight:730;
@@ -213,48 +234,48 @@
     .plate.contain img{object-fit:contain;background:rgba(8,9,11,.72)}
 
     .commerce-plate{
-      top:14%;right:max(4vw,calc((100% - var(--content))/2));
-      width:min(54vw,740px);height:min(67vh,680px);
+      top:13%;right:max(4vw,calc((100% - var(--content))/2));
+      width:min(53vw,720px);height:min(67vh,670px);
     }
     .commerce-plate img{object-position:center top}
 
     .code-plate{
       left:max(4vw,calc((100% - var(--content))/2));
       top:14%;
-      width:min(52vw,660px);
-      min-height:54vh;
-      padding:clamp(22px,3vw,42px);
+      width:min(50vw,640px);
+      min-height:53vh;
+      padding:clamp(22px,3vw,40px);
       display:flex;
       align-items:center;
-      border-color:rgba(183,201,255,.22);
-      background:rgba(11,15,23,.82);
+      border-color:rgba(200,213,255,.22);
+      background:rgba(11,15,23,.86);
     }
     .code-plate pre{
       margin:0;
-      color:#dce5ff;
-      font:500 clamp(.78rem,1.2vw,1rem)/1.75 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      color:#e4eaff;
+      font:500 clamp(.78rem,1.16vw,.98rem)/1.72 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
       white-space:pre-wrap;
     }
-    .code-plate .dim{color:#8190b8}
-    .code-plate .key{color:#c2d2ff}
-    .code-plate .value{color:#f2d7a3}
+    .code-plate .dim{color:#8795bb}
+    .code-plate .key{color:#cad7ff}
+    .code-plate .value{color:#f4d9a8}
 
     .social-card{
       right:max(5vw,calc((100% - var(--content))/2));
-      top:16%;
-      width:min(48vw,650px);
-      height:min(60vh,580px);
+      top:15%;
+      width:min(47vw,630px);
+      height:min(59vh,560px);
     }
     .social-splash{
       position:absolute;
       z-index:9;
       right:clamp(7vw,12vw,180px);
       bottom:8%;
-      width:min(20vw,260px);
+      width:min(19vw,250px);
       aspect-ratio:9/16;
       border-radius:28px;
       overflow:hidden;
-      border:1px solid rgba(255,255,255,.26);
+      border:1px solid rgba(255,255,255,.24);
       box-shadow:0 30px 90px rgba(0,0,0,.44);
       background:#111;
       will-change:transform,opacity;
@@ -264,13 +285,13 @@
     .cuesheet-desktop{
       left:max(3vw,calc((100% - var(--content))/2));
       top:12%;
-      width:min(58vw,780px);
-      height:min(68vh,660px);
+      width:min(57vw,760px);
+      height:min(66vh,640px);
     }
     .phone{
       position:absolute;
       z-index:10;
-      width:min(15vw,205px);
+      width:min(14vw,195px);
       aspect-ratio:9/18.7;
       overflow:hidden;
       border-radius:24px;
@@ -283,32 +304,32 @@
     .phone.one{left:clamp(4vw,8vw,130px);bottom:6%}
     .phone.two{left:clamp(18vw,24vw,360px);bottom:2%}
 
-    .approach-collage{position:absolute;inset:0;z-index:4;opacity:.9}
+    .approach-collage{position:absolute;inset:0;z-index:4;opacity:.78}
     .approach-collage img{
       position:absolute;
-      width:42vw;
-      max-width:680px;
+      width:40vw;
+      max-width:650px;
       border-radius:24px;
-      border:1px solid rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.14);
       box-shadow:0 32px 100px rgba(0,0,0,.42);
-      filter:brightness(.62) saturate(.72);
+      filter:brightness(.5) saturate(.68);
       will-change:transform,opacity;
     }
-    .approach-collage img:first-child{left:6%;top:12%;transform:rotate(-5deg)}
+    .approach-collage img:first-child{left:5%;top:12%;transform:rotate(-5deg)}
     .approach-collage img:last-child{right:4%;bottom:8%;transform:rotate(5deg)}
 
     .recent-card{
       left:max(5vw,calc((100% - var(--content))/2));
       top:17%;
-      width:min(52vw,700px);
-      height:min(58vh,560px);
+      width:min(50vw,680px);
+      height:min(56vh,540px);
     }
 
     .webgl{
       position:absolute;
       inset:0;
       z-index:2;
-      opacity:.82;
+      opacity:.74;
       pointer-events:none;
     }
     .webgl canvas{display:block;width:100%;height:100%}
@@ -318,8 +339,8 @@
       z-index:1;
       background:
         radial-gradient(circle at 72% 42%,rgba(80,110,190,.18),transparent 28rem),
-        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
       background-size:auto,72px 72px,72px 72px;
       mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%);
       -webkit-mask-image:linear-gradient(90deg,transparent 8%,#000 58%,#000 100%);
@@ -332,7 +353,7 @@
       display:flex;
       align-items:center;
       gap:10px;
-      color:rgba(255,255,255,.48);
+      color:rgba(255,255,255,.52);
       font-size:.7rem;
       font-weight:780;
       letter-spacing:.13em;
@@ -340,50 +361,66 @@
       will-change:opacity;
     }
     .scroll-hint::after{content:"";width:48px;height:1px;background:currentColor}
-
     .scene-no{
       position:absolute;
       z-index:20;
       left:max(var(--pad),calc((100% - var(--content))/2));
       top:calc(var(--nav-h) + 16px);
-      color:rgba(255,255,255,.44);
-      font:700 .72rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+      color:rgba(255,255,255,.42);
+      font:700 .7rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;
       letter-spacing:.08em;
     }
 
-    html[lang^="zh"] .scene-title{line-height:1.09;letter-spacing:-.045em}
-    html[lang^="zh"] .scene-copy{line-height:1.78;max-width:590px}
-    html[lang^="zh"] .kicker{letter-spacing:.08em}
+    html[lang^="zh"] .scene-title{
+      max-width:13em;
+      line-height:1.13;
+      letter-spacing:-.035em;
+      font-weight:760;
+    }
+    html[lang^="zh"] .intro .scene-title{max-width:14em}
+    html[lang^="zh"] .scene-copy{max-width:31em;line-height:1.76}
+    html[lang^="zh"] .scene-label{letter-spacing:.06em}
 
     @media(max-width:760px){
       :root{--nav-h:64px;--pad:18px}
       .github{display:none}
       .stage{min-height:560px}
       .scene-content,.scene.right .scene-content{
-        left:var(--pad);right:auto;bottom:58px;width:calc(100% - 2*var(--pad));
+        left:var(--pad);right:auto;bottom:54px;width:calc(100% - 2*var(--pad));
       }
-      .scene.center .scene-content{left:var(--pad);right:auto;bottom:62px;transform:none;text-align:left;width:calc(100% - 2*var(--pad))}
-      .scene-title,.project-scene .scene-title{font-size:clamp(2.4rem,12.6vw,4.4rem);max-width:95%}
-      .scene-copy{font-size:1rem;max-width:94%;margin-top:18px}
-      .kicker{margin-bottom:12px}
+      .scene.center .scene-content{
+        left:var(--pad);right:auto;bottom:58px;transform:none;text-align:left;width:calc(100% - 2*var(--pad));
+      }
+      .scene-content::before,.scene.right .scene-content::before,.scene.center .scene-content::before{
+        inset:-24px -20px;
+        background:linear-gradient(to right,rgba(4,5,7,.84),rgba(4,5,7,.52) 72%,transparent);
+        filter:blur(5px);
+      }
+      .scene-title,.intro .scene-title{font-size:clamp(2.25rem,10.7vw,3.7rem);max-width:12ch}
+      .scene.center .scene-title{margin-inline:0;max-width:13ch}
+      .scene-copy,.scene.center .scene-copy{font-size:1rem;max-width:92%;margin:17px 0 0;line-height:1.55}
+      .scene-label{margin-bottom:10px}
+      .scene-link{margin-top:18px}
       .scene-shade,.scene.right .scene-shade,.scene.center .scene-shade{
-        background:linear-gradient(to bottom,rgba(7,8,10,.16),rgba(7,8,10,.2) 38%,rgba(7,8,10,.94) 76%,rgba(7,8,10,.98));
+        background:linear-gradient(to bottom,rgba(5,6,8,.12),rgba(5,6,8,.2) 34%,rgba(5,6,8,.92) 68%,rgba(5,6,8,.99));
       }
       .scene-bg,.scene-blur{object-position:center}
       .commerce-plate,.code-plate,.social-card,.cuesheet-desktop,.recent-card{
-        left:7vw;right:auto;top:12%;width:86vw;height:48vh;min-height:0;
+        left:7vw;right:auto;top:11%;width:86vw;height:45vh;min-height:0;
       }
-      .code-plate{padding:20px;align-items:flex-start;overflow:hidden}
-      .code-plate pre{font-size:.72rem;line-height:1.55}
-      .social-splash{width:24vw;right:8vw;bottom:34%;border-radius:16px}
-      .phone{width:23vw;border-radius:15px}
-      .phone.one{left:8vw;bottom:34%}
-      .phone.two{left:34vw;bottom:31%}
-      .approach-collage img{width:72vw;max-width:none}
-      .approach-collage img:first-child{left:-12%;top:12%}
-      .approach-collage img:last-child{right:-14%;bottom:27%}
+      .code-plate{padding:18px;align-items:flex-start;overflow:hidden}
+      .code-plate pre{font-size:.7rem;line-height:1.5}
+      .social-splash{width:23vw;right:8vw;bottom:36%;border-radius:15px}
+      .phone{width:22vw;border-radius:14px}
+      .phone.one{left:8vw;bottom:36%}
+      .phone.two{left:34vw;bottom:33%}
+      .approach-collage img{width:70vw;max-width:none}
+      .approach-collage img:first-child{left:-12%;top:11%}
+      .approach-collage img:last-child{right:-14%;bottom:31%}
       .scroll-hint{right:var(--pad);bottom:18px}
       .scene-no{left:var(--pad);top:calc(var(--nav-h) + 10px)}
+      html[lang^="zh"] .scene-title,html[lang^="zh"] .intro .scene-title{max-width:14em;font-size:clamp(2rem,9.2vw,3.25rem)}
+      html[lang^="zh"] .scene-copy{max-width:94%;line-height:1.7}
     }
 
     @media(prefers-reduced-motion:reduce){
@@ -415,21 +452,20 @@
   <main id="top">
     <section class="experience" id="experience" style="--scene-count:8">
       <div class="stage" id="stage">
-
-        <article class="scene center is-active" data-scene="0" data-tone="#0b0d0f">
+        <article class="scene center intro is-active" data-scene="0" data-tone="#0b0d0f">
           <div class="scene-base"></div>
           <div class="intro-grid"></div>
           <div class="webgl" id="webgl" aria-hidden="true"></div>
           <div class="scene-shade"></div>
           <div class="scene-content">
-            <p class="kicker" data-i18n="introKicker">QA / SDET ENGINEER</p>
-            <h1 class="scene-title" data-i18n="introTitle">QA / SDET across web, API, data and mobile.</h1>
-            <p class="scene-copy" data-i18n="introBody">I build automation, investigate failures end to end, and work close enough to the product to fix the problem when it is not the test.</p>
+            <p class="scene-label" data-i18n="introLabel">QA / SDET · SOFTWARE ENGINEERING</p>
+            <h1 class="scene-title" data-i18n="introTitle">I test software from the UI down to the data.</h1>
+            <p class="scene-copy" data-i18n="introBody">I build automation across web, API, database, mobile and CI. When something fails, I trace it to the source—and fix the product when the test is not the problem.</p>
           </div>
           <div class="scroll-hint" id="scroll-hint" data-i18n="scroll">Scroll</div>
         </article>
 
-        <article class="scene project-scene" data-scene="1" data-tone="#161513" style="--image-pos:center top;--image-brightness:.34;--image-opacity:.9">
+        <article class="scene" data-scene="1" data-tone="#161513" style="--image-pos:center top;--image-brightness:.3;--image-opacity:.9">
           <div class="scene-base"></div>
           <img class="scene-blur" src="https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png" alt="" aria-hidden="true" />
           <div class="scene-shade"></div>
@@ -438,14 +474,14 @@
           </div>
           <div class="scene-no">01 / 06</div>
           <div class="scene-content">
-            <p class="kicker" data-i18n="commerceKicker">END-TO-END QA</p>
-            <h2 class="scene-title">CommerceOps QA Demo</h2>
-            <p class="scene-copy" data-i18n="commerceBody">One commerce flow checked from browser action to API, database, webhooks and notifications.</p>
+            <p class="scene-label">CommerceOps QA Demo</p>
+            <h2 class="scene-title" data-i18n="commerceTitle">One flow, checked all the way through.</h2>
+            <p class="scene-copy" data-i18n="commerceBody">Browser → API → database → webhook → notification. The test only passes when the full path agrees.</p>
             <a class="scene-link" href="https://github.com/CTWalk/Shooting_App_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
           </div>
         </article>
 
-        <article class="scene project-scene right" data-scene="2" data-tone="#0d1420" style="--image-brightness:.28;--image-sat:.65;--image-opacity:.64">
+        <article class="scene right" data-scene="2" data-tone="#0d1420" style="--image-brightness:.24;--image-sat:.62;--image-opacity:.62">
           <div class="scene-base"></div>
           <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-nocodee2e/CTWalk/NoCodeE2E-public" alt="" aria-hidden="true" />
           <div class="scene-shade"></div>
@@ -464,14 +500,14 @@
           </div>
           <div class="scene-no">02 / 06</div>
           <div class="scene-content">
-            <p class="kicker" data-i18n="nocodeKicker">TEST TOOLING</p>
-            <h2 class="scene-title">noCodeE2E</h2>
-            <p class="scene-copy" data-i18n="nocodeBody">A YAML-driven Playwright runner that keeps readable test intent separate from locator maintenance and failure evidence.</p>
+            <p class="scene-label">noCodeE2E</p>
+            <h2 class="scene-title" data-i18n="nocodeTitle">Readable tests. Maintainable locators.</h2>
+            <p class="scene-copy" data-i18n="nocodeBody">YAML describes intent. Playwright runs it. Locators, failure evidence and CI stay separate so the suite is easier to maintain.</p>
             <a class="scene-link" href="https://github.com/CTWalk/NoCodeE2E-public" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
           </div>
         </article>
 
-        <article class="scene project-scene" data-scene="3" data-tone="#10181a" style="--image-brightness:.26;--image-sat:.72;--image-opacity:.72">
+        <article class="scene" data-scene="3" data-tone="#10181a" style="--image-brightness:.23;--image-sat:.68;--image-opacity:.68">
           <div class="scene-base"></div>
           <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-social/CTWalk/SocialPlatform" alt="" aria-hidden="true" />
           <div class="scene-shade"></div>
@@ -483,14 +519,14 @@
           </div>
           <div class="scene-no">03 / 06</div>
           <div class="scene-content">
-            <p class="kicker" data-i18n="socialKicker">RELEASE QUALITY</p>
-            <h2 class="scene-title">SocialPlatform</h2>
-            <p class="scene-copy" data-i18n="socialBody">A role-based product with web, API, database, performance and mobile checks connected into one release flow.</p>
+            <p class="scene-label">SocialPlatform</p>
+            <h2 class="scene-title" data-i18n="socialTitle">One release path, many layers of evidence.</h2>
+            <p class="scene-copy" data-i18n="socialBody">Build, API, database, performance, web and mobile checks work together instead of living as isolated test suites.</p>
             <a class="scene-link" href="https://github.com/CTWalk/SocialPlatform" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
           </div>
         </article>
 
-        <article class="scene project-scene right" data-scene="4" data-tone="#171412" style="--image-pos:center;--image-brightness:.38;--image-sat:.76;--image-opacity:.86">
+        <article class="scene right" data-scene="4" data-tone="#171412" style="--image-pos:center;--image-brightness:.32;--image-sat:.72;--image-opacity:.82">
           <div class="scene-base"></div>
           <img class="scene-bg scene-object" src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png" alt="" aria-hidden="true" />
           <div class="scene-shade"></div>
@@ -501,9 +537,9 @@
           <div class="phone two scene-object" aria-hidden="true"><img src="https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-cast-member.png" alt="" /></div>
           <div class="scene-no">04 / 06</div>
           <div class="scene-content">
-            <p class="kicker" data-i18n="cueKicker">PRODUCT ENGINEERING</p>
-            <h2 class="scene-title">CueSheet</h2>
-            <p class="scene-copy" data-i18n="cueBody">A full-stack scheduling product. When availability changes, the new plan aims to disturb as little of the existing schedule as possible.</p>
+            <p class="scene-label">CueSheet</p>
+            <h2 class="scene-title" data-i18n="cueTitle">I build the product, too.</h2>
+            <p class="scene-copy" data-i18n="cueBody">CueSheet is a full-stack rehearsal scheduler. When availability changes, it replans while keeping as much of the existing schedule as possible.</p>
             <a class="scene-link" href="https://github.com/CTWalk/CueSheet_demo" target="_blank" rel="noreferrer"><span data-i18n="viewRepo">View repository</span><span class="arrow">↗</span></a>
           </div>
         </article>
@@ -517,13 +553,13 @@
           <div class="scene-shade"></div>
           <div class="scene-no">05 / 06</div>
           <div class="scene-content">
-            <p class="kicker" data-i18n="approachKicker">HOW I WORK</p>
-            <h2 class="scene-title" data-i18n="approachTitle">QA that stays close to the product.</h2>
-            <p class="scene-copy" data-i18n="approachBody">I choose the layer where the failure can actually be seen, keep test state controlled, leave useful evidence, and read product code when the problem crosses the test boundary.</p>
+            <p class="scene-label" data-i18n="approachLabel">How I work</p>
+            <h2 class="scene-title" data-i18n="approachTitle">I choose the test layer before I choose the test tool.</h2>
+            <p class="scene-copy" data-i18n="approachBody">I use the layer that can actually prove the behavior, keep test state controlled, and leave enough evidence to debug a failure. QA stays connected to the product code.</p>
           </div>
         </article>
 
-        <article class="scene project-scene right" data-scene="6" data-tone="#17150e" style="--image-brightness:.27;--image-sat:.62;--image-opacity:.7">
+        <article class="scene right" data-scene="6" data-tone="#17150e" style="--image-brightness:.23;--image-sat:.58;--image-opacity:.64">
           <div class="scene-base"></div>
           <img class="scene-bg scene-object" src="https://opengraph.githubassets.com/ctwalk-decision/CTWalk/decision-contract-audit" alt="" aria-hidden="true" />
           <div class="scene-shade"></div>
@@ -532,9 +568,9 @@
           </div>
           <div class="scene-no">06 / 06</div>
           <div class="scene-content">
-            <p class="kicker" data-i18n="recentKicker">RECENTLY</p>
-            <h2 class="scene-title" data-i18n="recentTitle">Applying the same QA habits to AI tooling.</h2>
-            <p class="scene-copy" data-i18n="recentBody">I check what was actually evaluated, what happens when information is missing, and whether failures can be reproduced. It is an extension, not the main track.</p>
+            <p class="scene-label" data-i18n="recentLabel">Recently</p>
+            <h2 class="scene-title" data-i18n="recentTitle">The same QA questions, applied to AI tooling.</h2>
+            <p class="scene-copy" data-i18n="recentBody">What was evaluated? What happens when data is missing? Can the failure be reproduced? This is a side area of my QA work, not the main focus.</p>
             <a class="scene-link" href="https://github.com/CTWalk/decision-contract-audit" target="_blank" rel="noreferrer"><span>Decision Contract Audit</span><span class="arrow">↗</span></a>
           </div>
         </article>
@@ -544,8 +580,8 @@
           <div class="intro-grid"></div>
           <div class="scene-shade"></div>
           <div class="scene-content">
-            <p class="kicker">CTWalk</p>
-            <h2 class="scene-title" data-i18n="outroTitle">More work lives on GitHub.</h2>
+            <p class="scene-label">CTWalk</p>
+            <h2 class="scene-title" data-i18n="outroTitle">More projects and engineering history live on GitHub.</h2>
             <a class="scene-link" href="https://github.com/CTWalk" target="_blank" rel="noreferrer"><span data-i18n="openGithub">Open GitHub</span><span class="arrow">↗</span></a>
           </div>
         </article>
@@ -558,51 +594,51 @@
       en:{
         title:'CTWalk — QA / SDET Engineer',
         description:'CTWalk — QA/SDET engineer working across web, API, data, mobile, automation, and product debugging.',
-        introKicker:'QA / SDET ENGINEER',
-        introTitle:'QA / SDET across web, API, data and mobile.',
-        introBody:'I build automation, investigate failures end to end, and work close enough to the product to fix the problem when it is not the test.',
+        introLabel:'QA / SDET · SOFTWARE ENGINEERING',
+        introTitle:'I test software from the UI down to the data.',
+        introBody:'I build automation across web, API, database, mobile and CI. When something fails, I trace it to the source—and fix the product when the test is not the problem.',
         scroll:'Scroll',
-        commerceKicker:'END-TO-END QA',
-        commerceBody:'One commerce flow checked from browser action to API, database, webhooks and notifications.',
-        nocodeKicker:'TEST TOOLING',
-        nocodeBody:'A YAML-driven Playwright runner that keeps readable test intent separate from locator maintenance and failure evidence.',
-        socialKicker:'RELEASE QUALITY',
-        socialBody:'A role-based product with web, API, database, performance and mobile checks connected into one release flow.',
-        cueKicker:'PRODUCT ENGINEERING',
-        cueBody:'A full-stack scheduling product. When availability changes, the new plan aims to disturb as little of the existing schedule as possible.',
-        approachKicker:'HOW I WORK',
-        approachTitle:'QA that stays close to the product.',
-        approachBody:'I choose the layer where the failure can actually be seen, keep test state controlled, leave useful evidence, and read product code when the problem crosses the test boundary.',
-        recentKicker:'RECENTLY',
-        recentTitle:'Applying the same QA habits to AI tooling.',
-        recentBody:'I check what was actually evaluated, what happens when information is missing, and whether failures can be reproduced. It is an extension, not the main track.',
+        commerceTitle:'One flow, checked all the way through.',
+        commerceBody:'Browser → API → database → webhook → notification. The test only passes when the full path agrees.',
+        nocodeTitle:'Readable tests. Maintainable locators.',
+        nocodeBody:'YAML describes intent. Playwright runs it. Locators, failure evidence and CI stay separate so the suite is easier to maintain.',
+        socialTitle:'One release path, many layers of evidence.',
+        socialBody:'Build, API, database, performance, web and mobile checks work together instead of living as isolated test suites.',
+        cueTitle:'I build the product, too.',
+        cueBody:'CueSheet is a full-stack rehearsal scheduler. When availability changes, it replans while keeping as much of the existing schedule as possible.',
+        approachLabel:'How I work',
+        approachTitle:'I choose the test layer before I choose the test tool.',
+        approachBody:'I use the layer that can actually prove the behavior, keep test state controlled, and leave enough evidence to debug a failure. QA stays connected to the product code.',
+        recentLabel:'Recently',
+        recentTitle:'The same QA questions, applied to AI tooling.',
+        recentBody:'What was evaluated? What happens when data is missing? Can the failure be reproduced? This is a side area of my QA work, not the main focus.',
         viewRepo:'View repository',
-        outroTitle:'More work lives on GitHub.',
+        outroTitle:'More projects and engineering history live on GitHub.',
         openGithub:'Open GitHub'
       },
       zh:{
         title:'CTWalk — QA / SDET 工程師',
-        description:'CTWalk — QA / SDET 工程師，工作範圍涵蓋網頁、API、資料、手機端、自動化測試與產品除錯。',
-        introKicker:'QA / SDET 工程師',
-        introTitle:'從網頁、API、資料到手機端，我都會測，也會一路追到問題真正發生的地方。',
-        introBody:'我做自動化測試，也會把失敗原因一路查清楚；如果問題不在測試，而在產品程式，我也會直接修。',
-        scroll:'向下',
-        commerceKicker:'端到端 QA',
-        commerceBody:'同一條電商流程，從畫面操作一路核對 API、資料庫、Webhook 與通知結果。',
-        nocodeKicker:'測試工具',
-        nocodeBody:'用 YAML 寫測試流程，Playwright 負責執行；定位方式與失敗證據分開管理，讓測試比較好讀，也比較好維護。',
-        socialKicker:'交付前的品質檢查',
-        socialBody:'用多角色社群產品，把網頁、API、資料庫、效能與手機端檢查串進同一套交付流程。',
-        cueKicker:'產品開發',
-        cueBody:'我做並部署的排練排程工具。有人臨時不能來時，除了要重新排得出來，也要盡量少動原本的安排。',
-        approachKicker:'我怎麼做 QA',
-        approachTitle:'QA 不應該只停在測試腳本。',
-        approachBody:'我先判斷問題在哪一層最看得清楚，再決定怎麼測。測試資料要能控制，失敗要留足夠線索；問題跨到產品程式時，我也會直接往裡面查。',
-        recentKicker:'最近',
-        recentTitle:'也把同一套 QA 做法用在 AI 工具。',
-        recentBody:'我會確認它到底測了什麼、缺資料時會不會誤判，以及錯誤能不能重現。這只是延伸，不是主軸。',
+        description:'CTWalk — QA / SDET 工程師，工作範圍涵蓋網頁、API、資料庫、手機端、自動化測試與產品除錯。',
+        introLabel:'QA / SDET · 軟體工程',
+        introTitle:'我做 QA / SDET，從畫面一路驗證到 API、資料庫與手機端。',
+        introBody:'我負責自動化測試，也會追查失敗真正出在哪一層。問題如果不在測試，而在產品程式，我也會直接往下修。',
+        scroll:'向下滑',
+        commerceTitle:'一條流程，從畫面一路驗證到最後。',
+        commerceBody:'瀏覽器、API、資料庫、Webhook、通知都要對得起來。不是畫面顯示成功，就算測完。',
+        nocodeTitle:'測試流程好讀，定位方式也能獨立維護。',
+        nocodeBody:'YAML 負責描述操作，Playwright 負責執行。Locator、失敗證據與 CI 分開管理，改版時比較容易維護。',
+        socialTitle:'不同層的檢查，收進同一條交付流程。',
+        socialBody:'Build、API、資料庫、效能、網頁與手機端，各自負責適合的檢查，最後一起判斷這個版本能不能交付。',
+        cueTitle:'我不只測產品，也會把產品做出來。',
+        cueBody:'CueSheet 是我做並部署的排練排程工具。有人臨時不能來時，系統會重新排程，同時盡量保留原本的安排。',
+        approachLabel:'我怎麼做 QA',
+        approachTitle:'先決定要在哪一層驗證，再決定用什麼工具。',
+        approachBody:'我會選能真正證明行為的層級，控制測試資料，並保留足夠的 log、截圖或 trace。查到問題跨進產品程式時，就繼續往裡面看。',
+        recentLabel:'最近',
+        recentTitle:'同一套 QA 問題，也能用來檢查 AI 工具。',
+        recentBody:'到底測到了什麼？資料缺少時會不會誤判？錯誤能不能重現？這是 QA 工作的延伸，不是我的主軸。',
         viewRepo:'查看專案',
-        outroTitle:'更多實作都在 GitHub。',
+        outroTitle:'更多專案與實作紀錄都在 GitHub。',
         openGithub:'查看 GitHub'
       }
     };
@@ -632,22 +668,20 @@
     applyLanguage(initial);
 
     const experience=document.getElementById('experience');
-    const stage=document.getElementById('stage');
     const scenes=[...document.querySelectorAll('.scene')];
     const scrollHint=document.getElementById('scroll-hint');
     const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const pointer={x:0,y:0};
     const pointerTarget={x:0,y:0};
-    let currentStep=0;
     let raf=0;
 
     const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v));
     const smooth=t=>t*t*(3-2*t);
     function alphaFor(distance){
       const d=Math.abs(distance);
-      if(d<=.28) return 1;
-      if(d>=.78) return 0;
-      return 1-smooth((d-.28)/.5);
+      if(d<=.36) return 1;
+      if(d>=.60) return 0;
+      return 1-smooth((d-.36)/.24);
     }
 
     function renderExperience(){
@@ -656,49 +690,48 @@
       const travel=Math.max(1,experience.offsetHeight-window.innerHeight);
       const progress=clamp(-rect.top/travel);
       const step=progress*(scenes.length-1);
-      currentStep=step;
-      pointer.x+=(pointerTarget.x-pointer.x)*.065;
-      pointer.y+=(pointerTarget.y-pointer.y)*.065;
+      pointer.x+=(pointerTarget.x-pointer.x)*.055;
+      pointer.y+=(pointerTarget.y-pointer.y)*.055;
 
       scenes.forEach((scene,index)=>{
         const rel=step-index;
         const opacity=alphaFor(rel);
         scene.style.opacity=opacity.toFixed(3);
-        scene.classList.toggle('is-active',opacity>.55);
+        scene.classList.toggle('is-active',opacity>.7);
         scene.style.zIndex=String(10-Math.min(9,Math.round(Math.abs(rel)*2)));
 
         const content=scene.querySelector('.scene-content');
         const isCenter=scene.classList.contains('center');
         if(content){
-          const y=rel*64;
-          const x=(scene.classList.contains('right')?-1:1)*rel*18;
-          if(isCenter) content.style.transform=`translate(-50%,calc(50% + ${y*.38}px))`;
+          const y=rel*20;
+          const x=(scene.classList.contains('right')?-1:1)*rel*8;
+          if(isCenter) content.style.transform=`translate(-50%,calc(50% + ${y*.25}px))`;
           else content.style.transform=`translate3d(${x}px,${y}px,0)`;
-          content.style.opacity=String(clamp(opacity*1.08));
+          content.style.opacity=String(clamp(opacity*1.12));
         }
 
         const bg=scene.querySelector('.scene-bg');
         if(bg){
           const scale=1.045+Math.min(.07,Math.abs(rel)*.045);
-          bg.style.transform=`translate3d(${pointer.x*10-rel*16}px,${pointer.y*8+rel*12}px,0) scale(${scale})`;
+          bg.style.transform=`translate3d(${pointer.x*8-rel*15}px,${pointer.y*6+rel*10}px,0) scale(${scale})`;
         }
         const blur=scene.querySelector('.scene-blur');
         if(blur){
-          blur.style.transform=`translate3d(${pointer.x*6-rel*10}px,${pointer.y*5+rel*9}px,0) scale(${1.09+Math.abs(rel)*.03})`;
+          blur.style.transform=`translate3d(${pointer.x*5-rel*9}px,${pointer.y*4+rel*8}px,0) scale(${1.09+Math.abs(rel)*.03})`;
         }
         scene.querySelectorAll('.scene-object').forEach((object,objectIndex)=>{
           const dir=objectIndex%2===0?1:-1;
-          const px=pointer.x*(7+objectIndex*2)*dir;
-          const py=pointer.y*(5+objectIndex);
+          const px=pointer.x*(6+objectIndex*1.5)*dir;
+          const py=pointer.y*(4+objectIndex);
           const tx=rel*(18+objectIndex*5)*dir;
-          const ty=rel*(24+objectIndex*4);
-          const scale=1-Math.min(.08,Math.abs(rel)*.04);
+          const ty=rel*(22+objectIndex*4);
+          const scale=1-Math.min(.07,Math.abs(rel)*.035);
           object.style.transform=`translate3d(${px+tx}px,${py+ty}px,0) scale(${scale})`;
           object.style.opacity=String(clamp(opacity*1.12));
         });
       });
 
-      if(scrollHint) scrollHint.style.opacity=String(clamp(1-step*2.4));
+      if(scrollHint) scrollHint.style.opacity=String(clamp(1-step*2.7));
       raf=requestAnimationFrame(renderExperience);
     }
 
@@ -733,7 +766,6 @@
         const group=new THREE.Group();
         group.position.x=3.1;
         scene.add(group);
-
         const pts=[];
         for(let i=0;i<42;i++){
           const a=i*.72;
@@ -748,11 +780,9 @@
         }
         const geo=new THREE.BufferGeometry();
         geo.setAttribute('position',new THREE.Float32BufferAttribute(line,3));
-        const lines=new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:0x8ea9ff,transparent:true,opacity:.18}));
-        group.add(lines);
+        group.add(new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:0x8ea9ff,transparent:true,opacity:.16})));
         const pointGeo=new THREE.BufferGeometry().setFromPoints(pts);
-        const points=new THREE.Points(pointGeo,new THREE.PointsMaterial({color:0xe5ebff,size:.055,transparent:true,opacity:.58,sizeAttenuation:true}));
-        group.add(points);
+        group.add(new THREE.Points(pointGeo,new THREE.PointsMaterial({color:0xe5ebff,size:.052,transparent:true,opacity:.5,sizeAttenuation:true})));
 
         function resize(){
           const rect=host.getBoundingClientRect();
@@ -764,8 +794,8 @@
         }
         let frame=0;
         function draw(t=0){
-          group.rotation.z=Math.sin(t*.00012)*.035;
-          group.rotation.y=Math.cos(t*.0001)*.06;
+          group.rotation.z=Math.sin(t*.00012)*.03;
+          group.rotation.y=Math.cos(t*.0001)*.05;
           renderer.render(scene,camera);
           frame=requestAnimationFrame(draw);
         }
