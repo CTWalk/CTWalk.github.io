@@ -15,54 +15,73 @@
   const style = document.createElement('style');
   style.dataset.socialIntegrated = 'true';
   style.textContent = `
-    .social-v2-product,.social-v2-ci-world,.social-v2-proof{position:absolute;inset:0;width:100%;height:100%}
-    .social-v2-product{z-index:1;object-fit:cover;object-position:center top;background:#0d1117;will-change:opacity,transform,filter}
-    .social-v2-ci-world{z-index:2;opacity:0;transform-origin:center;will-change:opacity,transform}
-    .social-v2-ci-base,.social-v2-ci-lens{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1117;transform-origin:center;will-change:filter,opacity,clip-path}
-    .social-v2-ci-base{z-index:1}
-    .social-v2-ci-lens{z-index:2;opacity:0;filter:brightness(1.1) saturate(1.05);clip-path:inset(50% 3% 50% 3% round 8px)}
-    .social-v2-job{position:absolute;z-index:3;left:6%;right:6%;top:50%;height:38px;display:flex;align-items:center;gap:9px;padding:0 10px;border-left:2px solid rgba(125,230,181,.9);background:linear-gradient(90deg,rgba(8,12,18,.88),rgba(8,12,18,.32) 62%,transparent);color:#f0f3f7;opacity:0;transform:translateY(-50%);pointer-events:none;will-change:top,opacity,transform}
-    .social-v2-job-check{display:grid;width:18px;height:18px;place-items:center;border-radius:50%;background:rgba(125,230,181,.13);color:#9be9c2;font:750 .67rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;border:1px solid rgba(155,233,194,.25)}
-    .social-v2-job strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:680 clamp(.61rem,.78vw,.75rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.015em;text-shadow:0 2px 12px rgba(0,0,0,.72)}
-    .social-v2-proof{z-index:4;object-fit:contain;background:#0d1117;opacity:0;clip-path:inset(47% 12% 47% 12% round 10px);transform:scale(.72);will-change:opacity,transform,clip-path,filter;box-shadow:0 28px 80px rgba(0,0,0,.36)}
-    .social-v2-proof-db{object-fit:cover;object-position:center}
-    .social-v2-proof-e2e,.social-v2-proof-mobile{padding:7% 4%;background:#0d1117}
+    .social-showcase{
+      top:12%;
+      right:max(2.5vw,calc((100% - var(--content))/2));
+      width:min(56vw,840px);
+      border-radius:clamp(14px,1.6vw,24px);
+      background:#0d1117
+    }
+    .social-oryzo-product,.social-oryzo-ci-world,.social-oryzo-proof{
+      position:absolute;inset:0;width:100%;height:100%
+    }
+    .social-oryzo-product{
+      z-index:1;object-fit:cover;object-position:center top;background:#0d1117;
+      will-change:opacity,transform,filter
+    }
+    .social-oryzo-ci-world{
+      z-index:2;overflow:hidden;opacity:0;transform-origin:center;
+      clip-path:inset(8% 9% 8% 9% round 20px);
+      will-change:opacity,transform,clip-path
+    }
+    .social-oryzo-ci-base,.social-oryzo-ci-focus{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1117;
+      transform-origin:center;will-change:opacity,filter,clip-path
+    }
+    .social-oryzo-ci-base{z-index:1}
+    .social-oryzo-ci-focus{
+      z-index:2;opacity:0;filter:brightness(1.06) contrast(1.02) saturate(1.02);
+      clip-path:inset(50% 1.5% 50% 1.5% round 5px)
+    }
+    .social-oryzo-proof{
+      z-index:4;opacity:0;background:#0d1117;object-fit:contain;
+      clip-path:inset(48% 7% 48% 7% round 10px);
+      transform:scale(.96);transform-origin:center;
+      will-change:opacity,transform,clip-path,filter
+    }
+    .social-oryzo-proof-db{object-fit:cover;object-position:center}
+    .social-oryzo-proof-e2e,.social-oryzo-proof-mobile{padding:5.5% 3.5%;background:#0d1117}
     @media(max-width:760px){
-      .social-v2-job{left:4%;right:4%;height:30px;gap:6px;padding:0 7px}
-      .social-v2-job-check{width:15px;height:15px;font-size:.56rem}
-      .social-v2-job strong{font-size:.53rem}
-      .social-v2-proof-e2e,.social-v2-proof-mobile{padding:5% 2%}
+      .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
+      .social-oryzo-proof-e2e,.social-oryzo-proof-mobile{padding:4% 2%}
     }
     @media(prefers-reduced-motion:reduce){
-      .social-v2-product,.social-v2-proof,.social-v2-ci-lens,.social-v2-job{display:none!important}
-      .social-v2-ci-world{opacity:1!important;transform:none!important}
-      .social-v2-ci-base{filter:none!important}
+      .social-oryzo-product,.social-oryzo-ci-focus,.social-oryzo-proof{display:none!important}
+      .social-oryzo-ci-world{opacity:1!important;transform:none!important;clip-path:none!important}
+      .social-oryzo-ci-base{filter:none!important}
     }
   `;
   document.head.appendChild(style);
 
   showcase.innerHTML = `
-    <img class="social-v2-product" src="${assets.product}" alt="SocialPlatform desktop review queue" />
-    <div class="social-v2-ci-world" aria-hidden="true">
-      <img class="social-v2-ci-base" src="${assets.ci}" alt="" />
-      <img class="social-v2-ci-lens" src="${assets.ci}" alt="" />
-      <div class="social-v2-job"><span class="social-v2-job-check">✓</span><strong></strong></div>
+    <img class="social-oryzo-product" src="${assets.product}" alt="SocialPlatform desktop review queue" />
+    <div class="social-oryzo-ci-world" aria-hidden="true">
+      <img class="social-oryzo-ci-base" src="${assets.ci}" alt="" />
+      <img class="social-oryzo-ci-focus" src="${assets.ci}" alt="" />
     </div>
-    <img class="social-v2-proof social-v2-proof-db" src="${assets.db}" alt="Database integrity execution evidence from the same successful CI run" />
-    <img class="social-v2-proof social-v2-proof-e2e" src="${assets.e2e}" alt="Playwright E2E result showing six tests passed" />
-    <img class="social-v2-proof social-v2-proof-mobile" src="${assets.mobile}" alt="Mobile layout test result showing two tests passed" />
+    <img class="social-oryzo-proof social-oryzo-proof-db" src="${assets.db}" alt="Database integrity execution evidence from the same successful CI run" />
+    <img class="social-oryzo-proof social-oryzo-proof-e2e" src="${assets.e2e}" alt="Playwright E2E result showing six tests passed" />
+    <img class="social-oryzo-proof social-oryzo-proof-mobile" src="${assets.mobile}" alt="Mobile layout test result showing two tests passed" />
   `;
 
-  const product = showcase.querySelector('.social-v2-product');
-  const ciWorld = showcase.querySelector('.social-v2-ci-world');
-  const ciBase = showcase.querySelector('.social-v2-ci-base');
-  const ciLens = showcase.querySelector('.social-v2-ci-lens');
-  const job = showcase.querySelector('.social-v2-job');
-  const jobName = job.querySelector('strong');
+  const product = showcase.querySelector('.social-oryzo-product');
+  const ciWorld = showcase.querySelector('.social-oryzo-ci-world');
+  const ciBase = showcase.querySelector('.social-oryzo-ci-base');
+  const ciFocus = showcase.querySelector('.social-oryzo-ci-focus');
   const proofs = {
-    db: showcase.querySelector('.social-v2-proof-db'),
-    e2e: showcase.querySelector('.social-v2-proof-e2e'),
-    mobile: showcase.querySelector('.social-v2-proof-mobile')
+    db: showcase.querySelector('.social-oryzo-proof-db'),
+    e2e: showcase.querySelector('.social-oryzo-proof-e2e'),
+    mobile: showcase.querySelector('.social-oryzo-proof-mobile')
   };
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -71,14 +90,24 @@
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = t => t * t * (3 - 2 * t);
   const mix = (a, b, t) => a + (b - a) * t;
-  const windowValue = (p, start, inEnd, outStart, end) =>
-    smooth(clamp((p - start) / Math.max(.0001, inEnd - start))) *
-    (1 - smooth(clamp((p - outStart) / Math.max(.0001, end - outStart))));
+  const ramp = (p, start, end) => smooth(clamp((p - start) / Math.max(.0001, end - start)));
 
   const jobs = {
-    db: { y: .53, name: 'db-integrity-tests' },
-    e2e: { y: .71, name: 'e2e-tests' },
-    mobile: { y: .84, name: 'mobile-layout-tests' }
+    db: { y: .53 },
+    e2e: { y: .71 },
+    mobile: { y: .84 }
+  };
+
+  const proofRanges = {
+    db: { openStart: .34, openEnd: .40, closeStart: .51, closeEnd: .57 },
+    e2e: { openStart: .63, openEnd: .67, closeStart: .74, closeEnd: .78 },
+    mobile: { openStart: .82, openEnd: .85, closeStart: .90, closeEnd: .93 }
+  };
+
+  const focusRanges = {
+    db: { inStart: .29, inEnd: .33, outStart: .57, outEnd: .60 },
+    e2e: { inStart: .59, inEnd: .62, outStart: .78, outEnd: .80 },
+    mobile: { inStart: .79, inEnd: .81, outStart: .93, outEnd: .95 }
   };
 
   function getScenePhase() {
@@ -98,84 +127,91 @@
       }
       cursor += duration;
     }
-    const rel = step - 3;
-    return clamp((rel + .42) / .84);
+    return clamp(((step - 3) + .42) / .84);
   }
 
-  function proofValue(phase, type) {
-    if (type === 'db') return windowValue(phase, .27, .36, .42, .48);
-    if (type === 'e2e') return windowValue(phase, .54, .60, .64, .69);
-    return windowValue(phase, .74, .80, .84, .89);
+  function holdValue(phase, range) {
+    if (phase < range.openStart) return 0;
+    if (phase < range.openEnd) return ramp(phase, range.openStart, range.openEnd);
+    if (phase <= range.closeStart) return 1;
+    if (phase < range.closeEnd) return 1 - ramp(phase, range.closeStart, range.closeEnd);
+    return 0;
   }
 
-  function currentJob(phase) {
-    if (phase < .48) return { ...jobs.db, type: 'db' };
-    if (phase < .54) {
-      const t = smooth(clamp((phase - .48) / .06));
-      return { y: mix(jobs.db.y, jobs.e2e.y, t), name: t < .5 ? jobs.db.name : jobs.e2e.name, type: t < .5 ? 'db' : 'e2e' };
-    }
-    if (phase < .69) return { ...jobs.e2e, type: 'e2e' };
-    if (phase < .74) {
-      const t = smooth(clamp((phase - .69) / .05));
-      return { y: mix(jobs.e2e.y, jobs.mobile.y, t), name: t < .5 ? jobs.e2e.name : jobs.mobile.name, type: t < .5 ? 'e2e' : 'mobile' };
-    }
-    return { ...jobs.mobile, type: 'mobile' };
+  function focusValue(phase, range) {
+    if (phase < range.inStart) return 0;
+    if (phase < range.inEnd) return ramp(phase, range.inStart, range.inEnd);
+    if (phase <= range.outStart) return 1;
+    if (phase < range.outEnd) return 1 - ramp(phase, range.outStart, range.outEnd);
+    return 0;
   }
 
-  function setProof(node, amount, originY) {
+  function setProof(node, amount, originY, finalScale) {
     if (!node) return;
-    const halfHeight = mix(3.2, 46, amount);
     const center = originY * 100;
-    const top = clamp(center - halfHeight, 0, 96);
-    const bottom = clamp(100 - (center + halfHeight), 0, 96);
-    const side = mix(12, 3.5, amount);
+    const bandHalf = mix(3.2, 50, amount);
+    const top = clamp(center - bandHalf, 0, 96);
+    const bottom = clamp(100 - (center + bandHalf), 0, 96);
+    const side = mix(7, 0, amount);
+    const radius = mix(10, 0, amount);
     node.style.opacity = String(amount);
     node.style.transformOrigin = `50% ${center}%`;
-    node.style.transform = `scale(${.72 + amount * .31})`;
-    node.style.clipPath = `inset(${top}% ${side}% ${bottom}% ${side}% round ${10 + amount * 8}px)`;
-    node.style.filter = `brightness(${.86 + amount * .14})`;
+    node.style.transform = `scale(${mix(.96, finalScale, amount)})`;
+    node.style.clipPath = `inset(${top}% ${side}% ${bottom}% ${side}% round ${radius}px)`;
+    node.style.filter = `brightness(${mix(.92, 1, amount)})`;
+  }
+
+  function activeFocus(dbFocus, e2eFocus, mobileFocus) {
+    if (dbFocus >= e2eFocus && dbFocus >= mobileFocus && dbFocus > 0) return { y: jobs.db.y, amount: dbFocus };
+    if (e2eFocus >= mobileFocus && e2eFocus > 0) return { y: jobs.e2e.y, amount: e2eFocus };
+    if (mobileFocus > 0) return { y: jobs.mobile.y, amount: mobileFocus };
+    return { y: .5, amount: 0 };
   }
 
   let raf = 0;
   function render() {
     const phase = getScenePhase();
-    const productOut = smooth(clamp((phase - .10) / .10));
-    const ciIn = smooth(clamp((phase - .12) / .10));
-    const dbProof = proofValue(phase, 'db');
-    const e2eProof = proofValue(phase, 'e2e');
-    const mobileProof = proofValue(phase, 'mobile');
+
+    // Hero transition: the product recedes while the CI surface grows into the same visual territory.
+    const hero = ramp(phase, .11, .23);
+    product.style.opacity = String(1 - hero);
+    product.style.transform = `scale(${1 - hero * .045})`;
+    product.style.filter = `brightness(${1 - hero * .18}) saturate(${1 - hero * .08})`;
+
+    const dbProof = holdValue(phase, proofRanges.db);
+    const e2eProof = holdValue(phase, proofRanges.e2e);
+    const mobileProof = holdValue(phase, proofRanges.mobile);
     const proofMax = Math.max(dbProof, e2eProof, mobileProof);
-    const markerIn = smooth(clamp((phase - .20) / .05));
-    const markerOut = 1 - smooth(clamp((phase - .89) / .055));
-    const markerAlpha = markerIn * markerOut * (1 - proofMax * .78);
-    const focus = markerIn * markerOut;
-    const active = currentJob(phase);
 
-    product.style.opacity = String(1 - productOut);
-    product.style.transform = `translate3d(0,${-productOut * 5}px,0) scale(${1 - productOut * .045})`;
-    product.style.filter = `brightness(${1 - productOut * .16})`;
+    const dbFocus = focusValue(phase, focusRanges.db);
+    const e2eFocus = focusValue(phase, focusRanges.e2e);
+    const mobileFocus = focusValue(phase, focusRanges.mobile);
+    const focus = activeFocus(dbFocus, e2eFocus, mobileFocus);
 
-    const panPercent = (0.5 - active.y) * 40 * focus;
-    const ciScale = 1 + focus * .075;
-    ciWorld.style.opacity = String(ciIn * (1 - proofMax * .62));
-    ciWorld.style.transform = `translate3d(0,${panPercent}%,0) scale(${ciScale})`;
-    ciBase.style.filter = `brightness(${1 - focus * .31 - proofMax * .18}) saturate(${1 - focus * .12})`;
+    const finalPullback = ramp(phase, .94, .985);
+    const heroInset = (1 - hero) * 8;
+    const heroSideInset = (1 - hero) * 9;
+    const focusScale = focus.amount * .028;
+    const pushScale = proofMax * .012;
+    const ciScale = 1 + hero * .012 + focusScale + pushScale - finalPullback * .012;
 
-    const band = 4.4;
-    const top = clamp(active.y * 100 - band, 0, 100);
-    const bottom = clamp(100 - (active.y * 100 + band), 0, 100);
-    ciLens.style.opacity = String(markerAlpha * .96);
-    ciLens.style.clipPath = `inset(${top}% 2.5% ${bottom}% 2.5% round 8px)`;
+    ciWorld.style.opacity = String(hero * (1 - proofMax));
+    ciWorld.style.transformOrigin = `50% ${focus.y * 100}%`;
+    ciWorld.style.transform = `scale(${ciScale})`;
+    ciWorld.style.clipPath = `inset(${heroInset}% ${heroSideInset}% ${heroInset}% ${heroSideInset}% round ${mix(20, 0, hero)}px)`;
 
-    job.style.top = `${active.y * 100}%`;
-    job.style.opacity = String(markerAlpha);
-    job.style.transform = `translateY(-50%) scale(${.985 + markerAlpha * .015})`;
-    jobName.textContent = active.name;
+    // The real CI capture is the only focus UI: nearby content quiets, selected real pixels stay crisp.
+    ciBase.style.filter = `brightness(${1 - focus.amount * .16}) saturate(${1 - focus.amount * .06})`;
+    const bandHalf = 4.1;
+    const focusTop = clamp(focus.y * 100 - bandHalf, 0, 100);
+    const focusBottom = clamp(100 - (focus.y * 100 + bandHalf), 0, 100);
+    ciFocus.style.opacity = String(focus.amount * (1 - proofMax));
+    ciFocus.style.clipPath = `inset(${focusTop}% 1.5% ${focusBottom}% 1.5% round 5px)`;
 
-    const screenY = clamp(.5 + (active.y - .5) * ciScale + panPercent / 100, .08, .92);
-    setProof(proofs.db, dbProof, screenY);
-    setProof(proofs.e2e, e2eProof, screenY);
-    setProof(proofs.mobile, mobileProof, screenY);
+    // Each proof uses the same origin relationship, but its own framing and tempo.
+    setProof(proofs.db, dbProof, jobs.db.y, 1.02);
+    setProof(proofs.e2e, e2eProof, jobs.e2e.y, 1.14);
+    setProof(proofs.mobile, mobileProof, jobs.mobile.y, 1.12);
 
     raf = requestAnimationFrame(render);
   }
