@@ -31,9 +31,9 @@
     .commerce-motion-root{position:absolute;inset:0;isolation:isolate}
 
     .commerce-transition-layer{position:absolute;z-index:4;right:0;left:auto;top:0;width:100vw;height:100%;overflow:visible;pointer-events:none}
-    .commerce-transition-word{position:absolute;left:25%;top:49%;margin:0;max-width:none;color:#f5a524;font:780 clamp(7rem,12.6vw,13.4rem)/.8 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.085em;white-space:nowrap;text-shadow:0 18px 64px rgba(0,0,0,.3);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform}
+    .commerce-transition-word{position:absolute;left:25%;top:49%;margin:0;max-width:none;color:#c0a062;font:500 clamp(7.2rem,13vw,13.8rem)/.88 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-.025em;white-space:nowrap;text-shadow:0 18px 64px rgba(0,0,0,.26);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform}
     .commerce-transition-expired{top:46%}
-    .commerce-transition-unavailable{top:53%;font-size:clamp(6rem,10.9vw,11.7rem)}
+    .commerce-transition-unavailable{top:53%}
 
     .commerce-phone{position:absolute;z-index:5;left:69%;top:50%;height:98%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:transform,filter}
     .commerce-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:25%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
@@ -45,9 +45,9 @@
       .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:49vh;max-height:475px}
       .commerce-phone{left:72%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
       .commerce-transition-layer{right:-4vw;width:100vw}
-      .commerce-transition-word{left:25%;top:48%;font-size:clamp(5rem,23vw,7.4rem);letter-spacing:-.08em}
+      .commerce-transition-word{left:25%;top:48%;font-size:clamp(5rem,23vw,7.4rem);letter-spacing:-.018em}
       .commerce-transition-expired{top:43%}
-      .commerce-transition-unavailable{top:54%;font-size:clamp(4.2rem,19vw,6.2rem)}
+      .commerce-transition-unavailable{top:54%}
     }
     @media(prefers-reduced-motion:reduce){
       .commerce-phone-screen img{opacity:0!important;transform:none!important;filter:none!important}
@@ -61,14 +61,14 @@
   showcase.className = 'commerce-showcase scene-object';
   showcase.setAttribute(
     'aria-label',
-    'CommerceOps QA practice scenarios: check out, expired coupon, and unavailable variant.'
+    'CommerceOps QA practice scenarios: check out, expired coupon, and unavailable.'
   );
   showcase.innerHTML = `
     <div class="commerce-motion-root">
       <div class="commerce-transition-layer" aria-hidden="true">
         <p class="commerce-transition-word commerce-transition-checkout">Check out</p>
         <p class="commerce-transition-word commerce-transition-expired">Expired coupon</p>
-        <p class="commerce-transition-word commerce-transition-unavailable">unavailable variant</p>
+        <p class="commerce-transition-word commerce-transition-unavailable">Unavailable</p>
       </div>
 
       <div class="commerce-phone">
@@ -151,7 +151,7 @@
   function render() {
     const p = getScenePhase();
 
-    // Every scenario first materializes at 25vw in the same CommerceOps yellow,
+    // Every scenario first materializes at 25vw in the same muted CommerceOps yellow,
     // then sweeps across the section while the phone occludes it.
     const checkoutEvent = setSweep(words.checkout, p, .03, .22, 25, 96, 1.025);
     const expiredEvent = setSweep(words.expired, p, .23, .46, 25, 96, 1.035);
