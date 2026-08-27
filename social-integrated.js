@@ -16,99 +16,131 @@
   style.dataset.socialIntegrated = 'true';
   style.textContent = `
     .social-showcase{
-      top:12%;
-      right:max(2.5vw,calc((100% - var(--content))/2));
-      width:min(56vw,840px);
-      border-radius:clamp(14px,1.6vw,24px);
-      background:#0d1117
+      top:11%;right:max(2.5vw,calc((100% - var(--content))/2));width:min(57vw,850px);
+      overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none
     }
-    .social-oryzo-product,.social-oryzo-ci-world,.social-oryzo-proof{
-      position:absolute;inset:0;width:100%;height:100%
-    }
-    .social-oryzo-product{
-      z-index:1;object-fit:cover;object-position:center top;background:#0d1117;
-      will-change:opacity,transform,filter
-    }
-    .social-oryzo-ci-world{
-      z-index:2;overflow:hidden;opacity:0;transform-origin:center;
-      clip-path:inset(8% 9% 8% 9% round 20px);
-      will-change:opacity,transform,clip-path
-    }
-    .social-oryzo-ci-base,.social-oryzo-ci-focus{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0d1117;
-      transform-origin:center;will-change:opacity,filter,clip-path
-    }
-    .social-oryzo-ci-base{z-index:1}
-    .social-oryzo-ci-focus{
-      z-index:2;opacity:0;filter:brightness(1.06) contrast(1.02) saturate(1.02);
-      clip-path:inset(50% 1.5% 50% 1.5% round 5px)
-    }
-    .social-oryzo-proof{
-      z-index:4;opacity:0;background:#0d1117;object-fit:contain;
-      clip-path:inset(48% 7% 48% 7% round 10px);
-      transform:scale(.96);transform-origin:center;
-      will-change:opacity,transform,clip-path,filter
-    }
-    .social-oryzo-proof-db{object-fit:cover;object-position:center}
-    .social-oryzo-proof-e2e,.social-oryzo-proof-mobile{padding:5.5% 3.5%;background:#0d1117}
+    .social-motion-root{position:absolute;inset:0;isolation:isolate}
+    .social-motion-surface{border:1px solid rgba(255,255,255,.18);border-radius:clamp(15px,1.7vw,25px);box-shadow:0 34px 100px rgba(0,0,0,.43);background:#0d1117}
+    .social-motion-product,.social-motion-ci,.social-motion-proof{position:absolute;inset:0;width:100%;height:100%;will-change:opacity,transform,filter,clip-path}
+    .social-motion-product{z-index:2;object-fit:cover;object-position:center top}
+    .social-motion-ci{z-index:1;object-fit:contain;opacity:0;filter:brightness(.5) saturate(.75)}
+    .social-release-world{position:absolute;z-index:4;inset:0;pointer-events:none;will-change:opacity,transform}
+    .social-release-track{position:absolute;left:8%;right:8%;top:50%;height:80px;transform:translateY(-50%);overflow:visible}
+    .social-release-line{fill:none;stroke:rgba(200,213,255,.46);stroke-width:1.4;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(142,169,255,.2))}
+    .social-release-node{fill:#101723;stroke:rgba(200,213,255,.42);stroke-width:1.3;transition:none}
+    .social-release-node.is-lit{fill:#9be9c2;stroke:#9be9c2;filter:drop-shadow(0 0 7px rgba(155,233,194,.48))}
+    .social-release-pulse{fill:#e5ebff;filter:drop-shadow(0 0 9px rgba(142,169,255,.9))}
+    .social-db-stage,.social-device-stage{position:absolute;z-index:6;left:50%;top:50%;color:#e9eeff;pointer-events:none;will-change:opacity,transform,width,height}
+    .social-db-stage{width:150px;height:150px;display:grid;place-items:center;transform:translate(-50%,-50%) scale(.15);opacity:0}
+    .social-db-stage svg{width:112px;height:112px;overflow:visible;filter:drop-shadow(0 15px 30px rgba(0,0,0,.3))}
+    .social-db-stage svg *{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .social-stage-name{position:absolute;left:50%;top:calc(50% + 74px);transform:translateX(-50%);margin:0;color:#f4f6ff;font:720 clamp(.72rem,1vw,.9rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.09em;white-space:nowrap;text-shadow:0 3px 18px rgba(0,0,0,.55)}
+    .social-device-stage{width:280px;height:154px;border:1.5px solid rgba(229,235,255,.88);border-radius:15px;transform:translate(-50%,-50%) scale(.15);opacity:0;box-shadow:0 24px 60px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.04)}
+    .social-device-stage::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:rgba(229,235,255,.46);opacity:var(--device-bar,1)}
+    .social-device-stage::after{content:"";position:absolute;left:18px;top:12px;width:5px;height:5px;border-radius:50%;background:rgba(229,235,255,.75);box-shadow:10px 0 0 rgba(229,235,255,.45),20px 0 0 rgba(229,235,255,.28);opacity:var(--device-bar,1)}
+    .social-execution{position:absolute;inset:34px 18px 18px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:center;justify-items:center;opacity:1}
+    .social-execution span{display:grid;width:24px;height:24px;place-items:center;border:1px solid rgba(200,213,255,.35);border-radius:50%;color:transparent;font:800 .66rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;transform:scale(.72);opacity:.36;will-change:opacity,transform,color,background}
+    .social-execution span.is-done{color:#9be9c2;background:rgba(125,230,181,.1);border-color:rgba(155,233,194,.46);opacity:1;transform:scale(1)}
+    .social-motion-proof{z-index:5;opacity:0;object-fit:cover;clip-path:circle(2% at 50% 50%);transform:scale(.88)}
+    .social-proof-e2e,.social-proof-mobile{object-fit:contain;padding:5% 3%;background:#0d1117}
+    .social-proof-readout{position:absolute;z-index:7;left:50%;top:50%;display:grid;justify-items:center;gap:8px;min-width:250px;transform:translate(-50%,-50%) scale(.92);opacity:0;color:#f4f7ff;text-align:center;text-shadow:0 3px 26px rgba(0,0,0,.72);will-change:opacity,transform}
+    .social-proof-readout small{font:720 clamp(.64rem,.86vw,.78rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;color:#cbd6f7}
+    .social-proof-readout strong{display:flex;align-items:center;gap:10px;font:760 clamp(1.55rem,2.9vw,2.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-.045em}
+    .social-proof-readout .social-proof-check{display:grid;width:34px;height:34px;place-items:center;border:1px solid rgba(155,233,194,.3);border-radius:50%;background:rgba(125,230,181,.12);color:#9be9c2;font-size:.92rem;letter-spacing:0}
+    .social-proof-readout em{font:600 clamp(.58rem,.76vw,.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:rgba(229,235,255,.72);font-style:normal;letter-spacing:.04em}
+    .social-final-glow{position:absolute;z-index:3;left:12%;right:12%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(155,233,194,.16),transparent);box-shadow:0 0 40px rgba(125,230,181,.18);opacity:0;will-change:opacity}
     @media(max-width:760px){
       .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
-      .social-oryzo-proof-e2e,.social-oryzo-proof-mobile{padding:4% 2%}
+      .social-db-stage{width:112px;height:112px}.social-db-stage svg{width:82px;height:82px}.social-stage-name{top:calc(50% + 54px);font-size:.59rem}
+      .social-device-stage{width:210px;height:116px}.social-device-stage::before{top:21px}.social-device-stage::after{top:9px;left:13px;transform:scale(.82);transform-origin:left top}
+      .social-execution{inset:27px 12px 12px;gap:5px}.social-execution span{width:18px;height:18px;font-size:.52rem}
+      .social-proof-e2e,.social-proof-mobile{padding:4% 2%}.social-proof-readout{min-width:190px}.social-proof-readout strong{font-size:clamp(1.25rem,6vw,1.8rem)}.social-proof-readout .social-proof-check{width:28px;height:28px}
     }
     @media(prefers-reduced-motion:reduce){
-      .social-oryzo-product,.social-oryzo-ci-focus,.social-oryzo-proof{display:none!important}
-      .social-oryzo-ci-world{opacity:1!important;transform:none!important;clip-path:none!important}
-      .social-oryzo-ci-base{filter:none!important}
+      .social-motion-product,.social-db-stage,.social-device-stage,.social-motion-proof,.social-proof-readout{display:none!important}
+      .social-motion-ci{opacity:.45!important;filter:brightness(.48) saturate(.75)!important}
+      .social-release-world{opacity:1!important;transform:none!important}.social-release-line{stroke-dashoffset:0!important}.social-release-node{fill:#9be9c2!important;stroke:#9be9c2!important}.social-release-pulse{display:none!important}.social-final-glow{opacity:1!important}
     }
   `;
   document.head.appendChild(style);
 
   showcase.innerHTML = `
-    <img class="social-oryzo-product" src="${assets.product}" alt="SocialPlatform desktop review queue" />
-    <div class="social-oryzo-ci-world" aria-hidden="true">
-      <img class="social-oryzo-ci-base" src="${assets.ci}" alt="" />
-      <img class="social-oryzo-ci-focus" src="${assets.ci}" alt="" />
+    <div class="social-motion-root">
+      <img class="social-motion-product social-motion-surface" src="${assets.product}" alt="SocialPlatform desktop review queue" />
+      <img class="social-motion-ci social-motion-surface" src="${assets.ci}" alt="Successful SocialPlatform CI run" />
+
+      <div class="social-release-world" aria-hidden="true">
+        <svg class="social-release-track" viewBox="0 0 100 20" preserveAspectRatio="none">
+          <path class="social-release-line" pathLength="100" d="M5 10 H95" />
+          <circle class="social-release-node" data-node="0" cx="5" cy="10" r="1.3" />
+          <circle class="social-release-node" data-node="1" cx="23" cy="10" r="1.3" />
+          <circle class="social-release-node" data-node="2" cx="41" cy="10" r="1.3" />
+          <circle class="social-release-node" data-node="3" cx="59" cy="10" r="1.3" />
+          <circle class="social-release-node" data-node="4" cx="77" cy="10" r="1.3" />
+          <circle class="social-release-node" data-node="5" cx="95" cy="10" r="1.3" />
+          <circle class="social-release-pulse" cx="5" cy="10" r="1.15" />
+        </svg>
+      </div>
+
+      <div class="social-db-stage" aria-hidden="true">
+        <svg viewBox="0 0 96 96">
+          <ellipse cx="48" cy="22" rx="27" ry="10" pathLength="100" />
+          <path d="M21 22v23c0 5.5 12.1 10 27 10s27-4.5 27-10V22" pathLength="100" />
+          <path d="M21 45v23c0 5.5 12.1 10 27 10s27-4.5 27-10V45" pathLength="100" />
+        </svg>
+        <p class="social-stage-name">DB INTEGRITY</p>
+      </div>
+
+      <div class="social-device-stage" aria-hidden="true">
+        <div class="social-execution">
+          <span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span>
+        </div>
+        <p class="social-stage-name social-device-name">WEB E2E</p>
+      </div>
+
+      <img class="social-motion-proof social-motion-surface social-proof-db" src="${assets.db}" alt="Database integrity execution evidence from the successful CI run" />
+      <div class="social-proof-readout social-readout-db" aria-hidden="true"><small>DB INTEGRITY</small><strong><span class="social-proof-check">✓</span>PASSED</strong></div>
+
+      <img class="social-motion-proof social-motion-surface social-proof-e2e" src="${assets.e2e}" alt="Playwright E2E result showing six tests passed" />
+      <div class="social-proof-readout social-readout-e2e" aria-hidden="true"><small>WEB E2E</small><strong><span class="social-proof-check">✓</span>6 PASSED</strong><em>29.9s</em></div>
+
+      <img class="social-motion-proof social-motion-surface social-proof-mobile" src="${assets.mobile}" alt="Mobile layout test result showing two tests passed" />
+      <div class="social-proof-readout social-readout-mobile" aria-hidden="true"><small>MOBILE LAYOUT</small><strong><span class="social-proof-check">✓</span>2 PASSED</strong><em>28.0s</em></div>
+      <div class="social-final-glow" aria-hidden="true"></div>
     </div>
-    <img class="social-oryzo-proof social-oryzo-proof-db" src="${assets.db}" alt="Database integrity execution evidence from the same successful CI run" />
-    <img class="social-oryzo-proof social-oryzo-proof-e2e" src="${assets.e2e}" alt="Playwright E2E result showing six tests passed" />
-    <img class="social-oryzo-proof social-oryzo-proof-mobile" src="${assets.mobile}" alt="Mobile layout test result showing two tests passed" />
   `;
 
-  const product = showcase.querySelector('.social-oryzo-product');
-  const ciWorld = showcase.querySelector('.social-oryzo-ci-world');
-  const ciBase = showcase.querySelector('.social-oryzo-ci-base');
-  const ciFocus = showcase.querySelector('.social-oryzo-ci-focus');
+  const product = showcase.querySelector('.social-motion-product');
+  const ci = showcase.querySelector('.social-motion-ci');
+  const release = showcase.querySelector('.social-release-world');
+  const track = showcase.querySelector('.social-release-line');
+  const pulse = showcase.querySelector('.social-release-pulse');
+  const nodes = [...showcase.querySelectorAll('.social-release-node')];
+  const dbStage = showcase.querySelector('.social-db-stage');
+  const dbStrokes = [...dbStage.querySelectorAll('svg *')];
+  const device = showcase.querySelector('.social-device-stage');
+  const deviceName = showcase.querySelector('.social-device-name');
+  const checks = [...showcase.querySelectorAll('.social-execution span')];
   const proofs = {
-    db: showcase.querySelector('.social-oryzo-proof-db'),
-    e2e: showcase.querySelector('.social-oryzo-proof-e2e'),
-    mobile: showcase.querySelector('.social-oryzo-proof-mobile')
+    db: showcase.querySelector('.social-proof-db'),
+    e2e: showcase.querySelector('.social-proof-e2e'),
+    mobile: showcase.querySelector('.social-proof-mobile')
   };
+  const readouts = {
+    db: showcase.querySelector('.social-readout-db'),
+    e2e: showcase.querySelector('.social-readout-e2e'),
+    mobile: showcase.querySelector('.social-readout-mobile')
+  };
+  const finalGlow = showcase.querySelector('.social-final-glow');
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = t => t * t * (3 - 2 * t);
-  const mix = (a, b, t) => a + (b - a) * t;
   const ramp = (p, start, end) => smooth(clamp((p - start) / Math.max(.0001, end - start)));
-
-  const jobs = {
-    db: { y: .53 },
-    e2e: { y: .71 },
-    mobile: { y: .84 }
-  };
-
-  const proofRanges = {
-    db: { openStart: .34, openEnd: .40, closeStart: .51, closeEnd: .57 },
-    e2e: { openStart: .63, openEnd: .67, closeStart: .74, closeEnd: .78 },
-    mobile: { openStart: .82, openEnd: .85, closeStart: .90, closeEnd: .93 }
-  };
-
-  const focusRanges = {
-    db: { inStart: .29, inEnd: .33, outStart: .57, outEnd: .60 },
-    e2e: { inStart: .59, inEnd: .62, outStart: .78, outEnd: .80 },
-    mobile: { inStart: .79, inEnd: .81, outStart: .93, outEnd: .95 }
-  };
+  const mix = (a, b, t) => a + (b - a) * t;
+  const windowValue = (p, start, inEnd, outStart, end) => ramp(p, start, inEnd) * (1 - ramp(p, outStart, end));
 
   function getScenePhase() {
     const rect = experience.getBoundingClientRect();
@@ -127,91 +159,130 @@
       }
       cursor += duration;
     }
-    return clamp(((step - 3) + .42) / .84);
+    return clamp(((step - 3) + .46) / .92);
   }
 
-  function holdValue(phase, range) {
-    if (phase < range.openStart) return 0;
-    if (phase < range.openEnd) return ramp(phase, range.openStart, range.openEnd);
-    if (phase <= range.closeStart) return 1;
-    if (phase < range.closeEnd) return 1 - ramp(phase, range.closeStart, range.closeEnd);
-    return 0;
-  }
-
-  function focusValue(phase, range) {
-    if (phase < range.inStart) return 0;
-    if (phase < range.inEnd) return ramp(phase, range.inStart, range.inEnd);
-    if (phase <= range.outStart) return 1;
-    if (phase < range.outEnd) return 1 - ramp(phase, range.outStart, range.outEnd);
-    return 0;
-  }
-
-  function setProof(node, amount, originY, finalScale) {
-    if (!node) return;
-    const center = originY * 100;
-    const bandHalf = mix(3.2, 50, amount);
-    const top = clamp(center - bandHalf, 0, 96);
-    const bottom = clamp(100 - (center + bandHalf), 0, 96);
-    const side = mix(7, 0, amount);
-    const radius = mix(10, 0, amount);
+  function setProof(node, readout, amount, originX, originY, scale = 1) {
+    if (!node || !readout) return;
+    const circle = mix(2, 78, amount);
     node.style.opacity = String(amount);
-    node.style.transformOrigin = `50% ${center}%`;
-    node.style.transform = `scale(${mix(.96, finalScale, amount)})`;
-    node.style.clipPath = `inset(${top}% ${side}% ${bottom}% ${side}% round ${radius}px)`;
-    node.style.filter = `brightness(${mix(.92, 1, amount)})`;
+    node.style.clipPath = `circle(${circle}% at ${originX}% ${originY}%)`;
+    node.style.transformOrigin = `${originX}% ${originY}%`;
+    node.style.transform = `scale(${mix(.88, scale, amount)})`;
+    node.style.filter = `brightness(${mix(.72, .68, amount)}) saturate(${mix(.8, .9, amount)})`;
+    const textIn = ramp(amount, .42, .82);
+    readout.style.opacity = String(textIn);
+    readout.style.transform = `translate(-50%,-50%) scale(${.92 + textIn * .08})`;
   }
 
-  function activeFocus(dbFocus, e2eFocus, mobileFocus) {
-    if (dbFocus >= e2eFocus && dbFocus >= mobileFocus && dbFocus > 0) return { y: jobs.db.y, amount: dbFocus };
-    if (e2eFocus >= mobileFocus && e2eFocus > 0) return { y: jobs.e2e.y, amount: e2eFocus };
-    if (mobileFocus > 0) return { y: jobs.mobile.y, amount: mobileFocus };
-    return { y: .5, amount: 0 };
-  }
+  dbStrokes.forEach(stroke => {
+    stroke.style.strokeDasharray = '100';
+    stroke.style.strokeDashoffset = '100';
+  });
+  track.style.strokeDasharray = '100';
+  track.style.strokeDashoffset = '100';
 
   let raf = 0;
   function render() {
-    const phase = getScenePhase();
+    const p = getScenePhase();
 
-    // Hero transition: the product recedes while the CI surface grows into the same visual territory.
-    const hero = ramp(phase, .11, .23);
-    product.style.opacity = String(1 - hero);
-    product.style.transform = `scale(${1 - hero * .045})`;
-    product.style.filter = `brightness(${1 - hero * .18}) saturate(${1 - hero * .08})`;
+    // 1. Product releases a simple path; the image is context, the motion carries the meaning.
+    const productOut = ramp(p, .07, .18);
+    const lineDraw = ramp(p, .10, .20);
+    product.style.opacity = String(1 - productOut);
+    product.style.transform = `translate3d(0,${-productOut * 8}px,0) scale(${1 - productOut * .055})`;
+    product.style.filter = `brightness(${1 - productOut * .22}) saturate(${1 - productOut * .1})`;
+    track.style.strokeDashoffset = String(100 * (1 - lineDraw));
 
-    const dbProof = holdValue(phase, proofRanges.db);
-    const e2eProof = holdValue(phase, proofRanges.e2e);
-    const mobileProof = holdValue(phase, proofRanges.mobile);
+    // Release track appears between semantic moments and returns as the final whole.
+    const dbStageIn = ramp(p, .20, .27);
+    const dbProof = windowValue(p, .29, .35, .41, .46);
+    const dbReturn = ramp(p, .45, .49);
+    const webStageIn = ramp(p, .49, .57);
+    const e2eProof = windowValue(p, .58, .63, .68, .72);
+    const deviceMorph = ramp(p, .72, .79);
+    const mobileProof = windowValue(p, .80, .84, .89, .92);
+    const finalReturn = ramp(p, .91, .97);
     const proofMax = Math.max(dbProof, e2eProof, mobileProof);
 
-    const dbFocus = focusValue(phase, focusRanges.db);
-    const e2eFocus = focusValue(phase, focusRanges.e2e);
-    const mobileFocus = focusValue(phase, focusRanges.mobile);
-    const focus = activeFocus(dbFocus, e2eFocus, mobileFocus);
+    const releaseAlpha = clamp(
+      lineDraw * (1 - dbStageIn) +
+      dbReturn * (1 - webStageIn) +
+      finalReturn
+    ) * (1 - proofMax);
+    release.style.opacity = String(releaseAlpha);
+    release.style.transform = `scale(${.97 + releaseAlpha * .03})`;
 
-    const finalPullback = ramp(phase, .94, .985);
-    const heroInset = (1 - hero) * 8;
-    const heroSideInset = (1 - hero) * 9;
-    const focusScale = focus.amount * .028;
-    const pushScale = proofMax * .012;
-    const ciScale = 1 + hero * .012 + focusScale + pushScale - finalPullback * .012;
+    // Pulse travels to the DB checkpoint, then later to the Web checkpoint.
+    let pulseX = 5;
+    if (p >= .12 && p < .20) pulseX = mix(5, 41, ramp(p, .12, .20));
+    else if (p >= .20 && p < .49) pulseX = 41;
+    else if (p >= .49 && p < .57) pulseX = mix(41, 77, ramp(p, .49, .57));
+    else if (p >= .57 && p < .91) pulseX = 77;
+    else pulseX = mix(77, 95, finalReturn);
+    pulse.setAttribute('cx', pulseX.toFixed(2));
+    pulse.style.opacity = String(releaseAlpha * (1 - finalReturn));
 
-    ciWorld.style.opacity = String(hero * (1 - proofMax));
-    ciWorld.style.transformOrigin = `50% ${focus.y * 100}%`;
-    ciWorld.style.transform = `scale(${ciScale})`;
-    ciWorld.style.clipPath = `inset(${heroInset}% ${heroSideInset}% ${heroInset}% ${heroSideInset}% round ${mix(20, 0, hero)}px)`;
+    // Mark checkpoints only after the pulse has actually reached them.
+    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57, p >= .79];
+    nodes.forEach((node, index) => node.classList.toggle('is-lit', finalReturn > .55 || visited[index]));
 
-    // The real CI capture is the only focus UI: nearby content quiets, selected real pixels stay crisp.
-    ciBase.style.filter = `brightness(${1 - focus.amount * .16}) saturate(${1 - focus.amount * .06})`;
-    const bandHalf = 4.1;
-    const focusTop = clamp(focus.y * 100 - bandHalf, 0, 100);
-    const focusBottom = clamp(100 - (focus.y * 100 + bandHalf), 0, 100);
-    ciFocus.style.opacity = String(focus.amount * (1 - proofMax));
-    ciFocus.style.clipPath = `inset(${focusTop}% 1.5% ${focusBottom}% 1.5% round 5px)`;
+    // 2. The DB checkpoint grows out of the path and assembles into a recognizable database symbol.
+    const dbDraw = ramp(p, .21, .28);
+    const dbVisible = dbStageIn * (1 - ramp(p, .45, .49)) * (1 - dbProof * .8);
+    dbStrokes.forEach((stroke, index) => {
+      const local = clamp(dbDraw * 1.25 - index * .12);
+      stroke.style.strokeDashoffset = String(100 * (1 - smooth(local)));
+    });
+    const dbX = mix(41, 50, dbStageIn);
+    dbStage.style.left = `${dbX}%`;
+    dbStage.style.opacity = String(dbVisible);
+    dbStage.style.transform = `translate(-50%,-50%) scale(${.18 + dbStageIn * .82 + dbProof * .18})`;
 
-    // Each proof uses the same origin relationship, but its own framing and tempo.
-    setProof(proofs.db, dbProof, jobs.db.y, 1.02);
-    setProof(proofs.e2e, e2eProof, jobs.e2e.y, 1.14);
-    setProof(proofs.mobile, mobileProof, jobs.mobile.y, 1.12);
+    // The actual DB capture arrives only after the category is already obvious.
+    setProof(proofs.db, readouts.db, dbProof, 50, 50, 1.03);
+
+    // 3. Web E2E grows from the release path. Six checks execute before the real evidence appears.
+    const deviceBase = webStageIn * (1 - finalReturn);
+    const deviceVisible = deviceBase * (1 - Math.max(e2eProof, mobileProof) * .82);
+    const deviceX = mix(77, 50, webStageIn);
+    const mobileShape = deviceMorph;
+    const desktopWidth = window.innerWidth <= 760 ? 210 : 280;
+    const desktopHeight = window.innerWidth <= 760 ? 116 : 154;
+    const phoneWidth = window.innerWidth <= 760 ? 82 : 112;
+    const phoneHeight = window.innerWidth <= 760 ? 146 : 202;
+    device.style.left = `${deviceX}%`;
+    device.style.width = `${mix(desktopWidth, phoneWidth, mobileShape)}px`;
+    device.style.height = `${mix(desktopHeight, phoneHeight, mobileShape)}px`;
+    device.style.borderRadius = `${mix(15, 24, mobileShape)}px`;
+    device.style.setProperty('--device-bar', String(1 - mobileShape));
+    device.style.opacity = String(deviceVisible);
+    device.style.transform = `translate(-50%,-50%) scale(${.16 + webStageIn * .84 + Math.max(e2eProof, mobileProof) * .12})`;
+    deviceName.textContent = mobileShape > .5 ? 'MOBILE LAYOUT' : 'WEB E2E';
+
+    // Six browser checks resolve one-by-one. During the responsive morph, the six collapse to two.
+    const checkProgress = ramp(p, .53, .59);
+    checks.forEach((check, index) => {
+      const webDone = checkProgress > (index + 1) / checks.length;
+      const mobileKeep = index < 2;
+      const show = mobileShape < .5 ? webDone : mobileKeep;
+      check.classList.toggle('is-done', show);
+      check.style.opacity = String(mobileShape > .5 && !mobileKeep ? 1 - mobileShape : show ? 1 : .3);
+      check.style.transform = `scale(${show ? 1 : .72})`;
+    });
+
+    setProof(proofs.e2e, readouts.e2e, e2eProof, 50, 50, 1.06);
+
+    // 4. The browser physically narrows into a phone before mobile evidence appears.
+    const execution = showcase.querySelector('.social-execution');
+    execution.style.gridTemplateColumns = mobileShape > .5 ? 'repeat(2,1fr)' : 'repeat(6,1fr)';
+    execution.style.paddingInline = mobileShape > .5 ? '18%' : '0';
+    setProof(proofs.mobile, readouts.mobile, mobileProof, 50, 50, 1.05);
+
+    // 5. Everything resolves back into one release path; CI is only a quiet proof texture at the end.
+    ci.style.opacity = String(finalReturn * .38);
+    ci.style.transform = `scale(${1.035 - finalReturn * .035})`;
+    finalGlow.style.opacity = String(finalReturn);
 
     raf = requestAnimationFrame(render);
   }
