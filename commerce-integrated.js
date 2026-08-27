@@ -31,9 +31,9 @@
     .commerce-motion-root{position:absolute;inset:0;isolation:isolate}
 
     .commerce-transition-layer{position:absolute;z-index:4;right:0;left:auto;top:0;width:100vw;height:100%;overflow:visible;pointer-events:none}
-    .commerce-transition-word{position:absolute;left:12%;top:49%;margin:0;max-width:none;color:#f5a524;font:760 clamp(5.2rem,9.3vw,9.8rem)/.82 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.075em;white-space:nowrap;text-shadow:0 16px 58px rgba(0,0,0,.34);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform,filter}
+    .commerce-transition-word{position:absolute;left:25%;top:49%;margin:0;max-width:none;color:#f5a524;font:780 clamp(7rem,12.6vw,13.4rem)/.8 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.085em;white-space:nowrap;text-shadow:0 18px 64px rgba(0,0,0,.3);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform}
     .commerce-transition-expired{top:46%}
-    .commerce-transition-unavailable{top:53%;font-size:clamp(4.5rem,8.1vw,8.6rem)}
+    .commerce-transition-unavailable{top:53%;font-size:clamp(6rem,10.9vw,11.7rem)}
 
     .commerce-phone{position:absolute;z-index:5;left:69%;top:50%;height:98%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:transform,filter}
     .commerce-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:25%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
@@ -45,9 +45,9 @@
       .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:49vh;max-height:475px}
       .commerce-phone{left:72%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
       .commerce-transition-layer{right:-4vw;width:100vw}
-      .commerce-transition-word{top:48%;font-size:clamp(3.7rem,17vw,5.5rem);letter-spacing:-.07em}
+      .commerce-transition-word{left:25%;top:48%;font-size:clamp(5rem,23vw,7.4rem);letter-spacing:-.08em}
       .commerce-transition-expired{top:43%}
-      .commerce-transition-unavailable{top:54%;font-size:clamp(3rem,14vw,4.6rem)}
+      .commerce-transition-unavailable{top:54%;font-size:clamp(4.2rem,19vw,6.2rem)}
     }
     @media(prefers-reduced-motion:reduce){
       .commerce-phone-screen img{opacity:0!important;transform:none!important;filter:none!important}
@@ -132,18 +132,17 @@
     return clamp(((step - 1) + .43) / .88);
   }
 
-  function setSweep(node, p, start, end, fromX, toX, scalePeak = 1.03) {
+  function setSweep(node, p, start, end, fromX = 25, toX = 96, scalePeak = 1.03) {
     const local = clamp((p - start) / Math.max(.0001, end - start));
     const enter = ramp(local, .02, .18);
-    const exit = 1 - ramp(local, .76, .98);
+    const exit = 1 - ramp(local, .78, .98);
     const visible = enter * exit;
-    const travel = cubicOut(local);
+    const move = cubicOut(clamp((local - .18) / .8));
     const pulse = Math.sin(local * Math.PI);
 
-    node.style.left = `${mix(fromX, toX, travel)}%`;
-    node.style.opacity = String(visible * .92);
+    node.style.left = `${mix(fromX, toX, move)}%`;
+    node.style.opacity = String(visible);
     node.style.transform = `translate(-50%,-50%) scale(${1 + pulse * (scalePeak - 1)})`;
-    node.style.filter = `blur(${(1 - visible) * 2.4}px)`;
 
     return pulse * visible;
   }
@@ -152,11 +151,11 @@
   function render() {
     const p = getScenePhase();
 
-    // Oversized scenario typography traverses the whole section. The section copy
-    // stays above it while the phone physically occludes it at the product edge.
-    const checkoutEvent = setSweep(words.checkout, p, .03, .22, 7, 93, 1.025);
-    const expiredEvent = setSweep(words.expired, p, .23, .46, 5, 95, 1.035);
-    const unavailableEvent = setSweep(words.unavailable, p, .61, .84, 97, 4, 1.035);
+    // Every scenario first materializes at 25vw in the same CommerceOps yellow,
+    // then sweeps across the section while the phone occludes it.
+    const checkoutEvent = setSweep(words.checkout, p, .03, .22, 25, 96, 1.025);
+    const expiredEvent = setSweep(words.expired, p, .23, .46, 25, 96, 1.035);
+    const unavailableEvent = setSweep(words.unavailable, p, .61, .84, 25, 96, 1.035);
 
     const toExpired = cubicRamp(p, .31, .39);
     const toUnavailable = cubicRamp(p, .68, .76);
