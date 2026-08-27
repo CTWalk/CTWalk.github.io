@@ -1,12 +1,8 @@
 (() => {
-  // CommerceOps scene — negative-path validation thesis.
-  // Semantic verb: DISPROVE. The strikethrough is the argument.
+  // CommerceOps scene — show what the repo is, not a QA philosophy lesson.
   //
-  //   "expect(page).toContain('expired')"     ← what a weak test asserts
-  //   "db.coupon_reject.reason === 'expired'" ← what the test we ship asserts
-  //
-  // Same verb prefix, same right-hand value, one word swapped: page → db.
-  // The scroll draws a red strike across the first line, then fades the second in below it.
+  // One stable product. One scenario at a time. One reference outcome.
+  // Scroll only changes the exercise.
 
   const scene = document.querySelector('.scene[data-scene="1"]');
   const experience = document.getElementById('experience');
@@ -14,8 +10,9 @@
   if (!scene || !experience || !oldPlate) return;
 
   const assets = {
-    cart:    'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/cart-412x915.png',
-    expired: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/expired-coupon-412x915.png'
+    checkout: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/checkout-412x915.png',
+    expired: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/expired-coupon-412x915.png',
+    unavailable: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/unavailable-variant-412x1000.png'
   };
 
   const style = document.createElement('style');
@@ -24,54 +21,37 @@
     .commerce-showcase{position:absolute;z-index:9;right:max(2vw,calc((100% - var(--content))/2));top:8%;width:min(59vw,870px);height:min(78vh,720px);overflow:visible;will-change:transform,opacity}
     .commerce-motion-root{position:absolute;inset:0;isolation:isolate}
 
-    .commerce-phone{position:absolute;z-index:5;left:72%;top:50%;height:96%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:transform,filter}
+    .commerce-phone{position:absolute;z-index:5;left:69%;top:50%;height:98%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:transform,filter}
     .commerce-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:25%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
     .commerce-phone-screen{position:absolute;inset:6px;border-radius:clamp(17px,2vw,28px);overflow:hidden;background:#f7f5ef}
-    .commerce-phone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity,transform,filter}
-    .commerce-phone-cart{opacity:1}
-    .commerce-phone-expired{opacity:0;transform:scale(1.012);filter:brightness(.97)}
+    .commerce-phone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0;will-change:opacity,transform,filter}
+    .commerce-phone-screen img:first-child{opacity:1}
 
-    .commerce-exercise{position:absolute;z-index:7;left:23%;top:49%;width:min(44%,380px);height:min(46%,320px);transform:translate(-50%,-50%) rotate(-.6deg);border:1px solid rgba(35,39,44,.18);border-radius:20px;background:#f1eee6;color:#23262b;box-shadow:0 34px 80px rgba(0,0,0,.34);overflow:hidden;will-change:transform,filter}
-    .commerce-exercise::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.22),transparent 38%,rgba(70,60,48,.025));mix-blend-mode:multiply}
-
-    .commerce-exercise-head{position:absolute;z-index:3;left:clamp(20px,2.3vw,30px);right:clamp(20px,2.3vw,30px);top:clamp(18px,2vw,25px)}
-    .commerce-practice-label{margin:0;color:#74716a;font:760 clamp(.56rem,.72vw,.67rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
-    .commerce-exercise-title{margin:11px 0 0;color:#22252a;font:700 clamp(1.28rem,1.95vw,1.95rem)/1.05 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
-
-    /* The two-assertion stage. Same shape twice; that's the point. */
-    .commerce-exercise-stage{position:absolute;z-index:2;left:clamp(20px,2.3vw,30px);right:clamp(20px,2.3vw,30px);bottom:clamp(20px,2.3vw,30px);display:flex;flex-direction:column;gap:clamp(12px,1.4vw,18px)}
-
-    .assertion-row{position:relative;will-change:opacity,transform}
-    .assertion-label{margin:0 0 clamp(5px,.65vw,8px);color:#77736b;font:760 clamp(.54rem,.68vw,.63rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
-    .assertion-code{position:relative;margin:0;color:#2e3135;font:700 clamp(.72rem,.9vw,.86rem)/1.35 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.015em}
-    .assertion-code .k{color:#9e332a}                    /* the swapped word — highlight the argument */
-
-    /* Naive assertion — starts crisp, ends dimmed under a red strike */
-    .assertion-naive .assertion-code{color:#2e3135;transition:none}
-    .assertion-strike{position:absolute;left:-2px;right:100%;top:50%;height:2px;background:#9e332a;transform:translateY(-50%);pointer-events:none;box-shadow:0 0 0 .5px rgba(158,51,42,.35);will-change:right,opacity}
-
-    /* Reference assertion — hidden at the start, resolves after the strike */
-    .assertion-proof{opacity:0;transform:translateY(6px);will-change:opacity,transform}
-    .assertion-proof .assertion-code{color:#22252a}
-
-    /* Tail tag that anchors the takeaway */
-    .commerce-tail{position:absolute;z-index:3;left:clamp(20px,2.3vw,30px);right:clamp(20px,2.3vw,30px);bottom:calc(-1 * clamp(6px,.8vw,10px));display:none}
+    .commerce-scenario-copy{position:absolute;z-index:6;left:3%;top:50%;width:min(43%,350px);transform:translateY(-50%);color:#f2f0e9;pointer-events:none}
+    .commerce-practice-label{margin:0 0 clamp(18px,2.3vw,28px);color:rgba(255,255,255,.48);font:760 clamp(.58rem,.73vw,.68rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
+    .commerce-scenario-slot{position:relative;height:clamp(132px,18vw,190px)}
+    .commerce-scenario-state{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;will-change:opacity,transform,filter}
+    .commerce-scenario-state:first-child{opacity:1}
+    .commerce-scenario-type{margin:0 0 9px;color:rgba(255,255,255,.5);font:750 clamp(.53rem,.67vw,.62rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
+    .commerce-scenario-title{margin:0;color:#fff;font:680 clamp(1.5rem,2.45vw,2.45rem)/1.04 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
+    .commerce-reference{margin:clamp(17px,2vw,23px) 0 0;color:rgba(255,255,255,.72);font:620 clamp(.72rem,.9vw,.84rem)/1.42 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.005em}
+    .commerce-reference span{margin-right:8px;color:rgba(255,255,255,.4);font:760 .88em/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
 
     @media(max-width:760px){
       .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:49vh;max-height:475px}
-      .commerce-phone{left:73%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
-      .commerce-exercise{left:25%;top:47%;width:49%;height:47%;border-radius:14px}
-      .commerce-exercise-head{left:13px;right:13px;top:12px}.commerce-practice-label{font-size:.43rem}.commerce-exercise-title{margin-top:6px;font-size:1rem}
-      .commerce-exercise-stage{left:13px;right:13px;bottom:13px;gap:10px}
-      .assertion-label{margin-bottom:4px;font-size:.4rem}
-      .assertion-code{font-size:.53rem;line-height:1.3}
+      .commerce-phone{left:72%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
+      .commerce-scenario-copy{left:1%;top:48%;width:46%}
+      .commerce-practice-label{margin-bottom:13px;font-size:.43rem}
+      .commerce-scenario-slot{height:118px}
+      .commerce-scenario-type{margin-bottom:6px;font-size:.4rem}
+      .commerce-scenario-title{font-size:1.05rem;line-height:1.08}
+      .commerce-reference{margin-top:10px;font-size:.54rem;line-height:1.35}
     }
     @media(prefers-reduced-motion:reduce){
-      .commerce-phone-cart{opacity:0!important}
-      .commerce-phone-expired{opacity:1!important;transform:none!important;filter:none!important}
-      .assertion-strike{right:0!important;opacity:1!important}
-      .assertion-naive .assertion-code{color:#8a8781!important}
-      .assertion-proof{opacity:1!important;transform:none!important}
+      .commerce-phone-screen img{opacity:0!important;transform:none!important;filter:none!important}
+      .commerce-phone-expired{opacity:1!important}
+      .commerce-scenario-state{opacity:0!important;transform:none!important;filter:none!important}
+      .commerce-scenario-expired{opacity:1!important}
     }
   `;
   document.head.appendChild(style);
@@ -80,36 +60,36 @@
   showcase.className = 'commerce-showcase scene-object';
   showcase.setAttribute(
     'aria-label',
-    'CommerceOps negative-path exercise. A weak assertion on the page text is crossed out and replaced with an assertion against the persisted database state.'
+    'CommerceOps is a QA practice application with realistic business scenarios and reference outcomes for checkout, expired coupons, and unavailable variants.'
   );
   showcase.innerHTML = `
     <div class="commerce-motion-root">
-      <section class="commerce-exercise">
-        <div class="commerce-exercise-head">
-          <p class="commerce-practice-label">NEGATIVE PATH · COMMERCEOPS</p>
-          <h3 class="commerce-exercise-title">Expired coupon</h3>
-        </div>
-        <div class="commerce-exercise-stage">
-          <div class="assertion-row assertion-naive">
-            <p class="assertion-label">A junior asserts</p>
-            <p class="assertion-code">
-              expect(<span class="k">page</span>).toContain('expired')
-              <span class="assertion-strike" aria-hidden="true"></span>
-            </p>
+      <div class="commerce-scenario-copy">
+        <p class="commerce-practice-label">QA PRACTICE APP</p>
+        <div class="commerce-scenario-slot">
+          <div class="commerce-scenario-state commerce-scenario-checkout">
+            <p class="commerce-scenario-type">HAPPY PATH</p>
+            <h3 class="commerce-scenario-title">Checkout</h3>
+            <p class="commerce-reference"><span>Reference</span>order persisted</p>
           </div>
-          <div class="assertion-row assertion-proof">
-            <p class="assertion-label">The test we ship</p>
-            <p class="assertion-code">
-              <span class="k">db</span>.coupon_reject.reason === 'expired'
-            </p>
+          <div class="commerce-scenario-state commerce-scenario-expired">
+            <p class="commerce-scenario-type">NEGATIVE PATH</p>
+            <h3 class="commerce-scenario-title">Expired coupon</h3>
+            <p class="commerce-reference"><span>Reference</span>rejected · no discount</p>
+          </div>
+          <div class="commerce-scenario-state commerce-scenario-unavailable">
+            <p class="commerce-scenario-type">NEGATIVE PATH</p>
+            <h3 class="commerce-scenario-title">Unavailable variant</h3>
+            <p class="commerce-reference"><span>Reference</span>unavailable size blocked</p>
           </div>
         </div>
-      </section>
+      </div>
 
       <div class="commerce-phone">
         <div class="commerce-phone-screen">
-          <img class="commerce-phone-cart" src="${assets.cart}" alt="CommerceOps cart before the coupon result resolves" />
-          <img class="commerce-phone-expired" src="${assets.expired}" alt="CommerceOps cart showing the rejected WELCOME20 coupon" />
+          <img class="commerce-phone-checkout" src="${assets.checkout}" alt="CommerceOps checkout screen" />
+          <img class="commerce-phone-expired" src="${assets.expired}" alt="CommerceOps cart showing the expired WELCOME20 coupon result" />
+          <img class="commerce-phone-unavailable" src="${assets.unavailable}" alt="CommerceOps product screen showing an unavailable variant" />
         </div>
       </div>
     </div>
@@ -118,20 +98,23 @@
 
   const blur = scene.querySelector('.scene-blur');
   if (blur) {
-    blur.src = assets.expired;
+    blur.src = assets.checkout;
     blur.style.objectPosition = 'center 42%';
   }
   const repoLink = scene.querySelector('.scene-link');
   if (repoLink) repoLink.href = 'https://github.com/CTWalk/CommerceOps';
 
-  const phone   = showcase.querySelector('.commerce-phone');
-  const cart    = showcase.querySelector('.commerce-phone-cart');
-  const expired = showcase.querySelector('.commerce-phone-expired');
-  const naive   = showcase.querySelector('.assertion-naive');
-  const naiveCode = naive.querySelector('.assertion-code');
-  const strike  = showcase.querySelector('.assertion-strike');
-  const proof   = showcase.querySelector('.assertion-proof');
-  const exercise = showcase.querySelector('.commerce-exercise');
+  const phone = showcase.querySelector('.commerce-phone');
+  const images = [
+    showcase.querySelector('.commerce-phone-checkout'),
+    showcase.querySelector('.commerce-phone-expired'),
+    showcase.querySelector('.commerce-phone-unavailable')
+  ];
+  const states = [
+    showcase.querySelector('.commerce-scenario-checkout'),
+    showcase.querySelector('.commerce-scenario-expired'),
+    showcase.querySelector('.commerce-scenario-unavailable')
+  ];
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
@@ -142,7 +125,6 @@
   const cubicOut = t => 1 - Math.pow(1 - clamp(t), 3);
   const cubicRamp = (p, start, end) => cubicOut((p - start) / Math.max(.0001, end - start));
 
-  // Preserved from the previous file — same duration table, same scene 1 slice math.
   function getScenePhase() {
     const rect = experience.getBoundingClientRect();
     const travel = Math.max(1, experience.offsetHeight - window.innerHeight);
@@ -163,52 +145,37 @@
     return clamp(((step - 1) + .43) / .88);
   }
 
-  // Scene-local phase ranges. Every range earns a job.
-  //
-  //   .00 – .22  cart → expired coupon result on the phone (real screenshot swap)
-  //   .18 – .34  naive assertion arrives, crisp
-  //   .34 – .52  RED STRIKE draws across it  ← the semantic beat
-  //   .48 – .64  naive dims, reference assertion fades in below
-  //   .64 – 1.0  reading hold — two lines stable and legible
-  //
-  // The strike range overlaps the naive-arrival tail on purpose: the viewer sees
-  // it settle for a half-beat before it gets disproved. That short belief is what
-  // the disproof is disproving.
-
   let raf = 0;
   function render() {
     const p = getScenePhase();
 
-    // Phone: cart → expired coupon
-    const productResult = cubicRamp(p, .00, .22);
-    cart.style.opacity = String(1 - productResult);
-    cart.style.transform = `scale(${1 - productResult * .008})`;
-    expired.style.opacity = String(productResult);
-    expired.style.transform = `scale(${1.012 - productResult * .012})`;
-    expired.style.filter = `brightness(${.97 + productResult * .03})`;
+    // Three readable states. Scroll only changes the exercise.
+    const toExpired = cubicRamp(p, .28, .40);
+    const toUnavailable = cubicRamp(p, .66, .78);
 
-    // Naive assertion — enters, then gets muted after the strike lands
-    const naiveIn = ramp(p, .18, .30);
-    const strikeAmount = cubicRamp(p, .34, .52);
-    const naiveMute = ramp(p, .48, .62);
+    const weights = [
+      1 - toExpired,
+      toExpired * (1 - toUnavailable),
+      toUnavailable
+    ];
 
-    naive.style.opacity = String(naiveIn * (1 - naiveMute * .55));
-    naive.style.transform = `translateY(${(1 - naiveIn) * 6}px)`;
-    naiveCode.style.color = `rgba(46,49,53,${1 - naiveMute * .55})`;
+    images.forEach((image, index) => {
+      const w = weights[index];
+      image.style.opacity = String(w);
+      image.style.transform = `scale(${1.012 - w * .012})`;
+      image.style.filter = `brightness(${.96 + w * .04})`;
+    });
 
-    // The strike draws left → right by animating "right" from 100% to 0
-    strike.style.right = `${(1 - strikeAmount) * 100}%`;
-    strike.style.opacity = String(strikeAmount * (1 - ramp(p, .92, 1.0) * .2));
+    states.forEach((state, index) => {
+      const w = weights[index];
+      state.style.opacity = String(w);
+      const direction = index === 0 ? -1 : 1;
+      state.style.transform = `translateY(${(1 - w) * direction * 8}px)`;
+      state.style.filter = `blur(${(1 - w) * 1.5}px)`;
+    });
 
-    // Reference assertion — resolves in place under the naive line
-    const proofIn = cubicRamp(p, .50, .64);
-    proof.style.opacity = String(proofIn);
-    proof.style.transform = `translateY(${(1 - proofIn) * 8}px)`;
-
-    // Micro-settle: card recenters slightly as the argument lands
-    exercise.style.transform =
-      `translate(-50%,-50%) rotate(${-0.6 + proofIn * .35}deg) scale(${1 + proofIn * .012})`;
-    phone.style.filter = `brightness(${1 - proofIn * .015})`;
+    // The product remains the stable visual anchor throughout.
+    phone.style.transform = `translate(-50%,-50%) scale(${1 + Math.sin(p * Math.PI) * .006})`;
 
     raf = requestAnimationFrame(render);
   }
