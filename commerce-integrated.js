@@ -7,6 +7,17 @@
   const oldPlate = scene?.querySelector('.commerce-plate');
   if (!scene || !experience || !oldPlate) return;
 
+  // Keep the section copy aligned with what the visual actually shows.
+  if (typeof copy !== 'undefined') {
+    copy.en.commerceTitle = 'Practice on a real product.\nCheck against a reference.';
+    copy.en.commerceBody = 'CommerceOps is a realistic commerce app for junior QA. Test checkout and failure cases yourself, then compare your coverage with the provided reference paths.';
+    copy.zh.commerceTitle = '用真的產品情境練習\n再對照參考驗證流程';
+    copy.zh.commerceBody = 'CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。';
+    if (typeof applyLanguage === 'function') {
+      applyLanguage(document.documentElement.lang.toLowerCase().startsWith('zh') ? 'zh' : 'en');
+    }
+  }
+
   const assets = {
     checkout: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/checkout-412x915.png',
     expired: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/expired-coupon-412x915.png',
