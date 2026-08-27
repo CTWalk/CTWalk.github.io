@@ -31,7 +31,7 @@
     .commerce-motion-root{position:absolute;inset:0;isolation:isolate}
 
     .commerce-transition-layer{position:absolute;z-index:4;right:0;left:auto;top:0;width:100vw;height:100%;overflow:visible;pointer-events:none}
-    .commerce-transition-word{position:absolute;left:25%;top:49%;margin:0;max-width:none;color:#c0a062;font:500 clamp(7.2rem,13vw,13.8rem)/.88 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-.025em;white-space:nowrap;text-shadow:0 18px 64px rgba(0,0,0,.26);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform}
+    .commerce-transition-word{position:absolute;left:25%;top:49%;margin:0;max-width:none;color:#f5a524;font:650 clamp(7.2rem,13vw,13.8rem)/.88 Arial,"Helvetica Neue",Helvetica,sans-serif;letter-spacing:0;white-space:nowrap;text-transform:uppercase;text-shadow:0 18px 64px rgba(0,0,0,.26);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform}
     .commerce-transition-expired{top:46%}
     .commerce-transition-unavailable{top:53%}
 
@@ -45,7 +45,7 @@
       .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:49vh;max-height:475px}
       .commerce-phone{left:72%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
       .commerce-transition-layer{right:-4vw;width:100vw}
-      .commerce-transition-word{left:25%;top:48%;font-size:clamp(5rem,23vw,7.4rem);letter-spacing:-.018em}
+      .commerce-transition-word{left:25%;top:48%;font-size:clamp(5rem,23vw,7.4rem);letter-spacing:0}
       .commerce-transition-expired{top:43%}
       .commerce-transition-unavailable{top:54%}
     }
@@ -66,9 +66,9 @@
   showcase.innerHTML = `
     <div class="commerce-motion-root">
       <div class="commerce-transition-layer" aria-hidden="true">
-        <p class="commerce-transition-word commerce-transition-checkout">Check out</p>
-        <p class="commerce-transition-word commerce-transition-expired">Expired coupon</p>
-        <p class="commerce-transition-word commerce-transition-unavailable">Unavailable</p>
+        <p class="commerce-transition-word commerce-transition-checkout">CHECK OUT</p>
+        <p class="commerce-transition-word commerce-transition-expired">EXPIRED COUPON</p>
+        <p class="commerce-transition-word commerce-transition-unavailable">UNAVAILABLE</p>
       </div>
 
       <div class="commerce-phone">
@@ -141,7 +141,7 @@
     const pulse = Math.sin(local * Math.PI);
 
     node.style.left = `${mix(fromX, toX, move)}%`;
-    node.style.opacity = String(visible);
+    node.style.opacity = String(visible * .58);
     node.style.transform = `translate(-50%,-50%) scale(${1 + pulse * (scalePeak - 1)})`;
 
     return pulse * visible;
@@ -151,8 +151,9 @@
   function render() {
     const p = getScenePhase();
 
-    // Every scenario first materializes at 25vw in the same muted CommerceOps yellow,
-    // then sweeps across the section while the phone occludes it.
+    // Every scenario first materializes at 25vw in the same saturated CommerceOps yellow,
+    // then sweeps across the section while the phone occludes it. Opacity, not hue,
+    // keeps the section context visually dominant.
     const checkoutEvent = setSweep(words.checkout, p, .03, .22, 25, 96, 1.025);
     const expiredEvent = setSweep(words.expired, p, .23, .46, 25, 96, 1.035);
     const unavailableEvent = setSweep(words.unavailable, p, .61, .84, 25, 96, 1.035);
