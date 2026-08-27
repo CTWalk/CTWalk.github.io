@@ -1,8 +1,6 @@
 (() => {
-  // CommerceOps scene — show what the repo is, not a QA philosophy lesson.
-  //
-  // One stable product. One scenario at a time. One reference outcome.
-  // Scroll only changes the exercise.
+  // CommerceOps scene — one stable product, one scenario at a time.
+  // The image and scenario name carry the whole explanation.
 
   const scene = document.querySelector('.scene[data-scene="1"]');
   const experience = document.getElementById('experience');
@@ -28,24 +26,17 @@
     .commerce-phone-screen img:first-child{opacity:1}
 
     .commerce-scenario-copy{position:absolute;z-index:6;left:3%;top:50%;width:min(43%,350px);transform:translateY(-50%);color:#f2f0e9;pointer-events:none}
-    .commerce-practice-label{margin:0 0 clamp(18px,2.3vw,28px);color:rgba(255,255,255,.48);font:760 clamp(.58rem,.73vw,.68rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase}
-    .commerce-scenario-slot{position:relative;height:clamp(132px,18vw,190px)}
-    .commerce-scenario-state{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;opacity:0;will-change:opacity,transform,filter}
+    .commerce-scenario-slot{position:relative;height:clamp(92px,12vw,130px)}
+    .commerce-scenario-state{position:absolute;inset:0;display:flex;align-items:center;opacity:0;will-change:opacity,transform,filter}
     .commerce-scenario-state:first-child{opacity:1}
-    .commerce-scenario-type{margin:0 0 9px;color:rgba(255,255,255,.5);font:750 clamp(.53rem,.67vw,.62rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
-    .commerce-scenario-title{margin:0;color:#fff;font:680 clamp(1.5rem,2.45vw,2.45rem)/1.04 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
-    .commerce-reference{margin:clamp(17px,2vw,23px) 0 0;color:rgba(255,255,255,.72);font:620 clamp(.72rem,.9vw,.84rem)/1.42 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.005em}
-    .commerce-reference span{margin-right:8px;color:rgba(255,255,255,.4);font:760 .88em/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+    .commerce-scenario-title{margin:0;color:#fff;font:680 clamp(1.85rem,3vw,3rem)/1.04 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
 
     @media(max-width:760px){
       .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:49vh;max-height:475px}
       .commerce-phone{left:72%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
       .commerce-scenario-copy{left:1%;top:48%;width:46%}
-      .commerce-practice-label{margin-bottom:13px;font-size:.43rem}
-      .commerce-scenario-slot{height:118px}
-      .commerce-scenario-type{margin-bottom:6px;font-size:.4rem}
-      .commerce-scenario-title{font-size:1.05rem;line-height:1.08}
-      .commerce-reference{margin-top:10px;font-size:.54rem;line-height:1.35}
+      .commerce-scenario-slot{height:84px}
+      .commerce-scenario-title{font-size:1.25rem;line-height:1.08}
     }
     @media(prefers-reduced-motion:reduce){
       .commerce-phone-screen img{opacity:0!important;transform:none!important;filter:none!important}
@@ -60,27 +51,20 @@
   showcase.className = 'commerce-showcase scene-object';
   showcase.setAttribute(
     'aria-label',
-    'CommerceOps is a QA practice application with realistic business scenarios and reference outcomes for checkout, expired coupons, and unavailable variants.'
+    'CommerceOps QA practice scenarios: check out, expired coupon, and unavailable variant.'
   );
   showcase.innerHTML = `
     <div class="commerce-motion-root">
       <div class="commerce-scenario-copy">
-        <p class="commerce-practice-label">QA PRACTICE APP</p>
         <div class="commerce-scenario-slot">
           <div class="commerce-scenario-state commerce-scenario-checkout">
-            <p class="commerce-scenario-type">HAPPY PATH</p>
-            <h3 class="commerce-scenario-title">Checkout</h3>
-            <p class="commerce-reference"><span>Reference</span>order persisted</p>
+            <h3 class="commerce-scenario-title">Check out</h3>
           </div>
           <div class="commerce-scenario-state commerce-scenario-expired">
-            <p class="commerce-scenario-type">NEGATIVE PATH</p>
             <h3 class="commerce-scenario-title">Expired coupon</h3>
-            <p class="commerce-reference"><span>Reference</span>rejected · no discount</p>
           </div>
           <div class="commerce-scenario-state commerce-scenario-unavailable">
-            <p class="commerce-scenario-type">NEGATIVE PATH</p>
-            <h3 class="commerce-scenario-title">Unavailable variant</h3>
-            <p class="commerce-reference"><span>Reference</span>unavailable size blocked</p>
+            <h3 class="commerce-scenario-title">unavailable variant</h3>
           </div>
         </div>
       </div>
@@ -121,7 +105,6 @@
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = t => t * t * (3 - 2 * t);
-  const ramp = (p, start, end) => smooth(clamp((p - start) / Math.max(.0001, end - start)));
   const cubicOut = t => 1 - Math.pow(1 - clamp(t), 3);
   const cubicRamp = (p, start, end) => cubicOut((p - start) / Math.max(.0001, end - start));
 
@@ -149,7 +132,6 @@
   function render() {
     const p = getScenePhase();
 
-    // Three readable states. Scroll only changes the exercise.
     const toExpired = cubicRamp(p, .28, .40);
     const toUnavailable = cubicRamp(p, .66, .78);
 
@@ -174,7 +156,6 @@
       state.style.filter = `blur(${(1 - w) * 1.5}px)`;
     });
 
-    // The product remains the stable visual anchor throughout.
     phone.style.transform = `translate(-50%,-50%) scale(${1 + Math.sin(p * Math.PI) * .006})`;
 
     raf = requestAnimationFrame(render);
