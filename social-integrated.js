@@ -25,7 +25,7 @@
     .social-motion-product,.social-motion-ci,.social-motion-proof{position:absolute;inset:0;width:100%;height:100%;will-change:opacity,transform,filter,clip-path}
     .social-motion-product{z-index:2;object-fit:cover;object-position:center top}
     .social-motion-ci{z-index:1;object-fit:contain;opacity:0;filter:brightness(.5) saturate(.75)}
-    .social-release-world{position:absolute;z-index:4;inset:0;pointer-events:none;will-change:opacity,transform}
+    .social-release-world{position:absolute;z-index:4;inset:0;pointer-events:none;transform-origin:88% 50%;will-change:opacity,transform}
     .social-release-track{position:absolute;left:8%;right:8%;top:50%;height:80px;transform:translateY(-50%);overflow:visible}
     .social-release-line{fill:none;stroke:rgba(200,213,255,.46);stroke-width:1.4;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(142,169,255,.2))}
     .social-release-node{fill:#101723;stroke:rgba(200,213,255,.42);stroke-width:1.3;transition:none}
@@ -52,21 +52,26 @@
     .social-proof-readout .social-proof-check{display:grid;width:34px;height:34px;place-items:center;border:1px solid rgba(155,233,194,.3);border-radius:50%;background:rgba(125,230,181,.12);color:#9be9c2;font-size:.92rem;letter-spacing:0}
     .social-proof-readout em{font:600 clamp(.58rem,.76vw,.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:rgba(229,235,255,.72);font-style:normal;letter-spacing:.04em}
     .social-final-glow{position:absolute;z-index:3;left:12%;right:12%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(155,233,194,.16),transparent);box-shadow:0 0 40px rgba(125,230,181,.18);opacity:0;will-change:opacity}
-    .social-signoff-stage{position:absolute;z-index:9;left:88%;top:50%;height:94%;aspect-ratio:1081/1999;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:clamp(16px,2vw,27px);background:#f5f2ec;box-shadow:0 32px 100px rgba(0,0,0,.52);opacity:0;transform:translate(-50%,-50%) scale(.08);transform-origin:center;will-change:left,opacity,transform,filter}
+    .social-delivered-stage{position:absolute;z-index:10;left:88%;top:50%;width:126px;height:126px;display:grid;place-items:center;color:#eaf8f1;opacity:0;transform:translate(-50%,-50%) scale(.24);pointer-events:none;will-change:opacity,transform}
+    .social-delivered-stage svg{width:88px;height:88px;overflow:visible;filter:drop-shadow(0 12px 30px rgba(0,0,0,.36))}
+    .social-delivered-stage svg *{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .social-delivered-stage .social-delivered-label{position:absolute;left:50%;top:calc(50% + 58px);margin:0;transform:translateX(-50%);color:#eef8f3;font:760 clamp(.62rem,.85vw,.76rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;white-space:nowrap;text-shadow:0 3px 18px rgba(0,0,0,.6);opacity:0;will-change:opacity}
+    .social-signoff-stage{position:absolute;z-index:9;left:88%;top:50%;height:94%;aspect-ratio:1081/1999;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:clamp(16px,2vw,27px);background:#f5f2ec;box-shadow:0 32px 100px rgba(0,0,0,.52);opacity:0;clip-path:circle(4% at 50% 50%);transform:translate(-50%,-50%) scale(.035);transform-origin:center;will-change:left,opacity,transform,filter,clip-path}
     .social-signoff-stage img{display:block;width:100%;height:100%;object-fit:cover}
-    .social-signoff-halo{position:absolute;z-index:8;left:50%;top:50%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(155,233,194,.14),rgba(155,233,194,.04) 42%,transparent 70%);filter:blur(7px);opacity:0;transform:translate(-50%,-50%) scale(.7);will-change:opacity,transform}
+    .social-signoff-halo{position:absolute;z-index:8;left:88%;top:50%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(155,233,194,.14),rgba(155,233,194,.04) 42%,transparent 70%);filter:blur(7px);opacity:0;transform:translate(-50%,-50%) scale(.45);will-change:left,opacity,transform}
     @media(max-width:760px){
       .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
       .social-db-stage{width:112px;height:112px}.social-db-stage svg{width:82px;height:82px}.social-stage-name{top:calc(50% + 54px);font-size:.59rem}
       .social-device-stage{width:210px;height:116px}.social-device-stage::before{top:21px}.social-device-stage::after{top:9px;left:13px;transform:scale(.82);transform-origin:left top}
       .social-execution{inset:27px 12px 12px;gap:5px}.social-execution span{width:18px;height:18px;font-size:.52rem}
       .social-proof-e2e,.social-proof-mobile{padding:4% 2%}.social-proof-readout{min-width:190px}.social-proof-readout strong{font-size:clamp(1.25rem,6vw,1.8rem)}.social-proof-readout .social-proof-check{width:28px;height:28px}
+      .social-delivered-stage{width:98px;height:98px}.social-delivered-stage svg{width:68px;height:68px}.social-delivered-stage .social-delivered-label{top:calc(50% + 45px);font-size:.55rem}
       .social-signoff-stage{height:93%;border-radius:17px}.social-signoff-halo{width:62%}
     }
     @media(prefers-reduced-motion:reduce){
-      .social-motion-product,.social-motion-ci,.social-db-stage,.social-device-stage,.social-motion-proof,.social-proof-readout,.social-release-world,.social-final-glow{display:none!important}
-      .social-signoff-stage{opacity:1!important;left:50%!important;transform:translate(-50%,-50%) scale(1)!important;filter:none!important}
-      .social-signoff-halo{opacity:.8!important;transform:translate(-50%,-50%) scale(1)!important}
+      .social-motion-product,.social-motion-ci,.social-db-stage,.social-device-stage,.social-motion-proof,.social-proof-readout,.social-release-world,.social-final-glow,.social-delivered-stage{display:none!important}
+      .social-signoff-stage{opacity:1!important;left:50%!important;clip-path:none!important;transform:translate(-50%,-50%) scale(1)!important;filter:none!important}
+      .social-signoff-halo{opacity:.8!important;left:50%!important;transform:translate(-50%,-50%) scale(1)!important}
     }
   `;
   document.head.appendChild(style);
@@ -116,6 +121,14 @@
       <div class="social-proof-readout social-readout-mobile" aria-hidden="true"><small>MOBILE LAYOUT</small><strong><span class="social-proof-check">✓</span>2 PASSED</strong><em>28.0s</em></div>
 
       <div class="social-final-glow" aria-hidden="true"></div>
+      <div class="social-delivered-stage" aria-hidden="true">
+        <svg viewBox="0 0 96 96">
+          <circle cx="44" cy="48" r="28" pathLength="100" />
+          <path d="M31 48l9 9 18-20" pathLength="100" />
+          <path d="M67 48h17m-6-6 6 6-6 6" pathLength="100" />
+        </svg>
+        <p class="social-delivered-label">DELIVERED</p>
+      </div>
       <div class="social-signoff-halo" aria-hidden="true"></div>
       <div class="social-signoff-stage">
         <img src="${assets.signoff}" alt="SocialPlatform moderation rules screen showing the engine running with three of three rules active" />
@@ -145,6 +158,9 @@
     mobile: showcase.querySelector('.social-readout-mobile')
   };
   const finalGlow = showcase.querySelector('.social-final-glow');
+  const delivered = showcase.querySelector('.social-delivered-stage');
+  const deliveredStrokes = [...delivered.querySelectorAll('svg *')];
+  const deliveredLabel = showcase.querySelector('.social-delivered-label');
   const signoff = showcase.querySelector('.social-signoff-stage');
   const signoffHalo = showcase.querySelector('.social-signoff-halo');
 
@@ -174,7 +190,7 @@
       }
       cursor += duration;
     }
-    return clamp(((step - 3) + .50) / .82);
+    return clamp(((step - 3) + .56) / .82);
   }
 
   function setProof(node, readout, amount, originX, originY, scale = 1) {
@@ -191,6 +207,10 @@
   }
 
   dbStrokes.forEach(stroke => {
+    stroke.style.strokeDasharray = '100';
+    stroke.style.strokeDashoffset = '100';
+  });
+  deliveredStrokes.forEach(stroke => {
     stroke.style.strokeDasharray = '100';
     stroke.style.strokeDashoffset = '100';
   });
@@ -215,28 +235,34 @@
     const e2eProof = windowValue(p, .58, .63, .68, .72);
     const deviceMorph = ramp(p, .72, .79);
     const mobileProof = windowValue(p, .80, .84, .88, .91);
-    const finalTrackReturn = ramp(p, .90, .925);
-    const deliveryTravel = ramp(p, .925, .95);
-    const signoffOpen = ramp(p, .945, .975);
+    const finalTrackReturn = ramp(p, .90, .918);
+    const deliveryTravel = ramp(p, .918, .936);
+    const deliveredIn = ramp(p, .928, .944);
+    const deliveredDraw = ramp(p, .934, .952);
+    const retract = ramp(p, .946, .964);
+    const signoffOpen = ramp(p, .954, .976);
+    const signoffRecenter = ramp(p, .966, .982);
     const proofMax = Math.max(dbProof, e2eProof, mobileProof);
 
-    const releaseAlpha = clamp(
+    const releaseBase = clamp(
       lineDraw * (1 - dbStageIn) +
       dbReturn * (1 - webStageIn) +
       finalTrackReturn
-    ) * (1 - proofMax) * (1 - signoffOpen * .94);
+    ) * (1 - proofMax);
+    const releaseAlpha = releaseBase * (1 - ramp(p, .958, .972));
     release.style.opacity = String(releaseAlpha);
-    release.style.transform = `scale(${.97 + releaseAlpha * .03 - signoffOpen * .015})`;
+    const baseScale = .97 + releaseBase * .03;
+    release.style.transform = `scaleX(${baseScale * (1 - retract * .985)}) scaleY(${1 - retract * .14})`;
 
     let pulseX = 5;
     if (p >= .12 && p < .20) pulseX = mix(5, 41, ramp(p, .12, .20));
     else if (p >= .20 && p < .49) pulseX = 41;
     else if (p >= .49 && p < .57) pulseX = mix(41, 77, ramp(p, .49, .57));
     else if (p >= .57 && p < .90) pulseX = 77;
-    else if (p >= .90 && p < .925) pulseX = 95;
+    else if (p >= .90 && p < .918) pulseX = 95;
     else pulseX = mix(95, 105, deliveryTravel);
     pulse.setAttribute('cx', pulseX.toFixed(2));
-    pulse.style.opacity = String(releaseAlpha * (1 - deliveryTravel * .82));
+    pulse.style.opacity = String(releaseBase * (1 - deliveryTravel * .76) * (1 - retract));
 
     const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57, p >= .79, deliveryTravel > .82];
     nodes.forEach((node, index) => {
@@ -291,18 +317,32 @@
     execution.style.paddingInline = mobileShape > .5 ? '18%' : '0';
     setProof(proofs.mobile, readouts.mobile, mobileProof, 50, 50, 1.05);
 
-    // The final dot is the outcome, not another technical check: it opens into the real product sign-off state.
-    ci.style.opacity = String(finalTrackReturn * .16 * (1 - signoffOpen));
+    // The release line physically collapses into its final outcome point.
+    ci.style.opacity = String(finalTrackReturn * .14 * (1 - signoffOpen));
     ci.style.transform = `scale(${1.035 - finalTrackReturn * .025})`;
-    finalGlow.style.opacity = String(finalTrackReturn * (1 - signoffOpen));
+    finalGlow.style.opacity = String(finalTrackReturn * (1 - retract));
 
-    const signoffX = mix(88, 50, signoffOpen);
+    // The final point becomes a delivered mark before turning into the real product state.
+    deliveredStrokes.forEach((stroke, index) => {
+      const local = clamp(deliveredDraw * 1.32 - index * .16);
+      stroke.style.strokeDashoffset = String(100 * (1 - smooth(local)));
+    });
+    const deliveredFade = 1 - ramp(signoffOpen, .28, .78);
+    delivered.style.opacity = String(deliveredIn * deliveredFade);
+    delivered.style.transform = `translate(-50%,-50%) scale(${.24 + deliveredIn * .76 + retract * .08})`;
+    deliveredLabel.style.opacity = String(ramp(deliveredDraw, .55, .9) * deliveredFade);
+
+    // The screenshot is born at the exact delivered-dot coordinate; it only recenters after it has visibly grown there.
+    const signoffX = mix(88, 50, signoffRecenter);
     signoff.style.left = `${signoffX}%`;
     signoff.style.opacity = String(signoffOpen);
-    signoff.style.transform = `translate(-50%,-50%) scale(${mix(.08, 1, signoffOpen)})`;
-    signoff.style.filter = `brightness(${mix(.82, 1, signoffOpen)}) saturate(${mix(.9, 1, signoffOpen)})`;
-    signoffHalo.style.opacity = String(signoffOpen * .86);
-    signoffHalo.style.transform = `translate(-50%,-50%) scale(${.72 + signoffOpen * .28})`;
+    signoff.style.clipPath = `circle(${mix(4, 78, signoffOpen)}% at 50% 50%)`;
+    signoff.style.transform = `translate(-50%,-50%) scale(${mix(.035, 1, signoffOpen)})`;
+    signoff.style.filter = `brightness(${mix(.84, 1, signoffOpen)}) saturate(${mix(.92, 1, signoffOpen)})`;
+
+    signoffHalo.style.left = `${signoffX}%`;
+    signoffHalo.style.opacity = String(signoffOpen * .82);
+    signoffHalo.style.transform = `translate(-50%,-50%) scale(${.45 + signoffOpen * .55})`;
 
     raf = requestAnimationFrame(render);
   }
