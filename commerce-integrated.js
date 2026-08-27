@@ -20,87 +20,66 @@
     .commerce-phone-screen{position:absolute;inset:6px;border-radius:clamp(17px,2vw,28px);overflow:hidden;background:#f7f5ef}
     .commerce-phone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity,transform,filter}
     .commerce-phone-cart{opacity:1}
-    .commerce-phone-expired{opacity:0;transform:scale(1.014);filter:brightness(.97)}
-    .commerce-phone-focus{position:absolute;z-index:9;left:50%;top:68%;width:74%;height:15%;transform:translate(-50%,-50%) scale(.96);border:1px solid rgba(158,51,42,.58);border-radius:14px;box-shadow:0 0 0 5px rgba(158,51,42,.05),0 10px 30px rgba(0,0,0,.08);opacity:0;pointer-events:none;will-change:opacity,transform}
+    .commerce-phone-expired{opacity:0;transform:scale(1.012);filter:brightness(.97)}
+    .commerce-phone-focus{position:absolute;z-index:9;left:50%;top:68%;width:74%;height:15%;transform:translate(-50%,-50%) scale(.965);border:1px solid rgba(158,51,42,.5);border-radius:14px;box-shadow:0 0 0 5px rgba(158,51,42,.045),0 10px 30px rgba(0,0,0,.08);opacity:0;pointer-events:none;will-change:opacity,transform}
 
-    .commerce-task-wrap{position:absolute;z-index:7;left:23%;top:49%;width:min(42%,350px);aspect-ratio:1.03;transform:translate(-50%,-50%) rotate(-1deg);will-change:transform,opacity}
-    .commerce-task-stack{position:absolute;inset:0;pointer-events:none}
-    .commerce-task-ghost{position:absolute;inset:0;border:1px solid rgba(255,255,255,.13);border-radius:20px;background:rgba(239,236,226,.08);box-shadow:0 24px 70px rgba(0,0,0,.18);opacity:0;will-change:opacity,transform}
-    .commerce-task-ghost.one{transform:translate(13px,-9px) rotate(3.2deg)}
-    .commerce-task-ghost.two{transform:translate(-10px,10px) rotate(-2.2deg)}
-    .commerce-task-ghost span{position:absolute;left:20px;top:18px;color:rgba(255,255,255,.34);font:720 clamp(.48rem,.62vw,.58rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
-
-    .commerce-task{position:absolute;inset:0;display:grid;grid-template-rows:47% 53%;border:1px solid rgba(35,39,44,.18);border-radius:20px;background:#f1eee6;color:#23262b;box-shadow:0 34px 80px rgba(0,0,0,.34);overflow:hidden}
-    .commerce-task::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.22),transparent 38%,rgba(70,60,48,.025));mix-blend-mode:multiply}
-    .commerce-challenge{position:relative;z-index:1;padding:clamp(20px,2.3vw,30px);border-bottom:1px solid rgba(35,39,44,.12)}
-    .commerce-kicker{margin:0 0 10px;color:#74716a;font:760 clamp(.56rem,.72vw,.67rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
-    .commerce-task-title{margin:0;color:#22252a;font:700 clamp(1.28rem,1.95vw,1.95rem)/1.05 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
-    .commerce-task-question{margin:15px 0 0;max-width:20ch;color:#4d504d;font:520 clamp(.78rem,.98vw,.96rem)/1.43 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .commerce-task-code{display:inline-flex;margin-top:12px;padding:6px 8px;border:1px solid rgba(36,39,44,.13);border-radius:7px;background:rgba(255,255,255,.44);color:#373a3f;font:700 clamp(.6rem,.74vw,.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.02em}
-
-    .commerce-answer{position:relative;z-index:1;overflow:hidden;background:#ebe7dd}
-    .commerce-reference{position:absolute;inset:0;padding:clamp(17px,2vw,25px);display:flex;flex-direction:column}
-    .commerce-reference-head{margin:0 0 11px;color:#76736c;font:760 clamp(.54rem,.68vw,.63rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
-    .commerce-checks{display:grid;gap:8px}
-    .commerce-check{display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;min-height:31px;padding:7px 8px;border-top:1px solid rgba(35,39,44,.08);color:#444743;font:580 clamp(.66rem,.8vw,.76rem)/1.25 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;opacity:.14;transform:translateY(5px);will-change:opacity,transform,background}
-    .commerce-check:first-child{border-top:0}
-    .commerce-check b{color:#858179;font:760 clamp(.54rem,.66vw,.61rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.07em}
-    .commerce-check strong{font-weight:650;color:#33363a}
-    .commerce-check i{display:grid;width:19px;height:19px;place-items:center;border-radius:50%;background:rgba(60,121,85,.09);color:#397250;font:800 .58rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-style:normal;opacity:0;transform:scale(.7);will-change:opacity,transform}
-    .commerce-reference-truth{margin:auto 0 0;padding-top:10px;border-top:1px solid rgba(35,39,44,.12);color:#414440;font:700 clamp(.59rem,.72vw,.68rem)/1.35 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;opacity:0;transform:translateY(4px);will-change:opacity,transform}
-    .commerce-reference-truth strong{color:#9e332a}
-
-    .commerce-answer-cover{position:absolute;z-index:4;inset:0;display:grid;place-items:center;background:#dfd9cd;color:#77736b;box-shadow:0 -1px 0 rgba(255,255,255,.42),0 -18px 40px rgba(53,47,38,.06);will-change:transform}
-    .commerce-answer-cover::before{content:"";position:absolute;top:16px;left:50%;width:38px;height:3px;transform:translateX(-50%);border-radius:99px;background:rgba(73,68,61,.18)}
-    .commerce-answer-cover span{font:760 clamp(.56rem,.7vw,.65rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
+    .commerce-exercise{position:absolute;z-index:7;left:23%;top:49%;width:min(42%,350px);height:min(44%,300px);transform:translate(-50%,-50%) rotate(-.6deg);border:1px solid rgba(35,39,44,.18);border-radius:20px;background:#f1eee6;color:#23262b;box-shadow:0 34px 80px rgba(0,0,0,.34);overflow:hidden;will-change:transform,filter}
+    .commerce-exercise::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.22),transparent 38%,rgba(70,60,48,.025));mix-blend-mode:multiply}
+    .commerce-exercise-head{position:absolute;z-index:3;left:clamp(20px,2.3vw,30px);right:clamp(20px,2.3vw,30px);top:clamp(18px,2vw,25px)}
+    .commerce-practice-label{margin:0;color:#74716a;font:760 clamp(.56rem,.72vw,.67rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
+    .commerce-exercise-title{margin:11px 0 0;color:#22252a;font:700 clamp(1.28rem,1.95vw,1.95rem)/1.05 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
+    .commerce-exercise-stage{position:absolute;z-index:2;left:clamp(20px,2.3vw,30px);right:clamp(20px,2.3vw,30px);bottom:clamp(20px,2.3vw,30px);height:42%}
+    .commerce-question,.commerce-reference{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;will-change:opacity,transform}
+    .commerce-question{opacity:1}
+    .commerce-reference{opacity:0;transform:translateY(9px)}
+    .commerce-stage-label{margin:0 0 8px;color:#77736b;font:760 clamp(.54rem,.68vw,.63rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
+    .commerce-question p,.commerce-reference p{margin:0;color:#444743;font:540 clamp(.78rem,.98vw,.96rem)/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .commerce-question strong{color:#25282d;font-weight:720}
+    .commerce-reference-code{margin:0 0 7px;color:#2e3135;font:760 clamp(.72rem,.88vw,.84rem)/1.15 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.015em}
+    .commerce-reference-result{color:#9e332a!important;font-weight:700!important}
+    .commerce-reference-state{margin-top:5px!important;color:#565953!important;font:650 clamp(.61rem,.75vw,.7rem)/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important}
+    .commerce-transition-rule{position:absolute;z-index:1;left:0;right:0;bottom:0;height:2px;background:rgba(35,39,44,.09);overflow:hidden}
+    .commerce-transition-rule::after{content:"";display:block;width:100%;height:100%;background:#9e332a;transform:translateX(-100%);will-change:transform}
 
     @media(max-width:760px){
       .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:47vh;max-height:455px}
       .commerce-phone{left:73%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
-      .commerce-task-wrap{left:25%;top:46%;width:47%;transform:translate(-50%,-50%) rotate(-1deg)}
-      .commerce-task{border-radius:14px}.commerce-task-ghost{border-radius:14px}
-      .commerce-challenge{padding:13px}.commerce-kicker{margin-bottom:6px;font-size:.43rem}.commerce-task-title{font-size:1rem}.commerce-task-question{margin-top:8px;font-size:.61rem;line-height:1.32}.commerce-task-code{margin-top:7px;padding:4px 5px;font-size:.45rem}
-      .commerce-reference{padding:11px}.commerce-reference-head{margin-bottom:5px;font-size:.42rem}.commerce-checks{gap:2px}.commerce-check{grid-template-columns:30px 1fr auto;gap:4px;min-height:22px;padding:3px 4px;font-size:.46rem}.commerce-check b{font-size:.39rem}.commerce-check i{width:13px;height:13px;font-size:.39rem}.commerce-reference-truth{padding-top:5px;font-size:.42rem}.commerce-answer-cover span{font-size:.43rem}
+      .commerce-exercise{left:25%;top:46%;width:47%;height:43%;border-radius:14px}
+      .commerce-exercise-head{left:13px;right:13px;top:12px}.commerce-practice-label{font-size:.43rem}.commerce-exercise-title{margin-top:6px;font-size:1rem}
+      .commerce-exercise-stage{left:13px;right:13px;bottom:13px;height:44%}.commerce-stage-label{margin-bottom:5px;font-size:.4rem}.commerce-question p,.commerce-reference p{font-size:.58rem;line-height:1.32}.commerce-reference-code{font-size:.53rem}.commerce-reference-state{font-size:.45rem!important}
       .commerce-phone-focus{top:68%;width:76%;height:15%;border-radius:10px}
     }
     @media(prefers-reduced-motion:reduce){
-      .commerce-phone-cart{opacity:0!important}.commerce-phone-expired{opacity:1!important;transform:none!important;filter:none!important}.commerce-phone-focus{opacity:.65!important;transform:translate(-50%,-50%) scale(1)!important}
-      .commerce-answer-cover{transform:translateY(-102%)!important}.commerce-check,.commerce-reference-truth{opacity:1!important;transform:none!important}.commerce-check i{opacity:1!important;transform:none!important}.commerce-task-ghost{opacity:.3!important}
+      .commerce-phone-cart{opacity:0!important}.commerce-phone-expired{opacity:1!important;transform:none!important;filter:none!important}.commerce-phone-focus{opacity:.6!important;transform:translate(-50%,-50%) scale(1)!important}
+      .commerce-question{opacity:0!important}.commerce-reference{opacity:1!important;transform:none!important}.commerce-transition-rule::after{transform:none!important}
     }
   `;
   document.head.appendChild(style);
 
   const showcase = document.createElement('div');
   showcase.className = 'commerce-showcase scene-object';
-  showcase.setAttribute('aria-label', 'CommerceOps QA practice task demonstrated on the real application with a reference answer');
+  showcase.setAttribute('aria-label', 'CommerceOps QA practice exercise shown on the real application with its reference answer');
   showcase.innerHTML = `
     <div class="commerce-motion-root">
-      <div class="commerce-task-wrap">
-        <div class="commerce-task-stack" aria-hidden="true">
-          <div class="commerce-task-ghost one"><span>Happy path</span></div>
-          <div class="commerce-task-ghost two"><span>Negative path</span></div>
+      <section class="commerce-exercise">
+        <div class="commerce-exercise-head">
+          <p class="commerce-practice-label">QA PRACTICE APP</p>
+          <h3 class="commerce-exercise-title">Expired coupon</h3>
         </div>
-        <section class="commerce-task">
-          <div class="commerce-challenge">
-            <p class="commerce-kicker">QA PRACTICE · NEGATIVE PATH</p>
-            <h3 class="commerce-task-title">Expired coupon</h3>
-            <p class="commerce-task-question">Apply <strong>WELCOME20</strong>. Did the discount actually apply?</p>
-            <span class="commerce-task-code">TEST THE PRODUCT</span>
+        <div class="commerce-exercise-stage">
+          <div class="commerce-question">
+            <p class="commerce-stage-label">Challenge</p>
+            <p>Apply <strong>WELCOME20</strong>.<br>Did the discount actually apply?</p>
           </div>
-          <div class="commerce-answer">
-            <div class="commerce-reference">
-              <p class="commerce-reference-head">Reference answer</p>
-              <div class="commerce-checks">
-                <div class="commerce-check"><b>UI</b><strong>Coupon rejected</strong><i>✓</i></div>
-                <div class="commerce-check"><b>TOTAL</b><strong>No discount</strong><i>✓</i></div>
-                <div class="commerce-check"><b>STATE</b><strong>Persisted rejected</strong><i>✓</i></div>
-              </div>
-              <div class="commerce-reference-truth">WELCOME20 · <strong>rejected</strong> · expired</div>
-            </div>
-            <div class="commerce-answer-cover" aria-hidden="true"><span>Try it first</span></div>
+          <div class="commerce-reference">
+            <p class="commerce-stage-label">Reference</p>
+            <p class="commerce-reference-code">WELCOME20</p>
+            <p class="commerce-reference-result">Rejected · no discount</p>
+            <p class="commerce-reference-state">persisted state: rejected</p>
           </div>
-        </section>
-      </div>
+          <div class="commerce-transition-rule" aria-hidden="true"></div>
+        </div>
+      </section>
 
       <div class="commerce-phone">
         <div class="commerce-phone-screen">
@@ -125,12 +104,11 @@
   const cart = showcase.querySelector('.commerce-phone-cart');
   const expired = showcase.querySelector('.commerce-phone-expired');
   const focus = showcase.querySelector('.commerce-phone-focus');
-  const taskWrap = showcase.querySelector('.commerce-task-wrap');
-  const cover = showcase.querySelector('.commerce-answer-cover');
-  const checks = [...showcase.querySelectorAll('.commerce-check')];
-  const checkMarks = [...showcase.querySelectorAll('.commerce-check i')];
-  const truth = showcase.querySelector('.commerce-reference-truth');
-  const ghosts = [...showcase.querySelectorAll('.commerce-task-ghost')];
+  const exercise = showcase.querySelector('.commerce-exercise');
+  const question = showcase.querySelector('.commerce-question');
+  const reference = showcase.querySelector('.commerce-reference');
+  const transitionRule = showcase.querySelector('.commerce-transition-rule::after');
+  const rule = showcase.querySelector('.commerce-transition-rule');
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
@@ -165,52 +143,31 @@
   function render() {
     const p = getScenePhase();
 
-    // Beat 1: the task is already readable. Beat 2: the real product performs it.
-    const productResult = cubicRamp(p, .23, .39);
+    // One story: read the challenge, watch the real product, then reveal the reference in the same place.
+    const productResult = cubicRamp(p, .27, .45);
+    const answer = cubicRamp(p, .48, .64);
+    const holdFocus = ramp(p, .37, .47) * (1 - ramp(p, .73, .83));
+
     cart.style.opacity = String(1 - productResult);
-    cart.style.transform = `scale(${1 - productResult * .012})`;
+    cart.style.transform = `scale(${1 - productResult * .01})`;
     expired.style.opacity = String(productResult);
-    expired.style.transform = `scale(${1.014 - productResult * .014})`;
+    expired.style.transform = `scale(${1.012 - productResult * .012})`;
     expired.style.filter = `brightness(${.97 + productResult * .03})`;
 
-    const resultFocus = ramp(p, .34, .43) * (1 - ramp(p, .78, .86) * .45);
-    focus.style.opacity = String(resultFocus * .82);
-    focus.style.transform = `translate(-50%,-50%) scale(${.96 + resultFocus * .04})`;
-    phone.style.transform = `translate(-50%,-50%) scale(${1 + productResult * .012})`;
-    phone.style.filter = `brightness(${1 - productResult * .025 + resultFocus * .02})`;
+    question.style.opacity = String(1 - answer);
+    question.style.transform = `translateY(${-answer * 7}px)`;
+    reference.style.opacity = String(answer);
+    reference.style.transform = `translateY(${(1 - answer) * 9}px)`;
 
-    // Beat 3: uncover the answer instead of replacing the task with another object.
-    const uncover = cubicRamp(p, .47, .60);
-    cover.style.transform = `translateY(${-102 * uncover}%)`;
+    // The thin rule is the only explicit transition cue between question and answer.
+    rule.style.setProperty('--commerce-answer', String(answer));
+    rule.style.background = `linear-gradient(90deg,#9e332a 0%,#9e332a ${answer * 100}%,rgba(35,39,44,.09) ${answer * 100}%,rgba(35,39,44,.09) 100%)`;
 
-    // Beat 4: reveal what a good QA check should verify, one item at a time.
-    checks.forEach((node, index) => {
-      const visible = ramp(p, .58 + index * .075, .65 + index * .075);
-      const active = ramp(p, .60 + index * .075, .67 + index * .075);
-      node.style.opacity = String(.14 + visible * .86);
-      node.style.transform = `translateY(${(1 - visible) * 5}px)`;
-      node.style.background = `rgba(255,255,255,${active * .26})`;
-      const mark = checkMarks[index];
-      if (mark) {
-        mark.style.opacity = String(active);
-        mark.style.transform = `scale(${.7 + active * .3})`;
-      }
-    });
+    focus.style.opacity = String(holdFocus * .72);
+    focus.style.transform = `translate(-50%,-50%) scale(${.965 + holdFocus * .035})`;
 
-    const truthIn = ramp(p, .78, .85);
-    truth.style.opacity = String(truthIn);
-    truth.style.transform = `translateY(${(1 - truthIn) * 4}px)`;
-
-    // Beat 5: only after one exercise is understood, hint that the repo contains more.
-    const more = cubicRamp(p, .84, .94);
-    ghosts.forEach((ghost, index) => {
-      ghost.style.opacity = String(more * (index === 0 ? .34 : .25));
-      const x = index === 0 ? 13 : -10;
-      const y = index === 0 ? -9 : 10;
-      const r = index === 0 ? 3.2 : -2.2;
-      ghost.style.transform = `translate(${x * more}px,${y * more}px) rotate(${r * more}deg)`;
-    });
-    taskWrap.style.transform = `translate(-50%,-50%) rotate(${-1 + more * .35}deg) scale(${1 - more * .012})`;
+    phone.style.filter = `brightness(${1 - answer * .018})`;
+    exercise.style.transform = `translate(-50%,-50%) rotate(${-0.6 + answer * .35}deg) scale(${1 + answer * .012})`;
 
     raf = requestAnimationFrame(render);
   }
