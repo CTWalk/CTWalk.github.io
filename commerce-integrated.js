@@ -12,108 +12,103 @@
   const style = document.createElement('style');
   style.dataset.commerceIntegrated = 'true';
   style.textContent = `
-    .commerce-showcase{position:absolute;z-index:9;right:max(2vw,calc((100% - var(--content))/2));top:8%;width:min(58vw,860px);height:min(78vh,720px);overflow:visible;perspective:1200px;transform-style:preserve-3d;will-change:transform,opacity}
-    .commerce-motion-root{position:absolute;inset:0;isolation:isolate;perspective:1200px}
-    .commerce-phone{position:absolute;z-index:5;left:64%;top:50%;height:96%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:left,transform,filter}
+    .commerce-showcase{position:absolute;z-index:9;right:max(2vw,calc((100% - var(--content))/2));top:8%;width:min(59vw,870px);height:min(78vh,720px);overflow:visible;will-change:transform,opacity}
+    .commerce-motion-root{position:absolute;inset:0;isolation:isolate}
+
+    .commerce-phone{position:absolute;z-index:5;left:72%;top:50%;height:96%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:transform,filter}
     .commerce-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:25%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
     .commerce-phone-screen{position:absolute;inset:6px;border-radius:clamp(17px,2vw,28px);overflow:hidden;background:#f7f5ef}
     .commerce-phone-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity,transform,filter}
     .commerce-phone-cart{opacity:1}
-    .commerce-phone-expired{opacity:0;transform:scale(1.018);filter:brightness(.96)}
-    .commerce-ui-target{position:absolute;z-index:9;left:50%;top:68%;width:72%;height:15%;transform:translate(-50%,-50%) scale(.94);border:1px solid rgba(158,51,42,.62);border-radius:15px;box-shadow:0 0 0 5px rgba(158,51,42,.055),0 10px 28px rgba(0,0,0,.1);opacity:0;pointer-events:none;will-change:opacity,transform}
+    .commerce-phone-expired{opacity:0;transform:scale(1.014);filter:brightness(.97)}
+    .commerce-phone-focus{position:absolute;z-index:9;left:50%;top:68%;width:74%;height:15%;transform:translate(-50%,-50%) scale(.96);border:1px solid rgba(158,51,42,.58);border-radius:14px;box-shadow:0 0 0 5px rgba(158,51,42,.05),0 10px 30px rgba(0,0,0,.08);opacity:0;pointer-events:none;will-change:opacity,transform}
 
-    .commerce-deck{position:absolute;z-index:2;left:57%;top:49%;width:min(39%,340px);aspect-ratio:1.28;transform:translate(-50%,-50%) rotate(-4deg) scale(.8);opacity:.48;will-change:opacity,transform}
-    .commerce-deck-sheet{position:absolute;inset:0;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:linear-gradient(145deg,rgba(236,233,224,.16),rgba(236,233,224,.055));box-shadow:0 24px 60px rgba(0,0,0,.2);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
-    .commerce-deck-sheet::before,.commerce-deck-sheet::after{content:"";position:absolute;left:18px;right:30%;height:1px;background:rgba(255,255,255,.13)}
-    .commerce-deck-sheet::before{top:28px}.commerce-deck-sheet::after{top:43px}
-    .commerce-deck-sheet.one{transform:translate(11px,-10px) rotate(5deg)}
-    .commerce-deck-sheet.two{transform:translate(-7px,8px) rotate(-2deg)}
-    .commerce-deck-sheet.three{transform:translate(3px,2px) rotate(1deg)}
+    .commerce-task-wrap{position:absolute;z-index:7;left:23%;top:49%;width:min(42%,350px);aspect-ratio:1.03;transform:translate(-50%,-50%) rotate(-1deg);will-change:transform,opacity}
+    .commerce-task-stack{position:absolute;inset:0;pointer-events:none}
+    .commerce-task-ghost{position:absolute;inset:0;border:1px solid rgba(255,255,255,.13);border-radius:20px;background:rgba(239,236,226,.08);box-shadow:0 24px 70px rgba(0,0,0,.18);opacity:0;will-change:opacity,transform}
+    .commerce-task-ghost.one{transform:translate(13px,-9px) rotate(3.2deg)}
+    .commerce-task-ghost.two{transform:translate(-10px,10px) rotate(-2.2deg)}
+    .commerce-task-ghost span{position:absolute;left:20px;top:18px;color:rgba(255,255,255,.34);font:720 clamp(.48rem,.62vw,.58rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}
 
-    .commerce-sheet-wrap{position:absolute;z-index:7;left:57%;top:49%;width:min(39%,340px);aspect-ratio:1.28;transform:translate(-50%,-50%) rotate(-4deg) scale(.74);transform-style:preserve-3d;will-change:left,top,transform,opacity,filter}
-    .commerce-sheet{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;filter:drop-shadow(0 28px 45px rgba(0,0,0,.28))}
-    .commerce-sheet-face{position:absolute;inset:0;display:flex;flex-direction:column;border:1px solid rgba(34,38,44,.18);border-radius:18px;background:#f1eee6;color:#24272c;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
-    .commerce-sheet-face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.22),transparent 34%,rgba(70,60,48,.025));mix-blend-mode:multiply}
-    .commerce-sheet-front{padding:clamp(20px,2.4vw,30px)}
-    .commerce-sheet-back{padding:clamp(18px,2.2vw,27px);transform:rotateY(180deg)}
-    .commerce-sheet-kicker{margin:0 0 12px;color:#727069;font:760 clamp(.58rem,.74vw,.69rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
-    .commerce-sheet-title{margin:0;color:#22252a;font:700 clamp(1.35rem,2vw,2rem)/1.04 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
-    .commerce-sheet-question{margin:auto 0 0;max-width:19ch;color:#4f514e;font:520 clamp(.82rem,1vw,.98rem)/1.42 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    .commerce-sheet-code{display:inline-flex;align-items:center;align-self:flex-start;margin-top:15px;padding:7px 9px;border:1px solid rgba(36,39,44,.14);border-radius:8px;background:rgba(255,255,255,.42);color:#373a3f;font:700 clamp(.64rem,.76vw,.72rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.025em}
-    .commerce-reference{display:grid;gap:8px;margin-top:auto}
-    .commerce-ref-step{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start;color:#4b4d49;font:560 clamp(.67rem,.82vw,.78rem)/1.28 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;opacity:0;transform:translateY(6px);will-change:opacity,transform}
-    .commerce-ref-step b{display:grid;width:22px;height:22px;place-items:center;border:1px solid rgba(36,39,44,.14);border-radius:50%;color:#78766f;font:750 .55rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-    .commerce-reference-truth{margin-top:10px;padding-top:10px;border-top:1px solid rgba(36,39,44,.12);color:#34373b;font:700 clamp(.62rem,.76vw,.72rem)/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;opacity:0;transform:translateY(5px);will-change:opacity,transform}
+    .commerce-task{position:absolute;inset:0;display:grid;grid-template-rows:47% 53%;border:1px solid rgba(35,39,44,.18);border-radius:20px;background:#f1eee6;color:#23262b;box-shadow:0 34px 80px rgba(0,0,0,.34);overflow:hidden}
+    .commerce-task::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.22),transparent 38%,rgba(70,60,48,.025));mix-blend-mode:multiply}
+    .commerce-challenge{position:relative;z-index:1;padding:clamp(20px,2.3vw,30px);border-bottom:1px solid rgba(35,39,44,.12)}
+    .commerce-kicker{margin:0 0 10px;color:#74716a;font:760 clamp(.56rem,.72vw,.67rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
+    .commerce-task-title{margin:0;color:#22252a;font:700 clamp(1.28rem,1.95vw,1.95rem)/1.05 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.035em}
+    .commerce-task-question{margin:15px 0 0;max-width:20ch;color:#4d504d;font:520 clamp(.78rem,.98vw,.96rem)/1.43 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .commerce-task-code{display:inline-flex;margin-top:12px;padding:6px 8px;border:1px solid rgba(36,39,44,.13);border-radius:7px;background:rgba(255,255,255,.44);color:#373a3f;font:700 clamp(.6rem,.74vw,.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.02em}
+
+    .commerce-answer{position:relative;z-index:1;overflow:hidden;background:#ebe7dd}
+    .commerce-reference{position:absolute;inset:0;padding:clamp(17px,2vw,25px);display:flex;flex-direction:column}
+    .commerce-reference-head{margin:0 0 11px;color:#76736c;font:760 clamp(.54rem,.68vw,.63rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
+    .commerce-checks{display:grid;gap:8px}
+    .commerce-check{display:grid;grid-template-columns:44px 1fr auto;gap:8px;align-items:center;min-height:31px;padding:7px 8px;border-top:1px solid rgba(35,39,44,.08);color:#444743;font:580 clamp(.66rem,.8vw,.76rem)/1.25 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;opacity:.14;transform:translateY(5px);will-change:opacity,transform,background}
+    .commerce-check:first-child{border-top:0}
+    .commerce-check b{color:#858179;font:760 clamp(.54rem,.66vw,.61rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.07em}
+    .commerce-check strong{font-weight:650;color:#33363a}
+    .commerce-check i{display:grid;width:19px;height:19px;place-items:center;border-radius:50%;background:rgba(60,121,85,.09);color:#397250;font:800 .58rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-style:normal;opacity:0;transform:scale(.7);will-change:opacity,transform}
+    .commerce-reference-truth{margin:auto 0 0;padding-top:10px;border-top:1px solid rgba(35,39,44,.12);color:#414440;font:700 clamp(.59rem,.72vw,.68rem)/1.35 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;opacity:0;transform:translateY(4px);will-change:opacity,transform}
     .commerce-reference-truth strong{color:#9e332a}
 
-    .commerce-annotation{position:absolute;z-index:6;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:0;will-change:opacity}
-    .commerce-annotation path{fill:none;stroke:rgba(241,238,230,.68);stroke-width:1.15;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;filter:drop-shadow(0 0 7px rgba(255,255,255,.12));vector-effect:non-scaling-stroke}
-    .commerce-annotation circle{fill:#f1eee6;opacity:0;filter:drop-shadow(0 0 8px rgba(255,255,255,.32))}
-    .commerce-annotation-note{position:absolute;z-index:8;left:48%;top:70%;margin:0;color:rgba(255,255,255,.72);font:720 clamp(.56rem,.7vw,.66rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.09em;text-transform:uppercase;opacity:0;transform:translateY(5px);will-change:opacity,transform;pointer-events:none}
+    .commerce-answer-cover{position:absolute;z-index:4;inset:0;display:grid;place-items:center;background:#dfd9cd;color:#77736b;box-shadow:0 -1px 0 rgba(255,255,255,.42),0 -18px 40px rgba(53,47,38,.06);will-change:transform}
+    .commerce-answer-cover::before{content:"";position:absolute;top:16px;left:50%;width:38px;height:3px;transform:translateX(-50%);border-radius:99px;background:rgba(73,68,61,.18)}
+    .commerce-answer-cover span{font:760 clamp(.56rem,.7vw,.65rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}
 
     @media(max-width:760px){
-      .commerce-showcase{left:5vw;right:auto;top:6%;width:90vw;height:47vh;max-height:455px}
-      .commerce-phone{left:69%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
-      .commerce-deck{left:67%;top:48%;width:42%;transform:translate(-50%,-50%) rotate(-4deg) scale(.66)}
-      .commerce-sheet-wrap{left:67%;top:48%;width:43%;transform:translate(-50%,-50%) rotate(-4deg) scale(.64)}
-      .commerce-sheet-front{padding:14px}.commerce-sheet-back{padding:13px}
-      .commerce-sheet-kicker{margin-bottom:7px;font-size:.46rem}.commerce-sheet-title{font-size:1.05rem}.commerce-sheet-question{font-size:.65rem;line-height:1.35}.commerce-sheet-code{margin-top:8px;padding:5px 6px;font-size:.49rem}
-      .commerce-reference{gap:4px}.commerce-ref-step{grid-template-columns:16px 1fr;gap:5px;font-size:.5rem}.commerce-ref-step b{width:15px;height:15px;font-size:.4rem}.commerce-reference-truth{margin-top:5px;padding-top:5px;font-size:.47rem}
-      .commerce-ui-target{top:68%;width:76%;height:15%;border-radius:10px}.commerce-annotation-note{font-size:.46rem}
+      .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:47vh;max-height:455px}
+      .commerce-phone{left:73%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
+      .commerce-task-wrap{left:25%;top:46%;width:47%;transform:translate(-50%,-50%) rotate(-1deg)}
+      .commerce-task{border-radius:14px}.commerce-task-ghost{border-radius:14px}
+      .commerce-challenge{padding:13px}.commerce-kicker{margin-bottom:6px;font-size:.43rem}.commerce-task-title{font-size:1rem}.commerce-task-question{margin-top:8px;font-size:.61rem;line-height:1.32}.commerce-task-code{margin-top:7px;padding:4px 5px;font-size:.45rem}
+      .commerce-reference{padding:11px}.commerce-reference-head{margin-bottom:5px;font-size:.42rem}.commerce-checks{gap:2px}.commerce-check{grid-template-columns:30px 1fr auto;gap:4px;min-height:22px;padding:3px 4px;font-size:.46rem}.commerce-check b{font-size:.39rem}.commerce-check i{width:13px;height:13px;font-size:.39rem}.commerce-reference-truth{padding-top:5px;font-size:.42rem}.commerce-answer-cover span{font-size:.43rem}
+      .commerce-phone-focus{top:68%;width:76%;height:15%;border-radius:10px}
     }
     @media(prefers-reduced-motion:reduce){
-      .commerce-phone{left:69%!important;transform:translate(-50%,-50%)!important}.commerce-phone-cart{opacity:0!important}.commerce-phone-expired{opacity:1!important;transform:none!important;filter:none!important}
-      .commerce-deck{opacity:.34!important}.commerce-sheet-wrap{left:21%!important;top:38%!important;opacity:1!important;transform:translate(-50%,-50%) rotate(-1deg) scale(1)!important}.commerce-sheet{transform:rotateY(180deg)!important}
-      .commerce-ref-step,.commerce-reference-truth{opacity:1!important;transform:none!important}.commerce-ui-target{opacity:1!important;transform:translate(-50%,-50%) scale(1)!important}.commerce-annotation{opacity:.75!important}.commerce-annotation path{stroke-dashoffset:0!important}.commerce-annotation circle{opacity:1!important}.commerce-annotation-note{opacity:1!important;transform:none!important}
+      .commerce-phone-cart{opacity:0!important}.commerce-phone-expired{opacity:1!important;transform:none!important;filter:none!important}.commerce-phone-focus{opacity:.65!important;transform:translate(-50%,-50%) scale(1)!important}
+      .commerce-answer-cover{transform:translateY(-102%)!important}.commerce-check,.commerce-reference-truth{opacity:1!important;transform:none!important}.commerce-check i{opacity:1!important;transform:none!important}.commerce-task-ghost{opacity:.3!important}
     }
   `;
   document.head.appendChild(style);
 
   const showcase = document.createElement('div');
   showcase.className = 'commerce-showcase scene-object';
-  showcase.setAttribute('aria-label', 'CommerceOps QA practice challenge and reference verification example');
+  showcase.setAttribute('aria-label', 'CommerceOps QA practice task demonstrated on the real application with a reference answer');
   showcase.innerHTML = `
     <div class="commerce-motion-root">
-      <div class="commerce-deck" aria-hidden="true">
-        <div class="commerce-deck-sheet one"></div>
-        <div class="commerce-deck-sheet two"></div>
-        <div class="commerce-deck-sheet three"></div>
+      <div class="commerce-task-wrap">
+        <div class="commerce-task-stack" aria-hidden="true">
+          <div class="commerce-task-ghost one"><span>Happy path</span></div>
+          <div class="commerce-task-ghost two"><span>Negative path</span></div>
+        </div>
+        <section class="commerce-task">
+          <div class="commerce-challenge">
+            <p class="commerce-kicker">QA PRACTICE · NEGATIVE PATH</p>
+            <h3 class="commerce-task-title">Expired coupon</h3>
+            <p class="commerce-task-question">Apply <strong>WELCOME20</strong>. Did the discount actually apply?</p>
+            <span class="commerce-task-code">TEST THE PRODUCT</span>
+          </div>
+          <div class="commerce-answer">
+            <div class="commerce-reference">
+              <p class="commerce-reference-head">Reference answer</p>
+              <div class="commerce-checks">
+                <div class="commerce-check"><b>UI</b><strong>Coupon rejected</strong><i>✓</i></div>
+                <div class="commerce-check"><b>TOTAL</b><strong>No discount</strong><i>✓</i></div>
+                <div class="commerce-check"><b>STATE</b><strong>Persisted rejected</strong><i>✓</i></div>
+              </div>
+              <div class="commerce-reference-truth">WELCOME20 · <strong>rejected</strong> · expired</div>
+            </div>
+            <div class="commerce-answer-cover" aria-hidden="true"><span>Try it first</span></div>
+          </div>
+        </section>
       </div>
 
       <div class="commerce-phone">
         <div class="commerce-phone-screen">
-          <img class="commerce-phone-cart" src="${assets.cart}" alt="CommerceOps cart screen" />
-          <img class="commerce-phone-expired" src="${assets.expired}" alt="CommerceOps cart showing an expired coupon result" />
-          <div class="commerce-ui-target" aria-hidden="true"></div>
+          <img class="commerce-phone-cart" src="${assets.cart}" alt="CommerceOps cart screen before the coupon result" />
+          <img class="commerce-phone-expired" src="${assets.expired}" alt="CommerceOps cart showing the expired WELCOME20 coupon result" />
+          <div class="commerce-phone-focus" aria-hidden="true"></div>
         </div>
       </div>
-
-      <div class="commerce-sheet-wrap">
-        <div class="commerce-sheet">
-          <section class="commerce-sheet-face commerce-sheet-front">
-            <p class="commerce-sheet-kicker">QA PRACTICE · NEGATIVE PATH</p>
-            <h3 class="commerce-sheet-title">Expired coupon</h3>
-            <p class="commerce-sheet-question">Does <strong>WELCOME20</strong> actually reduce the order?</p>
-            <span class="commerce-sheet-code">TRY THE PRODUCT</span>
-          </section>
-          <section class="commerce-sheet-face commerce-sheet-back">
-            <p class="commerce-sheet-kicker">REFERENCE</p>
-            <h3 class="commerce-sheet-title">What should be verified?</h3>
-            <div class="commerce-reference">
-              <div class="commerce-ref-step"><b>1</b><span>Observe the customer result.</span></div>
-              <div class="commerce-ref-step"><b>2</b><span>Verify the persisted coupon state.</span></div>
-              <div class="commerce-ref-step"><b>3</b><span>Confirm no discount was applied.</span></div>
-            </div>
-            <div class="commerce-reference-truth">WELCOME20 · <strong>rejected</strong> · expired</div>
-          </section>
-        </div>
-      </div>
-
-      <svg class="commerce-annotation" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <path pathLength="100" d="M43 58 C53 58 55 67 66 68" />
-        <circle cx="66" cy="68" r=".8" />
-      </svg>
-      <p class="commerce-annotation-note" aria-hidden="true">EXPECTED EVIDENCE</p>
     </div>
   `;
   oldPlate.replaceWith(showcase);
@@ -129,16 +124,13 @@
   const phone = showcase.querySelector('.commerce-phone');
   const cart = showcase.querySelector('.commerce-phone-cart');
   const expired = showcase.querySelector('.commerce-phone-expired');
-  const target = showcase.querySelector('.commerce-ui-target');
-  const deck = showcase.querySelector('.commerce-deck');
-  const sheetWrap = showcase.querySelector('.commerce-sheet-wrap');
-  const sheet = showcase.querySelector('.commerce-sheet');
-  const steps = [...showcase.querySelectorAll('.commerce-ref-step')];
+  const focus = showcase.querySelector('.commerce-phone-focus');
+  const taskWrap = showcase.querySelector('.commerce-task-wrap');
+  const cover = showcase.querySelector('.commerce-answer-cover');
+  const checks = [...showcase.querySelectorAll('.commerce-check')];
+  const checkMarks = [...showcase.querySelectorAll('.commerce-check i')];
   const truth = showcase.querySelector('.commerce-reference-truth');
-  const annotation = showcase.querySelector('.commerce-annotation');
-  const annotationPath = showcase.querySelector('.commerce-annotation path');
-  const annotationDot = showcase.querySelector('.commerce-annotation circle');
-  const annotationNote = showcase.querySelector('.commerce-annotation-note');
+  const ghosts = [...showcase.querySelectorAll('.commerce-task-ghost')];
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
@@ -148,7 +140,6 @@
   const ramp = (p, start, end) => smooth(clamp((p - start) / Math.max(.0001, end - start)));
   const cubicOut = t => 1 - Math.pow(1 - clamp(t), 3);
   const cubicRamp = (p, start, end) => cubicOut((p - start) / Math.max(.0001, end - start));
-  const mix = (a, b, t) => a + (b - a) * t;
 
   function getScenePhase() {
     const rect = experience.getBoundingClientRect();
@@ -173,70 +164,53 @@
   let raf = 0;
   function render() {
     const p = getScenePhase();
-    const mobile = window.innerWidth <= 760;
 
-    const pull = cubicRamp(p, .10, .27);
-    const scenario = cubicRamp(p, .27, .41);
-    const flip = cubicRamp(p, .46, .60);
-    const annotationIn = ramp(p, .67, .74);
-    const annotationOut = ramp(p, .82, .90);
-    const annotationAmount = annotationIn * (1 - annotationOut);
-    const putAway = cubicRamp(p, .84, .97);
+    // Beat 1: the task is already readable. Beat 2: the real product performs it.
+    const productResult = cubicRamp(p, .23, .39);
+    cart.style.opacity = String(1 - productResult);
+    cart.style.transform = `scale(${1 - productResult * .012})`;
+    expired.style.opacity = String(productResult);
+    expired.style.transform = `scale(${1.014 - productResult * .014})`;
+    expired.style.filter = `brightness(${.97 + productResult * .03})`;
 
-    const startLeft = mobile ? 67 : 57;
-    const pulledLeft = mobile ? 22 : 16;
-    const startTop = mobile ? 48 : 49;
-    const pulledTop = mobile ? 33 : 37;
-    const startScale = mobile ? .64 : .74;
-    const pulledScale = mobile ? .86 : 1;
+    const resultFocus = ramp(p, .34, .43) * (1 - ramp(p, .78, .86) * .45);
+    focus.style.opacity = String(resultFocus * .82);
+    focus.style.transform = `translate(-50%,-50%) scale(${.96 + resultFocus * .04})`;
+    phone.style.transform = `translate(-50%,-50%) scale(${1 + productResult * .012})`;
+    phone.style.filter = `brightness(${1 - productResult * .025 + resultFocus * .02})`;
 
-    const leftAfterPull = mix(startLeft, pulledLeft, pull);
-    const topAfterPull = mix(startTop, pulledTop, pull);
-    const scaleAfterPull = mix(startScale, pulledScale, pull);
-    const rotateAfterPull = mix(-4, -1, pull);
+    // Beat 3: uncover the answer instead of replacing the task with another object.
+    const uncover = cubicRamp(p, .47, .60);
+    cover.style.transform = `translateY(${-102 * uncover}%)`;
 
-    sheetWrap.style.left = `${mix(leftAfterPull, startLeft, putAway)}%`;
-    sheetWrap.style.top = `${mix(topAfterPull, startTop, putAway)}%`;
-    const returnScale = mix(scaleAfterPull, startScale, putAway);
-    const returnRotate = mix(rotateAfterPull, -4, putAway);
-    sheetWrap.style.transform = `translate(-50%,-50%) rotate(${returnRotate}deg) scale(${returnScale * (1 - Math.sin(flip * Math.PI) * .025)})`;
-    sheetWrap.style.opacity = String(1 - putAway * .34);
-    sheetWrap.style.filter = `brightness(${1 - putAway * .08})`;
-
-    sheet.style.transform = `rotateY(${flip * 180}deg)`;
-
-    const phoneStart = mobile ? 69 : 64;
-    const phoneOpen = mobile ? 74 : 71;
-    const phoneLeft = mix(mix(phoneStart, phoneOpen, pull), phoneStart, putAway);
-    phone.style.left = `${phoneLeft}%`;
-    phone.style.transform = `translate(-50%,-50%) scale(${1 - pull * .018 + putAway * .018})`;
-    phone.style.filter = `brightness(${1 - pull * .035 + annotationAmount * .025})`;
-
-    cart.style.opacity = String(1 - scenario);
-    cart.style.transform = `scale(${1 - scenario * .018})`;
-    expired.style.opacity = String(scenario);
-    expired.style.transform = `scale(${1.018 - scenario * .018})`;
-    expired.style.filter = `brightness(${.96 + scenario * .04})`;
-
-    deck.style.opacity = String(.48 - pull * .3 + putAway * .5);
-    deck.style.transform = `translate(-50%,-50%) rotate(${-4 + pull * 2 - putAway * 2}deg) scale(${(mobile ? .66 : .8) + putAway * .03})`;
-
-    steps.forEach((node, index) => {
-      const visible = ramp(p, .58 + index * .055, .65 + index * .055) * (1 - putAway);
-      node.style.opacity = String(visible);
-      node.style.transform = `translateY(${(1 - visible) * 6}px)`;
+    // Beat 4: reveal what a good QA check should verify, one item at a time.
+    checks.forEach((node, index) => {
+      const visible = ramp(p, .58 + index * .075, .65 + index * .075);
+      const active = ramp(p, .60 + index * .075, .67 + index * .075);
+      node.style.opacity = String(.14 + visible * .86);
+      node.style.transform = `translateY(${(1 - visible) * 5}px)`;
+      node.style.background = `rgba(255,255,255,${active * .26})`;
+      const mark = checkMarks[index];
+      if (mark) {
+        mark.style.opacity = String(active);
+        mark.style.transform = `scale(${.7 + active * .3})`;
+      }
     });
-    const truthIn = ramp(p, .72, .79) * (1 - putAway);
-    truth.style.opacity = String(truthIn);
-    truth.style.transform = `translateY(${(1 - truthIn) * 5}px)`;
 
-    annotation.style.opacity = String(annotationAmount);
-    annotationPath.style.strokeDashoffset = String(100 * (1 - annotationAmount));
-    annotationDot.style.opacity = String(ramp(annotationAmount, .72, 1));
-    target.style.opacity = String(annotationAmount);
-    target.style.transform = `translate(-50%,-50%) scale(${.94 + annotationAmount * .06})`;
-    annotationNote.style.opacity = String(annotationAmount);
-    annotationNote.style.transform = `translateY(${(1 - annotationAmount) * 5}px)`;
+    const truthIn = ramp(p, .78, .85);
+    truth.style.opacity = String(truthIn);
+    truth.style.transform = `translateY(${(1 - truthIn) * 4}px)`;
+
+    // Beat 5: only after one exercise is understood, hint that the repo contains more.
+    const more = cubicRamp(p, .84, .94);
+    ghosts.forEach((ghost, index) => {
+      ghost.style.opacity = String(more * (index === 0 ? .34 : .25));
+      const x = index === 0 ? 13 : -10;
+      const y = index === 0 ? -9 : 10;
+      const r = index === 0 ? 3.2 : -2.2;
+      ghost.style.transform = `translate(${x * more}px,${y * more}px) rotate(${r * more}deg)`;
+    });
+    taskWrap.style.transform = `translate(-50%,-50%) rotate(${-1 + more * .35}deg) scale(${1 - more * .012})`;
 
     raf = requestAnimationFrame(render);
   }
