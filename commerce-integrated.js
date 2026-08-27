@@ -1,6 +1,6 @@
 (() => {
   // CommerceOps scene — one stable product, one scenario at a time.
-  // Scenario names are transition events, not persistent competing headlines.
+  // Scenario names are oversized transition graphics, not persistent competing headlines.
 
   const scene = document.querySelector('.scene[data-scene="1"]');
   const experience = document.getElementById('experience');
@@ -30,10 +30,10 @@
     .commerce-showcase{position:absolute;z-index:9;right:max(2vw,calc((100% - var(--content))/2));top:8%;width:min(59vw,870px);height:min(78vh,720px);overflow:visible;will-change:transform,opacity}
     .commerce-motion-root{position:absolute;inset:0;isolation:isolate}
 
-    .commerce-transition-layer{position:absolute;z-index:4;inset:0;overflow:visible;pointer-events:none}
-    .commerce-transition-word{position:absolute;left:20%;top:49%;margin:0;max-width:none;color:rgba(255,255,255,.92);font:680 clamp(3rem,5.7vw,5.8rem)/.92 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.055em;white-space:nowrap;text-shadow:0 12px 48px rgba(0,0,0,.42);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform,filter}
+    .commerce-transition-layer{position:absolute;z-index:4;right:0;left:auto;top:0;width:100vw;height:100%;overflow:visible;pointer-events:none}
+    .commerce-transition-word{position:absolute;left:12%;top:49%;margin:0;max-width:none;color:#f5a524;font:760 clamp(5.2rem,9.3vw,9.8rem)/.82 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:-.075em;white-space:nowrap;text-shadow:0 16px 58px rgba(0,0,0,.34);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform,filter}
     .commerce-transition-expired{top:46%}
-    .commerce-transition-unavailable{top:53%;font-size:clamp(2.65rem,5.05vw,5.15rem)}
+    .commerce-transition-unavailable{top:53%;font-size:clamp(4.5rem,8.1vw,8.6rem)}
 
     .commerce-phone{position:absolute;z-index:5;left:69%;top:50%;height:98%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:transform,filter}
     .commerce-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:25%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
@@ -44,9 +44,10 @@
     @media(max-width:760px){
       .commerce-showcase{left:4vw;right:auto;top:6%;width:92vw;height:49vh;max-height:475px}
       .commerce-phone{left:72%;height:98%;border-radius:23px}.commerce-phone-screen{border-radius:18px}
-      .commerce-transition-word{top:48%;font-size:clamp(2.1rem,10.5vw,3.1rem);letter-spacing:-.05em}
+      .commerce-transition-layer{right:-4vw;width:100vw}
+      .commerce-transition-word{top:48%;font-size:clamp(3.7rem,17vw,5.5rem);letter-spacing:-.07em}
       .commerce-transition-expired{top:43%}
-      .commerce-transition-unavailable{top:54%;font-size:clamp(1.72rem,8.4vw,2.5rem)}
+      .commerce-transition-unavailable{top:54%;font-size:clamp(3rem,14vw,4.6rem)}
     }
     @media(prefers-reduced-motion:reduce){
       .commerce-phone-screen img{opacity:0!important;transform:none!important;filter:none!important}
@@ -140,7 +141,7 @@
     const pulse = Math.sin(local * Math.PI);
 
     node.style.left = `${mix(fromX, toX, travel)}%`;
-    node.style.opacity = String(visible * .96);
+    node.style.opacity = String(visible * .92);
     node.style.transform = `translate(-50%,-50%) scale(${1 + pulse * (scalePeak - 1)})`;
     node.style.filter = `blur(${(1 - visible) * 2.4}px)`;
 
@@ -151,11 +152,11 @@
   function render() {
     const p = getScenePhase();
 
-    // The scenario name crosses behind the phone; the product state changes while
-    // the typography is physically occluded by the device.
-    const checkoutEvent = setSweep(words.checkout, p, .03, .22, 24, 92, 1.025);
-    const expiredEvent = setSweep(words.expired, p, .23, .46, 20, 94, 1.035);
-    const unavailableEvent = setSweep(words.unavailable, p, .61, .84, 96, 18, 1.035);
+    // Oversized scenario typography traverses the whole section. The section copy
+    // stays above it while the phone physically occludes it at the product edge.
+    const checkoutEvent = setSweep(words.checkout, p, .03, .22, 7, 93, 1.025);
+    const expiredEvent = setSweep(words.expired, p, .23, .46, 5, 95, 1.035);
+    const unavailableEvent = setSweep(words.unavailable, p, .61, .84, 97, 4, 1.035);
 
     const toExpired = cubicRamp(p, .31, .39);
     const toUnavailable = cubicRamp(p, .68, .76);
