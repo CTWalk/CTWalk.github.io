@@ -9,7 +9,8 @@
     ci: 'https://github.com/user-attachments/assets/ac6484fd-78f5-4583-96e1-880e3fec1229',
     db: 'https://github.com/user-attachments/assets/78e165ea-d43d-4044-abd5-c189e70161a4',
     e2e: 'https://github.com/user-attachments/assets/7ea37734-4f73-4dcb-84fd-89d1c94e3418',
-    mobile: 'https://github.com/user-attachments/assets/9c8a5f0e-b383-4a6e-b186-52b95149794b'
+    mobile: 'https://github.com/user-attachments/assets/9c8a5f0e-b383-4a6e-b186-52b95149794b',
+    signoff: 'https://github.com/user-attachments/assets/b2fc999c-b87a-4b91-8230-870c9c78b193'
   };
 
   const style = document.createElement('style');
@@ -29,6 +30,8 @@
     .social-release-line{fill:none;stroke:rgba(200,213,255,.46);stroke-width:1.4;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(142,169,255,.2))}
     .social-release-node{fill:#101723;stroke:rgba(200,213,255,.42);stroke-width:1.3;transition:none}
     .social-release-node.is-lit{fill:#9be9c2;stroke:#9be9c2;filter:drop-shadow(0 0 7px rgba(155,233,194,.48))}
+    .social-release-delivery-node{stroke-width:1.6;transform-box:fill-box;transform-origin:center;will-change:transform,filter,fill,stroke}
+    .social-release-delivery-node.is-lit{transform:scale(1.34);filter:drop-shadow(0 0 12px rgba(155,233,194,.72))}
     .social-release-pulse{fill:#e5ebff;filter:drop-shadow(0 0 9px rgba(142,169,255,.9))}
     .social-db-stage,.social-device-stage{position:absolute;z-index:6;left:50%;top:50%;color:#e9eeff;pointer-events:none;will-change:opacity,transform,width,height}
     .social-db-stage{width:150px;height:150px;display:grid;place-items:center;transform:translate(-50%,-50%) scale(.15);opacity:0}
@@ -49,17 +52,21 @@
     .social-proof-readout .social-proof-check{display:grid;width:34px;height:34px;place-items:center;border:1px solid rgba(155,233,194,.3);border-radius:50%;background:rgba(125,230,181,.12);color:#9be9c2;font-size:.92rem;letter-spacing:0}
     .social-proof-readout em{font:600 clamp(.58rem,.76vw,.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:rgba(229,235,255,.72);font-style:normal;letter-spacing:.04em}
     .social-final-glow{position:absolute;z-index:3;left:12%;right:12%;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(155,233,194,.16),transparent);box-shadow:0 0 40px rgba(125,230,181,.18);opacity:0;will-change:opacity}
+    .social-signoff-stage{position:absolute;z-index:9;left:88%;top:50%;height:94%;aspect-ratio:1081/1999;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:clamp(16px,2vw,27px);background:#f5f2ec;box-shadow:0 32px 100px rgba(0,0,0,.52);opacity:0;transform:translate(-50%,-50%) scale(.08);transform-origin:center;will-change:left,opacity,transform,filter}
+    .social-signoff-stage img{display:block;width:100%;height:100%;object-fit:cover}
+    .social-signoff-halo{position:absolute;z-index:8;left:50%;top:50%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(155,233,194,.14),rgba(155,233,194,.04) 42%,transparent 70%);filter:blur(7px);opacity:0;transform:translate(-50%,-50%) scale(.7);will-change:opacity,transform}
     @media(max-width:760px){
       .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
       .social-db-stage{width:112px;height:112px}.social-db-stage svg{width:82px;height:82px}.social-stage-name{top:calc(50% + 54px);font-size:.59rem}
       .social-device-stage{width:210px;height:116px}.social-device-stage::before{top:21px}.social-device-stage::after{top:9px;left:13px;transform:scale(.82);transform-origin:left top}
       .social-execution{inset:27px 12px 12px;gap:5px}.social-execution span{width:18px;height:18px;font-size:.52rem}
       .social-proof-e2e,.social-proof-mobile{padding:4% 2%}.social-proof-readout{min-width:190px}.social-proof-readout strong{font-size:clamp(1.25rem,6vw,1.8rem)}.social-proof-readout .social-proof-check{width:28px;height:28px}
+      .social-signoff-stage{height:93%;border-radius:17px}.social-signoff-halo{width:62%}
     }
     @media(prefers-reduced-motion:reduce){
-      .social-motion-product,.social-db-stage,.social-device-stage,.social-motion-proof,.social-proof-readout{display:none!important}
-      .social-motion-ci{opacity:.45!important;filter:brightness(.48) saturate(.75)!important}
-      .social-release-world{opacity:1!important;transform:none!important}.social-release-line{stroke-dashoffset:0!important}.social-release-node{fill:#9be9c2!important;stroke:#9be9c2!important}.social-release-pulse{display:none!important}.social-final-glow{opacity:1!important}
+      .social-motion-product,.social-motion-ci,.social-db-stage,.social-device-stage,.social-motion-proof,.social-proof-readout,.social-release-world,.social-final-glow{display:none!important}
+      .social-signoff-stage{opacity:1!important;left:50%!important;transform:translate(-50%,-50%) scale(1)!important;filter:none!important}
+      .social-signoff-halo{opacity:.8!important;transform:translate(-50%,-50%) scale(1)!important}
     }
   `;
   document.head.appendChild(style);
@@ -70,14 +77,15 @@
       <img class="social-motion-ci social-motion-surface" src="${assets.ci}" alt="Successful SocialPlatform CI run" />
 
       <div class="social-release-world" aria-hidden="true">
-        <svg class="social-release-track" viewBox="0 0 100 20" preserveAspectRatio="none">
-          <path class="social-release-line" pathLength="100" d="M5 10 H95" />
+        <svg class="social-release-track" viewBox="0 0 110 20" preserveAspectRatio="none">
+          <path class="social-release-line" pathLength="100" d="M5 10 H105" />
           <circle class="social-release-node" data-node="0" cx="5" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="1" cx="23" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="2" cx="41" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="3" cx="59" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="4" cx="77" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="5" cx="95" cy="10" r="1.3" />
+          <circle class="social-release-node social-release-delivery-node" data-node="6" cx="105" cy="10" r="1.65" />
           <circle class="social-release-pulse" cx="5" cy="10" r="1.15" />
         </svg>
       </div>
@@ -106,7 +114,12 @@
 
       <img class="social-motion-proof social-motion-surface social-proof-mobile" src="${assets.mobile}" alt="Mobile layout test result showing two tests passed" />
       <div class="social-proof-readout social-readout-mobile" aria-hidden="true"><small>MOBILE LAYOUT</small><strong><span class="social-proof-check">✓</span>2 PASSED</strong><em>28.0s</em></div>
+
       <div class="social-final-glow" aria-hidden="true"></div>
+      <div class="social-signoff-halo" aria-hidden="true"></div>
+      <div class="social-signoff-stage">
+        <img src="${assets.signoff}" alt="SocialPlatform moderation rules screen showing the engine running with three of three rules active" />
+      </div>
     </div>
   `;
 
@@ -132,6 +145,8 @@
     mobile: showcase.querySelector('.social-readout-mobile')
   };
   const finalGlow = showcase.querySelector('.social-final-glow');
+  const signoff = showcase.querySelector('.social-signoff-stage');
+  const signoffHalo = showcase.querySelector('.social-signoff-halo');
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
@@ -159,7 +174,7 @@
       }
       cursor += duration;
     }
-    return clamp(((step - 3) + .46) / .92);
+    return clamp(((step - 3) + .50) / .82);
   }
 
   function setProof(node, readout, amount, originX, originY, scale = 1) {
@@ -186,7 +201,6 @@
   function render() {
     const p = getScenePhase();
 
-    // 1. Product releases a simple path; the image is context, the motion carries the meaning.
     const productOut = ramp(p, .07, .18);
     const lineDraw = ramp(p, .10, .20);
     product.style.opacity = String(1 - productOut);
@@ -194,40 +208,43 @@
     product.style.filter = `brightness(${1 - productOut * .22}) saturate(${1 - productOut * .1})`;
     track.style.strokeDashoffset = String(100 * (1 - lineDraw));
 
-    // Release track appears between semantic moments and returns as the final whole.
     const dbStageIn = ramp(p, .20, .27);
     const dbProof = windowValue(p, .29, .35, .41, .46);
     const dbReturn = ramp(p, .45, .49);
     const webStageIn = ramp(p, .49, .57);
     const e2eProof = windowValue(p, .58, .63, .68, .72);
     const deviceMorph = ramp(p, .72, .79);
-    const mobileProof = windowValue(p, .80, .84, .89, .92);
-    const finalReturn = ramp(p, .91, .97);
+    const mobileProof = windowValue(p, .80, .84, .88, .91);
+    const finalTrackReturn = ramp(p, .90, .925);
+    const deliveryTravel = ramp(p, .925, .95);
+    const signoffOpen = ramp(p, .945, .975);
     const proofMax = Math.max(dbProof, e2eProof, mobileProof);
 
     const releaseAlpha = clamp(
       lineDraw * (1 - dbStageIn) +
       dbReturn * (1 - webStageIn) +
-      finalReturn
-    ) * (1 - proofMax);
+      finalTrackReturn
+    ) * (1 - proofMax) * (1 - signoffOpen * .94);
     release.style.opacity = String(releaseAlpha);
-    release.style.transform = `scale(${.97 + releaseAlpha * .03})`;
+    release.style.transform = `scale(${.97 + releaseAlpha * .03 - signoffOpen * .015})`;
 
-    // Pulse travels to the DB checkpoint, then later to the Web checkpoint.
     let pulseX = 5;
     if (p >= .12 && p < .20) pulseX = mix(5, 41, ramp(p, .12, .20));
     else if (p >= .20 && p < .49) pulseX = 41;
     else if (p >= .49 && p < .57) pulseX = mix(41, 77, ramp(p, .49, .57));
-    else if (p >= .57 && p < .91) pulseX = 77;
-    else pulseX = mix(77, 95, finalReturn);
+    else if (p >= .57 && p < .90) pulseX = 77;
+    else if (p >= .90 && p < .925) pulseX = 95;
+    else pulseX = mix(95, 105, deliveryTravel);
     pulse.setAttribute('cx', pulseX.toFixed(2));
-    pulse.style.opacity = String(releaseAlpha * (1 - finalReturn));
+    pulse.style.opacity = String(releaseAlpha * (1 - deliveryTravel * .82));
 
-    // Mark checkpoints only after the pulse has actually reached them.
-    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57, p >= .79];
-    nodes.forEach((node, index) => node.classList.toggle('is-lit', finalReturn > .55 || visited[index]));
+    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57, p >= .79, deliveryTravel > .82];
+    nodes.forEach((node, index) => {
+      const technical = index < 6;
+      const lit = technical ? finalTrackReturn > .45 || visited[index] : visited[index];
+      node.classList.toggle('is-lit', lit);
+    });
 
-    // 2. The DB checkpoint grows out of the path and assembles into a recognizable database symbol.
     const dbDraw = ramp(p, .21, .28);
     const dbVisible = dbStageIn * (1 - ramp(p, .45, .49)) * (1 - dbProof * .8);
     dbStrokes.forEach((stroke, index) => {
@@ -238,12 +255,9 @@
     dbStage.style.left = `${dbX}%`;
     dbStage.style.opacity = String(dbVisible);
     dbStage.style.transform = `translate(-50%,-50%) scale(${.18 + dbStageIn * .82 + dbProof * .18})`;
-
-    // The actual DB capture arrives only after the category is already obvious.
     setProof(proofs.db, readouts.db, dbProof, 50, 50, 1.03);
 
-    // 3. Web E2E grows from the release path. Six checks execute before the real evidence appears.
-    const deviceBase = webStageIn * (1 - finalReturn);
+    const deviceBase = webStageIn * (1 - finalTrackReturn);
     const deviceVisible = deviceBase * (1 - Math.max(e2eProof, mobileProof) * .82);
     const deviceX = mix(77, 50, webStageIn);
     const mobileShape = deviceMorph;
@@ -260,7 +274,6 @@
     device.style.transform = `translate(-50%,-50%) scale(${.16 + webStageIn * .84 + Math.max(e2eProof, mobileProof) * .12})`;
     deviceName.textContent = mobileShape > .5 ? 'MOBILE LAYOUT' : 'WEB E2E';
 
-    // Six browser checks resolve one-by-one. During the responsive morph, the six collapse to two.
     const checkProgress = ramp(p, .53, .59);
     checks.forEach((check, index) => {
       const webDone = checkProgress > (index + 1) / checks.length;
@@ -273,16 +286,23 @@
 
     setProof(proofs.e2e, readouts.e2e, e2eProof, 50, 50, 1.06);
 
-    // 4. The browser physically narrows into a phone before mobile evidence appears.
     const execution = showcase.querySelector('.social-execution');
     execution.style.gridTemplateColumns = mobileShape > .5 ? 'repeat(2,1fr)' : 'repeat(6,1fr)';
     execution.style.paddingInline = mobileShape > .5 ? '18%' : '0';
     setProof(proofs.mobile, readouts.mobile, mobileProof, 50, 50, 1.05);
 
-    // 5. Everything resolves back into one release path; CI is only a quiet proof texture at the end.
-    ci.style.opacity = String(finalReturn * .38);
-    ci.style.transform = `scale(${1.035 - finalReturn * .035})`;
-    finalGlow.style.opacity = String(finalReturn);
+    // The final dot is the outcome, not another technical check: it opens into the real product sign-off state.
+    ci.style.opacity = String(finalTrackReturn * .16 * (1 - signoffOpen));
+    ci.style.transform = `scale(${1.035 - finalTrackReturn * .025})`;
+    finalGlow.style.opacity = String(finalTrackReturn * (1 - signoffOpen));
+
+    const signoffX = mix(88, 50, signoffOpen);
+    signoff.style.left = `${signoffX}%`;
+    signoff.style.opacity = String(signoffOpen);
+    signoff.style.transform = `translate(-50%,-50%) scale(${mix(.08, 1, signoffOpen)})`;
+    signoff.style.filter = `brightness(${mix(.82, 1, signoffOpen)}) saturate(${mix(.9, 1, signoffOpen)})`;
+    signoffHalo.style.opacity = String(signoffOpen * .86);
+    signoffHalo.style.transform = `translate(-50%,-50%) scale(${.72 + signoffOpen * .28})`;
 
     raf = requestAnimationFrame(render);
   }
