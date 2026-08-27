@@ -9,7 +9,6 @@
     ci: 'https://github.com/user-attachments/assets/ac6484fd-78f5-4583-96e1-880e3fec1229',
     db: 'https://github.com/user-attachments/assets/78e165ea-d43d-4044-abd5-c189e70161a4',
     e2e: 'https://github.com/user-attachments/assets/7ea37734-4f73-4dcb-84fd-89d1c94e3418',
-    mobile: 'https://github.com/user-attachments/assets/9c8a5f0e-b383-4a6e-b186-52b95149794b',
     signoff: 'https://github.com/user-attachments/assets/b2fc999c-b87a-4b91-8230-870c9c78b193'
   };
 
@@ -37,13 +36,13 @@
     .social-db-stage svg *{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
     .social-stage-name{position:absolute;left:50%;top:calc(50% + 74px);transform:translateX(-50%);margin:0;color:#f4f6ff;font:720 clamp(.72rem,1vw,.9rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.09em;white-space:nowrap;text-shadow:0 3px 18px rgba(0,0,0,.55)}
     .social-device-stage{width:280px;height:154px;border:1.5px solid rgba(229,235,255,.88);border-radius:15px;transform:translate(-50%,-50%) scale(.15);opacity:0;box-shadow:0 24px 60px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.04)}
-    .social-device-stage::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:rgba(229,235,255,.46);opacity:var(--device-bar,1)}
-    .social-device-stage::after{content:"";position:absolute;left:18px;top:12px;width:5px;height:5px;border-radius:50%;background:rgba(229,235,255,.75);box-shadow:10px 0 0 rgba(229,235,255,.45),20px 0 0 rgba(229,235,255,.28);opacity:var(--device-bar,1)}
+    .social-device-stage::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:rgba(229,235,255,.46)}
+    .social-device-stage::after{content:"";position:absolute;left:18px;top:12px;width:5px;height:5px;border-radius:50%;background:rgba(229,235,255,.75);box-shadow:10px 0 0 rgba(229,235,255,.45),20px 0 0 rgba(229,235,255,.28)}
     .social-execution{position:absolute;inset:34px 18px 18px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:center;justify-items:center;opacity:1}
     .social-execution span{display:grid;width:24px;height:24px;place-items:center;border:1px solid rgba(200,213,255,.35);border-radius:50%;color:transparent;font:800 .66rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;transform:scale(.72);opacity:.36;will-change:opacity,transform,color,background}
     .social-execution span.is-done{color:#9be9c2;background:rgba(125,230,181,.1);border-color:rgba(155,233,194,.46);opacity:1;transform:scale(1)}
     .social-motion-proof{z-index:5;opacity:0;object-fit:cover;clip-path:circle(2% at 50% 50%);transform:scale(.88)}
-    .social-proof-e2e,.social-proof-mobile{object-fit:contain;padding:5% 3%;background:#0d1117}
+    .social-proof-e2e{object-fit:contain;padding:5% 3%;background:#0d1117}
     .social-proof-readout{position:absolute;z-index:7;left:50%;top:50%;display:grid;justify-items:center;gap:8px;min-width:250px;transform:translate(-50%,-50%) scale(.92);opacity:0;color:#f4f7ff;text-align:center;text-shadow:0 3px 26px rgba(0,0,0,.72);will-change:opacity,transform}
     .social-proof-readout small{font:720 clamp(.64rem,.86vw,.78rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.1em;color:#cbd6f7}
     .social-proof-readout strong{display:flex;align-items:center;gap:10px;font:760 clamp(1.55rem,2.9vw,2.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:-.045em}
@@ -62,7 +61,7 @@
       .social-db-stage{width:112px;height:112px}.social-db-stage svg{width:82px;height:82px}.social-stage-name{top:calc(50% + 54px);font-size:.59rem}
       .social-device-stage{width:210px;height:116px}.social-device-stage::before{top:21px}.social-device-stage::after{top:9px;left:13px;transform:scale(.82);transform-origin:left top}
       .social-execution{inset:27px 12px 12px;gap:5px}.social-execution span{width:18px;height:18px;font-size:.52rem}
-      .social-proof-e2e,.social-proof-mobile{padding:4% 2%}.social-proof-readout{min-width:190px}.social-proof-readout strong{font-size:clamp(1.25rem,6vw,1.8rem)}.social-proof-readout .social-proof-check{width:28px;height:28px}
+      .social-proof-e2e{padding:4% 2%}.social-proof-readout{min-width:190px}.social-proof-readout strong{font-size:clamp(1.25rem,6vw,1.8rem)}.social-proof-readout .social-proof-check{width:28px;height:28px}
       .social-delivered-stage{width:98px;height:98px}.social-delivered-stage svg{width:68px;height:68px}.social-delivered-stage .social-delivered-label{top:calc(50% + 45px);font-size:.55rem}
       .social-signoff-stage{height:93%;border-radius:17px}.social-signoff-halo{width:62%}
     }
@@ -87,7 +86,6 @@
           <circle class="social-release-node" data-node="2" cx="41" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="3" cx="59" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="4" cx="77" cy="10" r="1.3" />
-          <circle class="social-release-node" data-node="5" cx="95" cy="10" r="1.3" />
           <circle class="social-release-pulse" cx="5" cy="10" r="1.15" />
         </svg>
       </div>
@@ -114,9 +112,6 @@
       <img class="social-motion-proof social-motion-surface social-proof-e2e" src="${assets.e2e}" alt="Playwright E2E result showing six tests passed" />
       <div class="social-proof-readout social-readout-e2e" aria-hidden="true"><small>WEB E2E</small><strong><span class="social-proof-check">✓</span>6 PASSED</strong><em>29.9s</em></div>
 
-      <img class="social-motion-proof social-motion-surface social-proof-mobile" src="${assets.mobile}" alt="Mobile layout test result showing two tests passed" />
-      <div class="social-proof-readout social-readout-mobile" aria-hidden="true"><small>MOBILE LAYOUT</small><strong><span class="social-proof-check">✓</span>2 PASSED</strong><em>28.0s</em></div>
-
       <div class="social-final-glow" aria-hidden="true"></div>
       <div class="social-delivered-stage" aria-hidden="true">
         <svg viewBox="0 0 96 96">
@@ -141,17 +136,14 @@
   const dbStage = showcase.querySelector('.social-db-stage');
   const dbStrokes = [...dbStage.querySelectorAll('svg *')];
   const device = showcase.querySelector('.social-device-stage');
-  const deviceName = showcase.querySelector('.social-device-name');
   const checks = [...showcase.querySelectorAll('.social-execution span')];
   const proofs = {
     db: showcase.querySelector('.social-proof-db'),
-    e2e: showcase.querySelector('.social-proof-e2e'),
-    mobile: showcase.querySelector('.social-proof-mobile')
+    e2e: showcase.querySelector('.social-proof-e2e')
   };
   const readouts = {
     db: showcase.querySelector('.social-readout-db'),
-    e2e: showcase.querySelector('.social-readout-e2e'),
-    mobile: showcase.querySelector('.social-readout-mobile')
+    e2e: showcase.querySelector('.social-readout-e2e')
   };
   const finalGlow = showcase.querySelector('.social-final-glow');
   const delivered = showcase.querySelector('.social-delivered-stage');
@@ -230,23 +222,21 @@
     const dbProof = windowValue(p, .29, .35, .41, .46);
     const dbReturn = ramp(p, .45, .49);
     const webStageIn = ramp(p, .49, .57);
-    const e2eProof = windowValue(p, .58, .63, .68, .72);
-    const deviceMorph = ramp(p, .72, .79);
-    const mobileProof = windowValue(p, .80, .84, .88, .91);
-    const finalTrackReturn = ramp(p, .90, .918);
-    const deliveryTravel = ramp(p, .918, .936);
-    const deliveredIn = ramp(p, .928, .944);
-    const deliveredDraw = ramp(p, .934, .952);
-    const signoffFade = cubicRamp(p, .954, .982);
-    const signoffRecenter = cubicRamp(p, .964, .986);
-    const proofMax = Math.max(dbProof, e2eProof, mobileProof);
+    const e2eProof = windowValue(p, .58, .63, .69, .74);
+    const finalTrackReturn = ramp(p, .73, .78);
+    const deliveryTravel = ramp(p, .78, .84);
+    const deliveredIn = ramp(p, .82, .87);
+    const deliveredDraw = ramp(p, .84, .89);
+    const signoffFade = cubicRamp(p, .89, .95);
+    const signoffRecenter = cubicRamp(p, .92, .97);
+    const proofMax = Math.max(dbProof, e2eProof);
 
     const releaseBase = clamp(
       lineDraw * (1 - dbStageIn) +
       dbReturn * (1 - webStageIn) +
       finalTrackReturn
     ) * (1 - proofMax);
-    const releaseAlpha = releaseBase * (1 - cubicRamp(p, .948, .970));
+    const releaseAlpha = releaseBase * (1 - cubicRamp(p, .88, .94));
     release.style.opacity = String(releaseAlpha);
     release.style.transform = `scale(${.97 + releaseBase * .03})`;
 
@@ -254,13 +244,12 @@
     if (p >= .12 && p < .20) pulseX = mix(5, 41, ramp(p, .12, .20));
     else if (p >= .20 && p < .49) pulseX = 41;
     else if (p >= .49 && p < .57) pulseX = mix(41, 77, ramp(p, .49, .57));
-    else if (p >= .57 && p < .90) pulseX = 77;
-    else if (p >= .90 && p < .918) pulseX = 95;
-    else pulseX = mix(95, 105, deliveryTravel);
+    else if (p >= .57 && p < .78) pulseX = 77;
+    else pulseX = mix(77, 105, deliveryTravel);
     pulse.setAttribute('cx', pulseX.toFixed(2));
-    pulse.style.opacity = String(releaseBase * (1 - cubicRamp(p, .930, .946)));
+    pulse.style.opacity = String(releaseBase * (1 - cubicRamp(p, .82, .87)));
 
-    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57, p >= .79];
+    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57];
     nodes.forEach((node, index) => {
       const lit = finalTrackReturn > .45 || visited[index];
       node.classList.toggle('is-lit', lit);
@@ -279,48 +268,36 @@
     setProof(proofs.db, readouts.db, dbProof, 50, 50, 1.03);
 
     const deviceBase = webStageIn * (1 - finalTrackReturn);
-    const deviceVisible = deviceBase * (1 - Math.max(e2eProof, mobileProof) * .82);
+    const deviceVisible = deviceBase * (1 - e2eProof * .82);
     const deviceX = mix(77, 50, webStageIn);
-    const mobileShape = deviceMorph;
     const desktopWidth = window.innerWidth <= 760 ? 210 : 280;
     const desktopHeight = window.innerWidth <= 760 ? 116 : 154;
-    const phoneWidth = window.innerWidth <= 760 ? 82 : 112;
-    const phoneHeight = window.innerWidth <= 760 ? 146 : 202;
     device.style.left = `${deviceX}%`;
-    device.style.width = `${mix(desktopWidth, phoneWidth, mobileShape)}px`;
-    device.style.height = `${mix(desktopHeight, phoneHeight, mobileShape)}px`;
-    device.style.borderRadius = `${mix(15, 24, mobileShape)}px`;
-    device.style.setProperty('--device-bar', String(1 - mobileShape));
+    device.style.width = `${desktopWidth}px`;
+    device.style.height = `${desktopHeight}px`;
+    device.style.borderRadius = '15px';
     device.style.opacity = String(deviceVisible);
-    device.style.transform = `translate(-50%,-50%) scale(${.16 + webStageIn * .84 + Math.max(e2eProof, mobileProof) * .12})`;
-    deviceName.textContent = mobileShape > .5 ? 'MOBILE LAYOUT' : 'WEB E2E';
+    device.style.transform = `translate(-50%,-50%) scale(${.16 + webStageIn * .84 + e2eProof * .12})`;
 
     const checkProgress = ramp(p, .53, .59);
     checks.forEach((check, index) => {
-      const webDone = checkProgress > (index + 1) / checks.length;
-      const mobileKeep = index < 2;
-      const show = mobileShape < .5 ? webDone : mobileKeep;
-      check.classList.toggle('is-done', show);
-      check.style.opacity = String(mobileShape > .5 && !mobileKeep ? 1 - mobileShape : show ? 1 : .3);
-      check.style.transform = `scale(${show ? 1 : .72})`;
+      const done = checkProgress > (index + 1) / checks.length;
+      check.classList.toggle('is-done', done);
+      check.style.opacity = String(done ? 1 : .3);
+      check.style.transform = `scale(${done ? 1 : .72})`;
     });
 
     setProof(proofs.e2e, readouts.e2e, e2eProof, 50, 50, 1.06);
 
-    const execution = showcase.querySelector('.social-execution');
-    execution.style.gridTemplateColumns = mobileShape > .5 ? 'repeat(2,1fr)' : 'repeat(6,1fr)';
-    execution.style.paddingInline = mobileShape > .5 ? '18%' : '0';
-    setProof(proofs.mobile, readouts.mobile, mobileProof, 50, 50, 1.05);
-
     ci.style.opacity = String(finalTrackReturn * .14 * (1 - signoffFade));
     ci.style.transform = `scale(${1.035 - finalTrackReturn * .025})`;
-    finalGlow.style.opacity = String(finalTrackReturn * (1 - cubicRamp(p, .946, .966)));
+    finalGlow.style.opacity = String(finalTrackReturn * (1 - cubicRamp(p, .86, .92)));
 
     deliveredStrokes.forEach((stroke, index) => {
       const local = clamp(deliveredDraw * 1.32 - index * .16);
       stroke.style.strokeDashoffset = String(100 * (1 - smooth(local)));
     });
-    const deliveredFade = 1 - cubicRamp(p, .956, .976);
+    const deliveredFade = 1 - cubicRamp(p, .90, .95);
     delivered.style.opacity = String(deliveredIn * deliveredFade);
     delivered.style.transform = `translate(-50%,-50%) scale(${.24 + deliveredIn * .76})`;
     deliveredLabel.style.opacity = String(ramp(deliveredDraw, .55, .9) * deliveredFade);
