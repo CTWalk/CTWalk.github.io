@@ -33,7 +33,7 @@
     .commerce-transition-layer{position:absolute;z-index:4;right:0;left:auto;top:0;width:100vw;height:100%;overflow:visible;pointer-events:none}
     .commerce-transition-word{position:absolute;left:25%;top:49%;margin:0;max-width:none;color:#f5a524;font:650 clamp(7.2rem,13vw,13.8rem)/.88 Arial,"Helvetica Neue",Helvetica,sans-serif;letter-spacing:0;white-space:nowrap;text-transform:uppercase;text-shadow:0 18px 64px rgba(0,0,0,.26);opacity:0;transform:translate(-50%,-50%);will-change:left,opacity,transform}
     .commerce-transition-expired{top:46%}
-    .commerce-transition-unavailable{top:53%}
+    .commerce-transition-unavailable{top:49%}
 
     .commerce-phone{position:absolute;z-index:5;left:69%;top:50%;height:98%;aspect-ratio:412/915;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;will-change:transform,filter}
     .commerce-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:25%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
@@ -47,7 +47,7 @@
       .commerce-transition-layer{right:-4vw;width:100vw}
       .commerce-transition-word{left:25%;top:48%;font-size:clamp(5rem,23vw,7.4rem);letter-spacing:0}
       .commerce-transition-expired{top:43%}
-      .commerce-transition-unavailable{top:54%}
+      .commerce-transition-unavailable{top:48%}
     }
     @media(prefers-reduced-motion:reduce){
       .commerce-phone-screen img{opacity:0!important;transform:none!important;filter:none!important}
@@ -61,13 +61,13 @@
   showcase.className = 'commerce-showcase scene-object';
   showcase.setAttribute(
     'aria-label',
-    'CommerceOps QA practice scenarios: check out, expired coupon, and unavailable.'
+    'CommerceOps QA practice scenarios: check out, expired promo, and unavailable.'
   );
   showcase.innerHTML = `
     <div class="commerce-motion-root">
       <div class="commerce-transition-layer" aria-hidden="true">
         <p class="commerce-transition-word commerce-transition-checkout">CHECK OUT</p>
-        <p class="commerce-transition-word commerce-transition-expired">EXPIRED COUPON</p>
+        <p class="commerce-transition-word commerce-transition-expired">EXPIRED PROMO</p>
         <p class="commerce-transition-word commerce-transition-unavailable">UNAVAILABLE</p>
       </div>
 
