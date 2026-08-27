@@ -25,13 +25,11 @@
     .social-motion-product,.social-motion-ci,.social-motion-proof{position:absolute;inset:0;width:100%;height:100%;will-change:opacity,transform,filter,clip-path}
     .social-motion-product{z-index:2;object-fit:cover;object-position:center top}
     .social-motion-ci{z-index:1;object-fit:contain;opacity:0;filter:brightness(.5) saturate(.75)}
-    .social-release-world{position:absolute;z-index:4;inset:0;pointer-events:none;transform-origin:88% 50%;will-change:opacity,transform}
+    .social-release-world{position:absolute;z-index:4;inset:0;pointer-events:none;will-change:opacity,transform}
     .social-release-track{position:absolute;left:8%;right:8%;top:50%;height:80px;transform:translateY(-50%);overflow:visible}
     .social-release-line{fill:none;stroke:rgba(200,213,255,.46);stroke-width:1.4;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(142,169,255,.2))}
     .social-release-node{fill:#101723;stroke:rgba(200,213,255,.42);stroke-width:1.3;transition:none}
     .social-release-node.is-lit{fill:#9be9c2;stroke:#9be9c2;filter:drop-shadow(0 0 7px rgba(155,233,194,.48))}
-    .social-release-delivery-node{stroke-width:1.6;transform-box:fill-box;transform-origin:center;will-change:transform,filter,fill,stroke}
-    .social-release-delivery-node.is-lit{transform:scale(1.34);filter:drop-shadow(0 0 12px rgba(155,233,194,.72))}
     .social-release-pulse{fill:#e5ebff;filter:drop-shadow(0 0 9px rgba(142,169,255,.9))}
     .social-db-stage,.social-device-stage{position:absolute;z-index:6;left:50%;top:50%;color:#e9eeff;pointer-events:none;will-change:opacity,transform,width,height}
     .social-db-stage{width:150px;height:150px;display:grid;place-items:center;transform:translate(-50%,-50%) scale(.15);opacity:0}
@@ -56,9 +54,9 @@
     .social-delivered-stage svg{width:88px;height:88px;overflow:visible;filter:drop-shadow(0 12px 30px rgba(0,0,0,.36))}
     .social-delivered-stage svg *{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
     .social-delivered-stage .social-delivered-label{position:absolute;left:50%;top:calc(50% + 58px);margin:0;transform:translateX(-50%);color:#eef8f3;font:760 clamp(.62rem,.85vw,.76rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;white-space:nowrap;text-shadow:0 3px 18px rgba(0,0,0,.6);opacity:0;will-change:opacity}
-    .social-signoff-stage{position:absolute;z-index:9;left:88%;top:50%;height:94%;aspect-ratio:1081/1999;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:clamp(16px,2vw,27px);background:#f5f2ec;box-shadow:0 32px 100px rgba(0,0,0,.52);opacity:0;clip-path:circle(4% at 50% 50%);transform:translate(-50%,-50%) scale(.035);transform-origin:center;will-change:left,opacity,transform,filter,clip-path}
+    .social-signoff-stage{position:absolute;z-index:9;left:88%;top:50%;height:94%;aspect-ratio:1081/1999;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:clamp(16px,2vw,27px);background:#f5f2ec;box-shadow:0 32px 100px rgba(0,0,0,.52);opacity:0;transform:translate(-50%,-50%) scale(.84);transform-origin:center;will-change:left,opacity,transform,filter}
     .social-signoff-stage img{display:block;width:100%;height:100%;object-fit:cover}
-    .social-signoff-halo{position:absolute;z-index:8;left:88%;top:50%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(155,233,194,.14),rgba(155,233,194,.04) 42%,transparent 70%);filter:blur(7px);opacity:0;transform:translate(-50%,-50%) scale(.45);will-change:left,opacity,transform}
+    .social-signoff-halo{position:absolute;z-index:8;left:88%;top:50%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(155,233,194,.10),rgba(155,233,194,.025) 42%,transparent 70%);filter:blur(7px);opacity:0;transform:translate(-50%,-50%) scale(.72);will-change:left,opacity,transform}
     @media(max-width:760px){
       .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
       .social-db-stage{width:112px;height:112px}.social-db-stage svg{width:82px;height:82px}.social-stage-name{top:calc(50% + 54px);font-size:.59rem}
@@ -70,7 +68,7 @@
     }
     @media(prefers-reduced-motion:reduce){
       .social-motion-product,.social-motion-ci,.social-db-stage,.social-device-stage,.social-motion-proof,.social-proof-readout,.social-release-world,.social-final-glow,.social-delivered-stage{display:none!important}
-      .social-signoff-stage{opacity:1!important;left:50%!important;clip-path:none!important;transform:translate(-50%,-50%) scale(1)!important;filter:none!important}
+      .social-signoff-stage{opacity:1!important;left:50%!important;transform:translate(-50%,-50%) scale(1)!important;filter:none!important}
       .social-signoff-halo{opacity:.8!important;left:50%!important;transform:translate(-50%,-50%) scale(1)!important}
     }
   `;
@@ -90,7 +88,6 @@
           <circle class="social-release-node" data-node="3" cx="59" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="4" cx="77" cy="10" r="1.3" />
           <circle class="social-release-node" data-node="5" cx="95" cy="10" r="1.3" />
-          <circle class="social-release-node social-release-delivery-node" data-node="6" cx="105" cy="10" r="1.65" />
           <circle class="social-release-pulse" cx="5" cy="10" r="1.15" />
         </svg>
       </div>
@@ -123,9 +120,8 @@
       <div class="social-final-glow" aria-hidden="true"></div>
       <div class="social-delivered-stage" aria-hidden="true">
         <svg viewBox="0 0 96 96">
-          <circle cx="44" cy="48" r="28" pathLength="100" />
-          <path d="M31 48l9 9 18-20" pathLength="100" />
-          <path d="M67 48h17m-6-6 6 6-6 6" pathLength="100" />
+          <circle cx="48" cy="48" r="28" pathLength="100" />
+          <path d="M35 48l9 9 18-20" pathLength="100" />
         </svg>
         <p class="social-delivered-label">DELIVERED</p>
       </div>
@@ -170,6 +166,8 @@
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = t => t * t * (3 - 2 * t);
   const ramp = (p, start, end) => smooth(clamp((p - start) / Math.max(.0001, end - start)));
+  const cubicOut = t => 1 - Math.pow(1 - clamp(t), 3);
+  const cubicRamp = (p, start, end) => cubicOut((p - start) / Math.max(.0001, end - start));
   const mix = (a, b, t) => a + (b - a) * t;
   const windowValue = (p, start, inEnd, outStart, end) => ramp(p, start, inEnd) * (1 - ramp(p, outStart, end));
 
@@ -239,9 +237,8 @@
     const deliveryTravel = ramp(p, .918, .936);
     const deliveredIn = ramp(p, .928, .944);
     const deliveredDraw = ramp(p, .934, .952);
-    const retract = ramp(p, .946, .964);
-    const signoffOpen = ramp(p, .954, .976);
-    const signoffRecenter = ramp(p, .966, .982);
+    const signoffFade = cubicRamp(p, .954, .982);
+    const signoffRecenter = cubicRamp(p, .964, .986);
     const proofMax = Math.max(dbProof, e2eProof, mobileProof);
 
     const releaseBase = clamp(
@@ -249,10 +246,9 @@
       dbReturn * (1 - webStageIn) +
       finalTrackReturn
     ) * (1 - proofMax);
-    const releaseAlpha = releaseBase * (1 - ramp(p, .958, .972));
+    const releaseAlpha = releaseBase * (1 - cubicRamp(p, .948, .970));
     release.style.opacity = String(releaseAlpha);
-    const baseScale = .97 + releaseBase * .03;
-    release.style.transform = `scaleX(${baseScale * (1 - retract * .985)}) scaleY(${1 - retract * .14})`;
+    release.style.transform = `scale(${.97 + releaseBase * .03})`;
 
     let pulseX = 5;
     if (p >= .12 && p < .20) pulseX = mix(5, 41, ramp(p, .12, .20));
@@ -262,12 +258,11 @@
     else if (p >= .90 && p < .918) pulseX = 95;
     else pulseX = mix(95, 105, deliveryTravel);
     pulse.setAttribute('cx', pulseX.toFixed(2));
-    pulse.style.opacity = String(releaseBase * (1 - deliveryTravel * .76) * (1 - retract));
+    pulse.style.opacity = String(releaseBase * (1 - cubicRamp(p, .930, .946)));
 
-    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57, p >= .79, deliveryTravel > .82];
+    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57, p >= .79];
     nodes.forEach((node, index) => {
-      const technical = index < 6;
-      const lit = technical ? finalTrackReturn > .45 || visited[index] : visited[index];
+      const lit = finalTrackReturn > .45 || visited[index];
       node.classList.toggle('is-lit', lit);
     });
 
@@ -317,32 +312,29 @@
     execution.style.paddingInline = mobileShape > .5 ? '18%' : '0';
     setProof(proofs.mobile, readouts.mobile, mobileProof, 50, 50, 1.05);
 
-    // The release line physically collapses into its final outcome point.
-    ci.style.opacity = String(finalTrackReturn * .14 * (1 - signoffOpen));
+    ci.style.opacity = String(finalTrackReturn * .14 * (1 - signoffFade));
     ci.style.transform = `scale(${1.035 - finalTrackReturn * .025})`;
-    finalGlow.style.opacity = String(finalTrackReturn * (1 - retract));
+    finalGlow.style.opacity = String(finalTrackReturn * (1 - cubicRamp(p, .946, .966)));
 
-    // The final point becomes a delivered mark before turning into the real product state.
     deliveredStrokes.forEach((stroke, index) => {
       const local = clamp(deliveredDraw * 1.32 - index * .16);
       stroke.style.strokeDashoffset = String(100 * (1 - smooth(local)));
     });
-    const deliveredFade = 1 - ramp(signoffOpen, .28, .78);
+    const deliveredFade = 1 - cubicRamp(p, .956, .976);
     delivered.style.opacity = String(deliveredIn * deliveredFade);
-    delivered.style.transform = `translate(-50%,-50%) scale(${.24 + deliveredIn * .76 + retract * .08})`;
+    delivered.style.transform = `translate(-50%,-50%) scale(${.24 + deliveredIn * .76})`;
     deliveredLabel.style.opacity = String(ramp(deliveredDraw, .55, .9) * deliveredFade);
 
-    // The screenshot is born at the exact delivered-dot coordinate; it only recenters after it has visibly grown there.
+    // Fade the real product state in from the release endpoint, then gently recenter it.
     const signoffX = mix(88, 50, signoffRecenter);
     signoff.style.left = `${signoffX}%`;
-    signoff.style.opacity = String(signoffOpen);
-    signoff.style.clipPath = `circle(${mix(4, 78, signoffOpen)}% at 50% 50%)`;
-    signoff.style.transform = `translate(-50%,-50%) scale(${mix(.035, 1, signoffOpen)})`;
-    signoff.style.filter = `brightness(${mix(.84, 1, signoffOpen)}) saturate(${mix(.92, 1, signoffOpen)})`;
+    signoff.style.opacity = String(signoffFade);
+    signoff.style.transform = `translate(-50%,-50%) scale(${mix(.84, 1, signoffFade)})`;
+    signoff.style.filter = `brightness(${mix(.9, 1, signoffFade)}) saturate(${mix(.94, 1, signoffFade)})`;
 
     signoffHalo.style.left = `${signoffX}%`;
-    signoffHalo.style.opacity = String(signoffOpen * .82);
-    signoffHalo.style.transform = `translate(-50%,-50%) scale(${.45 + signoffOpen * .55})`;
+    signoffHalo.style.opacity = String(signoffFade * .55);
+    signoffHalo.style.transform = `translate(-50%,-50%) scale(${.72 + signoffFade * .28})`;
 
     raf = requestAnimationFrame(render);
   }
