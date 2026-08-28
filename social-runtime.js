@@ -240,12 +240,14 @@
     const webLabelOut = ramp(p, .795, .845);
     const webLabelAmount = webLabelIn * (1 - webLabelOut);
 
-    const endTravel = ramp(p, .84, .90);
-    const finalFrame = ramp(p, .89, .95);
-    const phoneIn = ramp(p, .92, .98);
+    // Preserve the DB/Web plateaus; spend the recovered time on the product payoff.
+    // The phone now settles by ~92%, leaving a clear final stillness before CueSheet.
+    const endTravel = ramp(p, .84, .88);
+    const finalFrame = ramp(p, .87, .90);
+    const phoneIn = ramp(p, .89, .92);
 
     const systemEnter = ramp(p, .27, .34);
-    const systemExit = ramp(p, .88, .97);
+    const systemExit = ramp(p, .86, .93);
     const systemDepth = systemEnter * (1 - systemExit);
     const activeStructure = Math.max(dbAmount, webAmount, finalFrame * (1 - phoneIn));
 
@@ -271,7 +273,7 @@
 
     const cameraPan = ramp(p, .49, .64);
     const cameraLift = Math.max(dbAmount, webAmount) * 6;
-    vectorWorld.style.opacity = String(mix(.48, 1, systemDepth) * (1 - phoneIn * .82));
+    vectorWorld.style.opacity = String(mix(.48, 1, systemDepth) * (1 - phoneIn * .96));
     vectorWorld.style.transform = `translate3d(${mix(0, -18, cameraPan)}px,${mix(14, -cameraLift, systemDepth)}px,70px) scale(${mix(.97, 1.035, systemDepth)})`;
     vectorWorld.style.filter = `brightness(${mix(.92, 1.06, activeStructure)})`;
 
@@ -289,7 +291,7 @@
       geometryOpacity = webAmount;
     } else {
       geometry = interpolateGeometry(endCollapsed, finalGeometry, finalFrame * (1 - phoneIn * .35));
-      geometryOpacity = finalFrame * (1 - phoneIn * .72);
+      geometryOpacity = finalFrame * (1 - phoneIn * .96);
     }
     applyGeometry(geometry, geometryOpacity);
 
