@@ -29,75 +29,32 @@
     .social-structure-segment.is-soft{stroke:rgba(231,237,255,.26)}
     .social-scan{stroke:rgba(247,249,255,.82);stroke-width:1.2;opacity:0;vector-effect:non-scaling-stroke}
     .social-guide{fill:none;stroke:rgba(231,237,255,.15);stroke-width:1;stroke-dasharray:3 8;opacity:0;vector-effect:non-scaling-stroke}
+    .social-db-icon{opacity:0;transform-origin:370px 232px;will-change:opacity,transform,filter}
+    .social-db-stroke{fill:none;stroke:rgba(248,250,255,.96);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .social-db-dot{fill:rgba(248,250,255,.96)}
     .social-label-world{position:absolute;z-index:7;inset:-4% -5% -6%;pointer-events:none}
     .social-layer-heading{position:absolute;top:22.5%;transform:translate(-50%,-50%);color:rgba(248,250,255,.9);font:680 clamp(13px,1.15vw,16px)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:1.45px;white-space:nowrap;opacity:0;text-shadow:0 2px 12px rgba(0,0,0,.45);will-change:opacity}
     .social-layer-heading::after{content:"";display:block;width:58px;height:1px;margin:8px auto 0;background:rgba(242,246,255,.34)}
     .social-db-heading{left:37%}
     .social-web-heading{left:68.2%}
+    .social-final-phone{position:absolute;z-index:9;left:50%;top:50%;height:92%;aspect-ratio:518/915;transform:translate(-50%,calc(-50% + 18px)) scale(.93);border:1px solid rgba(255,255,255,.26);border-radius:clamp(24px,2.8vw,36px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;opacity:0;will-change:transform,opacity,filter}
+    .social-final-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:22%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+    .social-final-phone-screen{position:absolute;inset:6px;border-radius:clamp(18px,2.1vw,29px);overflow:hidden;background:#f6f3ea}
+    .social-final-phone-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;background:#f6f3ea}
 
-    .social-final-phone{
-  position:absolute;
-  z-index:9;
-  left:50%;
-  top:50%;
-  height:92%;
-  aspect-ratio:518/915;
-  transform:translate(-50%,calc(-50% + 18px)) scale(.93);
-  border:1px solid rgba(255,255,255,.26);
-  border-radius:clamp(24px,2.8vw,36px);
-  background:#121417;
-  box-shadow:
-    0 38px 120px rgba(0,0,0,.5),
-    inset 0 0 0 5px rgba(7,8,10,.94);
-  overflow:hidden;
-  opacity:0;
-  will-change:transform,opacity,filter
-}
-
-.social-final-phone::before{
-  content:"";
-  position:absolute;
-  z-index:8;
-  left:50%;
-  top:9px;
-  width:22%;
-  height:5px;
-  transform:translateX(-50%);
-  border-radius:99px;
-  background:rgba(8,9,11,.82);
-  box-shadow:0 1px 0 rgba(255,255,255,.08)
-}
-
-.social-final-phone-screen{
-  position:absolute;
-  inset:6px;
-  border-radius:clamp(18px,2.1vw,29px);
-  overflow:hidden;
-  background:#f6f3ea
-}
-
-.social-final-phone-screen img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center top;
-  background:#f6f3ea
-}
-
-  @media(max-width:760px){
-    .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
-    .social-layer-heading{font-size:13px;letter-spacing:1.15px}
-    .social-final-phone{height:86%;border-radius:24px}
-    .social-final-phone-screen{border-radius:19px}
-  }
+    @media(max-width:760px){
+      .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
+      .social-layer-heading{font-size:13px;letter-spacing:1.15px}
+      .social-final-phone{height:86%;border-radius:24px}
+      .social-final-phone-screen{border-radius:19px}
+    }
     @media(prefers-reduced-motion:reduce){
       .social-product-plane{transform:none!important;filter:none!important;opacity:1!important}
       .social-product-initial{opacity:0!important}
       .social-final-phone{opacity:1!important;transform:translate(-50%,-50%) scale(1)!important;filter:none!important}
       .social-vector-world{opacity:.45!important;transform:none!important;filter:none!important}
       .social-release-base{stroke-dashoffset:0!important}
-      .social-release-marker,.social-structure-segment,.social-scan,.social-guide{display:none!important}
+      .social-release-marker,.social-structure-segment,.social-scan,.social-guide,.social-db-icon{display:none!important}
       .social-layer-heading{opacity:.7!important}
     }
   `;
@@ -117,6 +74,19 @@
 
           <path class="social-guide social-db-guide" d="M370 442 V122" />
           <path class="social-guide social-web-guide" d="M682 442 V122" />
+
+          <g class="social-db-icon">
+            <ellipse class="social-db-stroke" cx="370" cy="150" rx="118" ry="28" />
+            <path class="social-db-stroke" d="M252 150V316" />
+            <path class="social-db-stroke" d="M488 150V316" />
+            <path class="social-db-stroke" d="M252 205C252 220 305 232 370 232C435 232 488 220 488 205" />
+            <path class="social-db-stroke" d="M252 260C252 275 305 287 370 287C435 287 488 275 488 260" />
+            <path class="social-db-stroke" d="M252 316C252 331 305 343 370 343C435 343 488 331 488 316" />
+            <circle class="social-db-dot" cx="447" cy="205" r="6.8" />
+            <circle class="social-db-dot" cx="447" cy="260" r="6.8" />
+            <circle class="social-db-dot" cx="447" cy="316" r="6.8" />
+          </g>
+
           <g class="social-shared-geometry">
             <line class="social-line social-structure-segment" data-segment="0" />
             <line class="social-line social-structure-segment" data-segment="1" />
@@ -159,6 +129,7 @@
   const vectorWorld = showcase.querySelector('.social-vector-world');
   const baseLine = showcase.querySelector('.social-release-base');
   const marker = showcase.querySelector('.social-release-marker');
+  const dbIcon = showcase.querySelector('.social-db-icon');
   const segments = [...showcase.querySelectorAll('.social-structure-segment')];
   const scan = showcase.querySelector('.social-scan');
   const dbGuide = showcase.querySelector('.social-db-guide');
@@ -181,13 +152,6 @@
   const mix = (a, b, t) => a + (b - a) * t;
 
   const collapsed = point => Array.from({ length: 16 }, () => [point[0], point[1], point[0], point[1]]);
-
-  const dbGeometry = [
-    [222,154,540,154], [222,198,540,198], [222,242,540,242], [222,286,540,286],
-    [278,138,278,304], [418,138,418,304], [502,138,502,304], [370,442,370,304],
-    [242,330,332,330], [356,330,448,330], [472,330,540,330], [238,176,258,176],
-    [238,220,258,220], [238,264,258,264], [444,176,486,176], [444,220,516,220]
-  ];
 
   const webGeometry = [
     [498,146,838,146], [838,146,838,334], [838,334,498,334], [498,334,498,146],
@@ -316,8 +280,8 @@
     let geometry = dbCollapsed;
     let geometryOpacity = 0;
     if (p < .51) {
-      geometry = interpolateGeometry(dbCollapsed, dbGeometry, dbAmount);
-      geometryOpacity = dbAmount;
+      geometry = dbCollapsed;
+      geometryOpacity = 0;
     } else if (p < .84) {
       geometry = interpolateGeometry(webCollapsed, webGeometry, webAmount);
       geometryOpacity = webAmount;
@@ -332,8 +296,12 @@
     webGuide.style.opacity = String(webAmount * .6);
     webLabel.style.opacity = String(webLabelAmount);
 
+    dbIcon.style.opacity = String(dbAmount);
+    dbIcon.style.transform = `translateY(${mix(12, 0, dbAmount)}px) scale(${mix(.86, 1, dbAmount)})`;
+    dbIcon.style.filter = `brightness(${mix(.88, 1, dbAmount)}) drop-shadow(0 14px 36px rgba(0,0,0,.22))`;
+
     if (dbAmount > webAmount && dbAmount > .01) {
-      setScan(218, 544, mix(154, 330, dbScan), dbAmount * Math.sin(Math.PI * dbScan));
+      setScan(258, 482, mix(154, 316, dbScan), dbAmount * Math.sin(Math.PI * dbScan));
     } else if (webAmount > .01) {
       setScan(514, 822, mix(202, 314, webScan), webAmount * Math.sin(Math.PI * webScan));
     } else {
