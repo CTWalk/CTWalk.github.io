@@ -1,72 +1,53 @@
 # Portfolio Design Method and Reconstruction Contract
 
-This document records the design method I arrived at while building and repeatedly revising this portfolio, and then turns those decisions into a reconstruction contract.
+This document records the design method behind this portfolio and the accepted implementation state at the time the repo was wrapped up.
 
 It has two jobs:
 
-1. preserve **why** I make these design decisions;
-2. preserve **what must remain true** so a future implementation or a fresh session does not rediscover the same mistakes or quietly redesign the site.
+1. preserve **why** the design works this way;
+2. preserve **what must remain true** so a future edit does not quietly restore rejected patterns or redesign unrelated scenes.
 
-The target is not literal pixel identity from prose alone. The target is that a capable implementation using this document together with the repository should reproduce roughly **95% of the same design intent, hierarchy, motion grammar, copy, scene structure, and interaction behavior** without needing the original conversation.
+The repository remains the source of truth for exact implementation. This document is the source of truth for **intent, hierarchy, motion grammar, readability rules, accepted scene behavior, and regression guards**.
 
-The central problem is simple:
+The central goal is:
 
-> A portfolio visitor should understand what I can do before they need to inspect a repository.
+> A visitor should understand what I can do before they need to inspect a repository.
 
-Everything else comes from trying to solve that well.
+The portfolio is not a gallery of screenshots. It is a sequence of explanations.
 
 ---
 
 # Part I — Design Method
 
-## 1. Background: what this site needs to communicate
+## 1. Portfolio identity
 
-My strongest identity is QA / SDET and software quality engineering. Product engineering supports that story. AI / LLM reliability is a newer adjacent area, not the main identity.
+The hierarchy is intentionally:
 
-That creates an unusual portfolio problem.
+1. **QA / SDET / software quality engineering first**;
+2. product/software engineering as a supporting strength;
+3. AI / LLM reliability as a newer adjacent area.
 
-A normal project grid can show repository names, screenshots, tags, and descriptions, but that format does not explain how I think as a QA engineer. A repository thumbnail does not naturally communicate things like:
+The site should not read primarily as an AI portfolio, frontend-effects portfolio, or generic full-stack portfolio.
 
-- a browser result being checked against an API and database,
-- a test definition being separated from locator maintenance,
-- a failed release check being traced to the real source,
-- a scheduler preserving most of an existing plan while repairing a conflict,
-- or a contribution history showing repeated investigation of edge cases and false success states.
-
-The site therefore needs to do more than display projects. It needs to **show the reasoning inside the projects**.
-
-At the same time, I do not want the page to become a dashboard, an infographic collection, or a wall of technical labels. The visitor should not have to study the interface before understanding the work.
-
-That tension shapes the design.
+Front-end craft should be felt through the experience rather than announced as a separate capability.
 
 ---
 
-## 2. A project is not a card
+## 2. A project is a scene, not a card
 
-I stopped treating each repository as a card with four independent parts:
-
-1. repository name,
-2. screenshot,
-3. description,
-4. link.
-
-Those pieces can all be correct and still fail together.
-
-The better mental model is:
+The working mental model is:
 
 > **Each repository is one self-contained explanation scene.**
 
-The image, words, and motion should not sit beside each other as separate content types. They should cooperate to explain one idea.
+The image, copy, evidence, and motion should cooperate to explain one idea rather than behave as separate content modules.
 
 The target relationship is:
 
-> I see the visual → the title tells me what I am looking at → the short text tells me why it exists → the motion reveals the part that is difficult to show statically.
+> visual context → headline → short explanation → motion reveals the relationship that is difficult to show statically.
 
-If the repository name and GitHub link disappeared, the scene should still communicate most of the project.
+A useful test is:
 
-My practical test is:
-
-> **After looking at a scene for about five seconds, can someone explain the repository in one or two sentences?**
+> After about five seconds, can someone explain the project in one or two sentences without opening GitHub?
 
 If not, the scene is not finished.
 
@@ -74,1300 +55,681 @@ If not, the scene is not finished.
 
 ## 3. One scene, one visual thesis
 
-The most useful constraint is:
+At any moment, prefer:
 
-> **One scene, one visual thesis.**
+1. one dominant visual;
+2. one headline;
+3. one short supporting sentence;
+4. one active transformation.
 
-At any moment I try to keep only:
+Several correct pieces of evidence can still produce a bad scene if they demand attention simultaneously.
 
-1. one dominant visual,
-2. one headline,
-3. one short supporting sentence.
+The solution is usually **sequencing**, not more cards, labels, spacing, or badges.
 
-This does not mean the project itself is simple. It means the interface decides which part deserves attention now.
-
-A lot of complexity came from putting several correct ideas on screen at the same time: multiple badges, several cards, screenshots plus diagrams plus labels, or a collection of checkpoints that all demanded equal attention.
-
-The result was technically informative but visually expensive. The eye had to travel too much.
-
-The fix was not better spacing. The fix was **sequencing**.
-
-Instead of explaining more things simultaneously, I use motion to decide what becomes visible next.
+> Complexity belongs in the project. The interface decides what matters now.
 
 ---
 
-## 4. Motion reveals the second piece of information
+## 4. Low interpretation cost is the real target
 
-This is the core motion rule for the site:
+Minimal-looking and easy-to-understand are not the same thing.
 
-> **Motion reveals the second piece of information instead of putting both pieces on screen.**
+A dense real screenshot can be easy if the visitor already knows what to notice. A sparse abstract diagram can be hard if the viewer must decode several unfamiliar symbols.
 
-A useful motion should answer a question the static composition cannot.
+The design target is:
+
+> **low interpretation cost**
+
+Before adding an element, ask:
+
+- Does it reduce the amount of interpretation the visitor must perform?
+- Does it replace something, or only add another thing to parse?
+- Can an existing object change state instead?
+- Is it still useful after the first second?
+
+If an addition gives more information but does not reduce interpretation cost, it is probably making the scene worse.
+
+---
+
+## 5. Readability is perceptual, not just a font-size rule
+
+Readability is defined as:
+
+> A visitor can recognize, parse, and understand the intended information at normal viewing distance and normal scroll speed without deliberately stopping or straining.
+
+The working model is:
+
+> **readability = size × contrast × hierarchy × motion × exposure time**
+
+A technically large enough font can still fail if it moves too quickly, competes with another object, or is visible for too little time.
+
+### Three semantic levels
+
+#### Must read
+
+Project titles, explanations, actions, important evidence.
+
+These should support comfortable sentence reading.
+
+#### Must recognize
+
+Short labels such as `DATABASE`, `WEB UI`, project labels, state names.
+
+These should be understood in a glance.
+
+#### Atmospheric
+
+Scene numbers, minor metadata, decorative technical texture.
+
+These may remain quieter and smaller.
+
+### Practical scale guidance
+
+At ordinary desktop viewing and 100% zoom:
+
+- roughly 16–19px: sustained/body reading;
+- roughly 14–16px: meaningful UI/supporting information;
+- roughly 12–14px: short labels/metadata;
+- below 12px: generally decorative unless there is a strong reason.
+
+These are heuristics, not a substitute for perception testing.
+
+### Perception tests
+
+Use these instead of trusting CSS values alone:
+
+- **one-second glance:** can the project/stage and dominant message be named quickly?
+- **normal-scroll test:** can short labels be recognized without stopping?
+- **peripheral hierarchy test:** while focusing on the headline, is the next important element still understandable?
+- **squint/blur test:** does the hierarchy remain obvious?
+- **100% zoom test:** does meaningful text require leaning forward?
+- **mobile test:** does the same hierarchy survive around 375–430px width?
+- **fast-scroll recovery test:** after reversing scroll, can the visitor immediately tell where they landed?
+
+Stopping because content is interesting is good. Stopping because it is difficult to perceive is not.
+
+---
+
+## 6. Explanation first, proof second
+
+Real screenshots matter because they establish credibility, but dense product screens, logs, CI pages, and reports are often poor explanation surfaces.
+
+The evidence rule is:
+
+> **Simplified motion explains. Real material proves.**
+
+The preferred order is:
+
+1. make the concept recognizable;
+2. reveal the mechanism;
+3. show the real product/evidence;
+4. give the important state enough visual territory;
+5. hold long enough for recognition.
+
+Never rebuild fake CI, fake test output, fake product dashboards, or fake evidence just to make a prettier scene.
+
+SVG and abstract motion may interpret a mechanism, but they must not fabricate proof.
+
+---
+
+## 7. Embedded-product readability is a separate problem
+
+CSS cannot make text inside a raster screenshot intrinsically larger.
+
+For screenshots and device mockups, first ask:
+
+> What does the visitor need to recognize from this screen within about one second?
+
+They do **not** need to read every embedded label. They do need to recognize the product state that makes the screenshot worth showing.
+
+Preferred solutions:
+
+- allocate more physical viewport territory to the important evidence;
+- preserve the real screenshot aspect ratio and context;
+- let inactive evidence recede;
+- sequence dense surfaces rather than showing them all equally;
+- use a gentle camera/focus move when the whole screenshot cannot carry the message at once;
+- on mobile, remove supporting surfaces that become meaningless thumbnails.
+
+Avoid:
+
+- enlarging UI text by editing the screenshot;
+- `object-fit: cover` when it removes meaningful context;
+- making every screenshot/device larger at once;
+- treating desktop composition as something that can simply be scaled down for mobile.
+
+The accepted Pass 2 behavior is documented in Part II.
+
+---
+
+## 8. Motion must reveal a relationship
+
+The core motion rule is:
+
+> **Motion reveals the second piece of information instead of putting both pieces on screen at the same time.**
+
+Useful motion answers questions such as:
+
+- Which test step is executing now?
+- What changed between a stable schedule and a conflict?
+- Which layer of a release is being inspected?
+- How does one state become the next?
+- Which contribution is currently being examined?
+
+If removing an animation does not reduce understanding, the animation is probably decoration.
+
+Scroll remains the main time controller, but the viewer should experience **an action with meaning**, not a slideshow controlled by scroll.
+
+---
+
+## 9. Endpoint magnitude and interpolation are separate design decisions
+
+A motion can have the right destination and still feel junior if the transition is coarse.
+
+During the final readability pass, two failures became useful rules:
+
+1. tiny scale changes can be technically correct but perceptually invisible;
+2. large changes can improve recognition but feel abrupt if applied as short pulses or static jumps.
+
+The preferred approach is:
+
+> **make the endpoint obvious, then earn it through continuous interpolation.**
+
+For important focus transfers:
+
+- start the emphasis before the previous state fully disappears;
+- use overlap rather than hard handoff;
+- let supporting elements yield slightly before the dominant object reaches full emphasis;
+- avoid independent short focus pulses that create a dip/re-acceleration between related states;
+- use smoother easing and light damping when coarse wheel deltas would otherwise become coarse visual jumps.
+
+The CueSheet evidence-focus pass is the canonical example of this rule.
+
+---
+
+## 10. Continuity matters more than transition spectacle
+
+A transition feels integrated when the viewer can tell where the next state came from.
+
+The geometry of the motion should agree with the logic of the story.
 
 Examples:
 
-- Which YAML step is executing now?
-- What changed between a valid schedule and a conflict state?
-- What evidence sits behind a release check?
-- How does one technical checkpoint lead to the next?
-- Which contribution is being examined before the final audit result?
+- a conflict should grow out of the same product surface;
+- a release marker should move along the release path;
+- a final product should resolve from the release endpoint rather than fly in from an unrelated edge;
+- a test result should feel downstream of the execution sequence.
 
-This is different from using motion merely to make the page feel alive.
-
-If an animation can be removed without losing meaning, it is probably decoration.
-
-If removing it makes the relationship between two states harder to understand, the motion is doing useful work.
+> **Spatial continuity is explanatory, not merely aesthetic.**
 
 ---
 
-## 5. Motion should make something happen, not just change opacity
+## 11. Stable reading zones are part of the animation
 
-A weak scroll animation often looks like this:
+Important evidence needs a real arrival state.
 
-> progress changes → opacity changes → another image appears.
+The rhythm is:
 
-That quickly becomes a slideshow.
+> transition → arrive → read/recognize → continue.
 
-A stronger scroll animation is an event:
+The eye should not have to track movement and decode dense evidence at the same time.
 
-- a release path grows,
-- a pulse reaches a checkpoint,
-- a database symbol assembles,
-- six browser checks resolve one by one,
-- a conflict replaces a stable state,
-- a result collapses back into its source,
-- or a final sign-off mark resolves before the delivered product appears.
-
-Scroll is still the time controller, but the viewer experiences **an action with meaning**, not a slider.
+A hold is not dead time. It is part of the choreography.
 
 ---
 
-## 6. The evidence hierarchy: explanation first, proof second
+## 12. Different projects deserve different motion languages
 
-I initially leaned too heavily on real screenshots.
+Consistency means shared discipline, not identical animation.
 
-Real material is valuable because it proves the work exists. But a screenshot is often a poor explanation surface. Dense CI pages, terminal logs, long reports, and application screens contain too much information for someone scrolling through a portfolio.
+### CommerceOps — scenario switching
 
-That led to a rule that now guides the evidence-heavy sections:
+One stable phone represents one realistic commerce product. Large scenario words sweep behind it while the product state changes:
 
-> **The motion and simplified visual explain. The screenshot proves.**
+> `CHECK OUT` → `EXPIRED PROMO` → `UNAVAILABLE`
 
-A visitor should not need to read tiny text inside an image to understand the point.
+The phone remains the stable object. Scenario typography is transitional, not a permanent competing headline.
 
-The preferred sequence is:
+### noCodeE2E — execution order
 
-1. make the concept recognizable,
-2. show the mechanism,
-3. bring in the real evidence,
-4. enlarge only the result that matters,
-5. hold long enough to read it.
+The YAML/code plate remains the primary explanation surface:
 
-The screenshot becomes evidence after the visitor already knows what it is evidence *of*.
+> `open` → `fill` → `click` → Playwright passed
 
----
+The motion shows readable intent becoming execution.
 
-## 7. Real evidence still matters
+### SocialPlatform — release traversal
 
-Simplifying the explanation does **not** mean replacing real material with fake diagrams.
+The visual thesis is:
 
-The distinction I use is:
+> **one release moves through layers of evidence**
 
-- simplified SVG / motion = interpretation,
-- real screenshot / report / execution output = proof.
+The accepted sequence is:
 
-I avoid rebuilding a fake version of a GitHub job, test report, scheduler, or product screen just to make it prettier.
+> product → DATABASE → WEB UI → product
 
-When possible, the real artifact stays visible and the animation changes what the viewer notices about it.
+The release path, neutral marker, DB cylinder, browser/DOM geometry, scans, and final real product screen carry the explanation.
 
-When the real artifact is too dense, a simplified semantic state appears first, followed by the real artifact.
+There is no synthetic Delivered state and no green success language.
 
-The goal is credibility without forcing the visitor to perform the analysis themselves.
+### CueSheet — state change and focus
 
----
+Real screenshots act as states of one product:
 
-## 8. Do not add an explanation layer when the existing object can become the explanation
+> workspace → conflict → review
 
-A repeated failure mode was adding another component on top of an already complicated scene:
+The evidence surface gradually comes closer while supporting phone captures yield.
 
-- a screenshot,
-- then a badge explaining the screenshot,
-- then a connector explaining the badge,
-- then another status card confirming the connector.
+### Decision Contract Audit — reading order
 
-Every added explanation created another thing the eye had to parse.
+Contribution history is the evidence. Focus moves through rows, then the scene resolves to the existing centered scanner/PASS ending.
 
-A better question is:
+### Outro — interaction discovery
 
-> **Can the thing already on screen change state instead?**
+The heatmap is atmospheric but interactive. It demonstrates interactivity once on entry, then pointer proximity controls it.
 
-Examples:
-
-- The YAML itself can highlight `open`, then `fill`, then `click`.
-- The browser outline can contain six checks instead of showing a separate Web E2E dashboard.
-- The real scheduler screenshots can become successive states of one surface rather than three cards.
-- A release line can become the checkpoint symbol instead of displaying both permanently.
+The interaction must be discoverable without instructional copy.
 
 ---
 
-## 9. Stable reading zones are part of the animation
+## 13. Interaction discoverability: inevitable first, interactive second
 
-Important evidence needs an actual **stop**.
+Hover-only discovery is fragile because the user may enter a scene with the pointer somewhere unrelated to the intended hit area.
 
-Not “moving more slowly.”
+The accepted pattern for the final heatmap is:
 
-A real hold.
+> **entry demonstration → nearest-cell interaction**
 
-The rhythm becomes:
+A subtle one-time autonomous ripple proves that the surface is alive. After that, pointer movement anywhere inside the final scene maps to the nearest valid heatmap cell.
 
-> transition → arrive → stop → read → transition again.
+This produces two important properties:
 
-The eye should not have to track motion and decode evidence at the same time.
+1. a stationary user can still discover that the background is reactive;
+2. an active user does not need precision pointing to trigger it.
 
-The hold is part of the choreography, not dead time.
-
----
-
-## 10. Different ideas deserve different motion languages
-
-Consistency does not mean every project should animate the same way.
-
-The rule is:
-
-> **Keep the same visual discipline, but let the motion match the mechanism being explained.**
-
-### noCodeE2E
-
-The important thing is execution order.
-
-The YAML remains the primary visual. Scroll reveals the steps sequentially:
-
-> `open` → `fill` → `click` → Playwright passed.
-
-The motion explains how a readable test definition becomes execution without adding another diagram.
-
-### CueSheet
-
-The important thing is state change and minimal disruption.
-
-Real screenshots act as states of the same product:
-
-> production workspace → conflict state → schedule review.
-
-Fake solver graphics and synthetic schedule blocks were removed because the real product states explain the story better.
-
-### SocialPlatform
-
-The important thing is a release moving through meaningful checks and reaching a delivered product state.
-
-The current scene is:
-
-> product → release path → database integrity → Web E2E → delivered → real product screen.
-
-The database symbol assembles from the flow. The browser checks resolve one by one. The delivered state becomes a clear outcome before the final product screenshot fades in.
-
-A mobile-layout sub-story was removed because it was valid evidence but not necessary to the visual thesis. This is an important example of editing by subtraction: technically relevant evidence can still be too much for the scene.
-
-### Decision Contract Audit
-
-The important thing is repeated investigation and contribution history, not a decorative code sample.
-
-The contribution rows carry the evidence. Focus moves through them, and the scene resolves to a centered audit PASS state.
-
-The final result is deliberately simple because the contribution history is the interesting part; PASS is the conclusion.
-
-### CommerceOps
-
-**Current design status: pending redesign.**
-
-The existing live section still presents the older “one flow across several layers” story, but that story now overlaps too much with SocialPlatform and is **not the canonical future direction**.
-
-The next CommerceOps design must be derived from the newer CommerceOps repository and must earn its place with a thesis that SocialPlatform does not already communicate.
-
-Until that redesign is explicitly completed:
-
-- preserve the current scene in code if maintaining the site;
-- do not treat its current motion/story as a reusable pattern;
-- do not invent a replacement from this document alone;
-- update this document when the new CommerceOps scene is accepted.
+Do not add “move your cursor here” instructions. Do not loop the demonstration continuously.
 
 ---
 
-## 11. Continuity matters more than transition spectacle
+## 14. Editing by subtraction
 
-A scene feels integrated when the viewer can tell **where the next thing came from**.
+Accepted removals and rejected patterns are part of the design.
 
-It feels disconnected when something simply appears from a visually unrelated direction.
+Things removed or rejected during iteration include:
 
-The broader rule is:
-
-> **The geometry of the motion should agree with the logic of the story.**
-
-If a result comes from a checkpoint, its movement should originate from that checkpoint.
-
-If a conflict grows out of an existing schedule, the visual should transform from the schedule rather than cut to a separate card.
-
-If a test step leads to a pass result, the result should resolve from the execution sequence, not from an unrelated corner of the frame.
-
-Continuity is explanatory, not merely aesthetic.
-
----
-
-## 12. Endings need an outcome, not just the final technical step
-
-The last technical check is not always the end of the story.
-
-A QA flow often has a final semantic question:
-
-> **So what? Can this version move forward?**
-
-That is why a release-oriented scene benefits from a final outcome such as sign-off or delivered.
-
-The structure becomes:
-
-> checks → decision → product outcome.
-
-The ending also needs time to land. Once the outcome is visible, I prefer a stable hold before the next project begins.
-
-A scene should finish its sentence before the next scene starts speaking.
-
----
-
-## 13. Editing by subtraction
-
-A large part of the design process was removing things that were individually reasonable.
-
-Things I removed or rejected include:
-
-- whole explanatory sections that repeated what project scenes already showed,
-- floating cue badges after the underlying visual became understandable,
-- duplicate screenshots,
-- fake solver diagrams,
-- permanent checkpoint cards,
-- synthetic pass indicators when real evidence was already sufficient,
-- mobile product frames that did not fit the composition,
-- mobile E2E material when it made the SocialPlatform story too long,
-- and motion that existed only because the page could animate it.
-
-The practical rule is:
+- redundant explanatory sections;
+- permanent cue badges;
+- duplicate screenshots;
+- fake solver graphics;
+- permanent checkpoint cards;
+- synthetic success badges where they distorted the story;
+- SocialPlatform `PASSED`, `6 PASSED`, Delivered, green checks, green nodes, and final success glow;
+- an aggressive circular aperture transition;
+- 3D/rotating SocialPlatform phone treatment;
+- dense screenshot sequences when SVG/motion could explain the mechanism better;
+- tiny supporting product surfaces on mobile;
+- motion added only because the page could animate it.
 
 > **A new element should either replace something or materially improve understanding.**
 
-If it only adds information without reducing interpretation cost, it is probably making the scene worse.
+---
+
+## 15. Copy is not a repair tool for visual problems
+
+Do not rewrite tuned copy just because a visual treatment fails.
+
+If the problem is hierarchy, scale, exposure time, motion, or competition, solve that visually first.
+
+Copy changes should be deliberate and explicit, especially because the site has independently tuned English and Traditional Chinese layouts.
 
 ---
 
-## 14. “Easy” is not the same as “simple-looking”
+## 16. Bilingual design is also layout design
 
-I use the phrase **make things easy rather than complex** as a design check.
+English and Traditional Chinese occupy space differently.
 
-This does not mean every screen should be minimal or empty.
+Preserve:
 
-It means the visitor should not have to perform unnecessary work.
+- intentional line breaks;
+- natural Chinese line height;
+- comfortable character spacing;
+- non-mechanical translation;
+- readable technical terms;
+- hierarchy rather than literal matching of line lengths.
 
-For example:
-
-- A real screenshot can be visually complex but easy to understand if the motion tells the viewer what to notice.
-- A minimal interface can still be hard to understand if three abstract symbols appear without context.
-- A longer animation can be easier than a short cut if the longer motion preserves spatial continuity.
-- Removing a technically valid stage can improve the explanation if that stage does not change the core story.
-
-The goal is not visual minimalism by itself.
-
-The goal is **low interpretation cost**.
+A layout that only works in English is not finished.
 
 ---
 
-## 15. Copy should not be used to repair a visual problem
+## 17. Reusable scene-building process
 
-I do not rewrite the portfolio copy every time a visual treatment fails.
-
-If the title and supporting sentence already communicate the right idea, changing the words can hide the real problem.
-
-A weak scene is often weak because:
-
-- the visual hierarchy is wrong,
-- the screenshot is too dense,
-- the motion has no semantic job,
-- too many things are visible at once,
-- or the transition breaks continuity.
-
-The solution should be visual when the problem is visual.
-
-This protects personally tuned wording, especially in the bilingual version of the site.
+1. **Write the thesis.** What should a visitor understand after five seconds?
+2. **Choose real proof.** Find the product state, report, execution result, or contribution history that actually supports the thesis.
+3. **Identify what the proof cannot explain quickly.** That becomes the job of motion or simplified geometry.
+4. **Choose one semantic verb.** Trace, execute, compare, replan, inspect, resolve, reveal.
+5. **Keep the state sequence small.** Context → mechanism → evidence → outcome, only where needed.
+6. **Allocate visual territory.** Decide which evidence must be readable or merely recognizable.
+7. **Design the interpolation.** Make the endpoint obvious without making the transition coarse.
+8. **Add reading holds.** Decide where motion must settle.
+9. **Remove scaffolding.** Delete helper labels, duplicate evidence, or badges no longer needed.
+10. **Run perception tests.** One-second glance, normal scroll, mobile, reduced motion, fast-scroll recovery.
 
 ---
 
-## 16. Bilingual design is a layout problem, not only a translation problem
+# Part II — Current Reconstruction Contract
 
-English and Traditional Chinese do not occupy space the same way.
+## 18. Authority and baseline
 
-I treat the Chinese version as its own reading layout rather than forcing it into English line lengths.
+### Source-of-truth order
 
-Important considerations include:
+When modifying the site, use this order:
 
-- preserving intentional line breaks,
-- avoiding compressed character spacing,
-- allowing natural Chinese line height,
-- preventing awkward wrapping,
-- keeping technical terms only where they are useful,
-- and making Chinese copy sound natural rather than mechanically equivalent to English.
+1. current rendered behavior on `main`;
+2. current runtime/controller files;
+3. this document;
+4. old commits only when intentionally restoring something.
 
-If a layout only works in English, it is not finished.
+If prose and code disagree, current accepted code wins and this file should be corrected.
+
+### Design-code baseline
+
+The latest accepted design-code commit immediately before this documentation update is:
+
+```text
+1d7dceb0b464a0419461db718d67b30301b1c1f4
+```
+
+### Runtime files
+
+The current behavior is distributed across:
+
+- `index.html` — scene architecture, global scroll controller, bilingual copy, noCodeE2E, CueSheet state changes, Decision Contract Audit;
+- `social-integrated.js` — loader and noCode runner sizing;
+- `social-runtime.js` — canonical SocialPlatform scene;
+- `commerce-integrated.js` — canonical CommerceOps scene and Commerce copy override;
+- `typography-runtime.js` — global DOM readability pass;
+- `evidence-readability.js` — embedded-product/evidence presentation pass;
+- `outro-heatmap.js` — final heatmap and discovery interaction.
+
+Loader order is intentionally:
+
+```text
+social-runtime.js
+→ commerce-integrated.js
+→ outro-heatmap.js
+→ typography-runtime.js
+→ evidence-readability.js
+```
+
+Later readability layers are expected to override earlier presentation CSS where necessary.
 
 ---
 
-## 17. The visual budget
-
-Before adding something, I ask:
-
-1. Is this the dominant visual, or is it competing with it?
-2. Does it explain a relationship that is currently unclear?
-3. Can the existing object change state instead?
-4. Will the user have to move their eyes somewhere new to understand it?
-5. Does it remain useful after the first second?
-6. Is it still needed once the motion is working?
-
-The cleanest version of a scene is usually reached after the interaction works, because that is when temporary explanatory scaffolding can be removed.
-
----
-
-## 18. How I decide whether a motion is worth keeping
-
-A motion survives when it passes most of these tests:
-
-### It changes understanding
-
-The user learns something from the movement that is not obvious in the static frame.
-
-### It preserves orientation
-
-The next state feels like it came from the previous one.
-
-### It reduces reading
-
-The viewer does not need to inspect dense text to know what the scene means.
-
-### It has a clear end state
-
-The motion lands somewhere meaningful instead of fading out because the section ended.
-
-### It allows a hold
-
-Important proof gets a stable reading moment.
-
-### It does not duplicate another explanation
-
-If the title, icon, screenshot, and animation all say the same thing, at least two of them are probably unnecessary.
-
-### It still works without hover
-
-Scroll carries the complete story. Hover or pointer interaction can add inspection, but it should not be required to understand the project.
-
----
-
-## 19. Reusable scene-building process
-
-### Step 1: write the one-sentence thesis
-
-What should someone understand after five seconds?
-
-Not the feature list. The actual idea.
-
-### Step 2: choose the real proof
-
-Find the screenshot, report, execution result, contribution history, product state, or artifact that proves the thesis.
-
-### Step 3: identify what the proof cannot explain quickly
-
-This is the job for motion or a simplified visual.
-
-### Step 4: choose one semantic action
-
-Examples:
-
-- trace,
-- assemble,
-- execute,
-- compare,
-- reveal,
-- replan,
-- verify,
-- resolve,
-- deliver.
-
-The animation should be built around that verb.
-
-### Step 5: decide the states
-
-I try to keep the sequence small:
-
-> context → mechanism → evidence → outcome.
-
-Not every scene needs all four, but adding more states should require a strong reason.
-
-### Step 6: add holds
-
-Decide where the viewer is expected to read. Stop the motion there.
-
-### Step 7: remove temporary explanation
-
-Once the sequence works, remove labels, badges, arrows, duplicate screenshots, or helper UI that the motion has made unnecessary.
-
-### Step 8: perform the five-second test
-
-Hide the repository link and ask whether the project can still be described accurately.
-
----
-
-## 20. Technical implementation habits that support the design
-
-For this site I prefer:
-
-- isolated scene controllers for larger motion experiments,
-- explicit scroll phases instead of many unrelated opacity equations,
-- stable hold ranges inside the timeline,
-- real assets referenced directly rather than reconstructed evidence,
-- SVG for simple semantic shapes,
-- restrained filters and blur,
-- reduced-motion fallbacks that show a meaningful final state,
-- and isolated commits for experiments so a bad direction can be rolled back cleanly.
-
-I avoid changing unrelated scenes while testing one project.
-
----
-
-## 21. The pattern in one sentence
-
-> **Show one idea, use motion to reveal the relationship, use real material to prove it, then stop long enough for the result to land.**
-
-Operationally:
-
-> **Concept → motion → evidence → outcome.**
-
-These are not four boxes on screen. They are four responsibilities distributed across one continuous scene.
-
----
-
-# Part II — Reconstruction Contract
-
-This part is intentionally more mechanical than Part I.
-
-If I hand this repository to a new session, this is the section that prevents design drift.
-
-## 22. Authority and baseline
-
-### Source of truth order
-
-When reconstructing or modifying the site, use this order of authority:
-
-1. the current rendered behavior in `main`;
-2. current `index.html` and scene-specific controllers such as `social-integrated.js`;
-3. this reconstruction contract;
-4. the design-method discussion in Part I;
-5. old commits only when intentionally restoring a previous behavior.
-
-If prose and current code disagree, **current accepted code wins until this document is updated**.
-
-### Design-code baseline at the time this contract was written
-
-The latest design-code commit before documentation-only commits is:
-
-`c1f62b7cac42fbb8c93f0bfebe5cf47beb4b968d`
-
-The important runtime files are:
-
-- `index.html`
-- `social-integrated.js`
-
-`index.html` still contains older SocialPlatform fallback markup. `social-integrated.js` replaces the Social showcase at runtime and is the **canonical current Social visual implementation**. Do not rebuild the removed mobile stage because stale markup still exists in `index.html`.
-
-### Reconstruction target
-
-A fresh implementation should preserve:
-
-- information hierarchy,
-- scene order,
-- dominant visual placement,
-- typography character,
-- scroll pacing,
-- per-scene semantic motion,
-- copy and intentional line breaks,
-- asset roles,
-- mobile and zh-TW reading behavior,
-- and rejected-design boundaries.
-
-Small implementation differences are acceptable. A new visual thesis, new card system, new typography system, new motion grammar, or rewritten copy is not.
-
----
-
-## 23. Non-negotiable portfolio identity
-
-The page must communicate this hierarchy:
-
-1. **QA / SDET / software quality engineering first**
-2. product/software engineering as a supporting strength
-3. AI / LLM reliability as a smaller recent extension
-
-The site must not accidentally reposition me as primarily:
-
-- an AI engineer,
-- a generic frontend designer,
-- a full-stack engineer with QA as a side note,
-- or a visual-effects portfolio.
-
-Front-end craft should be felt through the experience, not announced as a separate capability label.
-
-Only original/authored projects should be presented as my portfolio projects. Contributions to other repositories may appear as contribution history but must not be presented as authored projects.
-
----
-
-## 24. Canonical scene architecture
-
-There are **7 scenes total**.
-
-| Scene | Role | Alignment | Numbered project |
-|---|---|---|---|
-| 0 | Intro | center | no |
-| 1 | CommerceOps | left | `01 / 05` |
-| 2 | noCodeE2E | right | `02 / 05` |
-| 3 | SocialPlatform | left | `03 / 05` |
-| 4 | CueSheet | right | `04 / 05` |
-| 5 | Decision Contract Audit / Recently | right | `05 / 05` |
-| 6 | GitHub outro | center | no |
-
-The actual experience container uses:
-
-```css
---scene-count: 7;
---scroll-units: 13.5;
-```
-
-and:
-
-```css
-.experience {
-  position: relative;
-  height: calc(var(--scroll-units, var(--scene-count)) * 112vh);
-  height: calc(var(--scroll-units, var(--scene-count)) * 112svh);
-  background: #0b0d0f;
-}
-```
-
-The stage is sticky and viewport-sized.
-
-Do **not** convert the site into normal stacked sections or a card grid unless explicitly redesigning the entire portfolio.
-
-The removed “How I work” scene must **not** be reintroduced just because unused translation keys or old CSS remain in the source.
-
----
-
-## 25. Canonical visual system
-
-### Core colors and dimensions
-
-```css
---ink: #fff;
---soft: rgba(255,255,255,.9);
---muted: rgba(255,255,255,.64);
---accent: #c8d5ff;
---nav-h: 72px;
---pad: clamp(22px,4vw,64px);
---content: 1180px;
-```
-
-Page background:
-
-```css
-#0b0d0f
-```
-
-The visual atmosphere is dark, restrained, and evidence-led. Avoid bright multi-color dashboard styling.
-
-### Typography stack
-
-Default:
-
-```css
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-"Helvetica Neue",
-Arial,
-"PingFang TC",
-"Noto Sans TC",
-"Microsoft JhengHei",
-sans-serif
-```
-
-Traditional Chinese prioritizes:
-
-```css
-"PingFang TC",
-"Noto Sans TC",
-"Microsoft JhengHei",
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-sans-serif
-```
-
-### Desktop title
-
-```css
-.scene-title {
-  max-width: 16ch;
-  font-size: clamp(2.45rem,4.7vw,4.55rem);
-  line-height: 1.07;
-  letter-spacing: -.025em;
-  font-weight: 650;
-  white-space: pre-line;
-}
-```
-
-Intro title:
-
-```css
-.intro .scene-title {
-  max-width: 14ch;
-  font-size: clamp(2.85rem,5.55vw,5.25rem);
-}
-```
-
-### Desktop supporting copy
-
-```css
-.scene-copy {
-  max-width: 43ch;
-  margin: 22px 0 0;
-  color: rgba(255,255,255,.9);
-  font-size: clamp(1.04rem,1.28vw,1.16rem);
-  line-height: 1.7;
-  letter-spacing: .005em;
-  font-weight: 400;
-  white-space: pre-line;
-}
-```
-
-### Content placement
-
-Normal left scene content:
-
-```css
-left: max(var(--pad), calc((100% - var(--content))/2));
-bottom: clamp(58px,9vh,104px);
-width: min(610px, calc(100% - 2*var(--pad)));
-```
-
-Right scenes mirror that position from the right.
-
-Center scenes use centered content near the vertical middle.
-
-Text sits over a subtle dark radial fog. This is functional readability support, not a visible card.
-
-### Plates and evidence surfaces
-
-Use soft borders, large but restrained radii, and deep shadow:
-
-```css
-border: 1px solid rgba(255,255,255,.18);
-border-radius: clamp(16px,2vw,28px);
-box-shadow: 0 36px 120px rgba(0,0,0,.42);
-```
-
-Do not turn every visual into an independent floating card.
-
----
-
-## 26. Canonical bilingual copy — locked
-
-**Do not rewrite these strings unless the change request explicitly asks for copy editing.**
-
-Intentional line breaks are part of the design.
-
-### English metadata
-
-Title:
-
-```text
-CTWalk — QA / SDET Engineer
-```
-
-Description:
-
-```text
-CTWalk — QA/SDET engineer working across web, API, data, mobile, automation, and product debugging.
-```
-
-### English intro
-
-Label:
-
-```text
-QA / SDET · SOFTWARE ENGINEERING
-```
-
-Title:
-
-```text
-I test software
-from the UI down to the data.
-```
-
-Body:
-
-```text
-I build automation across web, API, database, mobile and CI. When something fails, I trace it to the source—and fix the product when the test is not the problem.
-```
-
-### English CommerceOps
-
-**Current live copy; preserve until the CommerceOps redesign is explicitly accepted.**
-
-Title:
-
-```text
-One flow.
-Checked all the way through.
-```
-
-Body:
-
-```text
-Browser → API → database → webhook → notification. The test only passes when the full path agrees.
-```
-
-### English noCodeE2E
-
-Title:
-
-```text
-Readable tests.
-Maintainable locators.
-```
-
-Body:
-
-```text
-YAML describes intent. Playwright runs it. Locators, failure evidence and CI stay separate so the suite is easier to maintain.
-```
-
-### English SocialPlatform
-
-Title:
-
-```text
-One release path.
-Evidence at every layer.
-```
-
-Body:
-
-```text
-Build, API, database, performance, web and mobile checks work together instead of living as isolated test suites.
-```
-
-The current Social visual no longer includes a mobile sub-stage. Do not rewrite this body automatically to “fix” that difference; copy changes require an explicit decision.
-
-### English CueSheet
-
-Title:
-
-```text
-I test products.
-I build them too.
-```
-
-Body:
-
-```text
-CueSheet is a full-stack rehearsal scheduler. When availability changes, it replans while keeping as much of the existing schedule as possible.
-```
-
-### English Recently / Decision Contract Audit
-
-Label:
-
-```text
-Recently
-```
-
-Title:
-
-```text
-The same QA questions.
-A newer kind of system.
-```
-
-Body:
-
-```text
-What was evaluated? What happens when data is missing? Can the failure be reproduced? AI tooling is a side area of my QA work, not the main focus.
-```
-
-### English outro
-
-```text
-More projects and engineering history
-live on GitHub.
-```
-
-### Traditional Chinese metadata
-
-Title:
-
-```text
-CTWalk — QA / SDET
-```
-
-Description:
-
-```text
-CTWalk — QA / SDET，Web、API、DB、Native、自動化測試與產品除錯。
-```
-
-### Traditional Chinese intro
-
-Label:
-
-```text
-QA / SDET · 軟體工程
-```
-
-Title:
-
-```text
-我是 QA
-從畫面一路驗證到 API、DB與Native
-```
-
-Body:
-
-```text
-除了自動化測試，也會一路追查失敗原因。
-如果問題不在測試，而在產品，我會直接修。
-```
-
-### Traditional Chinese CommerceOps
-
-**Current live copy; preserve until the CommerceOps redesign is explicitly accepted.**
-
-Title:
-
-```text
-一條龍
-從開始驗證到最後
-```
-
-Body:
-
-```text
-瀏覽器、API、資料庫、資料流都要一致。
-畫面顯示成功，不代表整條流程都有通。
-```
-
-### Traditional Chinese noCodeE2E
-
-Title:
-
-```text
-測試流程好讀
-定位方式也好維護
-```
-
-Body:
-
-```text
-YAML 寫操作流程，Playwright 負責執行。
-定位、失敗證據與 CI 分開管理，換版時卡好維護。
-```
-
-Do not silently “correct” `換版時卡好維護。` unless copy editing is explicitly requested.
-
-### Traditional Chinese SocialPlatform
-
-Title:
-
-```text
-不同層的檢查
-收進同一條交付流程
-```
-
-Body:
-
-```text
-Build、API、DB、效能、網頁與手機端各自檢查。
-最後判斷這個版本能不能交付。
-```
-
-### Traditional Chinese CueSheet
-
-Title:
-
-```text
-我不只測產品
-也會做產品
-```
-
-Body:
-
-```text
-CueSheet 是有正式部署的排練排程工具。
-若有人臨時不能來，系統會重排，同時盡量保留原本安排。
-```
-
-### Traditional Chinese Recently / Decision Contract Audit
-
-Label:
-
-```text
-最近在...
-```
-
-Title:
-
-```text
-同一套 QA 邏輯
-也能用來檢查 AI 工具
-```
-
-Body:
-
-```text
-這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？
-這是 QA 思維的延伸。
-```
-
-### Traditional Chinese outro
-
-```text
-更多專案與實作紀錄
-都在 GitHub
-```
-
----
-
-## 27. Language behavior
-
-The language system uses:
-
-- `copy.en`
-- `copy.zh`
-- `data-i18n`
-- localStorage key `ctwalk-lang`
-- browser-language fallback to Chinese when appropriate
-- `<html lang="zh-Hant-TW">` for Traditional Chinese
-
-Text is applied with `textContent`, so intentional `\n` line breaks must be preserved by `white-space: pre-line`.
-
-### Traditional Chinese typography
-
-Desktop:
-
-```css
-html[lang^="zh"] .scene-title {
-  max-width: 12.5em;
-  line-height: 1.2;
-  letter-spacing: .015em;
-  font-weight: 600;
-  word-break: keep-all;
-  overflow-wrap: normal;
-}
-
-html[lang^="zh"] .scene-copy {
-  max-width: 29em;
-  line-height: 1.82;
-  letter-spacing: .012em;
-  font-weight: 400;
-  word-break: normal;
-  line-break: strict;
-}
-```
-
-Do not compress Chinese typography to make it fit the English layout.
-
----
-
-## 28. Global scroll and motion contract
-
-### Timeline constants
+## 19. Scene architecture and global timing
+
+There are seven scenes:
+
+| Scene | Role | Number |
+|---|---|---|
+| 0 | Intro | — |
+| 1 | CommerceOps | 01 / 05 |
+| 2 | noCodeE2E | 02 / 05 |
+| 3 | SocialPlatform | 03 / 05 |
+| 4 | CueSheet | 04 / 05 |
+| 5 | Decision Contract Audit / Recently | 05 / 05 |
+| 6 | GitHub outro | — |
+
+The experience remains a sticky, viewport-sized scroll narrative. Do not convert it into a normal project-card grid unless the entire portfolio is intentionally redesigned.
+
+Global timeline constants:
 
 ```js
 const durations = [1.5, 1.5, 2.15, 2.15, 1.5, 3.7];
 const timelineTotal = 12.5;
 ```
 
-These values are part of the current pacing. Do not globally retime the portfolio while editing one scene.
-
-### Scene fade
-
-```js
-function alphaFor(distance) {
-  const d = Math.abs(distance);
-  if (d <= .36) return 1;
-  if (d >= .60) return 0;
-  return 1 - smooth((d - .36) / .24);
-}
-```
-
-Decision Contract Audit and the outro have additional special fade behavior in current code.
-
-### Content drift
-
-For normal scenes, content movement remains subtle:
-
-```js
-const y = rel * 18;
-const x = (scene.classList.contains('right') ? -1 : 1) * rel * 7;
-```
-
-Desktop centered scenes preserve the centered transform; mobile removes the horizontal drift.
-
-### Pointer parallax
-
-Pointer movement is intentionally small and secondary. It should never compete with scroll meaning.
-
-Current smoothing is roughly:
-
-```js
-pointer.x += (pointerTarget.x - pointer.x) * .055;
-pointer.y += (pointerTarget.y - pointer.y) * .055;
-```
-
-Background and scene-object offsets stay in the low single-digit / low tens of pixels.
-
-### Global rule
-
-The portfolio already has a motion identity that works. Do **not** globally redesign it to solve a problem inside one repository scene.
+Do not globally retime the portfolio to fix one scene.
 
 ---
 
-## 29. Per-scene reconstruction contracts
+## 20. Global visual and readability contract
+
+The page remains dark, restrained, evidence-led, and low-chroma outside project-specific accents.
+
+Core background:
+
+```css
+#0b0d0f
+```
+
+Main `.scene-title` and `.scene-copy` sizing were already acceptable and were deliberately **not** enlarged during the DOM readability pass.
+
+`typography-runtime.js` raises the floor for meaningful secondary text:
+
+- `.scene-label` uses `--text-small` (`clamp(.86rem,.82rem + .16vw,.94rem)`);
+- `.scene-link` uses `--text-ui` (`clamp(.94rem,.9rem + .16vw,1rem)`);
+- GitHub nav link: `.94rem`;
+- language buttons: `.9rem`;
+- code plate floor: `.86rem` desktop, `.8rem` mobile;
+- noCode runner sublabel: `.78rem` desktop, `.75rem` mobile;
+- Audit rows: `clamp(.78rem,.9vw,.88rem)` desktop, `.75rem` mobile.
+
+The Audit title/detail text no longer receives inline transform enlargement; card-level focus, brightness, and ordering carry the animation instead.
+
+Do not reintroduce sub-12px meaningful DOM text merely to create hierarchy. Use contrast, spacing, exposure, and importance instead.
+
+---
+
+## 21. Embedded evidence / Pass 2 contract
+
+### CueSheet
+
+The desktop evidence surface receives more physical territory:
+
+```css
+width: min(64vw, 880px);
+height: min(74vh, 710px);
+```
+
+It uses one continuous focus progression across workspace → conflict → review.
+
+Maximum additional scale:
+
+- desktop: approximately `+12%`;
+- mobile: approximately `+8%`.
+
+Supporting phones yield gradually through scale, brightness, and saturation. On mobile they are removed entirely so the primary product evidence can use the viewport.
+
+The focus is damped over frames to prevent coarse wheel movement from becoming equally coarse visual movement.
+
+### SocialPlatform
+
+The accepted treatment is restrained:
+
+- runtime base final phone: `92%` desktop / `86%` mobile;
+- readability override: **`98%` desktop / `94%` mobile**;
+- no additional `scale: 1.18` style magnification.
+
+This was an explicit design decision: the larger experimental treatment improved recognition but became visually over-dominant.
+
+### CommerceOps
+
+No extra Pass 2 enlargement is applied.
+
+Its phone already nearly fills the showcase and uses a source-matched `412/915` aspect ratio. Increasing it further would add competition without meaningful readability gain.
+
+---
+
+## 22. Scene contracts
 
 ### Scene 0 — Intro
 
-**Role:** establish identity, not showcase a project.
+Role: establish QA/SDET identity.
 
-**Composition:** centered.
-
-**Primary idea:** QA/SDET first; testing from UI down to data; capable of fixing product code when necessary.
-
-**Visual behavior:** dark grid / atmospheric front-end motion, restrained enough that the copy remains dominant.
-
-**Must not:**
-
-- add skill cards,
-- add a technology cloud,
-- add a project carousel,
-- make the intro primarily about AI,
-- label the visual technology used to create the effect.
+Must not become a technology cloud, project carousel, skills dashboard, or AI-first statement.
 
 ---
 
 ### Scene 1 — CommerceOps
 
-**Status:** current live scene is a placeholder relative to the next redesign.
+**Canonical runtime:** `commerce-integrated.js`
 
-**Current asset:**
+**Visual thesis:** practice QA against a realistic product, one scenario at a time, then compare coverage against reference paths.
+
+Current product states:
 
 ```text
-https://raw.githubusercontent.com/CTWalk/Shooting_App_demo/main/e2e_test/visual_cv/baseline/seed-report.png
+checkout
+→ expired coupon
+→ unavailable variant
 ```
 
-**Current live composition:** right-side large report plate; left-side copy.
+Current transition words:
 
-**Do not infer the future CommerceOps story from this scene.**
+```text
+CHECK OUT
+EXPIRED PROMO
+UNAVAILABLE
+```
 
-Until the next CommerceOps design is accepted, preserving the current implementation is safer than inventing a replacement.
+The oversized orange words sweep horizontally behind the stable phone. They are transitional graphics, not persistent headlines.
 
-When the redesign is completed, update:
+The phone is the stable product object. Each screenshot crossfades inside the same frame.
 
-- thesis,
-- state machine,
-- assets,
-- copy if explicitly approved,
-- regression guards,
-- and this section.
+Source screenshots:
+
+```text
+assets/showcase/checkout-412x915.png
+assets/showcase/expired-coupon-412x915.png
+assets/showcase/unavailable-variant-412x1000.png
+```
+
+Reduced motion shows a meaningful static expired-coupon state and removes transition typography.
+
+Must not be redesigned back into SocialPlatform's “many system layers” story.
 
 ---
 
 ### Scene 2 — noCodeE2E
 
-**Visual thesis:** readable intent and maintainable locator architecture become real browser execution.
+**Visual thesis:** readable intent and maintainable locators become real browser execution.
 
-**Dominant object:** the YAML/code plate.
+Dominant object: YAML/code plate.
 
-The YAML is not decoration. It is the primary explanation surface and must remain recognizable.
-
-Canonical displayed sequence:
-
-```yaml
-# readable intent, stable locators
-name: Fixture login status
-steps:
-  - open: /
-  - fill:
-      target: login.username
-      value: "${username}"
-  - click: login.submit
-  - expectText:
-      target: dashboard.status
-      value: Welcome demo_user
-```
-
-Scroll sequence:
+Canonical sequence:
 
 ```text
 open highlight
 → fill highlight
 → click highlight
-→ Playwright ✓ passed
+→ Playwright passed
 ```
 
-Current phase mapping is based on:
+The Playwright result is supporting evidence and must not dominate before the YAML tells the story.
 
-```js
-phase = clamp((rel + .34) / .68)
-```
+Do not modify the passed popup while changing unrelated scenes.
 
-Focus ranges are approximately:
+Must not:
 
-```js
-[[.04,.36],[.30,.64],[.58,1.02]]
-```
-
-The pass result begins late in the sequence around `.78`.
-
-**Must not:**
-
-- replace YAML with a generic automation dashboard,
-- add a connector curve or moving dot,
-- show several permanent explanatory badges,
-- make the Playwright result dominate before the YAML has told the story.
-
-Reduced motion should show a meaningful finished state: final click emphasis plus Playwright passed.
+- replace YAML with a generic automation dashboard;
+- add simultaneous step badges;
+- add a decorative connector/moving dot that duplicates execution order.
 
 ---
 
 ### Scene 3 — SocialPlatform
 
-**Visual thesis:** a product release moves through meaningful checks and resolves to a delivered product state.
+**Canonical runtime:** `social-runtime.js`
 
-**Canonical runtime implementation:** `social-integrated.js`.
+**Visual thesis:**
 
-Do not reconstruct this scene from the stale Social markup in `index.html`.
+> One release moves through layers of evidence and returns to the real product.
 
-Current sequence:
-
-```text
-Product
-→ release path grows
-→ DB checkpoint
-→ database symbol assembles
-→ real DB proof / PASSED
-→ return to flow
-→ Web checkpoint
-→ browser outline
-→ six checks resolve one by one
-→ real E2E proof / 6 PASSED / 29.9s
-→ return to flow
-→ DELIVERED circle + check
-→ final Moderation Rules product screenshot fades in from the release endpoint
-→ screenshot gently recenters
-→ stable hold
-```
-
-There is **no mobile-layout sub-stage** in the current accepted runtime design.
-
-There is **no final green delivery dot**.
-
-The Delivered SVG is a circle + check only. There is **no right arrow**.
-
-#### Current Social assets
-
-Product:
+Canonical sequence:
 
 ```text
-https://github.com/user-attachments/assets/46073db9-02ac-4645-8784-721165d7d504
+PRODUCT
+→ DATABASE
+→ WEB UI
+→ PRODUCT
 ```
 
-CI proof texture:
+The release path is neutral white/cool white. A neutral marker travels along it.
 
-```text
-https://github.com/user-attachments/assets/ac6484fd-78f5-4583-96e1-880e3fec1229
-```
+#### Database stage
 
-DB evidence:
+- marker travels to the DB checkpoint;
+- a cylinder assembles from the release flow;
+- the `DATABASE` heading appears independently;
+- a restrained scan moves through the geometry.
 
-```text
-https://github.com/user-attachments/assets/78e165ea-d43d-4044-abd5-c189e70161a4
-```
+There is no green success treatment, PASSED badge, screenshot proof card, or check mark.
 
-Web E2E evidence:
+#### Web stage
 
-```text
-https://github.com/user-attachments/assets/7ea37734-4f73-4dcb-84fd-89d1c94e3418
-```
+- marker travels to WEB UI;
+- browser/DOM geometry expands from the checkpoint;
+- the `WEB UI` heading appears independently;
+- a restrained scan communicates inspection.
 
-Final product / sign-off screenshot:
+Again, no green success language or fake dashboard.
+
+#### Final product
+
+At the end, the release marker reaches the endpoint, the shared geometry resolves toward a phone outline, and the real Moderation Rules screenshot appears inside the accepted flat device treatment.
+
+The final screenshot uses:
 
 ```text
 https://github.com/user-attachments/assets/b2fc999c-b87a-4b91-8230-870c9c78b193
 ```
 
-#### Current Social phase timing
-
-The scene-local phase is:
-
-```js
-clamp(((step - 3) + .56) / .82)
-```
-
-Important ranges:
+The initial product screenshot uses:
 
 ```text
-product out          .07 → .18
-release line draw    .10 → .20
-DB semantic stage    .20 → .27
-DB proof in          .29 → .35
-DB reading hold      ~.35 → .41
-DB proof out         .41 → .46
-return to flow       .45 → .49
-Web semantic stage   .49 → .57
-E2E proof in         .58 → .63
-E2E reading hold     ~.63 → .69
-E2E proof out        .69 → .74
-final flow return    .73 → .78
-travel to outcome    .78 → .84
-Delivered in         .82 → .87
-Delivered draw       .84 → .89
-final screenshot     .89 → .95, ease-out cubic
-recenter             .92 → .97, ease-out cubic
+https://github.com/user-attachments/assets/46073db9-02ac-4645-8784-721165d7d504
 ```
 
-The final screenshot starts near the release endpoint at approximately `left: 88%`, fades/scales from about `.84`, and only then recenters toward `50%`.
+Current important timing:
 
-This geometry is intentional: the screenshot should feel like the product outcome of the release flow, not an unrelated image entering from the side.
+```text
+release line draw       .14 → .21
+DB travel               .18 → .30
+DB open                 .30 → .37
+DB scan                 .36 → .44
+DB close                .44 → .51
+WEB travel              .51 → .63
+WEB open                .63 → .70
+WEB scan                .69 → .77
+WEB close               .77 → .84
+endpoint travel         .84 → .90
+final geometry          .89 → .95
+real phone in           .92 → .98
+```
 
-#### Social regression guards
+Current DB and Web labels are `DATABASE` and `WEB UI` only.
 
-**Must not:**
+**Explicitly rejected / do not restore:**
 
-- bring back the mobile-layout stage unless explicitly requested,
-- bring back the final green dot,
-- add a right-arrow to Delivered,
-- make the final screenshot pop through an aggressive circle mask,
-- use dense CI screenshots as the primary explanation,
-- use floating CI/DB/E2E cue badges as permanent UI,
-- turn the sequence back into screenshot slides,
-- require users to read small text inside screenshots to understand the story.
+- `PASSED`;
+- `6 PASSED`;
+- green checks;
+- green nodes;
+- final green glow;
+- Delivered badge/circle/state;
+- final sign-off halo;
+- mobile-layout sub-stage;
+- screenshot slideshow as the primary explanation;
+- aggressive aperture/circle-mask transition;
+- 3D iPhone rotation treatment;
+- fake CI/dashboard evidence;
+- requiring screenshot text to explain DB/Web semantics.
 
 ---
 
 ### Scene 4 — CueSheet
 
-**Visual thesis:** when availability changes, the product repairs the schedule while preserving as much of the existing plan as possible.
-
-**Dominant object:** one desktop product surface that changes state.
+**Visual thesis:** when availability changes, the product replans while preserving as much of the existing schedule as possible.
 
 Canonical states:
 
@@ -1377,158 +739,277 @@ production workspace
 → schedule review
 ```
 
-Assets:
+The same desktop surface carries all three states.
+
+Source assets:
 
 ```text
-https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/production-workspace.png
-https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/conflict-status.png
-https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/schedule-review.png
+assets/production-workspace.png
+assets/conflict-status.png
+assets/schedule-review.png
 ```
 
-Initial supporting phone captures:
+Supporting phone captures may establish product context on desktop, but they recede once the conflict/review story takes over. They are hidden on mobile by the evidence-readability pass.
 
-```text
-https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-stage-call-sheet.png
-https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-cast-member.png
-```
+The accepted focus move is continuous and monotonic. Do not rebuild it as separate abrupt zoom pulses for conflict and review.
 
-Phones may establish that this is a real product but fade once conflict/replanning becomes the main idea.
+Must not:
 
-The final state is **schedule review**. The phone screenshots do not return as a duplicate ending.
-
-**Must not:**
-
-- add solver diagrams,
-- add benchmark cards to the scene,
-- add fake schedule blocks,
-- add a second final phone reveal,
-- replace the real screenshots with synthetic UI just to make the motion easier.
+- add solver diagrams;
+- add fake schedule blocks;
+- add benchmark cards;
+- add a duplicate final phone reveal;
+- replace authentic screenshots with synthetic UI for convenience.
 
 ---
 
 ### Scene 5 — Decision Contract Audit / Recently
 
-**Visual thesis:** repeated investigation of false-success and edge-case behavior, supported by real contribution history, resolves to a simple audit result.
+**Visual thesis:** repeated investigation of false-success and edge-case behavior, supported by real contribution history.
 
-**Dominant object:** contribution history rows.
+Dominant object: contribution rows.
 
-Contribution evidence currently shown:
+Rows begin subdued and focus sequentially. The global long duration gives this scene reading distance.
 
-1. `truera/trulens #2698` — `Show how many records a leaderboard metric actually scored` — author
-2. `earthtojake/text-to-cad #280` — `test: fail the Python runner when it collects no tests` — author
-3. `katanemo/plano #1008` — `fix(trace): preserve the root trace ID when OTLP children arrive first` — author
-4. `microsoft/agent-framework #7399` — `Python: fix LocalEvaluator reporting zero-check items as passed` — state change
-5. `SponsioLabs/Sponsio #108` — `Python and TypeScript ordered comparisons diverge on string/number terms` — author
-6. `microsoft/agent-governance-toolkit #3436` — `agt test can report success after skipping every fixture without an expectation` — author
-7. `ibm-client-engineering/output-drift-financial-llms #2` — `Compliance validators return compliant on absent decisions and unknown task types` — author
-8. `microsoft/agent-framework #7397` — `Python: LocalEvaluator with zero checks reports items as passed` — mention
-
-Do not claim current upstream status without a fresh check.
-
-Do not claim that the Decision Contract Audit tool itself caused these contributions unless verified. They are adjacent evidence of the same QA thinking.
-
-#### Purple contribution icon
-
-Keep the supplied purple branch-style SVG shape:
-
-```svg
-<svg viewBox="0 0 32 32">
-  <g fill="none" stroke="#8250df" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8 10v12"/>
-    <path d="M8 10c0 6 4.8 11 11 11h3"/>
-    <circle cx="8" cy="6" r="4" fill="white"/>
-    <circle cx="8" cy="26" r="4" fill="white"/>
-    <circle cx="26" cy="21" r="4" fill="white"/>
-  </g>
-</svg>
-```
-
-The icon itself remains purple; parent row focus/dimming may affect the rendered appearance.
-
-#### Audit focus behavior
-
-The Audit scene intentionally gets a long reading distance.
-
-Current global duration allocation includes a long final project duration of `3.7`.
-
-Rows begin subdued and become easier to read through focus:
-
-```css
-opacity: .22;
-filter: brightness(.4) saturate(.7);
-transform: scale(.985);
-```
-
-Focus increases opacity, brightness, scale, and text emphasis without turning rows into unrelated cards.
-
-#### Audit ending — locked
-
-The ending is:
+The final existing ending remains:
 
 ```text
-scanner moves left → right
-→ centered green circular check
+scanner left → right
+→ centered circular check
 → PASS
 ```
 
-PASS is centered in the Audit board.
+The DOM readability pass makes row text readable at rest and removes title/detail scale distortion; focus should be communicated mainly through row-level opacity, brightness, position in the reading sequence, and card emphasis.
 
-**Must not:**
+Do not claim current upstream issue/PR status without a fresh check.
 
-- attach PASS as a pill to the last contribution row,
-- add `checks: 0`,
-- add `UNVERIFIED`,
-- add `未驗證`,
-- replace contribution history with code/rule examples as the primary evidence,
-- remove the centered scanner/PASS ending without explicit instruction.
+Must not:
 
----
-
-### Scene 6 — Outro
-
-**Role:** close the portfolio and point to broader engineering history.
-
-**Composition:** centered.
-
-The scene is intentionally sparse.
-
-Do not add another project grid, skills matrix, timeline, testimonial wall, or contact dashboard here unless explicitly requested.
+- replace contribution history with a pseudo-dashboard;
+- make code/rule examples more prominent than real contribution history;
+- attach PASS as a pill to the last row;
+- add `checks: 0`, `UNVERIFIED`, or `未驗證`.
 
 ---
 
-## 30. Asset-use rules
+### Scene 6 — GitHub outro
 
-For every project asset, classify it before using it:
+Role: close the portfolio and point to broader engineering history.
 
-### Primary explanation
+The scene stays sparse. Do not add a project grid, skills matrix, testimonial wall, or dashboard here.
 
-The visitor can understand the concept directly from it.
-
-Example: noCodeE2E YAML.
-
-### Real proof
-
-The artifact proves the claim but may be too dense to explain itself.
-
-Example: CI execution screenshots.
-
-### State of the same object
-
-Several real images represent one product changing over time.
-
-Example: CueSheet workspace → conflict → review.
-
-### Background atmosphere
-
-A visual may support the scene without carrying meaning.
-
-Never force a background asset to become the explanation merely because it is visually attractive.
-
-If a screenshot requires tiny-text reading to understand the scene, it is proof, not explanation.
+The heatmap is the only substantial ambient interaction and is documented separately below.
 
 ---
 
-## 31. Mobile reconstruction contract
+## 23. Outro heatmap interaction contract
+
+**Canonical runtime:** `outro-heatmap.js`
+
+### Structure
+
+- seven rows;
+- responsive columns: 24 below 600px, 38 below 980px, otherwise 52;
+- dark cells at rest;
+- heatmap sits above the generic scene shade but below the final copy;
+- it is atmospheric, not real GitHub contribution history.
+
+### Pointer interaction
+
+The pointer listener is global so tracking does not break during scene transitions, but the interaction only activates when the final scene is visible enough and the pointer is inside the final scene.
+
+Any pointer position inside the final scene is projected to the nearest valid heatmap cell.
+
+That means the user does not need to place the cursor directly over the grid. Positions outside the visual grid clamp to its nearest edge cell.
+
+Pointer interaction retains the original local spread/falloff and slower decay behavior.
+
+### Entry discovery pulse
+
+The entry animation exists only to reveal that the heatmap is interactive.
+
+Behavior:
+
+1. final scene becomes visibly active (`opacity >= .55`);
+2. wait about `420ms`;
+3. if the user already moved the pointer inside the scene, skip the autonomous pulse;
+4. otherwise trigger one ripple from a fixed origin around the center row and 68% across the columns;
+5. if the user moves the pointer during the ripple, cancel the autonomous state immediately and hand control to the pointer.
+
+The pulse runs only once per page session.
+
+### Water-drop ripple
+
+The entry pulse is not a filled expanding glow.
+
+It behaves like a drop:
+
+- short impact flash at the origin;
+- a bright ring crest travels outward;
+- cells behind the crest stop receiving new energy and decay naturally;
+- duration is approximately `1180ms`;
+- maximum spatial radius is **`4.32` grid-distance units**, the accepted ~40% reduction from the earlier `7.2` experiment.
+
+Brightness and trailing decay were intentionally retained when the radius was reduced.
+
+Do not:
+
+- loop the autonomous ripple;
+- add instructional hover copy;
+- make the whole heatmap flash;
+- restore the larger 7.2-radius ripple without a new design decision.
+
+### Reduced motion / coarse pointer
+
+The interaction is non-essential. Reduced-motion and coarse-pointer environments may show the heatmap statically without the interactive animation.
+
+---
+
+## 24. Current bilingual copy — preserve unless explicitly editing copy
+
+Intentional line breaks are part of the design.
+
+### Intro
+
+English:
+
+```text
+I test software
+from the UI down to the data.
+```
+
+Traditional Chinese:
+
+```text
+我是 QA
+從畫面一路驗證到 API、DB與Native
+```
+
+### CommerceOps
+
+English:
+
+```text
+Practice on a real product.
+Check against a reference.
+
+CommerceOps is a realistic commerce app for junior QA. Test checkout and failure cases yourself, then compare your coverage with the provided reference paths.
+```
+
+Traditional Chinese:
+
+```text
+用真的產品情境練習
+再對照參考驗證流程
+
+CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。
+```
+
+### noCodeE2E
+
+English:
+
+```text
+Readable tests.
+Maintainable locators.
+
+YAML describes intent. Playwright runs it. Locators, failure evidence and CI stay separate so the suite is easier to maintain.
+```
+
+Traditional Chinese:
+
+```text
+測試流程好讀
+定位方式也好維護
+
+YAML 寫操作流程，Playwright 負責執行。
+定位、失敗證據與 CI 分開管理，換版時卡好維護。
+```
+
+### SocialPlatform
+
+English:
+
+```text
+One release path.
+Evidence at every layer.
+
+Build, API, database, performance, web and mobile checks work together instead of living as isolated test suites.
+```
+
+Traditional Chinese:
+
+```text
+不同層的檢查
+收進同一條交付流程
+
+Build、API、DB、效能、網頁與手機端各自檢查。
+最後判斷這個版本能不能交付。
+```
+
+The visual intentionally does not literalize every layer named in the copy. Do not add stages only to make the diagram enumerate the sentence.
+
+### CueSheet
+
+English:
+
+```text
+I test products.
+I build them too.
+
+CueSheet is a full-stack rehearsal scheduler. When availability changes, it replans while keeping as much of the existing schedule as possible.
+```
+
+Traditional Chinese:
+
+```text
+我不只測產品
+也會做產品
+
+CueSheet 是有正式部署的排練排程工具。
+若有人臨時不能來，系統會重排，同時盡量保留原本安排。
+```
+
+### Recently / Decision Contract Audit
+
+English:
+
+```text
+The same QA questions.
+A newer kind of system.
+
+What was evaluated? What happens when data is missing? Can the failure be reproduced? AI tooling is a side area of my QA work, not the main focus.
+```
+
+Traditional Chinese:
+
+```text
+同一套 QA 邏輯
+也能用來檢查 AI 工具
+
+這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？
+這是 QA 思維的延伸。
+```
+
+### Outro
+
+English:
+
+```text
+More projects and engineering history
+live on GitHub.
+```
+
+Traditional Chinese:
+
+```text
+更多專案與實作紀錄
+都在 GitHub
+```
+
+---
+
+## 25. Mobile contract
 
 Primary breakpoint:
 
@@ -1536,289 +1017,200 @@ Primary breakpoint:
 @media (max-width: 760px)
 ```
 
-Mobile does not simply shrink desktop.
+Mobile is not a scaled-down desktop composition.
 
-Key rules:
+Rules:
 
-- content moves to the bottom-left rather than remaining centered;
-- text width expands relative to the viewport;
-- visual plates move to the upper part of the screen;
-- horizontal content drift is removed;
-- background shading becomes a stronger top-to-bottom gradient to preserve text readability;
-- scene objects remain large enough to recognize;
-- interactions that require hover must not carry essential meaning.
+- keep the same project thesis;
+- allow text more width relative to the viewport;
+- remove horizontal content drift;
+- keep important evidence large enough to recognize;
+- remove supporting devices/surfaces when they become meaningless thumbnails;
+- do not rely on hover for essential meaning;
+- use stronger background shading where necessary for copy readability.
 
-Global mobile variables:
+Specific accepted behaviors:
 
-```css
---nav-h: 64px;
---pad: 18px;
-```
-
-Typical mobile plate width is around `86vw`; Social runtime uses about `92vw`.
-
-### Mobile title
-
-Default:
-
-```css
-font-size: clamp(2.15rem,9.8vw,3.45rem);
-max-width: 13ch;
-line-height: 1.1;
-```
-
-Traditional Chinese mobile:
-
-```css
-font-size: clamp(1.95rem,8.4vw,2.85rem);
-line-height: 1.26;
-letter-spacing: .01em;
-max-width: none;
-```
-
-Traditional Chinese body:
-
-```css
-max-width: 94%;
-font-size: .98rem;
-line-height: 1.74;
-letter-spacing: .008em;
-```
+- CueSheet supporting phones are hidden;
+- CueSheet primary evidence uses `96vw` and approximately `54vh`;
+- Social final phone uses `94%` height with no extra scale magnification;
+- Commerce phone remains the dominant stable product object;
+- heatmap may remain static on coarse-pointer devices.
 
 ---
 
-## 32. Reduced-motion contract
+## 26. Reduced-motion contract
 
-Reduced motion must not produce an empty or broken scene.
+Reduced motion must still tell a coherent story.
 
 General behavior:
 
-- disable smooth scrolling;
-- convert sticky experience into normal stacked scenes;
-- show scenes at full opacity;
-- remove parallax / animated transforms;
-- hide non-essential visual-effects layers.
+- disable unnecessary scroll smoothing/parallax;
+- show meaningful final states rather than empty motion layers;
+- avoid requiring pointer animation to understand anything essential.
 
-Per-scene final states:
+Per-scene examples:
 
-- noCodeE2E: final click step emphasized + Playwright passed visible;
-- CueSheet: schedule review visible;
-- Decision Contract Audit: contribution rows readable + centered PASS visible, scanner hidden;
-- SocialPlatform: final Moderation Rules product screenshot visible directly;
-- CommerceOps: preserve a meaningful static current state until redesigned.
-
----
-
-## 33. Regression guards — MUST NOT reintroduce
-
-These are not suggestions. They are accepted removals or rejected directions.
-
-### Global
-
-- no restored “How I work” section;
-- no project-card grid replacing scene storytelling;
-- no generic sci-fi decoration competing with project evidence;
-- no permanent multi-badge dashboards;
-- no solving visual problems by rewriting copy;
-- no requirement to read tiny screenshot text to understand a project;
-- no simultaneous explanation of every layer/tool;
-- no unrelated visual entering from a direction that breaks the story geometry;
-- no global motion redesign while fixing a single scene.
-
-### noCodeE2E
-
-- no replacement of YAML with a generic test result screenshot;
-- no curved connector / moving dot;
-- no simultaneous step badges.
-
-### SocialPlatform
-
-- no mobile-layout stage;
-- no mobile result screenshot;
-- no final green delivery dot;
-- no Delivered right arrow;
-- no aggressive circular pop for final screenshot;
-- no persistent CI/DB/E2E cue badges;
-- no screenshot slideshow as the core motion;
-- no CI screenshot as a thing the visitor must read to understand the scene.
-
-### CueSheet
-
-- no solver illustration;
-- no fake schedule blocks;
-- no benchmark cards;
-- no duplicate final phone return.
-
-### Decision Contract Audit
-
-- no pseudo-dashboard replacing contribution history;
-- no code/rule examples becoming more prominent than contribution history;
-- no PASS pill attached to the last row;
-- no `checks: 0`;
-- no `UNVERIFIED` / `未驗證`;
-- do not alter the centered scanner → PASS ending casually.
+- noCodeE2E: meaningful final execution/pass state;
+- CommerceOps: expired-coupon product state;
+- SocialPlatform: final Moderation Rules product screen;
+- CueSheet: schedule review;
+- Decision Contract Audit: readable rows and existing PASS ending;
+- outro: static heatmap is acceptable.
 
 ---
 
-## 34. Acceptance tests for a fresh-session reconstruction
+## 27. Global regression guards
 
-A reconstruction is acceptable only when most of these are true.
+Do not reintroduce:
 
-### Identity test
+- a project-card grid replacing scene storytelling;
+- a restored “How I work” scene without a new explicit design decision;
+- generic sci-fi effects competing with project evidence;
+- permanent multi-badge dashboards;
+- visual-problem fixes implemented by rewriting copy;
+- meaningful text below a comfortable readability floor just to create hierarchy;
+- a requirement to read tiny screenshot text to understand a project;
+- every project using the same motion language;
+- global motion redesign while fixing a single scene;
+- large device/screenshot scaling without considering competition and composition;
+- abrupt focus jumps when continuous interpolation can preserve the same endpoint.
 
-Within the intro and first projects, a visitor should identify me as QA/SDET first.
+---
+
+## 28. Acceptance tests
+
+A future reconstruction or design change should pass most of these.
+
+### Identity
+
+Does the visitor understand QA/SDET as the primary identity?
 
 ### Five-second scene test
 
-Hide the repository name and link. After five seconds, a viewer should be able to explain the project in one or two sentences.
+Without opening GitHub, can the project be explained accurately after about five seconds?
+
+### One-second recognition test
+
+Can the current stage and dominant visual be identified almost immediately?
 
 ### Screenshot-independence test
 
-Blur or hide small text inside screenshots. The main idea should still be understandable.
+If small text inside screenshots is blurred, does the scene still communicate its thesis?
 
 ### One-thesis test
 
-At any moment there should be one dominant visual thesis rather than several equally important modules.
+Is there one dominant visual idea at a time?
 
 ### Motion-purpose test
 
-For every major animation, answer:
+For each major animation:
 
 > What relationship becomes easier to understand because this moves?
 
-If there is no answer, remove the motion.
+If there is no answer, remove it.
 
 ### Continuity test
 
-A new state should visibly come from the previous state when the story says they are related.
+Does the new state visibly come from the previous state when the story says they are related?
 
-### Hold test
+### Temporal readability test
 
-Important evidence should have a stable reading interval.
+Is important information stable long enough to recognize or read at normal scroll speed?
 
-### Ending test
+### Transition-quality test
 
-Each scene should land on a meaningful outcome rather than merely run out of scroll distance.
+Is the endpoint visually meaningful without the interpolation feeling coarse, abrupt, or mechanically pulsed?
+
+### Viewing-effort test
+
+At 100% zoom, does meaningful information require leaning forward, zooming, or unusually careful cursor placement?
+
+### Interaction-discovery test
+
+If the pointer begins away from the visual's center, can the optional interaction still reveal itself naturally?
 
 ### Bilingual test
 
-English and Traditional Chinese should both preserve hierarchy, intentional line breaks, comfortable line height, and natural wrapping.
+Do English and Traditional Chinese both preserve hierarchy and comfortable wrapping?
 
 ### Mobile test
 
-The visual should remain recognizable without forcing the user to track several tiny objects.
+Does mobile preserve the same thesis without several tiny competing surfaces?
 
 ### Reduced-motion test
 
-Every scene must still tell a coherent static story.
+Does every scene still communicate a meaningful state?
 
-### Cross-project differentiation test
+### Cross-project differentiation
 
-Each project should communicate a distinct QA/product capability rather than repeating the same “many layers of tests” message.
-
----
-
-## 35. Change protocol for future sessions
-
-When changing this portfolio:
-
-1. read this document first;
-2. inspect the current branch and the actual runtime files;
-3. identify the scene's one-sentence thesis;
-4. identify which current behavior is accepted and which part is being changed;
-5. preserve copy unless the request explicitly includes copy changes;
-6. preserve unrelated scenes;
-7. prefer changing one existing object over adding another component;
-8. keep scroll as the primary interaction;
-9. provide reduced-motion behavior;
-10. make the change in an isolated commit;
-11. compare the result against the previous commit;
-12. update this document when a new design decision becomes permanent.
-
-For repository edits, use the current file SHA immediately before writing. Do not run competing writes to the same file.
-
-A failed experiment should be easy to roll back without rewriting unrelated history.
+Does each project demonstrate a distinct capability rather than repeating the same story with different screenshots?
 
 ---
 
-## 36. How to use this document in a new session
+## 29. Change protocol for future sessions
 
-A useful handoff instruction is:
+When editing this portfolio:
 
-> Read `PORTFOLIO_DESIGN_METHOD.md` completely, then inspect the current `index.html` and any scene-specific controllers before editing. Treat Part II as the reconstruction contract. Preserve locked copy and accepted regression guards. Do not infer current Social behavior from stale fallback markup in `index.html`; `social-integrated.js` is authoritative for that scene. If a requested change affects one project, do not redesign the global experience.
+1. fresh-fetch the current `main` branch;
+2. inspect the actual runtime responsible for the target scene;
+3. do not rely on an old SHA or stale fallback markup;
+4. state the scene's one-sentence thesis before changing the visual;
+5. identify which current behavior is accepted and which part is being changed;
+6. preserve copy unless copy editing is explicitly requested;
+7. preserve unrelated scenes and global motion;
+8. prefer changing an existing object over adding another explanation component;
+9. distinguish DOM readability from embedded screenshot readability;
+10. test endpoint magnitude and interpolation separately;
+11. keep reduced-motion/mobile behavior meaningful;
+12. use an isolated, focused commit;
+13. compare the previous `main` to the new commit;
+14. fresh-fetch `main` after the write;
+15. update this document when a design decision becomes permanent.
 
-If rebuilding rather than editing, first recreate:
+For SocialPlatform specifically, inspect `social-runtime.js`. Do not reconstruct its current behavior from the older Social markup inside `index.html`.
 
-1. scene architecture,
-2. typography/layout system,
-3. global scroll behavior,
-4. bilingual behavior,
-5. each accepted per-scene state machine,
-6. reduced-motion states,
-7. then polish.
+For CommerceOps, inspect `commerce-integrated.js`; its current accepted copy and visual are runtime-defined.
 
-Do not begin by inventing project visuals.
+For global readability, inspect both `typography-runtime.js` and `evidence-readability.js` before changing `index.html` typography or device geometry directly.
 
----
-
-## 37. Current known open design item
-
-### CommerceOps
-
-CommerceOps is intentionally left as the next design problem.
-
-The current live scene is preserved for continuity, but its older “one flow across layers” thesis overlaps with SocialPlatform and should not be copied forward automatically.
-
-Before redesigning CommerceOps:
-
-1. inspect the newer CommerceOps repository and its evidence;
-2. define a thesis that does not duplicate SocialPlatform;
-3. choose proof that supports that thesis;
-4. design one semantic motion around it;
-5. update this contract after the scene is accepted.
-
-Until then, the rest of the site should remain stable.
+For the final interaction, inspect `outro-heatmap.js` before modifying the outro scene.
 
 ---
 
-## 38. Final checklist
+## 30. Final checklist
 
-Before I consider the portfolio or a reconstructed version faithful, I ask:
+Before considering the portfolio faithful:
 
-- Can the project be understood without opening GitHub?
-- Can the main idea be understood without reading tiny screenshot text?
-- Is there only one dominant visual idea at a time?
-- Does motion explain something rather than decorate something?
-- Does real evidence prove the claim without becoming the explanation burden?
+- Can each project be understood without opening GitHub?
+- Can the main idea survive if tiny screenshot text cannot be read?
+- Is there one dominant visual idea at a time?
+- Does motion explain a relationship rather than decorate the scene?
+- Does real evidence prove the claim without becoming an interpretation burden?
 - Do state changes have a visible origin?
-- Are there real reading holds?
-- Is the ending an outcome rather than an arbitrary cutoff?
-- Can any label, badge, screenshot, or animation still be removed?
-- Does the scene work in English and Traditional Chinese?
-- Does mobile preserve the same thesis without shrinking everything into unreadability?
+- Is important content readable at normal zoom and scroll speed?
+- Are screenshot/device states given enough physical territory?
+- Are focus transitions continuous rather than coarse?
+- Does mobile preserve the same thesis rather than shrink everything?
 - Does reduced motion still tell the story?
-- Does each project have a distinct role in the portfolio?
+- Are optional interactions discoverable without instructions?
+- Does each project have its own motion language?
 - Have rejected patterns stayed rejected?
-- Has personally tuned copy remained untouched unless explicitly changed?
-- Does it still feel like one portfolio rather than assembled components?
+- Has tuned bilingual copy remained untouched unless explicitly changed?
+- Does the whole experience still feel like one portfolio rather than assembled components?
 
-If several answers are no, I do not add more components.
+If several answers are no, do not add more UI.
 
-I simplify the sequence until the relationship becomes obvious.
+Reduce the interpretation burden until the relationship becomes obvious.
 
 ---
 
-## Closing note
+## Closing principle
 
-The most useful design decisions on this site did not come from adding more polish. They came from recognizing where the visitor was being asked to do too much interpretation.
+The strongest design improvements in this portfolio came from asking the visitor to do less work, not from adding more visual polish.
 
-The recurring solution is to make the page carry more of that burden itself:
+The recurring pattern is:
 
-- decide what matters now,
-- reveal the next idea through motion,
-- show real proof only after the meaning is clear,
-- preserve spatial continuity,
-- stop long enough for important results to land,
-- and remove anything that no longer earns its place.
+> **decide what matters now → reveal the relationship through motion → give authentic evidence enough territory → let the result settle → remove anything that no longer earns its place.**
 
-That is the design pattern I want to keep using as the portfolio evolves.
+That is the method to preserve.
