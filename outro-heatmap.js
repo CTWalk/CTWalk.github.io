@@ -70,6 +70,13 @@
   let lastFrame = performance.now();
   let raf = 0;
 
+  let sceneWasVisible = false;
+  let entryPlayed = false;
+  let entryPendingAt = 0;
+  let entryReleaseAt = 0;
+  let entryPulseActive = false;
+  let pointerMovedInScene = false;
+
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   const mix = (a, b, t) => Math.round(a + (b - a) * t);
 
@@ -102,38 +109,68 @@
     activeCol = -1;
   }
 
-  function setActiveFromPointer(event) {
-    if (reduced || coarsePointer) return;
+  function activateCell(row, col, now = performance.now()) {
+    if (row === activeRow && col === activeCol) return;
+    activeRow = row;
+    activeCol = col;
+    activeSince = now;
+  }
 
-    const sceneOpacity = Number.parseFloat(scene.style.opacity || getComputedStyle(scene).opacity || '0');
-    if (sceneOpacity < .18) {
-      activeRow = -1;
-      activeCol = -1;
-      return;
-    }
+  function sceneOpacity() {
+    return Number.parseFloat(scene.style.opacity || getComputedStyle(scene).opacity || '0');
+  }
 
+  function nearestCellFromPointer(event) {
     const rect = grid.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
-    if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
-      activeRow = -1;
-      activeCol = -1;
-      return;
-    }
-
     const computed = getComputedStyle(grid);
     const gap = parseFloat(computed.columnGap) || 0;
     const cellWidth = (rect.width - gap * (columns - 1)) / columns;
     const cellHeight = (rect.height - gap * (rows - 1)) / rows;
-    const col = clamp(Math.floor(x / Math.max(1, cellWidth + gap)), 0, columns - 1);
-    const row = clamp(Math.floor(y / Math.max(1, cellHeight + gap)), 0, rows - 1);
 
-    if (row !== activeRow || col !== activeCol) {
-      activeRow = row;
-      activeCol = col;
-      activeSince = performance.now();
+    const x = clamp(event.clientX - rect.left, cellWidth / 2, rect.width - cellWidth / 2);
+    const y = clamp(event.clientY - rect.top, cellHeight / 2, rect.height - cellHeight / 2);
+    const col = clamp(
+      Math.round((x - cellWidth / 2) / Math.max(1, cellWidth + gap)),
+      0,
+      columns - 1
+    );
+    const row = clamp(
+      Math.round((y - cellHeight / 2) / Math.max(1, cellHeight + gap)),
+      0,
+      rows - 1
+    );
+
+    return { row, col };
+  }
+
+  function setActiveFromPointer(event) {
+    if (reduced || coarsePointer || sceneOpacity() < .18) return;
+
+    const sceneRect = scene.getBoundingClientRect();
+    const insideScene =
+      event.clientX >= sceneRect.left &&
+      event.clientX <= sceneRect.right &&
+      event.clientY >= sceneRect.top &&
+      event.clientY <= sceneRect.bottom;
+
+    if (!insideScene) {
+      activeRow = -1;
+      activeCol = -1;
+      return;
     }
+
+    pointerMovedInScene = true;
+    if (entryPendingAt) {
+      entryPendingAt = 0;
+      entryPlayed = true;
+    }
+    if (entryPulseActive) {
+      entryPulseActive = false;
+      entryReleaseAt = 0;
+    }
+
+    const nearest = nearestCellFromPointer(event);
+    activateCell(nearest.row, nearest.col);
   }
 
   function colorFor(energy) {
@@ -157,9 +194,47 @@
     return [mix(mid[0], bright[0], t), mix(mid[1], bright[1], t), mix(mid[2], bright[2], t)];
   }
 
+  function updateEntryDiscovery(now) {
+    const visible = sceneOpacity() >= .55;
+
+    if (visible && !sceneWasVisible) {
+      pointerMovedInScene = false;
+      if (!entryPlayed) entryPendingAt = now + 420;
+    }
+
+    if (!visible && sceneWasVisible) {
+      entryPendingAt = 0;
+      entryReleaseAt = 0;
+      entryPulseActive = false;
+      if (!pointerMovedInScene) {
+        activeRow = -1;
+        activeCol = -1;
+      }
+    }
+
+    sceneWasVisible = visible;
+
+    if (visible && entryPendingAt && !pointerMovedInScene && now >= entryPendingAt) {
+      entryPendingAt = 0;
+      entryPlayed = true;
+      entryPulseActive = true;
+      entryReleaseAt = now + 880;
+      activateCell(Math.floor(rows / 2), Math.round(columns * .68), now);
+    }
+
+    if (entryPulseActive && now >= entryReleaseAt) {
+      entryPulseActive = false;
+      entryReleaseAt = 0;
+      activeRow = -1;
+      activeCol = -1;
+    }
+  }
+
   function render(now) {
     const dt = Math.min(40, now - lastFrame);
     lastFrame = now;
+    updateEntryDiscovery(now);
+
     const hasActive = activeRow >= 0 && activeCol >= 0;
     const elapsed = hasActive ? now - activeSince : 0;
     const waveRadius = .45 + elapsed / 28;
