@@ -29,9 +29,10 @@
     .social-structure-segment.is-soft{stroke:rgba(231,237,255,.26)}
     .social-scan{stroke:rgba(247,249,255,.82);stroke-width:1.2;opacity:0;vector-effect:non-scaling-stroke}
     .social-guide{fill:none;stroke:rgba(231,237,255,.15);stroke-width:1;stroke-dasharray:3 8;opacity:0;vector-effect:non-scaling-stroke}
-    .social-db-icon{opacity:0;transform-origin:370px 232px;will-change:opacity,transform,filter}
-    .social-db-stroke{fill:none;stroke:rgba(248,250,255,.96);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-    .social-db-dot{fill:rgba(248,250,255,.96)}
+    .social-db-icon{opacity:0;transform-origin:370px 238px;will-change:opacity,transform}
+    .social-db-part{opacity:0;will-change:opacity}
+    .social-db-stroke{fill:none;stroke:rgba(238,243,255,.56);stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .social-db-dot{fill:rgba(238,243,255,.42)}
     .social-label-world{position:absolute;z-index:7;inset:-4% -5% -6%;pointer-events:none}
     .social-layer-heading{position:absolute;top:22.5%;transform:translate(-50%,-50%);color:rgba(248,250,255,.9);font:680 clamp(13px,1.15vw,16px)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:1.45px;white-space:nowrap;opacity:0;text-shadow:0 2px 12px rgba(0,0,0,.45);will-change:opacity}
     .social-layer-heading::after{content:"";display:block;width:58px;height:1px;margin:8px auto 0;background:rgba(242,246,255,.34)}
@@ -76,15 +77,15 @@
           <path class="social-guide social-web-guide" d="M682 442 V122" />
 
           <g class="social-db-icon">
-            <ellipse class="social-db-stroke" cx="370" cy="150" rx="118" ry="28" />
-            <path class="social-db-stroke" d="M252 150V316" />
-            <path class="social-db-stroke" d="M488 150V316" />
-            <path class="social-db-stroke" d="M252 205C252 220 305 232 370 232C435 232 488 220 488 205" />
-            <path class="social-db-stroke" d="M252 260C252 275 305 287 370 287C435 287 488 275 488 260" />
-            <path class="social-db-stroke" d="M252 316C252 331 305 343 370 343C435 343 488 331 488 316" />
-            <circle class="social-db-dot" cx="447" cy="205" r="6.8" />
-            <circle class="social-db-dot" cx="447" cy="260" r="6.8" />
-            <circle class="social-db-dot" cx="447" cy="316" r="6.8" />
+            <ellipse class="social-db-stroke social-db-part" cx="370" cy="174" rx="88" ry="20" />
+            <path class="social-db-stroke social-db-part" d="M282 174V302" />
+            <path class="social-db-stroke social-db-part" d="M458 174V302" />
+            <path class="social-db-stroke social-db-part" d="M282 216C282 227 321 236 370 236C419 236 458 227 458 216" />
+            <path class="social-db-stroke social-db-part" d="M282 259C282 270 321 279 370 279C419 279 458 270 458 259" />
+            <path class="social-db-stroke social-db-part" d="M282 302C282 313 321 322 370 322C419 322 458 313 458 302" />
+            <circle class="social-db-dot social-db-part" cx="432" cy="216" r="3.5" />
+            <circle class="social-db-dot social-db-part" cx="432" cy="259" r="3.5" />
+            <circle class="social-db-dot social-db-part" cx="432" cy="302" r="3.5" />
           </g>
 
           <g class="social-shared-geometry">
@@ -130,6 +131,7 @@
   const baseLine = showcase.querySelector('.social-release-base');
   const marker = showcase.querySelector('.social-release-marker');
   const dbIcon = showcase.querySelector('.social-db-icon');
+  const dbParts = [...showcase.querySelectorAll('.social-db-part')];
   const segments = [...showcase.querySelectorAll('.social-structure-segment')];
   const scan = showcase.querySelector('.social-scan');
   const dbGuide = showcase.querySelector('.social-db-guide');
@@ -296,12 +298,14 @@
     webGuide.style.opacity = String(webAmount * .6);
     webLabel.style.opacity = String(webLabelAmount);
 
-    dbIcon.style.opacity = String(dbAmount);
-    dbIcon.style.transform = `translateY(${mix(12, 0, dbAmount)}px) scale(${mix(.86, 1, dbAmount)})`;
-    dbIcon.style.filter = `brightness(${mix(.88, 1, dbAmount)}) drop-shadow(0 14px 36px rgba(0,0,0,.22))`;
+    dbIcon.style.opacity = String(clamp(dbAmount * 1.05));
+    dbIcon.style.transform = `translateY(${mix(5, 0, dbAmount)}px) scale(${mix(.98, 1, dbAmount)})`;
+    dbParts.forEach((part, index) => {
+      part.style.opacity = String(clamp(dbAmount * 1.35 - index * .055));
+    });
 
     if (dbAmount > webAmount && dbAmount > .01) {
-      setScan(258, 482, mix(154, 316, dbScan), dbAmount * Math.sin(Math.PI * dbScan));
+      setScan(286, 454, mix(174, 302, dbScan), dbAmount * Math.sin(Math.PI * dbScan));
     } else if (webAmount > .01) {
       setScan(514, 822, mix(202, 314, webScan), webAmount * Math.sin(Math.PI * webScan));
     } else {
