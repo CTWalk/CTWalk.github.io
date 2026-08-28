@@ -8,6 +8,7 @@
   if (reduced) return;
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
+  const mix = (a, b, t) => a + (b - a) * t;
   const smooth = t => {
     const x = clamp(t);
     return x * x * (3 - 2 * x);
@@ -32,6 +33,38 @@
       cursor += duration;
     }
     return step;
+  }
+
+  function phrasedAuditPosition(progress, maxIndex) {
+    if (maxIndex <= 0) return 0;
+
+    // Phrase the contribution history instead of advancing through eight equal beats.
+    // Positions are normalized to the current row count: quick orientation, a small
+    // punctuation hold, steady middle traversal, another hold, then final arrival.
+    const keyframes = [
+      [0, 0],
+      [.11, 1 / 7],
+      [.20, 2 / 7],
+      [.29, 2.06 / 7],
+      [.41, 3 / 7],
+      [.50, 4 / 7],
+      [.59, 5 / 7],
+      [.68, 5.06 / 7],
+      [.80, 6 / 7],
+      [.90, 1],
+      [1, 1]
+    ];
+
+    const t = clamp(progress);
+    for (let i = 0; i < keyframes.length - 1; i++) {
+      const [startT, startPos] = keyframes[i];
+      const [endT, endPos] = keyframes[i + 1];
+      if (t <= endT) {
+        const local = smooth((t - startT) / Math.max(.0001, endT - startT));
+        return mix(startPos, endPos, local) * maxIndex;
+      }
+    }
+    return maxIndex;
   }
 
   let raf = 0;
@@ -77,7 +110,8 @@
       const readStart = .18;
       const readEnd = .72;
       const reading = smooth(clamp((phase - .14) / .06));
-      const cardPos = clamp((phase - readStart) / (readEnd - readStart)) * Math.max(0, rows.length - 1);
+      const readProgress = clamp((phase - readStart) / (readEnd - readStart));
+      const cardPos = phrasedAuditPosition(readProgress, Math.max(0, rows.length - 1));
       const scanProgress = smooth(clamp((phase - .78) / .12));
       const passIn = smooth(clamp((phase - .84) / .08));
       const scannerMode = Math.max(scanProgress, passIn);
