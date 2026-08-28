@@ -6,7 +6,6 @@
 
   const assets = {
     product: 'https://github.com/user-attachments/assets/46073db9-02ac-4645-8784-721165d7d504',
-    ci: 'https://github.com/user-attachments/assets/ac6484fd-78f5-4583-96e1-880e3fec1229',
     db: 'https://github.com/user-attachments/assets/78e165ea-d43d-4044-abd5-c189e70161a4',
     e2e: 'https://github.com/user-attachments/assets/7ea37734-4f73-4dcb-84fd-89d1c94e3418',
     signoff: 'https://github.com/user-attachments/assets/b2fc999c-b87a-4b91-8230-870c9c78b193'
@@ -21,109 +20,86 @@
     }
     .social-motion-root{position:absolute;inset:0;isolation:isolate}
     .social-motion-surface{border:1px solid rgba(255,255,255,.18);border-radius:clamp(15px,1.7vw,25px);box-shadow:0 34px 100px rgba(0,0,0,.43);background:#0d1117}
-    .social-motion-product,.social-motion-ci,.social-motion-proof{position:absolute;inset:0;width:100%;height:100%;will-change:opacity,transform,filter,clip-path}
+    .social-motion-product,.social-motion-evidence,.social-final-product{position:absolute;inset:0;width:100%;height:100%;will-change:opacity,transform,filter,clip-path}
     .social-motion-product{z-index:2;object-fit:cover;object-position:center top}
-    .social-motion-ci{z-index:1;object-fit:contain;opacity:0;filter:brightness(.5) saturate(.75)}
-    .social-release-world{position:absolute;z-index:4;inset:0;pointer-events:none;will-change:opacity,transform}
-    .social-release-track{position:absolute;left:8%;right:8%;top:50%;height:80px;transform:translateY(-50%);overflow:visible}
-    .social-release-line{fill:none;stroke:rgba(200,213,255,.46);stroke-width:1.4;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(142,169,255,.2))}
-    .social-release-node{fill:#101723;stroke:rgba(200,213,255,.42);stroke-width:1.3;transition:none}
-    .social-release-node.is-lit{fill:#c8d5ff;stroke:#c8d5ff;filter:drop-shadow(0 0 6px rgba(200,213,255,.32))}
-    .social-release-pulse{fill:#e5ebff;filter:drop-shadow(0 0 9px rgba(142,169,255,.9))}
-    .social-db-stage,.social-device-stage{position:absolute;z-index:6;left:50%;top:50%;color:#e9eeff;pointer-events:none;will-change:opacity,transform,width,height}
-    .social-db-stage{width:150px;height:150px;display:grid;place-items:center;transform:translate(-50%,-50%) scale(.15);opacity:0}
-    .social-db-stage svg{width:112px;height:112px;overflow:visible;filter:drop-shadow(0 15px 30px rgba(0,0,0,.3))}
-    .social-db-stage svg *{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-    .social-stage-name{position:absolute;left:50%;top:calc(50% + 74px);transform:translateX(-50%);margin:0;color:#f4f6ff;font:720 clamp(.72rem,1vw,.9rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.09em;white-space:nowrap;text-shadow:0 3px 18px rgba(0,0,0,.55)}
-    .social-device-stage{width:280px;height:154px;border:1.5px solid rgba(229,235,255,.88);border-radius:15px;transform:translate(-50%,-50%) scale(.15);opacity:0;box-shadow:0 24px 60px rgba(0,0,0,.3),inset 0 0 0 1px rgba(255,255,255,.04)}
-    .social-device-stage::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:rgba(229,235,255,.46)}
-    .social-device-stage::after{content:"";position:absolute;left:18px;top:12px;width:5px;height:5px;border-radius:50%;background:rgba(229,235,255,.75);box-shadow:10px 0 0 rgba(229,235,255,.45),20px 0 0 rgba(229,235,255,.28)}
-    .social-motion-proof{z-index:5;opacity:0;object-fit:cover;clip-path:circle(2% at 50% 50%);transform:scale(.88)}
-    .social-proof-e2e{object-fit:contain;padding:5% 3%;background:#0d1117}
-    .social-delivered-stage{position:absolute;z-index:10;left:88%;top:50%;width:126px;height:126px;display:grid;place-items:center;color:#eef2ff;opacity:0;transform:translate(-50%,-50%) scale(.24);pointer-events:none;will-change:opacity,transform}
-    .social-delivered-stage svg{width:88px;height:88px;overflow:visible;filter:drop-shadow(0 12px 30px rgba(0,0,0,.36))}
-    .social-delivered-stage svg *{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-    .social-delivered-stage .social-delivered-label{position:absolute;left:50%;top:calc(50% + 58px);margin:0;transform:translateX(-50%);color:#eef2ff;font:760 clamp(.62rem,.85vw,.76rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.12em;white-space:nowrap;text-shadow:0 3px 18px rgba(0,0,0,.6);opacity:0;will-change:opacity}
-    .social-signoff-stage{position:absolute;z-index:9;left:88%;top:50%;height:94%;aspect-ratio:1081/1999;overflow:hidden;border:1px solid rgba(255,255,255,.22);border-radius:clamp(16px,2vw,27px);background:#f5f2ec;box-shadow:0 32px 100px rgba(0,0,0,.52);opacity:0;transform:translate(-50%,-50%) scale(.84);transform-origin:center;will-change:left,opacity,transform,filter}
-    .social-signoff-stage img{display:block;width:100%;height:100%;object-fit:cover}
+    .social-release-world{position:absolute;z-index:6;inset:0;pointer-events:none;will-change:opacity}
+    .social-release-track{position:absolute;left:8%;right:8%;top:72%;height:44px;transform:translateY(-50%)}
+    .social-release-line{position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(224,232,255,.58);box-shadow:0 0 8px rgba(176,196,255,.12);transform:scaleX(0);transform-origin:left center;will-change:transform,opacity}
+    .social-release-marker{position:absolute;z-index:3;left:0;top:50%;width:9px;height:9px;border-radius:50%;background:#edf2ff;box-shadow:0 0 11px rgba(190,207,255,.4);transform:translate(-50%,-50%);will-change:left,opacity,transform}
+    .social-release-checkpoint{position:absolute;z-index:2;top:50%;width:7px;height:7px;border:1px solid rgba(224,232,255,.62);border-radius:50%;background:#111722;transform:translate(-50%,-50%);will-change:opacity}
+    .social-release-checkpoint[data-point="db"]{left:38%}.social-release-checkpoint[data-point="web"]{left:70%}.social-release-checkpoint[data-point="end"]{left:100%}
+    .social-checkpoint-label{position:absolute;left:50%;top:13px;margin:0;transform:translateX(-50%);color:rgba(238,243,255,.74);font:700 clamp(.6rem,.76vw,.7rem)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.09em;white-space:nowrap}
+    .social-checkpoint-cue{position:absolute;z-index:7;top:72%;display:grid;place-items:center;color:#edf2ff;opacity:0;transform:translate(-50%,-50%) scale(.72);pointer-events:none;will-change:opacity,transform}
+    .social-checkpoint-cue svg{overflow:visible;filter:drop-shadow(0 10px 24px rgba(0,0,0,.32))}
+    .social-checkpoint-cue svg *{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+    .social-db-cue{left:40%;width:62px;height:62px}.social-db-cue svg{width:50px;height:50px}
+    .social-web-cue{left:67%;width:80px;height:54px;border:1.25px solid rgba(237,242,255,.86);border-radius:9px}
+    .social-web-cue::before{content:"";position:absolute;left:0;right:0;top:13px;height:1px;background:rgba(237,242,255,.42)}
+    .social-web-cue::after{content:"";position:absolute;left:9px;top:6px;width:3px;height:3px;border-radius:50%;background:rgba(237,242,255,.72);box-shadow:7px 0 0 rgba(237,242,255,.42),14px 0 0 rgba(237,242,255,.24)}
+    .social-motion-evidence,.social-final-product{z-index:8;opacity:0;clip-path:circle(.8% at var(--origin-x) 72%);transform:scale(.96);transform-origin:var(--origin-x) 72%}
+    .social-proof-db{--origin-x:40%;object-fit:cover;object-position:center}
+    .social-proof-e2e{--origin-x:67%;object-fit:contain;padding:4% 3%;background:#0d1117}
+    .social-final-product{--origin-x:92%;z-index:9;object-fit:contain;object-position:center;background:#0d1117}
     @media(max-width:760px){
       .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
-      .social-db-stage{width:112px;height:112px}.social-db-stage svg{width:82px;height:82px}.social-stage-name{top:calc(50% + 54px);font-size:.59rem}
-      .social-device-stage{width:210px;height:116px}.social-device-stage::before{top:21px}.social-device-stage::after{top:9px;left:13px;transform:scale(.82);transform-origin:left top}
-      .social-proof-e2e{padding:4% 2%}
-      .social-delivered-stage{width:98px;height:98px}.social-delivered-stage svg{width:68px;height:68px}.social-delivered-stage .social-delivered-label{top:calc(50% + 45px);font-size:.55rem}
-      .social-signoff-stage{height:93%;border-radius:17px}
+      .social-release-track{left:12%;right:12%;top:77%;height:36px}
+      .social-checkpoint-label{top:11px;font-size:.54rem}
+      .social-checkpoint-cue{top:77%}
+      .social-db-cue{left:41%;width:48px;height:48px}.social-db-cue svg{width:38px;height:38px}
+      .social-web-cue{left:65%;width:62px;height:42px;border-radius:7px}.social-web-cue::before{top:10px}.social-web-cue::after{left:7px;top:4px;transform:scale(.82);transform-origin:left top}
+      .social-motion-evidence,.social-final-product{clip-path:circle(.8% at var(--origin-x) 77%);transform-origin:var(--origin-x) 77%}
+      .social-proof-db{--origin-x:41%}.social-proof-e2e{--origin-x:65%;padding:2.5% 2%}.social-final-product{--origin-x:88%}
     }
     @media(prefers-reduced-motion:reduce){
-      .social-motion-product,.social-motion-ci,.social-db-stage,.social-device-stage,.social-motion-proof,.social-release-world,.social-delivered-stage{display:none!important}
-      .social-signoff-stage{opacity:1!important;left:50%!important;transform:translate(-50%,-50%) scale(1)!important;filter:none!important}
+      .social-motion-product,.social-motion-evidence,.social-checkpoint-cue,.social-release-marker{display:none!important}
+      .social-final-product{opacity:1!important;clip-path:none!important;transform:none!important;filter:none!important}
+      .social-release-world{z-index:10!important;opacity:.72!important}
+      .social-release-line{transform:scaleX(1)!important}
+      .social-release-checkpoint{opacity:.8!important}
     }
   `;
   document.head.appendChild(style);
 
+  showcase.setAttribute('aria-label', 'SocialPlatform product with database and web evidence along one release path');
   showcase.innerHTML = `
     <div class="social-motion-root">
       <img class="social-motion-product social-motion-surface" src="${assets.product}" alt="SocialPlatform desktop review queue" />
-      <img class="social-motion-ci social-motion-surface" src="${assets.ci}" alt="SocialPlatform CI run" />
 
       <div class="social-release-world" aria-hidden="true">
-        <svg class="social-release-track" viewBox="0 0 110 20" preserveAspectRatio="none">
-          <path class="social-release-line" pathLength="100" d="M5 10 H105" />
-          <circle class="social-release-node" data-node="0" cx="5" cy="10" r="1.3" />
-          <circle class="social-release-node" data-node="1" cx="23" cy="10" r="1.3" />
-          <circle class="social-release-node" data-node="2" cx="41" cy="10" r="1.3" />
-          <circle class="social-release-node" data-node="3" cx="59" cy="10" r="1.3" />
-          <circle class="social-release-node" data-node="4" cx="77" cy="10" r="1.3" />
-          <circle class="social-release-pulse" cx="5" cy="10" r="1.15" />
+        <div class="social-release-track">
+          <span class="social-release-line"></span>
+          <span class="social-release-checkpoint" data-point="db"><span class="social-checkpoint-label">DB</span></span>
+          <span class="social-release-checkpoint" data-point="web"><span class="social-checkpoint-label">WEB</span></span>
+          <span class="social-release-checkpoint" data-point="end"></span>
+          <span class="social-release-marker"></span>
+        </div>
+      </div>
+
+      <div class="social-checkpoint-cue social-db-cue" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <ellipse cx="32" cy="17" rx="18" ry="7" />
+          <path d="M14 17v15c0 4 8 7 18 7s18-3 18-7V17" />
+          <path d="M14 32v15c0 4 8 7 18 7s18-3 18-7V32" />
         </svg>
       </div>
+      <div class="social-checkpoint-cue social-web-cue" aria-hidden="true"></div>
 
-      <div class="social-db-stage" aria-hidden="true">
-        <svg viewBox="0 0 96 96">
-          <ellipse cx="48" cy="22" rx="27" ry="10" pathLength="100" />
-          <path d="M21 22v23c0 5.5 12.1 10 27 10s27-4.5 27-10V22" pathLength="100" />
-          <path d="M21 45v23c0 5.5 12.1 10 27 10s27-4.5 27-10V45" pathLength="100" />
-        </svg>
-        <p class="social-stage-name">DB INTEGRITY</p>
-      </div>
-
-      <div class="social-device-stage" aria-hidden="true">
-        <p class="social-stage-name social-device-name">WEB E2E</p>
-      </div>
-
-      <img class="social-motion-proof social-motion-surface social-proof-db" src="${assets.db}" alt="Database integrity execution evidence" />
-      <img class="social-motion-proof social-motion-surface social-proof-e2e" src="${assets.e2e}" alt="Playwright E2E execution evidence" />
-
-      <div class="social-delivered-stage" aria-hidden="true">
-        <svg viewBox="0 0 96 96">
-          <circle cx="48" cy="48" r="28" pathLength="100" />
-          <path d="M35 48l9 9 18-20" pathLength="100" />
-        </svg>
-        <p class="social-delivered-label">DELIVERED</p>
-      </div>
-      <div class="social-signoff-stage">
-        <img src="${assets.signoff}" alt="SocialPlatform moderation rules screen showing the engine running with three of three rules active" />
-      </div>
+      <img class="social-motion-evidence social-motion-surface social-proof-db" src="${assets.db}" alt="Database integrity execution evidence" />
+      <img class="social-motion-evidence social-motion-surface social-proof-e2e" src="${assets.e2e}" alt="Playwright web E2E execution evidence" />
+      <img class="social-final-product social-motion-surface" src="${assets.signoff}" alt="SocialPlatform moderation rules screen showing the engine running with three of three rules active" />
     </div>
   `;
 
   const product = showcase.querySelector('.social-motion-product');
-  const ci = showcase.querySelector('.social-motion-ci');
   const release = showcase.querySelector('.social-release-world');
-  const track = showcase.querySelector('.social-release-line');
-  const pulse = showcase.querySelector('.social-release-pulse');
-  const nodes = [...showcase.querySelectorAll('.social-release-node')];
-  const dbStage = showcase.querySelector('.social-db-stage');
-  const dbStrokes = [...dbStage.querySelectorAll('svg *')];
-  const device = showcase.querySelector('.social-device-stage');
-  const proofs = {
-    db: showcase.querySelector('.social-proof-db'),
-    e2e: showcase.querySelector('.social-proof-e2e')
-  };
-  const delivered = showcase.querySelector('.social-delivered-stage');
-  const deliveredStrokes = [...delivered.querySelectorAll('svg *')];
-  const deliveredLabel = showcase.querySelector('.social-delivered-label');
-  const signoff = showcase.querySelector('.social-signoff-stage');
+  const line = showcase.querySelector('.social-release-line');
+  const marker = showcase.querySelector('.social-release-marker');
+  const checkpoints = [...showcase.querySelectorAll('.social-release-checkpoint')];
+  const dbCue = showcase.querySelector('.social-db-cue');
+  const webCue = showcase.querySelector('.social-web-cue');
+  const dbProof = showcase.querySelector('.social-proof-db');
+  const webProof = showcase.querySelector('.social-proof-e2e');
+  const finalProduct = showcase.querySelector('.social-final-product');
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) return;
@@ -131,8 +107,6 @@
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = t => t * t * (3 - 2 * t);
   const ramp = (p, start, end) => smooth(clamp((p - start) / Math.max(.0001, end - start)));
-  const cubicOut = t => 1 - Math.pow(1 - clamp(t), 3);
-  const cubicRamp = (p, start, end) => cubicOut((p - start) / Math.max(.0001, end - start));
   const mix = (a, b, t) => a + (b - a) * t;
   const windowValue = (p, start, inEnd, outStart, end) => ramp(p, start, inEnd) * (1 - ramp(p, outStart, end));
 
@@ -156,118 +130,77 @@
     return clamp(((step - 3) + .56) / .82);
   }
 
-  function setProof(node, amount, originX, originY, scale = 1) {
-    if (!node) return;
-    const circle = mix(2, 78, amount);
+  function setEvidence(node, amount, originX, originY) {
+    const radius = mix(.8, 132, amount);
     node.style.opacity = String(amount);
-    node.style.clipPath = `circle(${circle}% at ${originX}% ${originY}%)`;
+    node.style.clipPath = `circle(${radius}% at ${originX}% ${originY}%)`;
     node.style.transformOrigin = `${originX}% ${originY}%`;
-    node.style.transform = `scale(${mix(.88, scale, amount)})`;
-    node.style.filter = `brightness(${mix(.72, .68, amount)}) saturate(${mix(.8, .9, amount)})`;
+    node.style.transform = `scale(${mix(.96, 1, amount)})`;
+    node.style.filter = `brightness(${mix(.88, 1, amount)}) saturate(${mix(.9, 1, amount)})`;
   }
 
-  dbStrokes.forEach(stroke => {
-    stroke.style.strokeDasharray = '100';
-    stroke.style.strokeDashoffset = '100';
-  });
-  deliveredStrokes.forEach(stroke => {
-    stroke.style.strokeDasharray = '100';
-    stroke.style.strokeDashoffset = '100';
-  });
-  track.style.strokeDasharray = '100';
-  track.style.strokeDashoffset = '100';
+  function setCue(node, amount) {
+    node.style.opacity = String(amount);
+    node.style.transform = `translate(-50%,-50%) scale(${mix(.72, 1, amount)})`;
+  }
 
   let raf = 0;
   function render() {
     const p = getScenePhase();
+    const mobile = window.innerWidth <= 760;
+    const pathY = mobile ? 77 : 72;
+    const dbOrigin = mobile ? 41 : 40;
+    const webOrigin = mobile ? 65 : 67;
+    const finalOrigin = mobile ? 88 : 92;
 
-    const productOut = ramp(p, .07, .18);
-    const lineDraw = ramp(p, .10, .20);
-    product.style.opacity = String(1 - productOut);
-    product.style.transform = `translate3d(0,${-productOut * 8}px,0) scale(${1 - productOut * .055})`;
-    product.style.filter = `brightness(${1 - productOut * .22}) saturate(${1 - productOut * .1})`;
-    track.style.strokeDashoffset = String(100 * (1 - lineDraw));
+    const lineDraw = ramp(p, .18, .24);
+    const dbTravel = ramp(p, .20, .30);
+    const dbEvidence = windowValue(p, .30, .35, .43, .48);
+    const dbCueAmount = windowValue(p, .27, .30, .32, .35) * (1 - dbEvidence);
+    const webTravel = ramp(p, .53, .65);
+    const webEvidence = windowValue(p, .65, .70, .78, .83);
+    const webCueAmount = windowValue(p, .62, .65, .67, .70) * (1 - webEvidence);
+    const endTravel = ramp(p, .83, .90);
+    const finalIn = ramp(p, .88, .95);
+    const evidenceMax = Math.max(dbEvidence, webEvidence);
+    const pathFade = 1 - ramp(p, .90, .96);
 
-    const dbStageIn = ramp(p, .20, .27);
-    const dbProof = windowValue(p, .29, .35, .41, .46);
-    const dbReturn = ramp(p, .45, .49);
-    const webStageIn = ramp(p, .49, .57);
-    const e2eProof = windowValue(p, .58, .63, .69, .74);
-    const finalTrackReturn = ramp(p, .73, .78);
-    const deliveryTravel = ramp(p, .78, .84);
-    const deliveredIn = ramp(p, .82, .87);
-    const deliveredDraw = ramp(p, .84, .89);
-    const signoffFade = cubicRamp(p, .89, .95);
-    const signoffRecenter = cubicRamp(p, .92, .97);
-    const proofMax = Math.max(dbProof, e2eProof);
+    const productDim = ramp(p, .18, .27) * (1 - evidenceMax * .36);
+    product.style.opacity = '1';
+    product.style.transform = 'scale(1)';
+    product.style.filter = `brightness(${mix(1, .58, productDim)}) saturate(${mix(1, .82, productDim)})`;
 
-    const releaseBase = clamp(
-      lineDraw * (1 - dbStageIn) +
-      dbReturn * (1 - webStageIn) +
-      finalTrackReturn
-    ) * (1 - proofMax);
-    const releaseAlpha = releaseBase * (1 - cubicRamp(p, .88, .94));
-    release.style.opacity = String(releaseAlpha);
-    release.style.transform = `scale(${.97 + releaseBase * .03})`;
+    line.style.transform = `scaleX(${lineDraw})`;
 
-    let pulseX = 5;
-    if (p >= .12 && p < .20) pulseX = mix(5, 41, ramp(p, .12, .20));
-    else if (p >= .20 && p < .49) pulseX = 41;
-    else if (p >= .49 && p < .57) pulseX = mix(41, 77, ramp(p, .49, .57));
-    else if (p >= .57 && p < .78) pulseX = 77;
-    else pulseX = mix(77, 105, deliveryTravel);
-    pulse.setAttribute('cx', pulseX.toFixed(2));
-    pulse.style.opacity = String(releaseBase * (1 - cubicRamp(p, .82, .87)));
+    let markerPosition = 0;
+    if (p < .30) markerPosition = mix(0, 38, dbTravel);
+    else if (p < .53) markerPosition = 38;
+    else if (p < .65) markerPosition = mix(38, 70, webTravel);
+    else if (p < .83) markerPosition = 70;
+    else markerPosition = mix(70, 100, endTravel);
+    marker.style.left = `${markerPosition}%`;
 
-    const visited = [lineDraw > .18, lineDraw > .55, p >= .20, p >= .49, p >= .57];
-    nodes.forEach((node, index) => {
-      const lit = finalTrackReturn > .45 || visited[index];
-      node.classList.toggle('is-lit', lit);
+    const markerVisible = lineDraw * (1 - evidenceMax) * (1 - finalIn);
+    marker.style.opacity = String(markerVisible);
+    marker.style.transform = `translate(-50%,-50%) scale(${mix(.82, 1, markerVisible)})`;
+
+    const releaseOpacity = lineDraw * mix(1, .14, evidenceMax) * pathFade;
+    release.style.opacity = String(releaseOpacity);
+    checkpoints.forEach(checkpoint => {
+      checkpoint.style.opacity = String(mix(.62, .24, evidenceMax) * pathFade);
     });
 
-    const dbDraw = ramp(p, .21, .28);
-    const dbVisible = dbStageIn * (1 - ramp(p, .45, .49)) * (1 - dbProof * .8);
-    dbStrokes.forEach((stroke, index) => {
-      const local = clamp(dbDraw * 1.25 - index * .12);
-      stroke.style.strokeDashoffset = String(100 * (1 - smooth(local)));
-    });
-    const dbX = mix(41, 50, dbStageIn);
-    dbStage.style.left = `${dbX}%`;
-    dbStage.style.opacity = String(dbVisible);
-    dbStage.style.transform = `translate(-50%,-50%) scale(${.18 + dbStageIn * .82 + dbProof * .18})`;
-    setProof(proofs.db, dbProof, 50, 50, 1.03);
+    setCue(dbCue, dbCueAmount);
+    setEvidence(dbProof, dbEvidence, dbOrigin, pathY);
+    setCue(webCue, webCueAmount);
+    setEvidence(webProof, webEvidence, webOrigin, pathY);
 
-    const deviceBase = webStageIn * (1 - finalTrackReturn);
-    const deviceVisible = deviceBase * (1 - e2eProof * .82);
-    const deviceX = mix(77, 50, webStageIn);
-    const desktopWidth = window.innerWidth <= 760 ? 210 : 280;
-    const desktopHeight = window.innerWidth <= 760 ? 116 : 154;
-    device.style.left = `${deviceX}%`;
-    device.style.width = `${desktopWidth}px`;
-    device.style.height = `${desktopHeight}px`;
-    device.style.borderRadius = '15px';
-    device.style.opacity = String(deviceVisible);
-    device.style.transform = `translate(-50%,-50%) scale(${.16 + webStageIn * .84 + e2eProof * .12})`;
-
-    setProof(proofs.e2e, e2eProof, 50, 50, 1.06);
-
-    ci.style.opacity = String(finalTrackReturn * .14 * (1 - signoffFade));
-    ci.style.transform = `scale(${1.035 - finalTrackReturn * .025})`;
-
-    deliveredStrokes.forEach((stroke, index) => {
-      const local = clamp(deliveredDraw * 1.32 - index * .16);
-      stroke.style.strokeDashoffset = String(100 * (1 - smooth(local)));
-    });
-    const deliveredFade = 1 - cubicRamp(p, .90, .95);
-    delivered.style.opacity = String(deliveredIn * deliveredFade);
-    delivered.style.transform = `translate(-50%,-50%) scale(${.24 + deliveredIn * .76})`;
-    deliveredLabel.style.opacity = String(ramp(deliveredDraw, .55, .9) * deliveredFade);
-
-    const signoffX = mix(88, 50, signoffRecenter);
-    signoff.style.left = `${signoffX}%`;
-    signoff.style.opacity = String(signoffFade);
-    signoff.style.transform = `translate(-50%,-50%) scale(${mix(.84, 1, signoffFade)})`;
-    signoff.style.filter = `brightness(${mix(.9, 1, signoffFade)}) saturate(${mix(.94, 1, signoffFade)})`;
+    const finalRadius = mix(.8, 142, finalIn);
+    finalProduct.style.opacity = String(finalIn);
+    finalProduct.style.clipPath = `circle(${finalRadius}% at ${finalOrigin}% ${pathY}%)`;
+    finalProduct.style.transformOrigin = `${finalOrigin}% ${pathY}%`;
+    finalProduct.style.transform = `scale(${mix(.94, 1, finalIn)})`;
+    finalProduct.style.filter = `brightness(${mix(.9, 1, finalIn)}) saturate(${mix(.94, 1, finalIn)})`;
 
     raf = requestAnimationFrame(render);
   }
