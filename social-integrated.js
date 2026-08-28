@@ -31,5 +31,8 @@
     script.onerror = reject;
     document.head.appendChild(script);
   });
-  load('./social-runtime.js').then(() => load('./commerce-integrated.js')).catch(() => {});
+  load('./social-runtime.js')
+    .then(() => load('./commerce-integrated.js'))
+    .then(() => load('./outro-heatmap.js'))
+    .catch(() => {});
 })();
