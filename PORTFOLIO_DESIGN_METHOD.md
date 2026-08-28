@@ -1,13 +1,13 @@
 # Portfolio Design Method and Reconstruction Contract
 
-This document records the design method behind this portfolio and the accepted implementation state at the time the repo was wrapped up.
+This document records the design method behind this portfolio and the current accepted implementation state.
 
 It has two jobs:
 
 1. preserve **why** the design works this way;
 2. preserve **what must remain true** so a future edit does not quietly restore rejected patterns or redesign unrelated scenes.
 
-The repository remains the source of truth for exact implementation. This document is the source of truth for **intent, hierarchy, motion grammar, readability rules, accepted scene behavior, and regression guards**.
+The repository remains the source of truth for exact implementation. This document is the source of truth for **intent, hierarchy, motion grammar, readability rules, pacing, accepted scene behavior, and regression guards**.
 
 The central goal is:
 
@@ -113,7 +113,7 @@ These should support comfortable sentence reading.
 
 #### Must recognize
 
-Short labels such as `DATABASE`, `WEB UI`, project labels, state names.
+Short labels such as `DATABASE`, `WEB UI`, project labels, and state names.
 
 These should be understood in a glance.
 
@@ -184,8 +184,8 @@ They do **not** need to read every embedded label. They do need to recognize the
 
 Preferred solutions:
 
-- allocate more physical viewport territory to the important evidence;
-- preserve the real screenshot aspect ratio and context;
+- allocate more physical viewport territory to important evidence;
+- preserve real screenshot aspect ratio and context;
 - let inactive evidence recede;
 - sequence dense surfaces rather than showing them all equally;
 - use a gentle camera/focus move when the whole screenshot cannot carry the message at once;
@@ -197,8 +197,6 @@ Avoid:
 - `object-fit: cover` when it removes meaningful context;
 - making every screenshot/device larger at once;
 - treating desktop composition as something that can simply be scaled down for mobile.
-
-The accepted Pass 2 behavior is documented in Part II.
 
 ---
 
@@ -224,9 +222,9 @@ Scroll remains the main time controller, but the viewer should experience **an a
 
 ## 9. Endpoint magnitude and interpolation are separate design decisions
 
-A motion can have the right destination and still feel junior if the transition is coarse.
+A motion can have the right destination and still feel coarse if the transition is poorly interpolated.
 
-During the final readability pass, two failures became useful rules:
+Two failures became useful rules:
 
 1. tiny scale changes can be technically correct but perceptually invisible;
 2. large changes can improve recognition but feel abrupt if applied as short pulses or static jumps.
@@ -237,13 +235,13 @@ The preferred approach is:
 
 For important focus transfers:
 
-- start the emphasis before the previous state fully disappears;
+- start emphasis before the previous state fully disappears;
 - use overlap rather than hard handoff;
 - let supporting elements yield slightly before the dominant object reaches full emphasis;
 - avoid independent short focus pulses that create a dip/re-acceleration between related states;
 - use smoother easing and light damping when coarse wheel deltas would otherwise become coarse visual jumps.
 
-The CueSheet evidence-focus pass is the canonical example of this rule.
+CueSheet is the canonical example.
 
 ---
 
@@ -270,6 +268,10 @@ Important evidence needs a real arrival state.
 
 The rhythm is:
 
+> anticipation → transformation → comprehension hold
+
+or, more simply:
+
 > transition → arrive → read/recognize → continue.
 
 The eye should not have to track movement and decode dense evidence at the same time.
@@ -278,7 +280,60 @@ A hold is not dead time. It is part of the choreography.
 
 ---
 
-## 12. Different projects deserve different motion languages
+## 12. Portfolio-level pacing: every scene must not perform at the same intensity
+
+Once individual scenes became strong enough to carry themselves, the next problem appeared at the portfolio level:
+
+> **every scene wanted to perform.**
+
+A sequence where every project contains an equally strong event feels like a film where every scene is a climax.
+
+The accepted solution is to design **contrast in animation density**, not to weaken the scenes themselves.
+
+The intended rhythm is approximately:
+
+| Scene | Dynamic role | Character |
+|---|---|---|
+| Intro | restrained | orientation |
+| CommerceOps | loud | graphic / immediate |
+| noCodeE2E | calmer | precise / procedural |
+| SocialPlatform | active | continuous / kinetic |
+| CueSheet | decompression | observational / product-led |
+| Decision Contract Audit | crescendo then settle | reading → focus → resolution |
+| Outro | quietest | stillness + optional interaction |
+
+A useful shorthand is:
+
+> **quiet → event → quiet → event → rest → event → long rest**
+
+Do not try to make every scene equally animated, equally fast, or equally impressive.
+
+Variation is part of the direction.
+
+---
+
+## 13. Silence is a design material
+
+The final pacing pass established a rule that should survive future redesigns:
+
+> **When an outcome becomes understandable, stop explaining for a moment.**
+
+Stillness is not an absence of design. It is when the viewer finishes the mental connection.
+
+Examples:
+
+- CommerceOps needs space between scenario events so the current product state exists before the next scenario takes over.
+- noCodeE2E needs a final Playwright hold so the visitor can connect YAML intent to execution.
+- SocialPlatform needs the final real product to remain after the release system has finished yielding.
+- CueSheet benefits from a long observational final state after the replanning sequence.
+- DCA needs its history to recede before the scanner/PASS mode becomes dominant.
+- The outro should remain sparse instead of adding another concluding module.
+
+When improving a mature scene, first ask whether it needs **more time**, not more animation.
+
+---
+
+## 14. Different projects deserve different motion languages
 
 Consistency means shared discipline, not identical animation.
 
@@ -286,7 +341,7 @@ Consistency means shared discipline, not identical animation.
 
 One stable phone represents one realistic commerce product. Large scenario words sweep behind it while the product state changes:
 
-> `CHECK OUT` → `EXPIRED PROMO` → `UNAVAILABLE`
+> `CHECK OUT` → hold → `EXPIRED PROMO` → hold → `UNAVAILABLE`
 
 The phone remains the stable object. Scenario typography is transitional, not a permanent competing headline.
 
@@ -294,7 +349,7 @@ The phone remains the stable object. Scenario typography is transitional, not a 
 
 The YAML/code plate remains the primary explanation surface:
 
-> `open` → `fill` → `click` → Playwright passed
+> quiet YAML → `open` → `fill` → `click` → Playwright passed → hold
 
 The motion shows readable intent becoming execution.
 
@@ -306,7 +361,7 @@ The visual thesis is:
 
 The accepted sequence is:
 
-> product → DATABASE → WEB UI → product
+> product → DATABASE → WEB UI → product → hold
 
 The release path, neutral marker, DB cylinder, browser/DOM geometry, scans, and final real product screen carry the explanation.
 
@@ -316,13 +371,19 @@ There is no synthetic Delivered state and no green success language.
 
 Real screenshots act as states of one product:
 
-> workspace → conflict → review
+> workspace → conflict → review → long observational final state
 
 The evidence surface gradually comes closer while supporting phone captures yield.
 
-### Decision Contract Audit — reading order
+### Decision Contract Audit — reading order then mode change
 
-Contribution history is the evidence. Focus moves through rows, then the scene resolves to the existing centered scanner/PASS ending.
+Contribution history is the evidence. Focus moves through rows one at a time.
+
+Then:
+
+> contribution field recedes → scanner becomes dominant → PASS → settle
+
+The scanner is a change of mode, not another layer competing with the contribution list.
 
 ### Outro — interaction discovery
 
@@ -332,7 +393,7 @@ The interaction must be discoverable without instructional copy.
 
 ---
 
-## 13. Interaction discoverability: inevitable first, interactive second
+## 15. Interaction discoverability: inevitable first, interactive second
 
 Hover-only discovery is fragile because the user may enter a scene with the pointer somewhere unrelated to the intended hit area.
 
@@ -351,7 +412,7 @@ Do not add “move your cursor here” instructions. Do not loop the demonstrati
 
 ---
 
-## 14. Editing by subtraction
+## 16. Editing by subtraction
 
 Accepted removals and rejected patterns are part of the design.
 
@@ -374,7 +435,7 @@ Things removed or rejected during iteration include:
 
 ---
 
-## 15. Copy is not a repair tool for visual problems
+## 17. Copy is not a repair tool for visual problems
 
 Do not rewrite tuned copy just because a visual treatment fails.
 
@@ -384,7 +445,7 @@ Copy changes should be deliberate and explicit, especially because the site has 
 
 ---
 
-## 16. Bilingual design is also layout design
+## 18. Bilingual design is also layout design
 
 English and Traditional Chinese occupy space differently.
 
@@ -401,7 +462,7 @@ A layout that only works in English is not finished.
 
 ---
 
-## 17. Reusable scene-building process
+## 19. Reusable scene-building process
 
 1. **Write the thesis.** What should a visitor understand after five seconds?
 2. **Choose real proof.** Find the product state, report, execution result, or contribution history that actually supports the thesis.
@@ -410,15 +471,17 @@ A layout that only works in English is not finished.
 5. **Keep the state sequence small.** Context → mechanism → evidence → outcome, only where needed.
 6. **Allocate visual territory.** Decide which evidence must be readable or merely recognizable.
 7. **Design the interpolation.** Make the endpoint obvious without making the transition coarse.
-8. **Add reading holds.** Decide where motion must settle.
-9. **Remove scaffolding.** Delete helper labels, duplicate evidence, or badges no longer needed.
-10. **Run perception tests.** One-second glance, normal scroll, mobile, reduced motion, fast-scroll recovery.
+8. **Design the hold.** Decide where the visitor is expected to finish understanding.
+9. **Audit the neighboring scenes.** Make sure this scene's energy contrasts with what comes before and after it.
+10. **Remove scaffolding.** Delete helper labels, duplicate evidence, or badges no longer needed.
+11. **Run perception tests.** One-second glance, normal scroll, mobile, reduced motion, fast-scroll recovery.
+12. **Run the whole portfolio.** Judge the final result as a continuous 2–3 minute experience, not only as isolated scenes.
 
 ---
 
 # Part II — Current Reconstruction Contract
 
-## 18. Authority and baseline
+## 20. Authority and accepted baseline
 
 ### Source-of-truth order
 
@@ -431,25 +494,49 @@ When modifying the site, use this order:
 
 If prose and code disagree, current accepted code wins and this file should be corrected.
 
-### Design-code baseline
+### Accepted design-code baseline
 
 The latest accepted design-code commit immediately before this documentation update is:
 
 ```text
-1d7dceb0b464a0419461db718d67b30301b1c1f4
+24aea596562af25dc980c4cf9051fac1f159763a
 ```
 
-### Runtime files
+This includes the accepted cross-scene pacing refinement.
 
-The current behavior is distributed across:
+### Pre-pacing rollback baseline
 
-- `index.html` — scene architecture, global scroll controller, bilingual copy, noCodeE2E, CueSheet state changes, Decision Contract Audit;
+The last accepted state before the pacing pass is:
+
+```text
+5d94f5095e66b1ea4a5f7a01a14faf3df86d05f7
+```
+
+Useful pacing-pass rollback anchors:
+
+```text
+Commerce pacing       aa390ecafa1a43de24833be246c0209071e5ed2d
+Social final hold     a66dfc2da5c4e171b1793ff73e02953b598fb3ac
+Pacing runtime add    7f4de307778fbdbf1c00b8c77e2d800de8238ac1
+Pacing activation     24aea596562af25dc980c4cf9051fac1f159763a
+```
+
+These commits were intentionally separated so future evaluation can restore one timing decision without rolling back unrelated visual work.
+
+---
+
+## 21. Runtime ownership
+
+Current behavior is distributed across:
+
+- `index.html` — scene architecture, global scroll controller, bilingual copy, base noCodeE2E, CueSheet state changes, base DCA behavior;
 - `social-integrated.js` — loader and noCode runner sizing;
 - `social-runtime.js` — canonical SocialPlatform scene;
 - `commerce-integrated.js` — canonical CommerceOps scene and Commerce copy override;
+- `outro-heatmap.js` — final heatmap and discovery interaction;
 - `typography-runtime.js` — global DOM readability pass;
 - `evidence-readability.js` — embedded-product/evidence presentation pass;
-- `outro-heatmap.js` — final heatmap and discovery interaction.
+- `experience-pacing.js` — accepted final pacing overrides for noCodeE2E and DCA.
 
 Loader order is intentionally:
 
@@ -459,13 +546,16 @@ social-runtime.js
 → outro-heatmap.js
 → typography-runtime.js
 → evidence-readability.js
+→ experience-pacing.js
 ```
 
-Later readability layers are expected to override earlier presentation CSS where necessary.
+The later pacing/readability layers are expected to override earlier base presentation/timing where necessary.
+
+Do not remove `experience-pacing.js` as “duplicate logic” without understanding that it is the accepted final attention/pacing layer.
 
 ---
 
-## 19. Scene architecture and global timing
+## 22. Scene architecture and global timing
 
 There are seven scenes:
 
@@ -488,11 +578,13 @@ const durations = [1.5, 1.5, 2.15, 2.15, 1.5, 3.7];
 const timelineTotal = 12.5;
 ```
 
-Do not globally retime the portfolio to fix one scene.
+The accepted pacing pass did **not** globally retime these durations. It changed local event allocation inside selected scenes.
+
+Do not globally retime the portfolio to solve a local scene issue.
 
 ---
 
-## 20. Global visual and readability contract
+## 23. Global visual and readability contract
 
 The page remains dark, restrained, evidence-led, and low-chroma outside project-specific accents.
 
@@ -514,13 +606,11 @@ Main `.scene-title` and `.scene-copy` sizing were already acceptable and were de
 - noCode runner sublabel: `.78rem` desktop, `.75rem` mobile;
 - Audit rows: `clamp(.78rem,.9vw,.88rem)` desktop, `.75rem` mobile.
 
-The Audit title/detail text no longer receives inline transform enlargement; card-level focus, brightness, and ordering carry the animation instead.
-
 Do not reintroduce sub-12px meaningful DOM text merely to create hierarchy. Use contrast, spacing, exposure, and importance instead.
 
 ---
 
-## 21. Embedded evidence / Pass 2 contract
+## 24. Embedded evidence / Pass 2 contract
 
 ### CueSheet
 
@@ -544,27 +634,29 @@ The focus is damped over frames to prevent coarse wheel movement from becoming e
 
 ### SocialPlatform
 
-The accepted treatment is restrained:
+The accepted treatment remains restrained:
 
 - runtime base final phone: `92%` desktop / `86%` mobile;
 - readability override: **`98%` desktop / `94%` mobile**;
 - no additional `scale: 1.18` style magnification.
 
-This was an explicit design decision: the larger experimental treatment improved recognition but became visually over-dominant.
+The larger experimental treatment improved recognition but became visually over-dominant.
 
 ### CommerceOps
 
 No extra Pass 2 enlargement is applied.
 
-Its phone already nearly fills the showcase and uses a source-matched `412/915` aspect ratio. Increasing it further would add competition without meaningful readability gain.
+Its phone already nearly fills the showcase and uses a source-matched `412/915` aspect ratio.
 
 ---
 
-## 22. Scene contracts
+## 25. Scene contracts
 
 ### Scene 0 — Intro
 
-Role: establish QA/SDET identity.
+**Role:** establish QA/SDET identity.
+
+**Dynamic role:** restrained orientation.
 
 Must not become a technology cloud, project carousel, skills dashboard, or AI-first statement.
 
@@ -594,15 +686,28 @@ UNAVAILABLE
 
 The oversized orange words sweep horizontally behind the stable phone. They are transitional graphics, not persistent headlines.
 
-The phone is the stable product object. Each screenshot crossfades inside the same frame.
+#### Accepted pacing
 
-Source screenshots:
+The first two events intentionally no longer touch each other:
 
 ```text
-assets/showcase/checkout-412x915.png
-assets/showcase/expired-coupon-412x915.png
-assets/showcase/unavailable-variant-412x1000.png
+CHECK OUT         .03 → .22
+quiet gap         .22 → .29
+EXPIRED PROMO     .29 → .50
+quiet gap         .50 → .61
+UNAVAILABLE       .61 → .84
 ```
+
+The screenshot transition to expired begins later as well:
+
+```text
+toExpired         .37 → .45
+toUnavailable     .68 → .76
+```
+
+The purpose is not slower animation for its own sake. The first product state must exist long enough before the first failure scenario takes attention.
+
+Do not collapse the `CHECK OUT → EXPIRED` gap back to the earlier near-immediate transition without a deliberate pacing decision.
 
 Reduced motion shows a meaningful static expired-coupon state and removes transition typography.
 
@@ -614,18 +719,44 @@ Must not be redesigned back into SocialPlatform's “many system layers” story
 
 **Visual thesis:** readable intent and maintainable locators become real browser execution.
 
+**Dynamic role:** precise, procedural, calmer than CommerceOps.
+
 Dominant object: YAML/code plate.
 
 Canonical sequence:
 
 ```text
-open highlight
+quiet YAML
+→ open highlight
 → fill highlight
 → click highlight
 → Playwright passed
+→ final comprehension hold
 ```
 
-The Playwright result is supporting evidence and must not dominate before the YAML tells the story.
+#### Accepted pacing override
+
+`experience-pacing.js` is authoritative for the final timing:
+
+```js
+const ranges = [
+  [.12, .38],
+  [.34, .62],
+  [.58, 1.02]
+];
+
+const result = smooth(clamp((phase - .72) / .10));
+```
+
+The YAML therefore gets a quiet opening beat before execution begins.
+
+The Playwright result completes at approximately `.82`, leaving roughly the final **18%** of the local phase as a stable comprehension hold.
+
+Do not make the result larger or more animated merely to increase impact. The accepted improvement is **exposure time**.
+
+The user should have enough time to connect:
+
+> YAML intent → actual Playwright execution.
 
 Do not modify the passed popup while changing unrelated scenes.
 
@@ -645,6 +776,8 @@ Must not:
 
 > One release moves through layers of evidence and returns to the real product.
 
+**Dynamic role:** continuous / kinetic.
+
 Canonical sequence:
 
 ```text
@@ -652,6 +785,7 @@ PRODUCT
 → DATABASE
 → WEB UI
 → PRODUCT
+→ stillness
 ```
 
 The release path is neutral white/cool white. A neutral marker travels along it.
@@ -674,21 +808,9 @@ There is no green success treatment, PASSED badge, screenshot proof card, or che
 
 Again, no green success language or fake dashboard.
 
-#### Final product
+#### Accepted final pacing
 
-At the end, the release marker reaches the endpoint, the shared geometry resolves toward a phone outline, and the real Moderation Rules screenshot appears inside the accepted flat device treatment.
-
-The final screenshot uses:
-
-```text
-https://github.com/user-attachments/assets/b2fc999c-b87a-4b91-8230-870c9c78b193
-```
-
-The initial product screenshot uses:
-
-```text
-https://github.com/user-attachments/assets/46073db9-02ac-4645-8784-721165d7d504
-```
+DB/Web plateaus are preserved. The recovered time is spent on the final product payoff.
 
 Current important timing:
 
@@ -702,12 +824,38 @@ WEB travel              .51 → .63
 WEB open                .63 → .70
 WEB scan                .69 → .77
 WEB close               .77 → .84
-endpoint travel         .84 → .90
-final geometry          .89 → .95
-real phone in           .92 → .98
+endpoint travel         .84 → .88
+final geometry          .87 → .90
+real phone in           .89 → .92
+final product hold      ~.92 → 1.00
 ```
 
-Current DB and Web labels are `DATABASE` and `WEB UI` only.
+The previous phone resolution ended near `.98`; that was changed because the real product payoff had too little time to exist.
+
+As the phone resolves, the previous vector system yields more aggressively:
+
+```js
+vectorWorld opacity yield: (1 - phoneIn * .96)
+final geometry yield:      (1 - phoneIn * .96)
+```
+
+The result should feel like:
+
+> marker arrives → product resolves → system disappears → product stays.
+
+Do not add a concluding label. Stillness is the punctuation.
+
+The final screenshot uses:
+
+```text
+https://github.com/user-attachments/assets/b2fc999c-b87a-4b91-8230-870c9c78b193
+```
+
+The initial product screenshot uses:
+
+```text
+https://github.com/user-attachments/assets/46073db9-02ac-4645-8784-721165d7d504
+```
 
 **Explicitly rejected / do not restore:**
 
@@ -731,27 +879,26 @@ Current DB and Web labels are `DATABASE` and `WEB UI` only.
 
 **Visual thesis:** when availability changes, the product replans while preserving as much of the existing schedule as possible.
 
+**Dynamic role:** decompression after SocialPlatform; calm and observational.
+
 Canonical states:
 
 ```text
 production workspace
 → conflict status
 → schedule review
+→ quiet final product
 ```
 
 The same desktop surface carries all three states.
 
-Source assets:
-
-```text
-assets/production-workspace.png
-assets/conflict-status.png
-assets/schedule-review.png
-```
-
 Supporting phone captures may establish product context on desktop, but they recede once the conflict/review story takes over. They are hidden on mobile by the evidence-readability pass.
 
 The accepted focus move is continuous and monotonic. Do not rebuild it as separate abrupt zoom pulses for conflict and review.
+
+The accepted pacing pass did **not** change CueSheet timing. This was intentional: its current continuous, slower product-state behavior already performs the required decompression role.
+
+Before changing CueSheet, judge it specifically in the transition from SocialPlatform. If it already feels calmer, leave it alone.
 
 Must not:
 
@@ -767,9 +914,60 @@ Must not:
 
 **Visual thesis:** repeated investigation of false-success and edge-case behavior, supported by real contribution history.
 
+**Dynamic role:** guided reading → mode change → restrained conclusion.
+
 Dominant object: contribution rows.
 
-Rows begin subdued and focus sequentially. The global long duration gives this scene reading distance.
+The scene does **not** need fewer contributions. It needs only one contribution at a time to demand serious reading.
+
+#### Accepted row-focus hierarchy
+
+`experience-pacing.js` preserves all rows but increases active/inactive separation:
+
+```js
+const readStart = .18;
+const readEnd = .72;
+const reading = smooth(clamp((phase - .14) / .06));
+
+const baseOpacity = .14 + focus * .86;
+const baseBrightness = .32 + focus * .70;
+const saturation = .62 + focus * .38;
+```
+
+The active row becomes readable while neighboring rows remain context.
+
+The row itself is the unit of attention. Do not independently animate repository name, title, state, icon, and description as separate competing events.
+
+#### Accepted history → scanner mode change
+
+The scanner is a different semantic mode from contribution reading.
+
+Current transition:
+
+```text
+contribution field
+→ focused reading
+→ history recedes
+→ scanner becomes dominant
+→ PASS
+→ settle
+```
+
+Timing:
+
+```js
+scanProgress = smooth(clamp((phase - .78) / .12));
+passIn       = smooth(clamp((phase - .84) / .08));
+```
+
+As scanning begins:
+
+```js
+row opacity *= (1 - recede * .42)
+activity opacity = .88 * (1 - scannerMode * .82)
+```
+
+This is intentional. The contribution field should remain visible as background history, but it should no longer compete with the scanner/PASS conclusion.
 
 The final existing ending remains:
 
@@ -779,7 +977,7 @@ scanner left → right
 → PASS
 ```
 
-The DOM readability pass makes row text readable at rest and removes title/detail scale distortion; focus should be communicated mainly through row-level opacity, brightness, position in the reading sequence, and card emphasis.
+PASS should feel satisfying, not triumphant. This scene represents a recent adjacent extension of the QA story, not the portfolio's biggest celebration.
 
 Do not claim current upstream issue/PR status without a fresh check.
 
@@ -788,21 +986,26 @@ Must not:
 - replace contribution history with a pseudo-dashboard;
 - make code/rule examples more prominent than real contribution history;
 - attach PASS as a pill to the last row;
-- add `checks: 0`, `UNVERIFIED`, or `未驗證`.
+- add `checks: 0`, `UNVERIFIED`, or `未驗證`;
+- turn PASS into a large glowing success celebration.
 
 ---
 
 ### Scene 6 — GitHub outro
 
-Role: close the portfolio and point to broader engineering history.
+**Role:** close the portfolio and point to broader engineering history.
+
+**Dynamic role:** quietest / final decompression.
 
 The scene stays sparse. Do not add a project grid, skills matrix, testimonial wall, or dashboard here.
 
-The heatmap is the only substantial ambient interaction and is documented separately below.
+The heatmap is the only substantial ambient interaction.
+
+The accepted pacing pass deliberately left the outro unchanged.
 
 ---
 
-## 23. Outro heatmap interaction contract
+## 26. Outro heatmap interaction contract
 
 **Canonical runtime:** `outro-heatmap.js`
 
@@ -811,18 +1014,16 @@ The heatmap is the only substantial ambient interaction and is documented separa
 - seven rows;
 - responsive columns: 24 below 600px, 38 below 980px, otherwise 52;
 - dark cells at rest;
-- heatmap sits above the generic scene shade but below the final copy;
+- heatmap sits above the generic scene shade but below final copy;
 - it is atmospheric, not real GitHub contribution history.
 
 ### Pointer interaction
 
-The pointer listener is global so tracking does not break during scene transitions, but the interaction only activates when the final scene is visible enough and the pointer is inside the final scene.
-
 Any pointer position inside the final scene is projected to the nearest valid heatmap cell.
 
-That means the user does not need to place the cursor directly over the grid. Positions outside the visual grid clamp to its nearest edge cell.
+The user does not need to place the cursor directly over the grid. Positions outside the visual grid clamp to its nearest edge cell.
 
-Pointer interaction retains the original local spread/falloff and slower decay behavior.
+Pointer interaction retains local spread/falloff and slower decay behavior.
 
 ### Entry discovery pulse
 
@@ -865,7 +1066,7 @@ The interaction is non-essential. Reduced-motion and coarse-pointer environments
 
 ---
 
-## 24. Current bilingual copy — preserve unless explicitly editing copy
+## 27. Current bilingual copy — preserve unless explicitly editing copy
 
 Intentional line breaks are part of the design.
 
@@ -1009,7 +1210,7 @@ Traditional Chinese:
 
 ---
 
-## 25. Mobile contract
+## 28. Mobile contract
 
 Primary breakpoint:
 
@@ -1039,7 +1240,7 @@ Specific accepted behaviors:
 
 ---
 
-## 26. Reduced-motion contract
+## 29. Reduced-motion contract
 
 Reduced motion must still tell a coherent story.
 
@@ -1060,7 +1261,7 @@ Per-scene examples:
 
 ---
 
-## 27. Global regression guards
+## 30. Global regression guards
 
 Do not reintroduce:
 
@@ -1072,13 +1273,16 @@ Do not reintroduce:
 - meaningful text below a comfortable readability floor just to create hierarchy;
 - a requirement to read tiny screenshot text to understand a project;
 - every project using the same motion language;
+- every project using the same motion **intensity**;
 - global motion redesign while fixing a single scene;
 - large device/screenshot scaling without considering competition and composition;
-- abrupt focus jumps when continuous interpolation can preserve the same endpoint.
+- abrupt focus jumps when continuous interpolation can preserve the same endpoint;
+- removal of comprehension holds merely to make the portfolio feel faster;
+- additional end-state animation when stillness already communicates the outcome.
 
 ---
 
-## 28. Acceptance tests
+## 31. Acceptance tests
 
 A future reconstruction or design change should pass most of these.
 
@@ -1118,6 +1322,26 @@ Does the new state visibly come from the previous state when the story says they
 
 Is important information stable long enough to recognize or read at normal scroll speed?
 
+### Comprehension-hold test
+
+After an important result settles, is there enough quiet time for the viewer to understand what changed before the next event takes attention?
+
+### Cross-scene pacing test
+
+When watched as one continuous experience, do neighboring scenes contrast in energy, or does every scene feel like another climax?
+
+The intended broad rhythm is:
+
+```text
+restrained
+→ loud
+→ precise
+→ kinetic
+→ calm
+→ crescendo / settle
+→ quiet
+```
+
 ### Transition-quality test
 
 Is the endpoint visually meaningful without the interpolation feeling coarse, abrupt, or mechanically pulsed?
@@ -1148,7 +1372,7 @@ Does each project demonstrate a distinct capability rather than repeating the sa
 
 ---
 
-## 29. Change protocol for future sessions
+## 32. Change and rollback protocol for future sessions
 
 When editing this portfolio:
 
@@ -1162,23 +1386,41 @@ When editing this portfolio:
 8. prefer changing an existing object over adding another explanation component;
 9. distinguish DOM readability from embedded screenshot readability;
 10. test endpoint magnitude and interpolation separately;
-11. keep reduced-motion/mobile behavior meaningful;
-12. use an isolated, focused commit;
-13. compare the previous `main` to the new commit;
-14. fresh-fetch `main` after the write;
-15. update this document when a design decision becomes permanent.
+11. test **exposure time and neighboring-scene pacing** before adding visual effects;
+12. keep reduced-motion/mobile behavior meaningful;
+13. use isolated, focused commits for scene-specific experiments;
+14. where a pass affects several scenes, prefer a late-loaded override runtime so the pass can be disabled without rewriting base controllers;
+15. compare the previous `main` to the new commit;
+16. fresh-fetch `main` after the write;
+17. update this document only after the behavior is accepted.
 
-For SocialPlatform specifically, inspect `social-runtime.js`. Do not reconstruct its current behavior from the older Social markup inside `index.html`.
+For SocialPlatform specifically, inspect `social-runtime.js`. Do not reconstruct its current behavior from older Social markup inside `index.html`.
 
 For CommerceOps, inspect `commerce-integrated.js`; its current accepted copy and visual are runtime-defined.
+
+For noCode/DCA final pacing, inspect `experience-pacing.js` after inspecting their base behavior in `index.html`.
 
 For global readability, inspect both `typography-runtime.js` and `evidence-readability.js` before changing `index.html` typography or device geometry directly.
 
 For the final interaction, inspect `outro-heatmap.js` before modifying the outro scene.
 
+### Rollback principle
+
+A design experiment should be easy to undo independently.
+
+The accepted cross-scene pacing pass is a model for this:
+
+- Commerce timing changed in a Commerce-only commit;
+- Social timing changed in a Social-only commit;
+- noCode/DCA pacing lives in a separate runtime;
+- activation of that runtime is one loader change;
+- documentation was updated only after the result was accepted.
+
+Do not bundle unrelated scene experiments into one irreversible rewrite.
+
 ---
 
-## 30. Final checklist
+## 33. Final checklist
 
 Before considering the portfolio faithful:
 
@@ -1191,17 +1433,22 @@ Before considering the portfolio faithful:
 - Is important content readable at normal zoom and scroll speed?
 - Are screenshot/device states given enough physical territory?
 - Are focus transitions continuous rather than coarse?
+- Does each important result receive a real comprehension hold?
+- Do neighboring scenes have different dynamic intensity?
+- Does CueSheet still work as decompression after SocialPlatform?
+- Does DCA clearly transition from contribution reading into scanner mode?
+- Does the final Social product remain long enough to feel like the payoff?
 - Does mobile preserve the same thesis rather than shrink everything?
 - Does reduced motion still tell the story?
 - Are optional interactions discoverable without instructions?
 - Does each project have its own motion language?
 - Have rejected patterns stayed rejected?
 - Has tuned bilingual copy remained untouched unless explicitly changed?
-- Does the whole experience still feel like one portfolio rather than assembled components?
+- Does the whole experience still feel directed rather than merely consistently animated?
 
 If several answers are no, do not add more UI.
 
-Reduce the interpretation burden until the relationship becomes obvious.
+First ask whether the experience needs more hierarchy, more exposure time, or more silence.
 
 ---
 
@@ -1211,6 +1458,10 @@ The strongest design improvements in this portfolio came from asking the visitor
 
 The recurring pattern is:
 
-> **decide what matters now → reveal the relationship through motion → give authentic evidence enough territory → let the result settle → remove anything that no longer earns its place.**
+> **decide what matters now → reveal the relationship through motion → give authentic evidence enough territory → let the result settle → vary the energy of the next scene → remove anything that no longer earns its place.**
 
-That is the method to preserve.
+The final addition to that method is simple:
+
+> **Silence is part of the motion system.**
+
+That is the design pattern to preserve.
