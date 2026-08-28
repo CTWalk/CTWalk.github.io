@@ -244,7 +244,7 @@
     const pointerWaveRadius = .45 + elapsed / 28;
     const entryProgress = entryPulseActive ? clamp(elapsed / 1180) : 0;
     const entryRadius = entryPulseActive
-      ? .18 + 7.2 * (1 - Math.pow(1 - entryProgress, 2.1))
+      ? .18 + 4.32 * (1 - Math.pow(1 - entryProgress, 2.1))
       : 0;
     const entryRingWidth = .58 + entryProgress * .5;
     const entryAmplitude = 1 - smooth(clamp((entryProgress - .48) / .52)) * .48;
