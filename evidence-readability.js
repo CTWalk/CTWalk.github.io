@@ -10,8 +10,8 @@
   const style = document.createElement('style');
   style.dataset.evidenceReadability = 'true';
   style.textContent = `
-    /* Pass 2, second pass: evidence should become visually dominant,
-       not merely a few percent larger. Screenshot pixels stay authentic. */
+    /* Pass 2 refinement: keep the stronger evidence scale, but let visual
+       emphasis transfer continuously instead of arriving as a size jump. */
 
     .scene[data-scene="4"] .cuesheet-desktop{
       left:max(1vw,calc((100% - var(--content))/2));
@@ -19,7 +19,7 @@
       width:min(64vw,880px);
       height:min(74vh,710px);
       transform-origin:42% 46%;
-      will-change:transform,scale
+      will-change:transform,scale,filter
     }
 
     .scene[data-scene="4"] .cue-phone-manager,
@@ -28,12 +28,11 @@
       will-change:transform,scale,filter,opacity
     }
 
-    /* The final Social product state should read as the destination,
-       not as another small object inside the previous composition. */
     .scene[data-scene="3"] .social-final-phone{
       height:100%;
-      scale:1.18;
-      transform-origin:center
+      scale:1;
+      transform-origin:center;
+      will-change:transform,scale,opacity,filter
     }
 
     @media(max-width:760px){
@@ -51,26 +50,29 @@
       }
       .scene[data-scene="3"] .social-final-phone{
         height:96%;
-        scale:1.16
+        scale:1
       }
     }
 
     @media(prefers-reduced-motion:reduce){
-      .scene[data-scene="4"] .cuesheet-desktop{scale:1!important}
+      .scene[data-scene="4"] .cuesheet-desktop{scale:1.08!important;filter:none!important}
       .scene[data-scene="4"] .cue-phone-manager,
       .scene[data-scene="4"] .cue-phone-cast{filter:none!important;scale:1!important}
+      .scene[data-scene="3"] .social-final-phone{scale:1.12!important}
     }
   `;
   document.head.appendChild(style);
 
-  if (reduced || !cueDesktop) return;
+  if (reduced) return;
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
-  const smooth = t => {
+  const smoother = t => {
     const x = clamp(t);
-    return x * x * (3 - 2 * x);
+    return x * x * x * (x * (x * 6 - 15) + 10);
   };
-  const ramp = (p, start, end) => smooth((p - start) / Math.max(.0001, end - start));
+  const ramp = (p, start, end) => smoother((p - start) / Math.max(.0001, end - start));
+  const damp = (current, target, lambda, dt) =>
+    current + (target - current) * (1 - Math.exp(-lambda * dt / 1000));
 
   function getTimelineStep() {
     const rect = experience.getBoundingClientRect();
@@ -93,22 +95,61 @@
     return step;
   }
 
+  let cueFocus = 0;
+  let cueContextYield = 0;
+  let socialResolve = 0;
+  let initialized = false;
+  let lastFrame = performance.now();
   let raf = 0;
-  function render() {
-    const rel = getTimelineStep() - 4;
-    const phase = clamp((rel + .34) / .68);
-    const conflictFocus = ramp(phase, .16, .28) * (1 - ramp(phase, .43, .52));
-    const reviewFocus = ramp(phase, .40, .56);
-    const focus = Math.max(conflictFocus, reviewFocus);
+
+  function render(now) {
+    const dt = Math.min(50, Math.max(1, now - lastFrame));
+    lastFrame = now;
+    const step = getTimelineStep();
     const mobile = window.innerWidth <= 760;
 
-    cueDesktop.style.scale = String(1 + focus * (mobile ? .08 : .12));
+    // Match the native CueSheet phase exactly. One continuous camera move spans
+    // workspace -> conflict -> review, so the viewer never feels a reset between states.
+    const cueRel = step - 4;
+    const cuePhase = clamp((cueRel + .34) / .68);
+    const cuePrimary = ramp(cuePhase, .10, .64);
+    const cueSettle = ramp(cuePhase, .64, .84);
+    const cueTarget = cuePrimary * .88 + cueSettle * .12;
+    const contextTarget = ramp(cuePhase, .08, .38);
+
+    // Match Social's own runtime phase. Enlargement begins before the phone is
+    // fully opaque, but is only ~1-2% when it first becomes visible.
+    const socialPhase = clamp(((step - 3) + .56) / .82);
+    const socialTarget = ramp(socialPhase, .89, 1);
+
+    if (!initialized) {
+      cueFocus = cueTarget;
+      cueContextYield = contextTarget;
+      socialResolve = socialTarget;
+      initialized = true;
+    } else {
+      cueFocus = damp(cueFocus, cueTarget, 9.5, dt);
+      cueContextYield = damp(cueContextYield, contextTarget, 10.5, dt);
+      socialResolve = damp(socialResolve, socialTarget, 8.5, dt);
+    }
+
+    if (cueDesktop) {
+      const maxLift = mobile ? .08 : .12;
+      cueDesktop.style.scale = String(1 + cueFocus * maxLift);
+      cueDesktop.style.filter = `brightness(${1 + cueFocus * .025})`;
+    }
 
     cuePhones.forEach((phone, index) => {
-      const amount = focus * (index === 0 ? 1 : .92);
-      phone.style.scale = String(1 - amount * .16);
-      phone.style.filter = `brightness(${1 - amount * .34}) saturate(${1 - amount * .28})`;
+      const offset = index === 0 ? 1 : .94;
+      const amount = cueContextYield * offset;
+      phone.style.scale = String(1 - amount * .13);
+      phone.style.filter = `brightness(${1 - amount * .28}) saturate(${1 - amount * .22})`;
     });
+
+    if (socialPhone) {
+      const maxLift = mobile ? .16 : .18;
+      socialPhone.style.scale = String(1 + socialResolve * maxLift);
+    }
 
     raf = requestAnimationFrame(render);
   }
@@ -116,6 +157,9 @@
   raf = requestAnimationFrame(render);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) cancelAnimationFrame(raf);
-    else raf = requestAnimationFrame(render);
+    else {
+      lastFrame = performance.now();
+      raf = requestAnimationFrame(render);
+    }
   });
 })();
