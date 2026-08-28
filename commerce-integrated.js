@@ -151,14 +151,13 @@
   function render() {
     const p = getScenePhase();
 
-    // Every scenario first materializes at 25vw in the same saturated CommerceOps yellow,
-    // then sweeps across the section while the phone occludes it. Opacity, not hue,
-    // keeps the section context visually dominant.
+    // CHECK OUT now gets a deliberate resting beat before the first failure case.
+    // The later EXPIRED -> UNAVAILABLE gap was already working, so that spacing stays intact.
     const checkoutEvent = setSweep(words.checkout, p, .03, .22, 25, 96, 1.025);
-    const expiredEvent = setSweep(words.expired, p, .23, .46, 25, 96, 1.035);
+    const expiredEvent = setSweep(words.expired, p, .29, .50, 25, 96, 1.035);
     const unavailableEvent = setSweep(words.unavailable, p, .61, .84, 25, 96, 1.035);
 
-    const toExpired = cubicRamp(p, .31, .39);
+    const toExpired = cubicRamp(p, .37, .45);
     const toUnavailable = cubicRamp(p, .68, .76);
 
     const weights = [
