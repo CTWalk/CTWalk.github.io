@@ -36,5 +36,6 @@
     .then(() => load('./outro-heatmap.js'))
     .then(() => load('./typography-runtime.js'))
     .then(() => load('./evidence-readability.js'))
+    .then(() => load('./experience-pacing.js'))
     .catch(() => {});
 })();
