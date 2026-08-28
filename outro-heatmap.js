@@ -79,6 +79,10 @@
 
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   const mix = (a, b, t) => Math.round(a + (b - a) * t);
+  const smooth = value => {
+    const t = clamp(value);
+    return t * t * (3 - 2 * t);
+  };
 
   function columnCount() {
     if (window.innerWidth < 600) return 24;
@@ -218,7 +222,7 @@
       entryPendingAt = 0;
       entryPlayed = true;
       entryPulseActive = true;
-      entryReleaseAt = now + 880;
+      entryReleaseAt = now + 1180;
       activateCell(Math.floor(rows / 2), Math.round(columns * .68), now);
     }
 
@@ -237,7 +241,13 @@
 
     const hasActive = activeRow >= 0 && activeCol >= 0;
     const elapsed = hasActive ? now - activeSince : 0;
-    const waveRadius = .45 + elapsed / 28;
+    const pointerWaveRadius = .45 + elapsed / 28;
+    const entryProgress = entryPulseActive ? clamp(elapsed / 1180) : 0;
+    const entryRadius = entryPulseActive
+      ? .18 + 7.2 * (1 - Math.pow(1 - entryProgress, 2.1))
+      : 0;
+    const entryRingWidth = .58 + entryProgress * .5;
+    const entryAmplitude = 1 - smooth(clamp((entryProgress - .48) / .52)) * .48;
 
     cells.forEach(cell => {
       let target = 0;
@@ -246,7 +256,20 @@
         const dy = cell.row - activeRow;
         const distance = Math.hypot(dx, dy);
 
-        if (distance <= waveRadius) {
+        if (entryPulseActive) {
+          // A water-drop ripple: the origin stays fixed while a bright crest
+          // travels outward. Cells behind the crest stop receiving energy and
+          // decay on their own, producing a natural trailing fade.
+          const fromCrest = Math.abs(distance - entryRadius);
+          const crest = Math.exp(-Math.pow(fromCrest / entryRingWidth, 2) * 2.15);
+          target = crest * entryAmplitude;
+
+          // Preserve a very short impact flash at the drop point, then release it.
+          if (distance < .56 && entryProgress < .16) {
+            const impact = 1 - smooth(entryProgress / .16);
+            target = Math.max(target, impact);
+          }
+        } else if (distance <= pointerWaveRadius) {
           const falloff = clamp(1 - distance / 4.8);
           target = Math.pow(falloff, 1.55);
           if (distance < .56) target = 1;
