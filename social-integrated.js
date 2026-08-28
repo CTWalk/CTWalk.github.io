@@ -35,5 +35,6 @@
     .then(() => load('./commerce-integrated.js'))
     .then(() => load('./outro-heatmap.js'))
     .then(() => load('./typography-runtime.js'))
+    .then(() => load('./evidence-readability.js'))
     .catch(() => {});
 })();
