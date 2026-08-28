@@ -28,10 +28,14 @@
     .social-structure-segment{stroke:rgba(238,243,255,.56);opacity:0}
     .social-structure-segment.is-soft{stroke:rgba(231,237,255,.26)}
     .social-scan{stroke:rgba(247,249,255,.82);stroke-width:1.2;opacity:0;vector-effect:non-scaling-stroke}
-    .social-layer-label{fill:rgba(238,243,255,.56);font:620 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:1.25px;opacity:0}
     .social-guide{fill:none;stroke:rgba(231,237,255,.15);stroke-width:1;stroke-dasharray:3 8;opacity:0;vector-effect:non-scaling-stroke}
+    .social-label-world{position:absolute;z-index:7;inset:-4% -5% -6%;pointer-events:none}
+    .social-layer-heading{position:absolute;top:22.5%;transform:translate(-50%,-50%);color:rgba(248,250,255,.9);font:680 clamp(13px,1.15vw,16px)/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:1.45px;white-space:nowrap;opacity:0;text-shadow:0 2px 12px rgba(0,0,0,.45);will-change:opacity}
+    .social-layer-heading::after{content:"";display:block;width:58px;height:1px;margin:8px auto 0;background:rgba(242,246,255,.34)}
+    .social-db-heading{left:37%}
+    .social-web-heading{left:68.2%}
 
-.social-final-phone{
+    .social-final-phone{
   position:absolute;
   z-index:9;
   left:50%;
@@ -83,7 +87,7 @@
 
   @media(max-width:760px){
     .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
-    .social-layer-label{font-size:10px;letter-spacing:.9px}
+    .social-layer-heading{font-size:13px;letter-spacing:1.15px}
     .social-final-phone{height:86%;border-radius:24px}
     .social-final-phone-screen{border-radius:19px}
   }
@@ -94,7 +98,7 @@
       .social-vector-world{opacity:.45!important;transform:none!important;filter:none!important}
       .social-release-base{stroke-dashoffset:0!important}
       .social-release-marker,.social-structure-segment,.social-scan,.social-guide{display:none!important}
-      .social-layer-label{opacity:.7!important}
+      .social-layer-heading{opacity:.7!important}
     }
   `;
   document.head.appendChild(style);
@@ -113,9 +117,6 @@
 
           <path class="social-guide social-db-guide" d="M370 442 V122" />
           <path class="social-guide social-web-guide" d="M682 442 V122" />
-          <text class="social-layer-label social-db-label" x="370" y="112" text-anchor="middle">DATABASE</text>
-          <text class="social-layer-label social-web-label" x="682" y="112" text-anchor="middle">WEB</text>
-
           <g class="social-shared-geometry">
             <line class="social-line social-structure-segment" data-segment="0" />
             <line class="social-line social-structure-segment" data-segment="1" />
@@ -139,6 +140,11 @@
         </svg>
       </div>
 
+      <div class="social-label-world" aria-hidden="true">
+        <div class="social-layer-heading social-db-heading">DATABASE</div>
+        <div class="social-layer-heading social-web-heading">WEB UI</div>
+      </div>
+
       <div class="social-final-phone" aria-hidden="true">
         <div class="social-final-phone-screen">
           <img src="${assets.signoff}" alt="SocialPlatform moderation rules screen" />
@@ -157,19 +163,13 @@
   const scan = showcase.querySelector('.social-scan');
   const dbGuide = showcase.querySelector('.social-db-guide');
   const webGuide = showcase.querySelector('.social-web-guide');
-  const dbLabel = showcase.querySelector('.social-db-label');
-  const webLabel = showcase.querySelector('.social-web-label');
+  const dbLabel = showcase.querySelector('.social-db-heading');
+  const webLabel = showcase.querySelector('.social-web-heading');
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   baseLine.style.strokeDasharray = '1';
   baseLine.style.strokeDashoffset = reduced ? '0' : '1';
-  if (reduced) {
-    dbLabel.setAttribute('x', '370');
-    dbLabel.setAttribute('y', '466');
-    webLabel.setAttribute('x', '682');
-    webLabel.setAttribute('y', '466');
-    return;
-  }
+  if (reduced) return;
 
   const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
   const smooth = t => {
@@ -267,6 +267,13 @@
     const webAmount = webOpen * (1 - webClose);
     const webScan = ramp(p, .69, .77);
 
+    const dbLabelIn = ramp(p, .265, .305, easeOut);
+    const dbLabelOut = ramp(p, .475, .525);
+    const dbLabelAmount = dbLabelIn * (1 - dbLabelOut);
+    const webLabelIn = ramp(p, .585, .625, easeOut);
+    const webLabelOut = ramp(p, .795, .845);
+    const webLabelAmount = webLabelIn * (1 - webLabelOut);
+
     const endTravel = ramp(p, .84, .90);
     const finalFrame = ramp(p, .89, .95);
     const phoneIn = ramp(p, .92, .98);
@@ -321,9 +328,9 @@
     applyGeometry(geometry, geometryOpacity);
 
     dbGuide.style.opacity = String(dbAmount * .6);
-    dbLabel.style.opacity = String(dbAmount);
+    dbLabel.style.opacity = String(dbLabelAmount);
     webGuide.style.opacity = String(webAmount * .6);
-    webLabel.style.opacity = String(webAmount);
+    webLabel.style.opacity = String(webLabelAmount);
 
     if (dbAmount > webAmount && dbAmount > .01) {
       setScan(218, 544, mix(154, 330, dbScan), dbAmount * Math.sin(Math.PI * dbScan));
