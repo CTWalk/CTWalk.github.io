@@ -33,8 +33,8 @@
 
     .social-final-phone{position:absolute;z-index:9;left:50%;top:50%;height:84%;aspect-ratio:412/915;transform:translate(-50%,calc(-50% + 18px)) scale(.93);border:1px solid rgba(255,255,255,.26);border-radius:clamp(22px,2.6vw,34px);background:#121417;box-shadow:0 38px 120px rgba(0,0,0,.5),inset 0 0 0 5px rgba(7,8,10,.94);overflow:hidden;opacity:0;will-change:transform,opacity,filter}
     .social-final-phone::before{content:"";position:absolute;z-index:8;left:50%;top:9px;width:25%;height:5px;transform:translateX(-50%);border-radius:99px;background:rgba(8,9,11,.82);box-shadow:0 1px 0 rgba(255,255,255,.08)}
-    .social-final-phone-screen{position:absolute;inset:6px;border-radius:clamp(17px,2vw,28px);overflow:hidden;background:#0f1114;display:grid;place-items:center}
-    .social-final-phone-screen img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#0f1114}
+    .social-final-phone-screen{position:absolute;inset:6px;border-radius:clamp(17px,2vw,28px);overflow:hidden;background:#f6f3ea}
+    .social-final-phone-screen img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;background:#f6f3ea}
 
     @media(max-width:760px){
       .social-showcase{left:4vw;right:auto;top:8%;width:92vw;max-height:44vh}
