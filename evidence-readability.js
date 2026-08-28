@@ -10,8 +10,8 @@
   const style = document.createElement('style');
   style.dataset.evidenceReadability = 'true';
   style.textContent = `
-    /* Pass 2 refinement: keep the stronger evidence scale, but let visual
-       emphasis transfer continuously instead of arriving as a size jump. */
+    /* Pass 2 refinement: keep CueSheet's continuous evidence focus while
+       SocialPlatform uses the restrained 92% -> 98% final-phone treatment. */
 
     .scene[data-scene="4"] .cuesheet-desktop{
       left:max(1vw,calc((100% - var(--content))/2));
@@ -29,10 +29,8 @@
     }
 
     .scene[data-scene="3"] .social-final-phone{
-      height:100%;
-      scale:1;
-      transform-origin:center;
-      will-change:transform,scale,opacity,filter
+      height:98%;
+      scale:1
     }
 
     @media(max-width:760px){
@@ -49,7 +47,7 @@
         display:none!important
       }
       .scene[data-scene="3"] .social-final-phone{
-        height:96%;
+        height:94%;
         scale:1
       }
     }
@@ -58,7 +56,7 @@
       .scene[data-scene="4"] .cuesheet-desktop{scale:1.08!important;filter:none!important}
       .scene[data-scene="4"] .cue-phone-manager,
       .scene[data-scene="4"] .cue-phone-cast{filter:none!important;scale:1!important}
-      .scene[data-scene="3"] .social-final-phone{scale:1.12!important}
+      .scene[data-scene="3"] .social-final-phone{scale:1!important}
     }
   `;
   document.head.appendChild(style);
@@ -97,7 +95,6 @@
 
   let cueFocus = 0;
   let cueContextYield = 0;
-  let socialResolve = 0;
   let initialized = false;
   let lastFrame = performance.now();
   let raf = 0;
@@ -117,20 +114,13 @@
     const cueTarget = cuePrimary * .88 + cueSettle * .12;
     const contextTarget = ramp(cuePhase, .08, .38);
 
-    // Match Social's own runtime phase. Enlargement begins before the phone is
-    // fully opaque, but is only ~1-2% when it first becomes visible.
-    const socialPhase = clamp(((step - 3) + .56) / .82);
-    const socialTarget = ramp(socialPhase, .89, 1);
-
     if (!initialized) {
       cueFocus = cueTarget;
       cueContextYield = contextTarget;
-      socialResolve = socialTarget;
       initialized = true;
     } else {
       cueFocus = damp(cueFocus, cueTarget, 9.5, dt);
       cueContextYield = damp(cueContextYield, contextTarget, 10.5, dt);
-      socialResolve = damp(socialResolve, socialTarget, 8.5, dt);
     }
 
     if (cueDesktop) {
@@ -145,11 +135,6 @@
       phone.style.scale = String(1 - amount * .13);
       phone.style.filter = `brightness(${1 - amount * .28}) saturate(${1 - amount * .22})`;
     });
-
-    if (socialPhone) {
-      const maxLift = mobile ? .16 : .18;
-      socialPhone.style.scale = String(1 + socialResolve * maxLift);
-    }
 
     raf = requestAnimationFrame(render);
   }
