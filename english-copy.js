@@ -10,7 +10,7 @@
     scroll: 'Scroll',
     commerceTitle: 'A checkout can fail\nin more than one place.',
     commerceBody: 'For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.',
-    nocodeTitle: 'I keep the test flow readable\nwithout mixing locators into it.',
+    nocodeTitle: 'I keep test steps readable.',
     nocodeBody: 'The YAML says what the test should do. Playwright executes it. I keep locators, failure output and CI config outside the YAML so UI changes are easier to update.',
     socialTitle: 'I run one release through\nall of these checks.',
     socialBody: 'Build, API, database, performance, web and mobile checks all run against the same version.',
