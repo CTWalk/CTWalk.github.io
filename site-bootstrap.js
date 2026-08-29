@@ -52,5 +52,11 @@
     await loadSafely('./typography-runtime.js');
     await loadSafely('./evidence-readability.js');
     await loadSafely('./experience-pacing.js');
+
+    // Test control is opt-in and loads only after all production runtimes have
+    // initialized. Normal visitors never request or execute this file.
+    if (new URLSearchParams(window.location.search).get('uiux-test') === '1') {
+      await loadSafely('./ui-ux-test-control.js');
+    }
   })();
 })();
