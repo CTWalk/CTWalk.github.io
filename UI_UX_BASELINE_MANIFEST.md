@@ -310,7 +310,7 @@ The factual contribution/issue titles are evidence and are not style-copy to be 
 
 #### `dca.early-contribution`
 
-**State:** early contribution row is the primary readable row; inactive history remains contextual.
+**State:** early contribution row is the primary readable row; inactive history remains contextual. This is also the representative locale-composition checkpoint because the localized title/body are still intentionally visible here.
 
 **Coverage:** desktop, mobile.
 
@@ -339,6 +339,8 @@ Current cadence contains two small punctuation regions; one static visual checkp
 **State:** restrained PASS conclusion after scanning; contribution history remains background context rather than disappearing as fabricated proof.
 
 **Coverage:** desktop, mobile, laptop.
+
+**Representative-baseline note:** `dca.pass` is a conclusion checkpoint, not the DCA locale-composition checkpoint. The localized scene copy has intentionally receded by this state, so use `dca.early-contribution` when validating EN/zh-TW composition.
 
 #### `dca.reduced`
 
@@ -381,7 +383,7 @@ These are the minimum locale-responsive composition images that must exist befor
 | noCodeE2E | `nocode.result-hold` | ✓ | ✓ | ✓ | ✓ |
 | SocialPlatform | `social.final-phone` | ✓ | ✓ | ✓ | ✓ |
 | CueSheet | `cuesheet.review` | ✓ | ✓ | ✓ | ✓ |
-| DCA | `dca.pass` | ✓ | ✓ | ✓ | ✓ |
+| DCA | `dca.early-contribution` | ✓ | ✓ | ✓ | ✓ |
 | Outro | `outro.settled` | ✓ | ✓ | ✓ | ✓ |
 
 This is 28 representative composition images. Every additional checkpoint selected above is also locale-paired for each listed viewport.
@@ -417,7 +419,7 @@ Captures candidates using this manifest, records environment metadata, performs 
 
 ### #7
 
-Implements deterministic ways to reach these exact checkpoint IDs. It may change how a checkpoint is reached, but not what the checkpoint means.
+Provides deterministic ways to reach these exact checkpoint IDs. It may change how a checkpoint is reached, but not what the checkpoint means.
 
 ### #8
 
