@@ -8,93 +8,8 @@ import { fileURLToPath } from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(scriptDir, '..');
-const locales = ['en', 'zh-TW'];
-const viewports = {
-  desktop: { width: 1440, height: 900 },
-  laptop: { width: 1280, height: 800 },
-  mobile: { width: 390, height: 844 }
-};
-
-const normalPlan = {
-  desktop: [
-    'intro.settled',
-    'commerce.checkout-event',
-    'commerce.quiet-after-checkout',
-    'commerce.expired-promo',
-    'commerce.unavailable',
-    'commerce.final-settled',
-    'nocode.yaml-readable',
-    'nocode.execution',
-    'nocode.result-hold',
-    'social.product',
-    'social.database',
-    'social.web',
-    'social.final-phone',
-    'cuesheet.workspace',
-    'cuesheet.conflict',
-    'cuesheet.review',
-    'dca.early-contribution',
-    'dca.phrased-hold',
-    'dca.late-contribution',
-    'dca.scanner-handoff',
-    'dca.pass',
-    'outro.settled'
-  ],
-  laptop: [
-    'intro.settled',
-    'commerce.checkout-event',
-    'commerce.expired-promo',
-    'nocode.result-hold',
-    'social.final-phone',
-    'cuesheet.review',
-    'dca.pass',
-    'outro.settled'
-  ],
-  mobile: [
-    'intro.settled',
-    'commerce.checkout-event',
-    'commerce.quiet-after-checkout',
-    'commerce.expired-promo',
-    'commerce.unavailable',
-    'commerce.final-settled',
-    'nocode.yaml-readable',
-    'nocode.execution',
-    'nocode.result-hold',
-    'social.product',
-    'social.database',
-    'social.web',
-    'social.final-phone',
-    'cuesheet.workspace',
-    'cuesheet.conflict',
-    'cuesheet.review',
-    'dca.early-contribution',
-    'dca.late-contribution',
-    'dca.scanner-handoff',
-    'dca.pass',
-    'outro.settled'
-  ]
-};
-
-const reducedPlan = {
-  desktop: [
-    'intro.settled',
-    'commerce.reduced',
-    'nocode.reduced',
-    'social.reduced',
-    'cuesheet.reduced',
-    'dca.reduced',
-    'outro.reduced'
-  ],
-  mobile: [
-    'intro.settled',
-    'commerce.reduced',
-    'nocode.reduced',
-    'social.reduced',
-    'cuesheet.reduced',
-    'dca.reduced',
-    'outro.reduced'
-  ]
-};
+const plan = JSON.parse(await fsp.readFile(path.join(scriptDir, 'ui-ux-baseline-plan.json'), 'utf8'));
+const { locales, viewports, normal: normalPlan, reduce: reducedPlan } = plan;
 
 function git(command) {
   return execFileSync('git', command, { cwd: repoRoot, encoding: 'utf8' }).trim();
@@ -110,6 +25,7 @@ const outputRoot = path.resolve(
   process.env.BASELINE_OUTPUT_DIR || path.join(repoRoot, 'baseline-candidates', sourceSha.slice(0, 9))
 );
 const externalBaseUrl = process.env.BASELINE_BASE_URL || '';
+const browserExecutable = process.env.BASELINE_BROWSER_EXECUTABLE || '';
 
 function contentType(filePath) {
   const ext = path.extname(filePath).toLowerCase();
@@ -211,6 +127,7 @@ async function captureContext({ browser, baseUrl, viewportId, motion, checkpoint
           checkpoint_id: checkpointId,
           source_sha: sourceSha,
           status: 'candidate',
+          capture_runtime: 'node-playwright',
           browser_name: 'chromium',
           browser_version: browser.version(),
           viewport_id: viewportId,
@@ -238,7 +155,9 @@ async function captureContext({ browser, baseUrl, viewportId, motion, checkpoint
 await fsp.mkdir(outputRoot, { recursive: true });
 let localServer = null;
 const baseUrl = externalBaseUrl || (localServer = await startStaticServer()).baseUrl;
-const browser = await chromium.launch({ headless: true });
+const launchOptions = { headless: true };
+if (browserExecutable) launchOptions.executablePath = browserExecutable;
+const browser = await chromium.launch(launchOptions);
 const records = [];
 
 try {
@@ -260,6 +179,7 @@ const report = {
   source_worktree_clean: !dirty,
   baseline_status: 'candidate',
   capture_contract: '#5 + #12 + #7',
+  capture_runtime: 'node-playwright',
   note: 'Candidate capture only. Never promote by regenerating after a diff; every image requires explicit review against UI_UX_ACCEPTANCE_CONTRACT.md.',
   records
 };
