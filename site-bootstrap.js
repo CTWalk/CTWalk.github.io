@@ -28,15 +28,29 @@
     const script = document.createElement('script');
     script.src = src;
     script.onload = resolve;
-    script.onerror = reject;
+    script.onerror = () => reject(new Error(`Failed to load ${src}`));
     document.head.appendChild(script);
   });
-  load('./social-runtime.js')
-    .then(() => load('./commerce-integrated.js'))
-    .then(() => load('./english-copy.js'))
-    .then(() => load('./outro-heatmap.js'))
-    .then(() => load('./typography-runtime.js'))
-    .then(() => load('./evidence-readability.js'))
-    .then(() => load('./experience-pacing.js'))
-    .catch(() => {});
+
+  const loadSafely = async src => {
+    try {
+      await load(src);
+      return true;
+    } catch (error) {
+      console.error('[site-bootstrap]', error);
+      return false;
+    }
+  };
+
+  (async () => {
+    // Preserve the existing initialization order so animation writer precedence
+    // does not change during the Stage 1 ownership cleanup. A failed optional
+    // runtime is isolated and no longer prevents later runtimes from loading.
+    await loadSafely('./social-runtime.js');
+    await loadSafely('./commerce-integrated.js');
+    await loadSafely('./outro-heatmap.js');
+    await loadSafely('./typography-runtime.js');
+    await loadSafely('./evidence-readability.js');
+    await loadSafely('./experience-pacing.js');
+  })();
 })();
