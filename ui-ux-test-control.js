@@ -22,6 +22,15 @@
     outro: '6'
   };
 
+  const reducedCheckpointIds = [
+    'commerce.reduced',
+    'nocode.reduced',
+    'social.reduced',
+    'cuesheet.reduced',
+    'dca.reduced',
+    'outro.reduced'
+  ];
+
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   const mix = (a, b, amount) => a + (b - a) * amount;
   const frame = () => new Promise(resolve => requestAnimationFrame(() => resolve()));
@@ -346,16 +355,13 @@
       scene: 'outro',
       range: [0.52, 1],
       prefer: 'last',
-      score: scene => opacityOf(scene) * opacityOf(scene.querySelector('.scene-content'))
+      score: scene => opacityOf(scene.querySelector('.scene-content'))
     }
   };
 
   function normalizeCheckpoint(checkpointId) {
     if (checkpointDefinitions[checkpointId]) return checkpointId;
-    if (checkpointId.endsWith('.reduced')) {
-      const sceneName = checkpointId.slice(0, -'.reduced'.length);
-      if (sceneIds[sceneName] !== undefined) return checkpointId;
-    }
+    if (reducedCheckpointIds.includes(checkpointId)) return checkpointId;
     throw new Error(`Unknown checkpoint: ${checkpointId}`);
   }
 
@@ -373,7 +379,8 @@
       const local = mix(rangeStart, rangeEnd, i / sampleCount);
       const progress = mix(bound.start, bound.end, local);
       await setDocumentProgress(progress);
-      const score = clamp(Number(definition.score(scene)) || 0);
+      const sceneVisibility = opacityOf(scene);
+      const score = clamp(Number(definition.score(scene)) || 0) * sceneVisibility;
 
       if (!best || score > best.score + 0.0005) {
         best = { score, local, progress };
@@ -496,7 +503,7 @@
       sceneOpacities: Object.fromEntries(
         scenes.map(scene => [scene.dataset.scene, opacityOf(scene)])
       ),
-      checkpoints: Object.keys(checkpointDefinitions),
+      checkpoints: [...Object.keys(checkpointDefinitions), ...reducedCheckpointIds],
       scrollBehaviorOverride: html.style.scrollBehavior
     };
   }
@@ -509,8 +516,9 @@
   }
 
   const api = Object.freeze({
-    version: 1,
+    version: 2,
     ready,
+    waitForAssets,
     setLanguage,
     goToScene,
     setSceneProgress,
@@ -518,7 +526,7 @@
     waitForVisualSettle,
     getState,
     sceneIds: Object.freeze({ ...sceneIds }),
-    checkpointIds: Object.freeze(Object.keys(checkpointDefinitions))
+    checkpointIds: Object.freeze([...Object.keys(checkpointDefinitions), ...reducedCheckpointIds])
   });
 
   Object.defineProperty(window, '__portfolioTest', {
