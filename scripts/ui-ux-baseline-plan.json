@@ -1,0 +1,87 @@
+{
+  "locales": ["en", "zh-TW"],
+  "viewports": {
+    "desktop": { "width": 1440, "height": 900 },
+    "laptop": { "width": 1280, "height": 800 },
+    "mobile": { "width": 390, "height": 844 }
+  },
+  "normal": {
+    "desktop": [
+      "intro.settled",
+      "commerce.checkout-event",
+      "commerce.quiet-after-checkout",
+      "commerce.expired-promo",
+      "commerce.unavailable",
+      "commerce.final-settled",
+      "nocode.yaml-readable",
+      "nocode.execution",
+      "nocode.result-hold",
+      "social.product",
+      "social.database",
+      "social.web",
+      "social.final-phone",
+      "cuesheet.workspace",
+      "cuesheet.conflict",
+      "cuesheet.review",
+      "dca.early-contribution",
+      "dca.phrased-hold",
+      "dca.late-contribution",
+      "dca.scanner-handoff",
+      "dca.pass",
+      "outro.settled"
+    ],
+    "laptop": [
+      "intro.settled",
+      "commerce.checkout-event",
+      "commerce.expired-promo",
+      "nocode.result-hold",
+      "social.final-phone",
+      "cuesheet.review",
+      "dca.pass",
+      "outro.settled"
+    ],
+    "mobile": [
+      "intro.settled",
+      "commerce.checkout-event",
+      "commerce.quiet-after-checkout",
+      "commerce.expired-promo",
+      "commerce.unavailable",
+      "commerce.final-settled",
+      "nocode.yaml-readable",
+      "nocode.execution",
+      "nocode.result-hold",
+      "social.product",
+      "social.database",
+      "social.web",
+      "social.final-phone",
+      "cuesheet.workspace",
+      "cuesheet.conflict",
+      "cuesheet.review",
+      "dca.early-contribution",
+      "dca.late-contribution",
+      "dca.scanner-handoff",
+      "dca.pass",
+      "outro.settled"
+    ]
+  },
+  "reduce": {
+    "desktop": [
+      "intro.settled",
+      "commerce.reduced",
+      "nocode.reduced",
+      "social.reduced",
+      "cuesheet.reduced",
+      "dca.reduced",
+      "outro.reduced"
+    ],
+    "mobile": [
+      "intro.settled",
+      "commerce.reduced",
+      "nocode.reduced",
+      "social.reduced",
+      "cuesheet.reduced",
+      "dca.reduced",
+      "outro.reduced"
+    ]
+  }
+}
