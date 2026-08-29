@@ -27,7 +27,7 @@
     introTitle: 'I test software from the UI to the database.',
     introBody: 'I automate web, API, database and mobile checks, then run them in CI. When one fails, I trace the failure before deciding whether the test or the product needs fixing.',
     scroll: 'Scroll',
-    commerceTitle: 'A checkout can fail in more than one place.',
+    commerceTitle: 'I test the whole checkout flow.',
     commerceBody: 'For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.',
     nocodeTitle: 'I keep test steps readable.',
     nocodeBody: 'The YAML says what the test should do. Playwright executes it. I keep locators, failure output and CI config outside the YAML so UI changes are easier to update.',
