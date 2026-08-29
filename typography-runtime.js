@@ -8,6 +8,14 @@
       --text-ui:clamp(.94rem,.9rem + .16vw,1rem)
     }
 
+    html[lang="en"] .scene-title{
+      max-width:18ch;
+      white-space:normal;
+      text-wrap:balance
+    }
+    html[lang="en"] .intro .scene-title{max-width:15ch}
+    html[lang="en"] .scene.center:not(.intro) .scene-title{max-width:20ch}
+
     .scene-label{
       font-size:var(--text-small);
       letter-spacing:.085em
@@ -45,6 +53,9 @@
     }
 
     @media(max-width:760px){
+      html[lang="en"] .scene-title{max-width:16ch}
+      html[lang="en"] .intro .scene-title{max-width:15ch}
+      html[lang="en"] .scene.center:not(.intro) .scene-title{max-width:18ch}
       .scene-label{font-size:.84rem}
       .scene-link{font-size:.98rem}
       .lang-switch button{font-size:.88rem}
