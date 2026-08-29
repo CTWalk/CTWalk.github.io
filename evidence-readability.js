@@ -3,8 +3,15 @@
   const cueScene = document.querySelector('.scene[data-scene="4"]');
   const cueDesktop = cueScene?.querySelector('.cuesheet-desktop');
   const cuePhones = cueScene ? [...cueScene.querySelectorAll('.cue-phone-manager,.cue-phone-cast')] : [];
+  const cueManagerImage = cueScene?.querySelector('.cue-phone-manager img');
   const socialPhone = document.querySelector('.scene[data-scene="3"] .social-final-phone');
   if (!experience || (!cueDesktop && !socialPhone)) return;
+
+  // The full 390x760 Conflicts view is already the canonical CueSheet mobile asset.
+  // Swap only the manager phone; the cast phone and desktop evidence remain untouched.
+  if (cueManagerImage) {
+    cueManagerImage.src = 'https://raw.githubusercontent.com/CTWalk/CueSheet_demo/main/assets/mobile-stage-conflict-status.png';
+  }
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const style = document.createElement('style');
@@ -26,6 +33,12 @@
     .scene[data-scene="4"] .cue-phone-cast{
       transform-origin:center;
       will-change:transform,scale,filter,opacity
+    }
+
+    .scene[data-scene="4"] .cue-phone-manager img{
+      object-fit:contain;
+      object-position:center top;
+      background:#05090b
     }
 
     .scene[data-scene="3"] .social-final-phone{
