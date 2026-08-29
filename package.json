@@ -2,7 +2,9 @@
   "name": "ctwalk-portfolio",
   "private": true,
   "scripts": {
-    "uiux:capture": "node scripts/capture-ui-ux-baselines.mjs"
+    "uiux:capture": "node scripts/run-ui-ux-baseline-capture.mjs",
+    "uiux:capture:node": "node scripts/capture-ui-ux-baselines.mjs",
+    "uiux:capture:python": "python3 scripts/capture-ui-ux-baselines.py"
   },
   "devDependencies": {
     "playwright": "1.55.0"
