@@ -84,6 +84,24 @@ The middle must therefore never become a flat, equally bright colour panel. The 
 
 A low-resolution blurred secondary canvas may extend the wave energy inward, but it must remain subordinate to the crisp edge and may not erase the edge-to-center brightness gradient.
 
+## Typography and entrance texture
+
+The mobile copy should feel less compressed and more deliberate than the previous version.
+
+Required characteristics:
+
+- the English `Designed for desktop.` headline must not use aggressively tight tracking; character spacing should remain compact but visibly more open;
+- the zh-TW headline should follow the same principle and avoid over-tight glyph spacing;
+- the bottom-left guidance copy must be larger than the previous treatment and remain comfortably readable at the primary `390×844` mobile target;
+- headline and guidance copy should enter **line by line** in normal motion;
+- each line should begin dim and slightly soft, then resolve into its final sharp state;
+- the entrance should use restrained opacity / blur / small vertical travel rather than bounce, scaling, or flashy easing;
+- the copy entrance is a texture layer only and must not compete with the perimeter wave as the primary decorative motion;
+- language switching may replay the line entrance because the rendered copy is replaced;
+- `?uiux-test=1` and `prefers-reduced-motion: reduce` must bypass the entrance animation and show the settled final typography immediately.
+
+The animation should feel like copy materializing through low light, not text flying onto the screen.
+
 ### Runtime constraints
 
 - WebGL is the normal production owner of the effect.
@@ -92,7 +110,7 @@ A low-resolution blurred secondary canvas may extend the wave energy inward, but
 - No uncontrolled random particles are introduced.
 - `?uiux-test=1` freezes the same shader at a deterministic time.
 - `prefers-reduced-motion: reduce` freezes the same shader into a deterministic static state.
-- The four-edge fluid wave remains the sole decorative mobile motion.
+- The four-edge fluid wave remains the sole decorative mobile motion; copy entrance is limited to presentation texture and settles quickly.
 
 ## Verification consequence
 
@@ -106,6 +124,9 @@ Normal-motion acceptance requires all of the following to be perceptible during 
 4. wave peaks visibly change edge thickness/intensity;
 5. wave peaks may extend colour toward the center, but brightness must decay continuously from edge to center;
 6. the center never becomes as bright as the edge and text readability remains intact;
-7. the GitHub avatar and `Open GitHub` pair remain legible and visually centered.
+7. the GitHub avatar and `Open GitHub` pair remain legible and visually centered;
+8. headline tracking no longer reads as cramped;
+9. bottom guidance is comfortably readable without appearing like secondary micro-copy;
+10. headline and guidance reveal line-by-line with a dim/soft entrance and settle cleanly without competing with the wave.
 
-A technically animated shader fails perceptual acceptance if it reads as static, as four simultaneous colour zones, as discrete balls rolling around the border, shows geometric diagonal seams, or washes the center to near-edge brightness.
+A technically animated shader fails perceptual acceptance if it reads as static, as four simultaneous colour zones, as discrete balls rolling around the border, shows geometric diagonal seams, or washes the center to near-edge brightness. The typography also fails if tracking remains cramped, guidance remains undersized, or the entrance feels abrupt/flashy rather than restrained.
