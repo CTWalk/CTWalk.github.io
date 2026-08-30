@@ -8,6 +8,7 @@
   const testMode = params.get('uiux-test') === '1';
   const TEST_TIME_MS = 6400;
   const REDUCED_TIME_MS = 0;
+  const PROFILE_AVATAR = 'https://avatars.githubusercontent.com/u/100585900?v=4';
 
   const copy = {
     en: {
@@ -57,8 +58,8 @@
       inset:-24px;
       z-index:0;
       pointer-events:none;
-      opacity:.98;
-      filter:blur(13px) saturate(1.22);
+      opacity:.14;
+      filter:blur(14px) saturate(1.18);
       background:
         radial-gradient(78% 23% at 53% 0%,rgba(255,91,29,.95) 0%,rgba(255,133,31,.54) 31%,transparent 69%),
         radial-gradient(28% 64% at 0% 43%,rgba(255,38,150,.90) 0%,rgba(170,54,255,.52) 35%,transparent 72%),
@@ -66,7 +67,7 @@
         radial-gradient(76% 24% at 55% 100%,rgba(35,215,255,.96) 0%,rgba(100,78,255,.57) 36%,transparent 70%);
     }
 
-    .mobile-rim{position:absolute;z-index:2;pointer-events:none;opacity:.96;filter:blur(6px);mix-blend-mode:screen}
+    .mobile-rim{position:absolute;z-index:2;pointer-events:none;opacity:.10;filter:blur(7px);mix-blend-mode:screen}
     .mobile-rim-top{
       top:-5px;left:-8%;width:116%;height:18px;
       background:linear-gradient(90deg,transparent 0%,#ff2f9c 13%,#ff5128 39%,#ff9b27 66%,#eaff59 84%,transparent 100%);
@@ -87,6 +88,8 @@
       background:linear-gradient(90deg,transparent 0%,#8758ff 15%,#396eff 37%,#2fd9ff 65%,#61ffc3 86%,transparent 100%);
       box-shadow:0 0 26px 10px rgba(45,205,255,.34);
     }
+    .mobile-fallback.canvas-fallback .mobile-edge-static{opacity:.98}
+    .mobile-fallback.canvas-fallback .mobile-rim{opacity:.94}
 
     .mobile-vignette{
       position:absolute;
@@ -94,8 +97,8 @@
       z-index:1;
       pointer-events:none;
       background:
-        radial-gradient(ellipse at 50% 47%,rgba(0,0,0,0) 0%,rgba(0,0,0,.10) 42%,rgba(0,0,0,.46) 83%),
-        linear-gradient(to bottom,rgba(0,0,0,.04),rgba(0,0,0,.20));
+        radial-gradient(ellipse at 50% 47%,rgba(0,0,0,0) 0%,rgba(0,0,0,.07) 42%,rgba(0,0,0,.34) 84%),
+        linear-gradient(to bottom,rgba(0,0,0,.02),rgba(0,0,0,.15));
     }
 
     .mobile-fallback-inner{
@@ -121,22 +124,26 @@
       text-shadow:0 16px 52px rgba(0,0,0,.34);
     }
 
-    .mobile-bottom{
-      margin-top:auto;
-      display:grid;
-      gap:22px;
-      padding-bottom:2px;
+    .mobile-center{
+      flex:1 1 auto;
+      min-height:0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:15px;
+      padding:20px 0 16px;
     }
 
-    .mobile-message{
-      max-width:30ch;
-      margin:0;
-      color:rgba(248,242,234,.94);
-      font-size:1rem;
-      font-weight:590;
-      line-height:1.44;
-      letter-spacing:-.016em;
-      text-wrap:pretty;
+    .mobile-profile{
+      display:block;
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 18px 56px rgba(0,0,0,.46),0 0 0 1px rgba(255,255,255,.035);
+      background:#0b0b0d;
     }
 
     .mobile-github{
@@ -150,6 +157,17 @@
       border-bottom:1px solid rgba(255,255,255,.60);
     }
     .mobile-github:focus-visible{outline:2px solid #fff;outline-offset:6px}
+
+    .mobile-message{
+      max-width:30ch;
+      margin:0;
+      color:rgba(248,242,234,.94);
+      font-size:1rem;
+      font-weight:590;
+      line-height:1.44;
+      letter-spacing:-.016em;
+      text-wrap:pretty;
+    }
 
     html[lang^="zh"] .mobile-title{
       max-width:6.1em;
@@ -173,7 +191,8 @@
       .mobile-fallback-inner{padding-top:80px;padding-bottom:20px}
       .mobile-title{font-size:clamp(3.75rem,18vw,5rem)}
       html[lang^="zh"] .mobile-title{font-size:clamp(3.15rem,15vw,4.2rem)}
-      .mobile-bottom{gap:15px}
+      .mobile-center{gap:11px;padding:12px 0 10px}
+      .mobile-profile{width:86px;height:86px}
       .mobile-message{font-size:.87rem;line-height:1.36}
       html[lang^="zh"] .mobile-message{font-size:.88rem;line-height:1.52}
       .mobile-github{font-size:.9rem}
@@ -183,6 +202,7 @@
       .mobile-fallback-inner{padding-inline:18px}
       .mobile-title{font-size:clamp(3.65rem,19vw,4.75rem)}
       html[lang^="zh"] .mobile-title{font-size:clamp(3rem,15.6vw,4rem)}
+      .mobile-profile{width:96px;height:96px}
       .mobile-message{font-size:.9rem}
     }
   `;
@@ -202,10 +222,11 @@
     <div class="mobile-vignette" aria-hidden="true"></div>
     <div class="mobile-fallback-inner">
       <h1 class="mobile-title" id="mobile-fallback-title" data-mobile-copy="title"></h1>
-      <div class="mobile-bottom">
-        <p class="mobile-message" data-mobile-copy="message"></p>
+      <div class="mobile-center">
+        <img class="mobile-profile" src="${PROFILE_AVATAR}" alt="CTWalk GitHub profile" decoding="async" referrerpolicy="no-referrer">
         <a class="mobile-github" href="https://github.com/CTWalk" target="_blank" rel="noreferrer" data-mobile-copy="github"></a>
       </div>
+      <p class="mobile-message" data-mobile-copy="message"></p>
     </div>
   `;
 
@@ -216,6 +237,8 @@
   const canvas = document.getElementById('mobile-aurora');
   const context = canvas?.getContext('2d', { alpha: true, desynchronized: true }) || null;
   const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+
+  if (!context) fallback.classList.add('canvas-fallback');
 
   let width = 0;
   let height = 0;
@@ -243,8 +266,8 @@
     context.scale(Math.max(1, radiusX), Math.max(1, radiusY));
     const gradient = context.createRadialGradient(0, 0, 0, 0, 0, 1);
     gradient.addColorStop(0, `rgba(${rgb},${alpha})`);
-    gradient.addColorStop(.24, `rgba(${rgb},${alpha * .66})`);
-    gradient.addColorStop(.58, `rgba(${rgb},${alpha * .22})`);
+    gradient.addColorStop(.22, `rgba(${rgb},${alpha * .72})`);
+    gradient.addColorStop(.55, `rgba(${rgb},${alpha * .25})`);
     gradient.addColorStop(1, `rgba(${rgb},0)`);
     context.fillStyle = gradient;
     context.beginPath();
@@ -260,7 +283,7 @@
     context.strokeStyle = gradient;
     context.lineWidth = widthPx;
     context.lineCap = 'round';
-    context.shadowBlur = 24;
+    context.shadowBlur = 34;
     context.shadowColor = shadowColor;
     context.beginPath();
     context.moveTo(x1, y1);
@@ -275,15 +298,22 @@
     context.clearRect(0, 0, width, height);
     context.globalCompositeOperation = 'lighter';
 
-    const a = Math.sin(currentTime * .00012);
-    const b = Math.cos(currentTime * .000095 + 1.7);
-    const c = Math.sin(currentTime * .00008 + 3.2);
+    const topFlow = Math.sin(currentTime * .00062);
+    const sideFlow = Math.cos(currentTime * .00054 + 1.7);
+    const bottomFlow = Math.sin(currentTime * .00048 + 3.2);
+    const pulse = .86 + Math.sin(currentTime * .00105) * .14;
 
-    bloom(width * (.50 + a * .10), height * -.015, width * .52, height * .16, '255,78,31', .82);
-    bloom(width * -.01, height * (.43 + b * .10), width * .20, height * .37, '255,43,154', .72);
-    bloom(width * .05, height * (.88 + c * .04), width * .27, height * .23, '116,75,255', .64);
-    bloom(width * (.62 + b * .08), height * 1.01, width * .46, height * .17, '40,212,255', .82);
-    bloom(width * 1.01, height * (.58 + a * .10), width * .19, height * .35, '62,255,185', .64);
+    // Broad bloom keeps the edge colour family coherent.
+    bloom(width * (.50 + topFlow * .18), height * -.015, width * .48, height * .15, '255,78,31', .46 * pulse);
+    bloom(width * -.01, height * (.48 + sideFlow * .18), width * .18, height * .34, '255,43,154', .40 * pulse);
+    bloom(width * (.62 + bottomFlow * .16), height * 1.01, width * .43, height * .16, '40,212,255', .44 * pulse);
+    bloom(width * 1.01, height * (.55 - sideFlow * .18), width * .18, height * .33, '62,255,185', .38 * pulse);
+
+    // Tighter hotspots visibly travel around the viewport edge in production.
+    bloom(width * (.50 + topFlow * .31), height * .005, width * .23, height * .075, '255,111,35', .95 * pulse);
+    bloom(width * .004, height * (.48 + sideFlow * .28), width * .075, height * .22, '214,54,255', .88 * pulse);
+    bloom(width * (.54 + bottomFlow * .32), height * .995, width * .24, height * .075, '47,216,255', .94 * pulse);
+    bloom(width * .996, height * (.54 - sideFlow * .27), width * .075, height * .22, '70,255,181', .82 * pulse);
 
     const top = context.createLinearGradient(0, 0, width, 0);
     top.addColorStop(0, 'rgba(255,47,156,0)');
@@ -315,11 +345,10 @@
     right.addColorStop(.74, '#2dd9ff');
     right.addColorStop(1, 'rgba(45,217,255,0)');
 
-    const pulse = .88 + Math.sin(currentTime * .00018) * .07;
-    glowLine(0, 1.5, width, 1.5, top, 'rgba(255,91,40,.95)', pulse, 3.2);
-    glowLine(0, height - 1.5, width, height - 1.5, bottom, 'rgba(45,205,255,.95)', pulse, 3.2);
-    glowLine(1.5, 0, 1.5, height, left, 'rgba(211,54,255,.90)', pulse * .92, 3.0);
-    glowLine(width - 1.5, 0, width - 1.5, height, right, 'rgba(58,238,198,.88)', pulse * .92, 3.0);
+    glowLine(0, 1.5, width, 1.5, top, 'rgba(255,91,40,.96)', .82 * pulse, 3.4);
+    glowLine(0, height - 1.5, width, height - 1.5, bottom, 'rgba(45,205,255,.96)', .82 * pulse, 3.4);
+    glowLine(1.5, 0, 1.5, height, left, 'rgba(211,54,255,.92)', .76 * pulse, 3.2);
+    glowLine(width - 1.5, 0, width - 1.5, height, right, 'rgba(58,238,198,.90)', .76 * pulse, 3.2);
 
     context.globalCompositeOperation = 'source-over';
   }
@@ -372,6 +401,7 @@
       running,
       timeMs: currentTime,
       canvasAvailable: Boolean(context),
+      profileAsset: PROFILE_AVATAR,
       width: window.innerWidth,
       height: window.innerHeight
     };
