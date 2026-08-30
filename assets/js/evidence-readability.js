@@ -23,7 +23,7 @@
     .scene[data-scene="4"] .cuesheet-desktop{
       left:max(1vw,calc((100% - var(--content))/2));
       top:6.5%;
-      width:min(53vw,740px);
+      width:min(51vw,720px);
       height:min(74vh,710px);
       transform-origin:42% 46%;
       will-change:transform,scale,filter
