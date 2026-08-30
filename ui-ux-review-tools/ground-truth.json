@@ -1,0 +1,525 @@
+{
+  "_note": "Hand verdicts made by visual inspection against UI_UX_ACCEPTANCE_CONTRACT.md (#5) and UI_UX_BASELINE_MANIFEST.md (#12), source SHA 1c1990ef05dc764b8e2a1797f7fc41fbded4289f. Used to calibrate the mechanical detectors. Key = <viewport>/<locale>/<motion>/<checkpoint>.",
+  "verdicts": {
+    "desktop/en/normal/intro.settled": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/normal/commerce.checkout-event": [
+      "APPROVED",
+      "sweep word mid-transit, phone dominant"
+    ],
+    "desktop/en/normal/commerce.quiet-after-checkout": [
+      "APPROVED",
+      "quiet interval genuinely quiet"
+    ],
+    "desktop/en/normal/commerce.expired-promo": [
+      "REJECTED",
+      "phone still checkout while EXPIRED PROMO peaks; manifest requires expired-coupon evidence"
+    ],
+    "desktop/en/normal/commerce.unavailable": [
+      "REJECTED",
+      "phone still expired-coupon while UNAVAILABLE peaks"
+    ],
+    "desktop/en/normal/commerce.final-settled": [
+      "APPROVED",
+      "unavailable-variant phone settled, word cleared"
+    ],
+    "desktop/en/normal/nocode.yaml-readable": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/normal/nocode.execution": [
+      "REJECTED",
+      "first step emphasised, manifest requires a middle step"
+    ],
+    "desktop/en/normal/nocode.result-hold": [
+      "APPROVED",
+      "runner card overlaps two YAML value lines"
+    ],
+    "desktop/en/normal/social.product": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/normal/social.database": [
+      "APPROVED",
+      "DB cylinder very faint"
+    ],
+    "desktop/en/normal/social.web": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/normal/social.final-phone": [
+      "APPROVED",
+      "moderation-rules phone legible, no success ceremony"
+    ],
+    "desktop/en/normal/cuesheet.workspace": [
+      "APPROVED",
+      "DURATION column header clipped"
+    ],
+    "desktop/en/normal/cuesheet.conflict": [
+      "REJECTED",
+      "title/body over bright evidence, label illegible"
+    ],
+    "desktop/en/normal/cuesheet.review": [
+      "REJECTED",
+      "title/body over bright evidence, label illegible"
+    ],
+    "desktop/en/normal/dca.early-contribution": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/normal/dca.phrased-hold": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/normal/dca.late-contribution": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/normal/dca.scanner-handoff": [
+      "APPROVED",
+      "distinct from PASS"
+    ],
+    "desktop/en/normal/dca.pass": [
+      "APPROVED",
+      "restrained, history faint but present"
+    ],
+    "desktop/en/normal/outro.settled": [
+      "BLOCKED",
+      "heatmap state order-dependent"
+    ],
+    "desktop/zh-TW/normal/intro.settled": [
+      "APPROVED",
+      "short first line by source break, phrase boundaries natural"
+    ],
+    "desktop/zh-TW/normal/commerce.checkout-event": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/commerce.quiet-after-checkout": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/commerce.expired-promo": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "desktop/zh-TW/normal/commerce.unavailable": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "desktop/zh-TW/normal/commerce.final-settled": [
+      "APPROVED",
+      "CJK mid-word wrap acceptable"
+    ],
+    "desktop/zh-TW/normal/nocode.yaml-readable": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/nocode.execution": [
+      "REJECTED",
+      "first step emphasised"
+    ],
+    "desktop/zh-TW/normal/nocode.result-hold": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/social.product": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/social.database": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/social.web": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/social.final-phone": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/cuesheet.workspace": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/cuesheet.conflict": [
+      "REJECTED",
+      "copy over bright evidence"
+    ],
+    "desktop/zh-TW/normal/cuesheet.review": [
+      "REJECTED",
+      "copy over bright evidence"
+    ],
+    "desktop/zh-TW/normal/dca.early-contribution": [
+      "REJECTED",
+      "title splits AI / 工具, 2-char orphan last line"
+    ],
+    "desktop/zh-TW/normal/dca.phrased-hold": [
+      "REJECTED",
+      "same title orphan"
+    ],
+    "desktop/zh-TW/normal/dca.late-contribution": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/dca.scanner-handoff": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/dca.pass": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/normal/outro.settled": [
+      "BLOCKED",
+      "heatmap state order-dependent"
+    ],
+    "laptop/en/normal/intro.settled": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/en/normal/commerce.checkout-event": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/en/normal/commerce.expired-promo": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "laptop/en/normal/nocode.result-hold": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/en/normal/social.final-phone": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/en/normal/cuesheet.review": [
+      "REJECTED",
+      "copy over bright evidence"
+    ],
+    "laptop/en/normal/dca.pass": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/en/normal/outro.settled": [
+      "BLOCKED",
+      "heatmap order-dependent"
+    ],
+    "laptop/zh-TW/normal/intro.settled": [
+      "APPROVED",
+      "trailing enumeration comma hangs at line end, normal CJK"
+    ],
+    "laptop/zh-TW/normal/commerce.checkout-event": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/zh-TW/normal/commerce.expired-promo": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "laptop/zh-TW/normal/nocode.result-hold": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/zh-TW/normal/social.final-phone": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/zh-TW/normal/cuesheet.review": [
+      "REJECTED",
+      "copy over bright evidence"
+    ],
+    "laptop/zh-TW/normal/dca.pass": [
+      "APPROVED",
+      ""
+    ],
+    "laptop/zh-TW/normal/outro.settled": [
+      "BLOCKED",
+      "heatmap order-dependent"
+    ],
+    "mobile/en/normal/intro.settled": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/commerce.checkout-event": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/commerce.quiet-after-checkout": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/commerce.expired-promo": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "mobile/en/normal/commerce.unavailable": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "mobile/en/normal/commerce.final-settled": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/nocode.yaml-readable": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/nocode.execution": [
+      "REJECTED",
+      "first step emphasised"
+    ],
+    "mobile/en/normal/nocode.result-hold": [
+      "APPROVED",
+      "runner overlaps trailing YAML lines"
+    ],
+    "mobile/en/normal/social.product": [
+      "APPROVED",
+      "desktop screenshot reads as texture at 390px"
+    ],
+    "mobile/en/normal/social.database": [
+      "APPROVED",
+      "scene number occluded by plate"
+    ],
+    "mobile/en/normal/social.web": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/social.final-phone": [
+      "REJECTED",
+      "final phone illegible at rendered scale"
+    ],
+    "mobile/en/normal/cuesheet.workspace": [
+      "REJECTED",
+      "evidence cropped both sides, rows unreadable"
+    ],
+    "mobile/en/normal/cuesheet.conflict": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/cuesheet.review": [
+      "REJECTED",
+      "primary evidence line truncated at left edge"
+    ],
+    "mobile/en/normal/dca.early-contribution": [
+      "REJECTED",
+      "active-row second description line escapes the row pill"
+    ],
+    "mobile/en/normal/dca.late-contribution": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/dca.scanner-handoff": [
+      "REJECTED",
+      "dominant row text escapes its pill"
+    ],
+    "mobile/en/normal/dca.pass": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/normal/outro.settled": [
+      "BLOCKED",
+      "heatmap order-dependent; in lit state it rivals the CTA"
+    ],
+    "mobile/zh-TW/normal/intro.settled": [
+      "APPROVED",
+      "single-character last line widow"
+    ],
+    "mobile/zh-TW/normal/commerce.checkout-event": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/commerce.quiet-after-checkout": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/commerce.expired-promo": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "mobile/zh-TW/normal/commerce.unavailable": [
+      "REJECTED",
+      "phone/word desync"
+    ],
+    "mobile/zh-TW/normal/commerce.final-settled": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/nocode.yaml-readable": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/nocode.execution": [
+      "REJECTED",
+      "first step emphasised"
+    ],
+    "mobile/zh-TW/normal/nocode.result-hold": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/social.product": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/social.database": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/social.web": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/social.final-phone": [
+      "REJECTED",
+      "final phone illegible"
+    ],
+    "mobile/zh-TW/normal/cuesheet.workspace": [
+      "REJECTED",
+      "evidence cropped, rows unreadable"
+    ],
+    "mobile/zh-TW/normal/cuesheet.conflict": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/cuesheet.review": [
+      "REJECTED",
+      "primary evidence truncated at left edge"
+    ],
+    "mobile/zh-TW/normal/dca.early-contribution": [
+      "REJECTED",
+      "row text escapes pill"
+    ],
+    "mobile/zh-TW/normal/dca.late-contribution": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/dca.scanner-handoff": [
+      "REJECTED",
+      "row text escapes pill"
+    ],
+    "mobile/zh-TW/normal/dca.pass": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/normal/outro.settled": [
+      "BLOCKED",
+      "heatmap order-dependent"
+    ],
+    "desktop/en/reduce/intro.settled": [
+      "REJECTED",
+      "title clipped at right viewport edge"
+    ],
+    "desktop/en/reduce/commerce.reduced": [
+      "REJECTED",
+      "phone screen empty, no failure-state evidence"
+    ],
+    "desktop/en/reduce/nocode.reduced": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/en/reduce/social.reduced": [
+      "APPROVED",
+      "DATABASE label partly occluded by phone"
+    ],
+    "desktop/en/reduce/cuesheet.reduced": [
+      "REJECTED",
+      "copy over bright evidence, cast phone clipped at bottom"
+    ],
+    "desktop/en/reduce/dca.reduced": [
+      "REJECTED",
+      "title/body overlap contribution rows; PASS overlaps a row"
+    ],
+    "desktop/en/reduce/outro.reduced": [
+      "BLOCKED",
+      "heatmap order-dependent"
+    ],
+    "desktop/zh-TW/reduce/intro.settled": [
+      "REJECTED",
+      "title clipped at right edge; label collides with header"
+    ],
+    "desktop/zh-TW/reduce/commerce.reduced": [
+      "REJECTED",
+      "phone screen empty"
+    ],
+    "desktop/zh-TW/reduce/nocode.reduced": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/reduce/social.reduced": [
+      "APPROVED",
+      ""
+    ],
+    "desktop/zh-TW/reduce/cuesheet.reduced": [
+      "REJECTED",
+      "copy over bright evidence"
+    ],
+    "desktop/zh-TW/reduce/dca.reduced": [
+      "REJECTED",
+      "title overlaps rows; 工具 orphan line"
+    ],
+    "desktop/zh-TW/reduce/outro.reduced": [
+      "REJECTED",
+      "title runs flush to right viewport edge"
+    ],
+    "mobile/en/reduce/intro.settled": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/reduce/commerce.reduced": [
+      "REJECTED",
+      "phone screen empty"
+    ],
+    "mobile/en/reduce/nocode.reduced": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/en/reduce/social.reduced": [
+      "REJECTED",
+      "phone illegible; structural labels cut by phone"
+    ],
+    "mobile/en/reduce/cuesheet.reduced": [
+      "APPROVED",
+      "evidence cropped but copy readable"
+    ],
+    "mobile/en/reduce/dca.reduced": [
+      "REJECTED",
+      "multiple rows clip their second line; RECENTLY label overlaps a row"
+    ],
+    "mobile/en/reduce/outro.reduced": [
+      "BLOCKED",
+      "heatmap order-dependent"
+    ],
+    "mobile/zh-TW/reduce/intro.settled": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/reduce/commerce.reduced": [
+      "REJECTED",
+      "phone screen empty"
+    ],
+    "mobile/zh-TW/reduce/nocode.reduced": [
+      "APPROVED",
+      ""
+    ],
+    "mobile/zh-TW/reduce/social.reduced": [
+      "REJECTED",
+      "phone illegible"
+    ],
+    "mobile/zh-TW/reduce/cuesheet.reduced": [
+      "REJECTED",
+      "primary evidence truncated at left edge; also resolves to a different evidence frame than the EN reduced capture"
+    ],
+    "mobile/zh-TW/reduce/dca.reduced": [
+      "REJECTED",
+      "multiple rows clip their second description line; 最近在... label overlaps a row"
+    ],
+    "mobile/zh-TW/reduce/outro.reduced": [
+      "BLOCKED",
+      "heatmap order-dependent"
+    ]
+  }
+}

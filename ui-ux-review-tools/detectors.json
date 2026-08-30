@@ -1,0 +1,3344 @@
+[
+  {
+    "key": "desktop/en/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/commerce.quiet-after-checkout",
+    "checkpoint_id": "commerce.quiet-after-checkout",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected expired phone, loudest is commerce-phone-checkout (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-expired",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/commerce.unavailable",
+    "checkpoint_id": "commerce.unavailable",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected unavailable phone, loudest is commerce-phone-expired (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-unavailable",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/commerce.final-settled",
+    "checkpoint_id": "commerce.final-settled",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/nocode.yaml-readable",
+    "checkpoint_id": "nocode.yaml-readable",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.04
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0
+      }
+    }
+  },
+  {
+    "key": "desktop/en/normal/nocode.execution",
+    "checkpoint_id": "nocode.execution",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D8_STEP_NOT_MIDDLE",
+        "detail": "emphasised step 1/3"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.041
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0.15
+      }
+    }
+  },
+  {
+    "key": "desktop/en/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.037
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.137
+      }
+    }
+  },
+  {
+    "key": "desktop/en/normal/social.product",
+    "checkpoint_id": "social.product",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/social.database",
+    "checkpoint_id": "social.database",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/social.web",
+    "checkpoint_id": "social.web",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/cuesheet.workspace",
+    "checkpoint_id": "cuesheet.workspace",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 35% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-workspace covers 35% of the copy block"
+      },
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-workspace loses 36% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.349
+        },
+        {
+          "cls": "cue-frame cue-workspace",
+          "ratio": 0.346
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/cuesheet.conflict",
+    "checkpoint_id": "cuesheet.conflict",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 41% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-conflict covers 41% of the copy block"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 54% of its box is bright (mean L=0.4576)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 39% of its box is bright (mean L=0.4)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.409
+        },
+        {
+          "cls": "cue-frame cue-conflict",
+          "ratio": 0.406
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 50% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-review covers 50% of the copy block"
+      },
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 36% of its content to object-fit cover"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 54% of its box is bright (mean L=0.4124)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 33% of its box is bright (mean L=0.3809)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.502
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.499
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/dca.early-contribution",
+    "checkpoint_id": "dca.early-contribution",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "audit-board scene-object covers 27% of the copy block"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.266
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/dca.phrased-hold",
+    "checkpoint_id": "dca.phrased-hold",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "audit-board scene-object covers 27% of the copy block"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.266
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/dca.late-contribution",
+    "checkpoint_id": "dca.late-contribution",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/dca.scanner-handoff",
+    "checkpoint_id": "dca.scanner-handoff",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.quiet-after-checkout",
+    "checkpoint_id": "commerce.quiet-after-checkout",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected expired phone, loudest is commerce-phone-checkout (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-expired",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.unavailable",
+    "checkpoint_id": "commerce.unavailable",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected unavailable phone, loudest is commerce-phone-expired (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-unavailable",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.final-settled",
+    "checkpoint_id": "commerce.final-settled",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/nocode.yaml-readable",
+    "checkpoint_id": "nocode.yaml-readable",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.039
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0
+      }
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/nocode.execution",
+    "checkpoint_id": "nocode.execution",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D8_STEP_NOT_MIDDLE",
+        "detail": "emphasised step 1/3"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.04
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0.15
+      }
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.037
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.137
+      }
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.product",
+    "checkpoint_id": "social.product",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.database",
+    "checkpoint_id": "social.database",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.web",
+    "checkpoint_id": "social.web",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/cuesheet.workspace",
+    "checkpoint_id": "cuesheet.workspace",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 35% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-workspace covers 35% of the copy block"
+      },
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-workspace loses 36% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.348
+        },
+        {
+          "cls": "cue-frame cue-workspace",
+          "ratio": 0.345
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/cuesheet.conflict",
+    "checkpoint_id": "cuesheet.conflict",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 41% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-conflict covers 41% of the copy block"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 54% of its box is bright (mean L=0.4546)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 39% of its box is bright (mean L=0.3926)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.408
+        },
+        {
+          "cls": "cue-frame cue-conflict",
+          "ratio": 0.405
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 50% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-review covers 50% of the copy block"
+      },
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 36% of its content to object-fit cover"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 54% of its box is bright (mean L=0.4083)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 33% of its box is bright (mean L=0.3786)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-copy: 31% of its box is bright (mean L=0.3532)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.502
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.498
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.early-contribution",
+    "checkpoint_id": "dca.early-contribution",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "audit-board scene-object covers 28% of the copy block"
+      },
+      {
+        "id": "D9_SHORT_LAST_LINE",
+        "detail": "title last line 27% of widest"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.281
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.phrased-hold",
+    "checkpoint_id": "dca.phrased-hold",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "audit-board scene-object covers 28% of the copy block"
+      },
+      {
+        "id": "D9_SHORT_LAST_LINE",
+        "detail": "title last line 27% of widest"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.282
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.late-contribution",
+    "checkpoint_id": "dca.late-contribution",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.scanner-handoff",
+    "checkpoint_id": "dca.scanner-handoff",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/en/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/en/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/en/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected expired phone, loudest is commerce-phone-checkout (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-expired",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/en/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.042
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.137
+      }
+    }
+  },
+  {
+    "key": "laptop/en/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/en/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 42% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-review covers 41% of the copy block"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 42% of its box is bright (mean L=0.3425)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 30% of its box is bright (mean L=0.3352)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.418
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.414
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/en/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/en/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": "laptop",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected expired phone, loudest is commerce-phone-checkout (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-expired",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.041
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.137
+      }
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 42% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-review covers 41% of the copy block"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 42% of its box is bright (mean L=0.3404)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 31% of its box is bright (mean L=0.3339)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-copy: 30% of its box is bright (mean L=0.3402)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.417
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.414
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "laptop/zh-TW/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": "laptop",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/commerce.quiet-after-checkout",
+    "checkpoint_id": "commerce.quiet-after-checkout",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected expired phone, loudest is commerce-phone-checkout (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-expired",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/commerce.unavailable",
+    "checkpoint_id": "commerce.unavailable",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected unavailable phone, loudest is commerce-phone-expired (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-unavailable",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/commerce.final-settled",
+    "checkpoint_id": "commerce.final-settled",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/nocode.yaml-readable",
+    "checkpoint_id": "nocode.yaml-readable",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0
+      }
+    }
+  },
+  {
+    "key": "mobile/en/normal/nocode.execution",
+    "checkpoint_id": "nocode.execution",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D8_STEP_NOT_MIDDLE",
+        "detail": "emphasised step 1/3"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0.15
+      }
+    }
+  },
+  {
+    "key": "mobile/en/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.137
+      }
+    }
+  },
+  {
+    "key": "mobile/en/normal/social.product",
+    "checkpoint_id": "social.product",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/social.database",
+    "checkpoint_id": "social.database",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/social.web",
+    "checkpoint_id": "social.web",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D5_EVIDENCE_TOO_SMALL",
+        "detail": "phone evidence in social-final-phone-screen rendered 92.2px wide (source 1081px)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/cuesheet.workspace",
+    "checkpoint_id": "cuesheet.workspace",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-workspace loses 60% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/cuesheet.conflict",
+    "checkpoint_id": "cuesheet.conflict",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-conflict loses 53% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 60% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.055
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.051
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/dca.early-contribution",
+    "checkpoint_id": "dca.early-contribution",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.058
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/dca.late-contribution",
+    "checkpoint_id": "dca.late-contribution",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/dca.scanner-handoff",
+    "checkpoint_id": "dca.scanner-handoff",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/commerce.quiet-after-checkout",
+    "checkpoint_id": "commerce.quiet-after-checkout",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected expired phone, loudest is commerce-phone-checkout (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-expired",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/commerce.unavailable",
+    "checkpoint_id": "commerce.unavailable",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D7_SCENARIO_DESYNC",
+        "detail": "expected unavailable phone, loudest is commerce-phone-expired (1)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-unavailable",
+        "o": 0.58
+      },
+      "phone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/commerce.final-settled",
+    "checkpoint_id": "commerce.final-settled",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/nocode.yaml-readable",
+    "checkpoint_id": "nocode.yaml-readable",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0
+      }
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/nocode.execution",
+    "checkpoint_id": "nocode.execution",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D8_STEP_NOT_MIDDLE",
+        "detail": "emphasised step 1/3"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 0,
+        "count": 3,
+        "alpha": 0.15
+      }
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.137
+      }
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/social.product",
+    "checkpoint_id": "social.product",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/social.database",
+    "checkpoint_id": "social.database",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/social.web",
+    "checkpoint_id": "social.web",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D5_EVIDENCE_TOO_SMALL",
+        "detail": "phone evidence in social-final-phone-screen rendered 92.2px wide (source 1081px)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/cuesheet.workspace",
+    "checkpoint_id": "cuesheet.workspace",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-workspace loses 60% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/cuesheet.conflict",
+    "checkpoint_id": "cuesheet.conflict",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-conflict loses 53% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 60% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/dca.early-contribution",
+    "checkpoint_id": "dca.early-contribution",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D3_TEXT_ESCAPES_CONTAINER",
+        "detail": "\"test: fail the Python runner when it collects no t\" overflows audit-row by 2.4px"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 1,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/dca.late-contribution",
+    "checkpoint_id": "dca.late-contribution",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [
+      {
+        "id": "D3_TEXT_ESCAPES_CONTAINER",
+        "detail": "\"agt test can report success after skipping every f\" overflows audit-row by 2.2px"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 1,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/dca.scanner-handoff",
+    "checkpoint_id": "dca.scanner-handoff",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "normal",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/reduce/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D4_EDGE_CLIP",
+        "detail": "scene-title line reaches x=1446 of 1440"
+      },
+      {
+        "id": "D4_EDGE_CLIP",
+        "detail": "scene-title line reaches x=1498 of 1440"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/reduce/commerce.reduced",
+    "checkpoint_id": "commerce.reduced",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce-phone-screen visible with no visible image inside"
+      },
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce phone screen shows no scenario image"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [
+        "commerce-phone-screen"
+      ],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": true,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 0
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/reduce/nocode.reduced",
+    "checkpoint_id": "nocode.reduced",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.042
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.14
+      }
+    }
+  },
+  {
+    "key": "desktop/en/reduce/social.reduced",
+    "checkpoint_id": "social.reduced",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/reduce/cuesheet.reduced",
+    "checkpoint_id": "cuesheet.reduced",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 47% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-review covers 46% of the copy block"
+      },
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 36% of its content to object-fit cover"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 55% of its box is bright (mean L=0.4615)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 37% of its box is bright (mean L=0.4037)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.466
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.463
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/reduce/dca.reduced",
+    "checkpoint_id": "dca.reduced",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "audit-board scene-object covers 26% of the copy block"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 31% of its box is bright (mean L=0.3474)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.263
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/en/reduce/outro.reduced",
+    "checkpoint_id": "outro.reduced",
+    "viewport": "desktop",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/reduce/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D4_EDGE_CLIP",
+        "detail": "scene-title line reaches x=1444 of 1440"
+      },
+      {
+        "id": "D4_EDGE_CLIP",
+        "detail": "scene-title line reaches x=1448 of 1440"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/reduce/commerce.reduced",
+    "checkpoint_id": "commerce.reduced",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce-phone-screen visible with no visible image inside"
+      },
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce phone screen shows no scenario image"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [
+        "commerce-phone-screen"
+      ],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": true,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 0
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/reduce/nocode.reduced",
+    "checkpoint_id": "nocode.reduced",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate code-plate scene-object",
+          "ratio": 0.042
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.14
+      }
+    }
+  },
+  {
+    "key": "desktop/zh-TW/reduce/social.reduced",
+    "checkpoint_id": "social.reduced",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/reduce/cuesheet.reduced",
+    "checkpoint_id": "cuesheet.reduced",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "plate cuesheet-desktop scene-object covers 47% of the copy block"
+      },
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "cue-frame cue-review covers 46% of the copy block"
+      },
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 36% of its content to object-fit cover"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-label: 55% of its box is bright (mean L=0.4624)"
+      },
+      {
+        "id": "D1_LIGHT_TEXT_ON_BRIGHT",
+        "detail": "scene-title: 38% of its box is bright (mean L=0.3987)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.465
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.462
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/reduce/dca.reduced",
+    "checkpoint_id": "dca.reduced",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D2_COPY_EVIDENCE_OVERLAP",
+        "detail": "audit-board scene-object covers 28% of the copy block"
+      },
+      {
+        "id": "D9_SHORT_LAST_LINE",
+        "detail": "title last line 27% of widest"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.279
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "desktop/zh-TW/reduce/outro.reduced",
+    "checkpoint_id": "outro.reduced",
+    "viewport": "desktop",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/reduce/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/reduce/commerce.reduced",
+    "checkpoint_id": "commerce.reduced",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce-phone-screen visible with no visible image inside"
+      },
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce phone screen shows no scenario image"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [
+        "commerce-phone-screen"
+      ],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": true,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 0
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/reduce/nocode.reduced",
+    "checkpoint_id": "nocode.reduced",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.14
+      }
+    }
+  },
+  {
+    "key": "mobile/en/reduce/social.reduced",
+    "checkpoint_id": "social.reduced",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D5_EVIDENCE_TOO_SMALL",
+        "detail": "phone evidence in social-final-phone-screen rendered 93.4px wide (source 1081px)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/reduce/cuesheet.reduced",
+    "checkpoint_id": "cuesheet.reduced",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 60% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "plate cuesheet-desktop scene-object",
+          "ratio": 0.052
+        },
+        {
+          "cls": "cue-frame cue-review",
+          "ratio": 0.048
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/reduce/dca.reduced",
+    "checkpoint_id": "dca.reduced",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [
+        {
+          "cls": "audit-board scene-object",
+          "ratio": 0.057
+        }
+      ],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/en/reduce/outro.reduced",
+    "checkpoint_id": "outro.reduced",
+    "viewport": "mobile",
+    "locale": "en",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/commerce.reduced",
+    "checkpoint_id": "commerce.reduced",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce-phone-screen visible with no visible image inside"
+      },
+      {
+        "id": "D6_EMPTY_EVIDENCE",
+        "detail": "commerce phone screen shows no scenario image"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [
+        "commerce-phone-screen"
+      ],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": true,
+      "sceneOpacity": 1,
+      "word": {
+        "cls": "commerce-transition-word commerce-transition-checkout",
+        "o": 0
+      },
+      "phone": {
+        "cls": "commerce-phone-checkout",
+        "o": 0
+      },
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/nocode.reduced",
+    "checkpoint_id": "nocode.reduced",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": {
+        "index": 2,
+        "count": 3,
+        "alpha": 0.14
+      }
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/social.reduced",
+    "checkpoint_id": "social.reduced",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D5_EVIDENCE_TOO_SMALL",
+        "detail": "phone evidence in social-final-phone-screen rendered 93.4px wide (source 1081px)"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/cuesheet.reduced",
+    "checkpoint_id": "cuesheet.reduced",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [
+      {
+        "id": "D10_EVIDENCE_OVERCROPPED",
+        "detail": "cue-frame cue-review loses 60% of its content to object-fit cover"
+      }
+    ],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/dca.reduced",
+    "checkpoint_id": "dca.reduced",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/outro.reduced",
+    "checkpoint_id": "outro.reduced",
+    "viewport": "mobile",
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "flags": [],
+    "facts_digest": {
+      "copyOverlap": [],
+      "escapes": 0,
+      "emptyEvidence": [],
+      "croppedEvidence": [],
+      "phoneImagesAllHidden": false,
+      "sceneOpacity": 1,
+      "word": null,
+      "phone": null,
+      "stepEmphasis": null
+    }
+  }
+]
