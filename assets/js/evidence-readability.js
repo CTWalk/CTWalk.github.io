@@ -23,10 +23,17 @@
     .scene[data-scene="4"] .cuesheet-desktop{
       left:max(1vw,calc((100% - var(--content))/2));
       top:6.5%;
-      width:min(64vw,880px);
+      width:min(51vw,720px);
       height:min(74vh,710px);
       transform-origin:42% 46%;
       will-change:transform,scale,filter
+    }
+
+    /* CueSheet is a right-copy scene. Keep its copy column narrow enough that
+       the accepted product evidence and the reading column have separate
+       desktop/laptop ownership instead of painting through one another. */
+    .scene[data-scene="4"] .scene-content{
+      width:min(390px,calc(100% - 2*var(--pad)))
     }
 
     .scene[data-scene="4"] .cue-phone-manager,
@@ -54,6 +61,9 @@
         width:96vw;
         height:54vh;
         transform-origin:center top
+      }
+      .scene[data-scene="4"] .scene-content{
+        width:calc(100% - 2*var(--pad))
       }
       .scene[data-scene="4"] .cue-phone-manager,
       .scene[data-scene="4"] .cue-phone-cast{
