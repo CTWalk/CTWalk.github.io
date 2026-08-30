@@ -76,13 +76,13 @@
     }
 
     (async () => {
-      const loaded = await loadSafely('./mobile-fallback.js');
+      const loaded = await loadSafely('./assets/js/mobile-fallback.js');
       if (!loaded) {
         console.error('[site-bootstrap] mobile fallback failed to initialize');
       }
 
       if (params.get('uiux-test') === '1') {
-        await loadSafely('./ui-ux-mobile-test-control.js');
+        await loadSafely('./scripts/controls/ui-ux-mobile-test-control.js');
       }
     })();
     return;
@@ -109,17 +109,17 @@
   document.head.appendChild(style);
 
   (async () => {
-    // Preserve the established desktop initialization order so this ticket does
-    // not alter animation-writer precedence or the accepted wide-screen design.
-    await loadSafely('./social-runtime.js');
-    await loadSafely('./commerce-integrated.js');
-    await loadSafely('./outro-heatmap.js');
-    await loadSafely('./typography-runtime.js');
-    await loadSafely('./evidence-readability.js');
-    await loadSafely('./experience-pacing.js');
+    // Preserve the established desktop initialization order so this structural
+    // cleanup does not alter animation-writer precedence or the accepted design.
+    await loadSafely('./assets/js/social-runtime.js');
+    await loadSafely('./assets/js/commerce-integrated.js');
+    await loadSafely('./assets/js/outro-heatmap.js');
+    await loadSafely('./assets/js/typography-runtime.js');
+    await loadSafely('./assets/js/evidence-readability.js');
+    await loadSafely('./assets/js/experience-pacing.js');
 
     if (params.get('uiux-test') === '1') {
-      await loadSafely('./ui-ux-test-control.js');
+      await loadSafely('./scripts/controls/ui-ux-test-control.js');
     }
   })();
 })();
