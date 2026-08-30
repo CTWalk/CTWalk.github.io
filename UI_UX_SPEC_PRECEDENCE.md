@@ -91,6 +91,7 @@ Active rule:
 
 - automation, screenshots, isolated harnesses and source review provide engineering/mechanical evidence only;
 - authoritative human UI/UX acceptance must occur on the actual website presentation for the candidate revision;
+- the deployed website reviewed by the human must correspond to the source revision being proposed for freeze, and that revision relationship must be recorded;
 - for normal-motion mobile, the reviewer must perceive the wave motion on the website; `requestAnimationFrame` activity alone is not sufficient;
 - a screenshot may prove a deterministic checkpoint, but cannot by itself prove motion quality or final perceptual acceptance.
 
