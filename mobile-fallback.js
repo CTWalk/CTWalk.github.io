@@ -106,7 +106,7 @@
     float wrapDist(float a,float b){float d=abs(a-b);return min(d,1.-d);}
 
     float waveEnergy(float s,float t){
-      float travel=fract(t*.055);
+      float travel=fract(t*.080);
       float phase=6.2831853*(s*1.15-t*.095);
       float broad=.5+.5*sin(phase);
       float secondary=.5+.5*sin(phase*2.05+1.25+sin(t*.33)*.35);
@@ -165,7 +165,7 @@
       float edgeBoost=1.-smoothstep(0.,.14,nearest);
       float luminance=.34+.66*edgeBoost;
 
-      float baseHue=fract(.56+t*.030);
+      float baseHue=fract(.56+t*.050);
       float perimeterPhase=(sb*ib+sr*ir+st*it+sl*il)/max(.001,ib+ir+it+il);
       float hueVariation=.028*sin(6.2831853*(perimeterPhase*1.05-t*.035));
       vec3 color=hsv2rgb(vec3(fract(baseHue+hueVariation),.76,.98));
