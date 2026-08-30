@@ -3,7 +3,8 @@
 Issue: #7  
 Acceptance contract: #5 / `UI_UX_ACCEPTANCE_CONTRACT.md`  
 Checkpoint manifest: #12 / `UI_UX_BASELINE_MANIFEST.md`  
-Mobile presentation: #20
+Mobile presentation: #20  
+Specification precedence: `UI_UX_SPEC_PRECEDENCE.md`
 
 ## Purpose
 
@@ -15,7 +16,9 @@ The public browser contract remains:
 window.__portfolioTest
 ```
 
-The implementation behind that API now depends on the active presentation mode.
+The implementation behind that API depends on the active presentation mode.
+
+Where older documentation uses `Canvas` as shorthand for the mobile effect, the active production rendering contract is the WebGL perimeter-wave effect defined by `UI_UX_MOBILE_FALLBACK_VISUAL_AMENDMENT.md`. Compatibility field/API names do not override that contract.
 
 ## Activation
 
@@ -157,13 +160,15 @@ mobile.fallback.reduced
 
 ### `mobile.fallback`
 
-Requires normal motion mode. In test mode the ambient Canvas is frozen at a fixed deterministic time (`mobile-fallback.js` test time) before capture. The user-facing production page still animates the edge-light field.
+Requires normal motion mode. In test mode the production perimeter-wave shader is frozen at a fixed deterministic time before capture. The user-facing production page still animates the WebGL wave and its line-by-line copy entrance.
+
+The deterministic screenshot is a composition checkpoint; it does not substitute for website-level human review of normal motion.
 
 ### `mobile.fallback.reduced`
 
-Requires `prefers-reduced-motion: reduce`. The same composition is rendered with the ambient field frozen at the defined reduced-motion state.
+Requires `prefers-reduced-motion: reduce`. The same accepted composition is rendered with the WebGL effect frozen at the defined reduced-motion state and copy entrance bypassed.
 
-The mobile controller returns a completed settle result directly because it explicitly sets the Canvas to a deterministic frame rather than searching a desktop scroll timeline.
+The mobile controller returns a completed settle result directly because it explicitly fixes the mobile effect at a deterministic state rather than searching a desktop scroll timeline.
 
 ## Readiness
 
@@ -176,13 +181,13 @@ const ready = await page.evaluate(() => window.__portfolioTest.ready());
 
 `assetsReady: false` is not suitable for a baseline candidate.
 
-In mobile mode, desktop evidence images are intentionally excluded from visible-asset readiness because the desktop experience is not part of the mobile product.
+In mobile mode, the actual GitHub profile avatar is visible content and must be ready. Desktop evidence images remain intentionally excluded from visible-asset readiness because the desktop experience is not part of the mobile product.
 
 ## Visual settling
 
 Desktop settling observes stable computed-style signatures across frames.
 
-Mobile settling explicitly freezes the fallback Canvas at its semantic test frame and then flushes stable frames. No arbitrary long sleep defines readiness.
+Mobile settling explicitly freezes the fallback shader at its semantic test frame and then flushes stable frames. No arbitrary long sleep defines readiness.
 
 A capture must treat `settled: false` as a harness failure.
 
@@ -204,7 +209,9 @@ checkpoints
 scrollBehaviorOverride
 ```
 
-Desktop also reports document/scene state. Mobile reports the fallback state, including deterministic Canvas time.
+Desktop also reports document/scene state. Mobile reports the fallback state, including deterministic effect time and WebGL availability where exposed by the implementation.
+
+Compatibility fields such as `canvasAvailable` may remain for API stability; they do not mean Canvas is the production motion owner.
 
 ## Production invariants
 
@@ -216,4 +223,5 @@ The test-control layer must preserve:
 - no copied production animation timeline constants;
 - no GitHub Actions dependency;
 - no desktop scene runtime execution as part of the mobile fallback;
-- deterministic mobile Canvas state under test/reduced-motion modes.
+- deterministic mobile WebGL/effect state under test/reduced-motion modes;
+- no test-mode behavior that is treated as a substitute for human verification on the actual website.
