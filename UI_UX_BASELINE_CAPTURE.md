@@ -4,7 +4,8 @@ Issue: #6
 Acceptance contract: #5 / `UI_UX_ACCEPTANCE_CONTRACT.md`  
 Checkpoint manifest: #12 / `UI_UX_BASELINE_MANIFEST.md`  
 Deterministic control: #7 / `UI_UX_TEST_CONTROL.md`  
-Mobile presentation: #20
+Mobile presentation: #20  
+Specification precedence: `UI_UX_SPEC_PRECEDENCE.md`
 
 ## Purpose
 
@@ -13,6 +14,8 @@ This is the local candidate-capture workflow for the UI/UX baseline program.
 It deliberately does **not** use GitHub Actions as an acceptance gate. CI integration belongs to #10 after the capture/comparison model is stable.
 
 The capture command generates candidate images only. A successful run never means the images are approved.
+
+Where older wording in #5/#7/#12 refers to the superseded mobile Canvas edge-light or QA/SDET micro-metadata, follow `UI_UX_SPEC_PRECEDENCE.md` and `UI_UX_MOBILE_FALLBACK_VISUAL_AMENDMENT.md`.
 
 ## Runtime selection
 
@@ -139,13 +142,15 @@ The previous 130-candidate run at source SHA `1c1990ef05dc764b8e2a1797f7fc41fbde
 
 ## Mobile determinism
 
-The production mobile fallback uses a slow Canvas edge-light animation.
+The production mobile fallback uses the accepted WebGL perimeter-wave effect defined by `UI_UX_MOBILE_FALLBACK_VISUAL_AMENDMENT.md`.
 
-Under `?uiux-test=1`, the mobile controller freezes that Canvas at a fixed semantic time before capture. Under `prefers-reduced-motion: reduce`, it uses a separate fixed reduced-motion state.
+Under `?uiux-test=1`, the mobile controller freezes the same shader at a fixed deterministic time before capture. Under `prefers-reduced-motion: reduce`, it uses a separate fixed reduced-motion state.
 
-The effect contains no uncontrolled random state.
+The effect contains no uncontrolled random state. The blurred secondary canvas is a derived visual layer, not the production motion owner.
 
 Desktop evidence images are hidden from the active mobile presentation and are excluded from mobile visible-asset readiness.
+
+A fixed test screenshot proves deterministic mobile composition only. It does **not** prove that the normal-motion perimeter wave is perceptually correct; that requires human verification on the actual website.
 
 ## Output
 
@@ -223,11 +228,11 @@ Browser-runtime availability and evidence-asset availability are separate gates.
 
 A desktop candidate cannot be approved when an expected visible evidence image is missing. Do not replace missing evidence with placeholders merely to make capture pass.
 
-The mobile fallback contains no generated/raster project-evidence image, so intentionally hidden desktop assets are outside its readiness surface.
+The mobile fallback may load the actual GitHub profile avatar as visible identity/navigation content. That asset must be ready for the mobile candidate. Hidden desktop evidence remains outside the mobile readiness surface.
 
 ## Acceptance workflow
 
-A candidate becomes golden only after explicit review against #5.
+A candidate becomes golden only after explicit review against the active specification precedence.
 
 For each image verify:
 
@@ -239,6 +244,8 @@ For each image verify:
 - correct reduced-motion meaning when applicable;
 - hierarchy and readability remain consistent with the active contract;
 - deterministic repeatability.
+
+Human perceptual acceptance must also occur on the actual website for the candidate revision. The deployed revision relationship must be recorded. Screenshots, detector output and local isolated renders cannot substitute for this website-level review.
 
 A visual difference must be classified before any baseline is replaced. Never solve a failing comparison by regenerating snapshots first.
 
