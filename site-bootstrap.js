@@ -76,7 +76,7 @@
       }
 
       if (params.get('uiux-test') === '1') {
-        await loadSafely('./ui-ux-test-control.js');
+        await loadSafely('./ui-ux-mobile-test-control.js');
       }
     })();
     return;
