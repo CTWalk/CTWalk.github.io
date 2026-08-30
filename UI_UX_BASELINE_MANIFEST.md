@@ -3,7 +3,8 @@
 Issue: #12  
 Parent baseline ticket: #6  
 Acceptance contract: #5 / `UI_UX_ACCEPTANCE_CONTRACT.md`  
-Mobile presentation decision: #20
+Mobile presentation decision: #20  
+Specification precedence: `UI_UX_SPEC_PRECEDENCE.md`
 
 ## 1. Purpose
 
@@ -12,6 +13,8 @@ This manifest defines **which rendered UI states are worth freezing** before vis
 A successful capture is never an approval. A checkpoint becomes authoritative only after the rendered state has been reviewed against the acceptance contract and explicitly accepted.
 
 The checkpoint ID is the stable contract. Scroll percentages, RAF timing constants, DOM structure, selector names, and source-level line breaks are implementation details.
+
+For mobile identity, composition, rendering ownership and motion quality, `UI_UX_MOBILE_FALLBACK_VISUAL_AMENDMENT.md` is authoritative under `UI_UX_SPEC_PRECEDENCE.md`.
 
 ## 2. Active presentation model
 
@@ -304,25 +307,28 @@ Mobile is no longer a compressed version of the seven desktop scenes.
 
 **Presentation:** normal-motion mobile fallback at 390×844.
 
-**Must show:**
+**Mechanical deterministic checkpoint must show:**
 
-- CTWalk / QA / SDET identity;
 - EN or zh-TW language control;
-- oversized editorial desktop-first message;
-- the accepted desktop guidance copy;
-- intentionally dark poster-like composition;
-- code-rendered ambient edge light;
-- GitHub navigation;
+- oversized desktop-first headline;
+- accepted desktop guidance copy;
+- actual CTWalk GitHub profile avatar as the central focal point;
+- `Open GitHub` / `查看 GitHub` directly beneath the avatar;
+- intentionally dark central reading field;
+- deterministic frozen state of the accepted perimeter-wave effect;
 - no desktop scene content.
 
 **Must not show:**
 
+- QA/SDET eyebrow copy, scene/index numbers, mode labels, footer metadata, or other desktop-style micro-context;
 - CommerceOps, noCodeE2E, SocialPlatform, CueSheet, DCA, or Outro scene evidence;
-- scroll narrative or scene numbers from the desktop experience;
+- desktop scroll narrative;
 - generated-image material used as the fallback page;
 - random/uncontrolled particle state.
 
-In `?uiux-test=1`, the Canvas field resolves to a fixed deterministic time so the screenshot is reproducible.
+In `?uiux-test=1`, the WebGL perimeter-wave effect resolves to a fixed deterministic time so the screenshot is reproducible. Compatibility API names may still mention Canvas; those names do not define the production rendering owner.
+
+The fixed screenshot does **not** prove normal-motion quality. Website-level human verification must separately confirm the accepted continuous perimeter-wave motion, one-colour-family behaviour, edge-to-center falloff, line-by-line copy entrance and overall hierarchy.
 
 **Coverage:** mobile normal, both locales.
 
@@ -330,7 +336,7 @@ In `?uiux-test=1`, the Canvas field resolves to a fixed deterministic time so th
 
 **Presentation:** reduced-motion mobile fallback.
 
-The same composition and message remain complete, but the ambient Canvas field is frozen at the defined reduced-motion state.
+The same complete avatar/CTA/headline/guidance composition remains. The perimeter-wave effect is frozen to the defined deterministic reduced-motion state, and line-by-line copy entrance is bypassed so typography is immediately settled.
 
 **Coverage:** mobile reduced, both locales.
 
@@ -384,7 +390,7 @@ supersedes (optional)
 
 If an expected visible asset fails to load, the state cannot be approved unless the missing asset is intentionally under test.
 
-For mobile fallback captures, hidden desktop evidence is outside the active presentation and must not participate in visible-asset readiness.
+For mobile fallback captures, the GitHub profile avatar is visible content and participates in readiness. Hidden desktop evidence is outside the active presentation and must not participate in visible-asset readiness.
 
 ## 10. Approval questions
 
@@ -401,11 +407,13 @@ Every candidate intended for a golden baseline must be explicitly reviewed.
 ### Perceptual
 
 - intended message is immediately understandable;
-- hierarchy matches the acceptance contract;
+- hierarchy matches the active specification precedence;
 - evidence/motion is subordinate or dominant in the intended way;
 - no accidental visual noise or rushed/awkward state is being frozen.
 
 A detector may triage candidates, but it cannot approve them.
+
+Authoritative human perceptual acceptance must occur on the actual website presentation for the candidate revision. Screenshot review alone can support a proposed verdict but cannot complete the human-acceptance gate.
 
 ## 11. Final freeze rule
 
@@ -416,6 +424,7 @@ one final accepted repository SHA
 + one controlled browser/runtime environment
 + active 78-image matrix
 + explicit review of every candidate
++ website-level human verification of that candidate revision
 ```
 
 Do not assemble the final golden origin from a mixture of old source SHAs simply because individual historical images were previously approved.
