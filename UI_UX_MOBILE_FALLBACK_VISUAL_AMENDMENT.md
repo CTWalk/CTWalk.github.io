@@ -39,33 +39,53 @@ oversized desktop-first headline
 concise desktop-viewing guidance
 ```
 
-The center must no longer read as accidental empty space. The avatar/link pair should be visually centered and remain secondary to the headline while providing a clear identity/navigation anchor.
+The center must not read as accidental empty space. The avatar/link pair should be visually centered and remain secondary to the headline while providing a clear identity/navigation anchor.
 
-## Edge-light requirement
+## Four-edge fluid-light requirement
 
-The Hey-Siri-like treatment must read visibly as **animated light emitted around the physical viewport edge**, not as either a faint coloured background wash or a static decorative border.
+The previous Canvas2D travelling hotspots / CSS luminous-rim implementation is superseded.
 
-Required characteristics:
+The mobile fallback now uses the supplied **Fluid Glow Bar** WebGL shader language as the authoritative effect. The original one-edge shader is adapted onto all four physical viewport edges by rotating/mirroring the local UV mapping while preserving its core behavior:
 
-- a clearly visible luminous rim on all four edges;
-- warm orange/red emphasis along the upper edge;
-- magenta/violet along the left edge;
-- blue/cyan along the lower edge;
-- cyan/green along the right edge;
-- visible travelling hotspots / colour bloom along the rim in normal-motion production mode;
-- motion must be perceivable within several seconds while remaining ambient rather than busy;
-- broad colour bloom may extend inward, but the central reading field stays dark and calm;
-- no random particle field;
-- no static CSS layer may visually overpower the animated Canvas in normal-motion mode;
-- `?uiux-test=1` freezes the Canvas at a deterministic time;
-- `prefers-reduced-motion: reduce` freezes the effect into a deterministic static state.
+```text
+wave fields
+-> combined warp
+-> blue / red / yellow / green weighted colour mix
+-> height falloff
+-> ambient glow
+```
 
-The edge glow is the sole decorative motion of the mobile presentation. No desktop scene effect, portal/mock desktop object, generated image, screenshot substitute, or secondary animated object is required.
+The production implementation must apply that same fluid language to:
+
+- top edge;
+- right edge;
+- bottom edge;
+- left edge.
+
+Each edge may use a phase offset/orientation change so the four bands do not move as four mechanically synchronized copies. Corner overlap is acceptable when it reads as continuous fluid light around the viewport perimeter.
+
+### Required visual characteristics
+
+- fluid colour movement is visibly animated in normal-motion production mode;
+- the effect reads as four fluid light bands attached to the physical viewport edges, not as a static border or generic radial background;
+- the shader retains the supplied blue, red, yellow and green colour family unless a later human review explicitly changes it;
+- a blurred secondary canvas may extend the light inward, matching the supplied CodePen's crisp-fluid + blurred-glow layering;
+- the central reading field stays dark enough for the title, avatar, GitHub link and guidance to remain dominant;
+- no `lil-gui` or tuning UI is shipped in production;
+- no uncontrolled random particle system is introduced;
+- the earlier CSS/Canvas2D rim effect must not remain layered on top of the WebGL shader;
+- a static CSS edge treatment is allowed only as a WebGL-unavailable fallback, not as the normal production visual;
+- `?uiux-test=1` freezes the shader at a deterministic time;
+- `prefers-reduced-motion: reduce` freezes the same shader into a deterministic static state.
+
+The four-edge fluid light remains the sole decorative motion of the mobile presentation. No desktop scene effect, portal/mock desktop object, generated image, screenshot substitute, or secondary animated object is required.
 
 ## Verification consequence
 
-Future #6 mobile human verification should judge the actual deployed website against this composition.
+Future #6 mobile human verification must judge the actual deployed website against this composition.
 
-In normal motion, a human reviewer must be able to observe the edge light changing position/intensity on the actual website without waiting an impractically long period. A rim that looks static during ordinary viewing is a failed perceptual result even if `requestAnimationFrame` is technically running.
+In normal motion, the reviewer must be able to perceive fluid deformation / colour movement around the four physical edges during ordinary viewing. A result that looks like a static gradient, static border, or the previous hotspot/rim implementation is a failed perceptual result even if animation code is technically executing.
+
+The GitHub avatar and `Open GitHub` pair must remain centered and must not be displaced by the edge effect.
 
 The absence of the removed micro-context is intentional and must not be reported as missing content.
