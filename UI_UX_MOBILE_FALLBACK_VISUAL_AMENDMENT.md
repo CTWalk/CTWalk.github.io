@@ -45,7 +45,7 @@ The global hue transition itself should be smooth and ambient, similar to the su
 
 ### Wave motion
 
-The travelling energy from the previous implementation remains useful, but visible circular/globe silhouettes are not acceptable.
+The travelling energy remains useful, but visible circular/globe silhouettes are not acceptable.
 
 The motion must instead read as a **wave crest travelling around the perimeter**:
 
@@ -54,15 +54,35 @@ The motion must instead read as a **wave crest travelling around the perimeter**
 - the viewer should perceive flowing/waving light, not a ball moving along a track;
 - no discrete circular hotspot boundary should be obvious.
 
-### Inward penetration
+### Seamless edge blending
 
-The wave crest must also control how far the colour reaches toward the center.
+The four physical sides must not be assigned through hard nearest-edge regions.
 
-When wave energy rises on one portion of the perimeter, that portion should temporarily produce a deeper, softer inward glow. This is intentional and prevents the middle of the mobile composition from reading as static dead space.
+Visible diagonal boundaries, triangular wedges, or corner-to-center seams are explicitly rejected. The shader must blend contributions from top/right/bottom/left continuously so corners transition as one fluid field.
 
-The center must still preserve enough contrast for the avatar, CTA, headline, and guidance. The inward effect should behave like breathing ambient light, not an opaque colour wash.
+A reviewer should never be able to infer the mathematical edge partition from the rendered image.
 
-A low-resolution blurred secondary canvas remains appropriate for extending this wave energy inward.
+### Inward penetration and luminance falloff
+
+The wave crest controls **how far** colour reaches toward the center, but not by keeping the whole reached region at the same brightness.
+
+The required luminance relationship is:
+
+```text
+physical viewport edge = brightest
+        ↓
+wave body = progressively dimmer
+        ↓
+inward glow = soft and low-luminance
+        ↓
+center = only a restrained ambient tint
+```
+
+This falloff must be continuous. A crest may temporarily reach farther inward, but every additional distance from the physical edge must reduce luminance enough to preserve text readability.
+
+The middle must therefore never become a flat, equally bright colour panel. The headline, GitHub avatar/CTA, and bottom guidance must retain clear contrast even when a strong wave passes behind them.
+
+A low-resolution blurred secondary canvas may extend the wave energy inward, but it must remain subordinate to the crisp edge and may not erase the edge-to-center brightness gradient.
 
 ### Runtime constraints
 
@@ -82,8 +102,10 @@ Normal-motion acceptance requires all of the following to be perceptible during 
 
 1. the frame reads as one coherent colour family at a time;
 2. energy travels around the perimeter as a wave rather than obvious moving globes;
-3. wave peaks visibly change edge thickness/intensity;
-4. wave peaks temporarily extend colour farther toward the center;
-5. the GitHub avatar and `Open GitHub` pair remain legible and visually centered.
+3. no diagonal/triangular edge-partition seams are visible anywhere in the frame;
+4. wave peaks visibly change edge thickness/intensity;
+5. wave peaks may extend colour toward the center, but brightness must decay continuously from edge to center;
+6. the center never becomes as bright as the edge and text readability remains intact;
+7. the GitHub avatar and `Open GitHub` pair remain legible and visually centered.
 
-A technically animated shader that still reads as static, as four simultaneous colour zones, or as discrete balls rolling around the border fails perceptual acceptance.
+A technically animated shader fails perceptual acceptance if it reads as static, as four simultaneous colour zones, as discrete balls rolling around the border, shows geometric diagonal seams, or washes the center to near-edge brightness.
