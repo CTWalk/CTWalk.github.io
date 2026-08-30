@@ -39,12 +39,12 @@
     .mobile-fallback{position:fixed;inset:0;z-index:70;display:block;width:100%;height:100vh;height:100svh;overflow:hidden;isolation:isolate;background:#050609;color:#f6f0e7}
     .mobile-fallback[hidden]{display:none!important}
     .mobile-wave-blur,.mobile-wave-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-    .mobile-wave-blur{z-index:0;filter:blur(82px) saturate(1.16);opacity:.62;transform:scale(1.10);transform-origin:center}
-    .mobile-wave-canvas{z-index:1;display:block;opacity:.98}
-    .mobile-wave-fallback{display:none;position:absolute;inset:-28px;z-index:1;pointer-events:none;filter:blur(34px);background:radial-gradient(ellipse at 50% 0%,rgba(65,180,255,.72),transparent 55%),radial-gradient(ellipse at 100% 55%,rgba(65,180,255,.58),transparent 54%),radial-gradient(ellipse at 45% 100%,rgba(65,180,255,.66),transparent 55%),radial-gradient(ellipse at 0% 48%,rgba(65,180,255,.54),transparent 54%)}
+    .mobile-wave-blur{z-index:0;filter:blur(88px) saturate(1.10);opacity:.42;transform:scale(1.08);transform-origin:center}
+    .mobile-wave-canvas{z-index:1;display:block;opacity:.96}
+    .mobile-wave-fallback{display:none;position:absolute;inset:-28px;z-index:1;pointer-events:none;filter:blur(38px);opacity:.52;background:linear-gradient(to bottom,rgba(65,180,255,.72),rgba(65,180,255,.16) 22%,transparent 48%),linear-gradient(to top,rgba(65,180,255,.68),rgba(65,180,255,.14) 22%,transparent 48%),linear-gradient(to right,rgba(65,180,255,.58),rgba(65,180,255,.12) 18%,transparent 44%),linear-gradient(to left,rgba(65,180,255,.58),rgba(65,180,255,.12) 18%,transparent 44%)}
     .mobile-fallback.webgl-fallback .mobile-wave-fallback{display:block}
     .mobile-fallback.webgl-fallback .mobile-wave-blur,.mobile-fallback.webgl-fallback .mobile-wave-canvas{display:none}
-    .mobile-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 49%,rgba(5,6,9,.05) 0%,rgba(5,6,9,.10) 42%,rgba(5,6,9,.02) 72%)}
+    .mobile-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 49%,rgba(5,6,9,.12) 0%,rgba(5,6,9,.08) 42%,rgba(5,6,9,.00) 74%)}
     .mobile-fallback-inner{position:relative;z-index:4;display:flex;flex-direction:column;width:100%;height:100%;padding:calc(70px + max(24px,env(safe-area-inset-top))) 22px max(30px,env(safe-area-inset-bottom))}
     .mobile-title{margin:0;max-width:6.1ch;color:#f6eee3;font-size:clamp(4.3rem,20.6vw,6.15rem);font-weight:700;line-height:.84;letter-spacing:-.072em;white-space:pre-line;text-wrap:initial;text-shadow:0 16px 52px rgba(0,0,0,.34)}
     .mobile-center{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:20px 0 16px}
@@ -105,59 +105,77 @@
 
     float wrapDist(float a,float b){float d=abs(a-b);return min(d,1.-d);}
 
-    void perimeter(vec2 uv,out float s,out float d){
-      float db=uv.y;
-      float dr=1.-uv.x;
-      float dt=1.-uv.y;
-      float dl=uv.x;
-      d=min(min(db,dr),min(dt,dl));
-      if(db<=dr && db<=dt && db<=dl) s=uv.x*.25;
-      else if(dr<=dt && dr<=dl) s=.25+uv.y*.25;
-      else if(dt<=dl) s=.50+(1.-uv.x)*.25;
-      else s=.75+(1.-uv.y)*.25;
-    }
-
-    void main(){
-      vec2 uv=vUv;
-      float s,d;
-      perimeter(uv,s,d);
-
-      float t=uTime;
+    float waveEnergy(float s,float t){
       float travel=fract(t*.055);
       float phase=6.2831853*(s*1.15-t*.095);
       float broad=.5+.5*sin(phase);
       float secondary=.5+.5*sin(phase*2.05+1.25+sin(t*.33)*.35);
       float tertiary=.5+.5*cos(phase*.53-1.8);
-
-      // A travelling crest is intentionally stretched along the perimeter.
-      // It modulates wave depth instead of drawing a circular moving globe.
       float crest=pow(clamp(broad*.72+secondary*.20+tertiary*.08,0.,1.),1.55);
       float rolling=1.-smoothstep(.10,.34,wrapDist(s,travel));
       float rollingSoft=1.-smoothstep(.18,.48,wrapDist(s,travel));
-      float waveEnergy=clamp(crest*.72+rolling*.16+rollingSoft*.12,0.,1.);
+      return clamp(crest*.72+rolling*.16+rollingSoft*.12,0.,1.);
+    }
 
-      // The wave reaches farther inward at the crest, addressing the dead middle.
-      float depth=.085+.235*waveEnergy;
-      float core=1.-smoothstep(depth*.22,depth,d);
-      float halo=(1.-smoothstep(depth,depth*2.15,d))*(.22+.58*waveEnergy);
-      float innerMist=(1.-smoothstep(depth*1.15,.48,d))*.12*pow(waveEnergy,1.25);
-      float intensity=core*.88+halo*.52+innerMist;
+    float edgeLight(float distanceToEdge,float energy){
+      float depth=.075+.245*energy;
+      float normalized=clamp(distanceToEdge/depth,0.,1.);
+      float core=pow(1.-smoothstep(0.,1.,normalized),1.65);
+      float halo=(1.-smoothstep(depth,depth*1.85,distanceToEdge))*.14*energy;
+      float edgeFocus=1.-smoothstep(0.,.11,distanceToEdge);
+      return core*(.62+.38*edgeFocus)+halo;
+    }
 
-      // One coherent hue family at a time. Local variation stays analogous only.
+    void main(){
+      vec2 uv=vUv;
+      float t=uTime;
+
+      // No nearest-edge ownership and no conditionals: all four sides blend
+      // continuously, eliminating the diagonal seams previously visible from corners.
+      float db=uv.y;
+      float dr=1.-uv.x;
+      float dt=1.-uv.y;
+      float dl=uv.x;
+
+      float sb=uv.x*.25;
+      float sr=.25+uv.y*.25;
+      float st=.50+(1.-uv.x)*.25;
+      float sl=.75+(1.-uv.y)*.25;
+
+      float eb=waveEnergy(sb,t);
+      float er=waveEnergy(sr,t);
+      float et=waveEnergy(st,t);
+      float el=waveEnergy(sl,t);
+
+      float ib=edgeLight(db,eb);
+      float ir=edgeLight(dr,er);
+      float it=edgeLight(dt,et);
+      float il=edgeLight(dl,el);
+
+      // Smooth union instead of max/branch ownership keeps corners continuous.
+      float intensity=1.-(1.-clamp(ib,0.,.94))*(1.-clamp(ir,0.,.94))*(1.-clamp(it,0.,.94))*(1.-clamp(il,0.,.94));
+
+      float nearest=min(min(db,dr),min(dt,dl));
+      float strongest=max(max(eb,er),max(et,el));
+      float inwardMist=(1.-smoothstep(.16,.50,nearest))*.055*pow(strongest,1.35);
+      intensity=clamp(intensity+inwardMist,0.,1.);
+
+      // Edge brightness is intentionally dominant; the centre receives only a
+      // dim colour cast even while a crest extends inward.
+      float edgeBoost=1.-smoothstep(0.,.14,nearest);
+      float luminance=.34+.66*edgeBoost;
+
       float baseHue=fract(.56+t*.030);
-      float hueVariation=.035*sin(6.2831853*(s*1.05-t*.035));
-      vec3 color=hsv2rgb(vec3(fract(baseHue+hueVariation),.78,.98));
-      vec3 soft=hsv2rgb(vec3(fract(baseHue+hueVariation*.45),.60,.78));
-      vec3 finalColor=mix(soft,color,clamp(core+waveEnergy*.38,0.,1.))*intensity;
-
-      // Longitudinal deformation keeps the edge organic without revealing globe silhouettes.
-      float shimmer=.92+.08*sin(phase*3.1+sin(phase*.7+t*.4));
-      finalColor*=shimmer;
+      float perimeterPhase=(sb*ib+sr*ir+st*it+sl*il)/max(.001,ib+ir+it+il);
+      float hueVariation=.028*sin(6.2831853*(perimeterPhase*1.05-t*.035));
+      vec3 color=hsv2rgb(vec3(fract(baseHue+hueVariation),.76,.98));
+      vec3 soft=hsv2rgb(vec3(fract(baseHue+hueVariation*.45),.52,.66));
+      vec3 finalColor=mix(soft,color,clamp(edgeBoost*.72+strongest*.24,0.,1.))*intensity*luminance;
 
       float grain=fract(sin(dot(uv,vec2(12.9898,78.233)))*43758.5453);
-      finalColor+=vec3((grain-.5)*.008*intensity);
+      finalColor+=vec3((grain-.5)*.006*intensity*luminance);
       float lum=max(finalColor.r,max(finalColor.g,finalColor.b));
-      gl_FragColor=vec4(finalColor,clamp(lum*1.20,0.,1.));
+      gl_FragColor=vec4(finalColor,clamp(lum*1.12,0.,.96));
     }
   `;
 
