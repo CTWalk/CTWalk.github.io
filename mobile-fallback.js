@@ -10,6 +10,15 @@
   const REDUCED_TIME_MS = 0;
   const PROFILE_AVATAR = 'https://avatars.githubusercontent.com/u/100585900?v=4';
 
+  const shaderState = Object.freeze({
+    speed: 1.0,
+    leftHeight: 1.0,
+    rightHeight: 1.0,
+    randomness: 0.0,
+    density: 1.0,
+    glow: 1.0
+  });
+
   const copy = {
     en: {
       title: 'Designed for\ndesktop.',
@@ -26,8 +35,8 @@
   const style = document.createElement('style');
   style.dataset.mobileFallback = 'true';
   style.textContent = `
-    html[data-presentation="mobile-fallback"]{background:#040405;scroll-behavior:auto}
-    html[data-presentation="mobile-fallback"] body{margin:0;overflow:hidden;background:#040405}
+    html[data-presentation="mobile-fallback"]{background:#030712;scroll-behavior:auto}
+    html[data-presentation="mobile-fallback"] body{margin:0;overflow:hidden;background:#030712}
 
     html[data-presentation="mobile-fallback"] .nav{z-index:90;background:transparent;border:0;box-shadow:none}
     html[data-presentation="mobile-fallback"] .nav-inner{width:calc(100% - 40px);justify-content:flex-end}
@@ -47,58 +56,55 @@
       height:100svh;
       overflow:hidden;
       isolation:isolate;
-      background:radial-gradient(ellipse at 50% 48%,#161116 0%,#09080b 37%,#040405 72%);
+      background:#030712;
       color:#f6f0e7;
     }
     .mobile-fallback[hidden]{display:none!important}
-    .mobile-aurora{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none}
 
-    .mobile-edge-static{
+    .mobile-fluid-blur,
+    .mobile-fluid-canvas{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+    }
+    .mobile-fluid-blur{
+      z-index:0;
+      filter:blur(72px) saturate(1.12);
+      opacity:.52;
+      transform:scale(1.06);
+      transform-origin:center;
+    }
+    .mobile-fluid-canvas{
+      z-index:1;
+      display:block;
+      opacity:.98;
+    }
+
+    .mobile-fluid-fallback{
+      display:none;
       position:absolute;
       inset:-24px;
-      z-index:0;
+      z-index:1;
       pointer-events:none;
-      opacity:.14;
-      filter:blur(14px) saturate(1.18);
+      filter:blur(24px) saturate(1.12);
       background:
-        radial-gradient(78% 23% at 53% 0%,rgba(255,91,29,.95) 0%,rgba(255,133,31,.54) 31%,transparent 69%),
-        radial-gradient(28% 64% at 0% 43%,rgba(255,38,150,.90) 0%,rgba(170,54,255,.52) 35%,transparent 72%),
-        radial-gradient(30% 61% at 100% 59%,rgba(48,255,188,.82) 0%,rgba(39,207,255,.54) 38%,transparent 74%),
-        radial-gradient(76% 24% at 55% 100%,rgba(35,215,255,.96) 0%,rgba(100,78,255,.57) 36%,transparent 70%);
+        radial-gradient(75% 18% at 50% 0%,rgba(66,133,245,.78),rgba(234,67,53,.50) 34%,transparent 72%),
+        radial-gradient(21% 66% at 100% 50%,rgba(251,188,4,.70),rgba(52,168,83,.44) 38%,transparent 74%),
+        radial-gradient(75% 18% at 50% 100%,rgba(52,168,83,.68),rgba(66,133,245,.44) 36%,transparent 72%),
+        radial-gradient(21% 66% at 0% 50%,rgba(234,67,53,.68),rgba(251,188,4,.42) 38%,transparent 74%);
     }
-
-    .mobile-rim{position:absolute;z-index:2;pointer-events:none;opacity:.10;filter:blur(7px);mix-blend-mode:screen}
-    .mobile-rim-top{
-      top:-5px;left:-8%;width:116%;height:18px;
-      background:linear-gradient(90deg,transparent 0%,#ff2f9c 13%,#ff5128 39%,#ff9b27 66%,#eaff59 84%,transparent 100%);
-      box-shadow:0 0 24px 9px rgba(255,93,38,.34);
-    }
-    .mobile-rim-left{
-      top:13%;left:-6px;width:18px;height:70%;
-      background:linear-gradient(180deg,transparent 0%,#ff347f 15%,#c536ff 46%,#6554ff 73%,#36c8ff 100%);
-      box-shadow:0 0 25px 10px rgba(218,50,255,.30);
-    }
-    .mobile-rim-right{
-      top:18%;right:-6px;width:18px;height:67%;
-      background:linear-gradient(180deg,#eeff67 0%,#64ffad 34%,#2dd9ff 70%,transparent 100%);
-      box-shadow:0 0 25px 10px rgba(54,231,203,.28);
-    }
-    .mobile-rim-bottom{
-      bottom:-5px;left:-8%;width:116%;height:18px;
-      background:linear-gradient(90deg,transparent 0%,#8758ff 15%,#396eff 37%,#2fd9ff 65%,#61ffc3 86%,transparent 100%);
-      box-shadow:0 0 26px 10px rgba(45,205,255,.34);
-    }
-    .mobile-fallback.canvas-fallback .mobile-edge-static{opacity:.98}
-    .mobile-fallback.canvas-fallback .mobile-rim{opacity:.94}
+    .mobile-fallback.webgl-fallback .mobile-fluid-fallback{display:block}
+    .mobile-fallback.webgl-fallback .mobile-fluid-blur,
+    .mobile-fallback.webgl-fallback .mobile-fluid-canvas{display:none}
 
     .mobile-vignette{
       position:absolute;
       inset:0;
-      z-index:1;
+      z-index:2;
       pointer-events:none;
-      background:
-        radial-gradient(ellipse at 50% 47%,rgba(0,0,0,0) 0%,rgba(0,0,0,.07) 42%,rgba(0,0,0,.34) 84%),
-        linear-gradient(to bottom,rgba(0,0,0,.02),rgba(0,0,0,.15));
+      background:radial-gradient(ellipse at 50% 49%,rgba(3,7,18,.34) 0%,rgba(3,7,18,.20) 40%,rgba(3,7,18,0) 72%);
     }
 
     .mobile-fallback-inner{
@@ -213,12 +219,9 @@
   fallback.id = 'mobile-fallback';
   fallback.setAttribute('aria-labelledby', 'mobile-fallback-title');
   fallback.innerHTML = `
-    <canvas class="mobile-aurora" id="mobile-aurora" aria-hidden="true"></canvas>
-    <div class="mobile-edge-static" aria-hidden="true"></div>
-    <div class="mobile-rim mobile-rim-top" aria-hidden="true"></div>
-    <div class="mobile-rim mobile-rim-left" aria-hidden="true"></div>
-    <div class="mobile-rim mobile-rim-right" aria-hidden="true"></div>
-    <div class="mobile-rim mobile-rim-bottom" aria-hidden="true"></div>
+    <canvas class="mobile-fluid-blur" id="mobile-fluid-blur" aria-hidden="true"></canvas>
+    <canvas class="mobile-fluid-canvas" id="mobile-fluid-canvas" aria-hidden="true"></canvas>
+    <div class="mobile-fluid-fallback" aria-hidden="true"></div>
     <div class="mobile-vignette" aria-hidden="true"></div>
     <div class="mobile-fallback-inner">
       <h1 class="mobile-title" id="mobile-fallback-title" data-mobile-copy="title"></h1>
@@ -234,17 +237,161 @@
   if (main) main.insertAdjacentElement('beforebegin', fallback);
   else document.body.appendChild(fallback);
 
-  const canvas = document.getElementById('mobile-aurora');
-  const context = canvas?.getContext('2d', { alpha: true, desynchronized: true }) || null;
+  const canvas = document.getElementById('mobile-fluid-canvas');
+  const blurCanvas = document.getElementById('mobile-fluid-blur');
+  const blurCtx = blurCanvas?.getContext('2d', { alpha: true }) || null;
   const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
-  if (!context) fallback.classList.add('canvas-fallback');
+  const gl = canvas
+    ? (canvas.getContext('webgl', {
+        alpha: true,
+        antialias: false,
+        premultipliedAlpha: false,
+        preserveDrawingBuffer: true,
+        powerPreference: 'low-power'
+      }) || canvas.getContext('experimental-webgl'))
+    : null;
 
+  const vertexShaderSource = `
+    attribute vec2 position;
+    varying vec2 vUv;
+
+    void main() {
+      vUv = position * 0.5 + 0.5;
+      gl_Position = vec4(position, 0.0, 1.0);
+    }
+  `;
+
+  const fragmentShaderSource = `
+    precision highp float;
+
+    varying vec2 vUv;
+
+    uniform float uTime;
+    uniform float uSpeed;
+    uniform float uLeftHeight;
+    uniform float uRightHeight;
+    uniform float uRandomness;
+    uniform float uDensity;
+    uniform float uGlow;
+
+    float wave(vec2 p, float frequency, float speed, float offset) {
+      return sin(p.x * frequency + uTime * speed + offset)
+        * cos(p.y * frequency + uTime * speed * 0.9 + offset);
+    }
+
+    float wrappedDistance(float value, float center) {
+      float direct = abs(value - center);
+      return min(direct, 1.0 - direct);
+    }
+
+    float colorWeight(float value, float center) {
+      return 1.0 - smoothstep(0.10, 0.40, wrappedDistance(value, center));
+    }
+
+    vec3 fluidEdge(vec2 uv, float phase) {
+      vec2 fluidUv = uv * vec2(3.0 * uDensity, 3.5);
+
+      float warp1 = wave(fluidUv, 2.5, 1.5 * uSpeed, phase * 6.2831853);
+      float warp2 = wave(
+        fluidUv + vec2(warp1 * 0.3, 0.0),
+        4.8,
+        2.0 * uSpeed,
+        1.8 + phase * 4.0
+      );
+      float warp3 = wave(
+        fluidUv - vec2(0.0, warp2 * 0.2),
+        7.2,
+        2.5 * uSpeed,
+        3.4 + phase * 5.0
+      );
+
+      float combinedWarp =
+        warp1 * 0.5 +
+        warp2 * 0.35 +
+        warp3 * 0.15;
+
+      vec3 colBlue   = vec3(0.26, 0.52, 0.96);
+      vec3 colRed    = vec3(0.92, 0.26, 0.21);
+      vec3 colYellow = vec3(0.98, 0.74, 0.02);
+      vec3 colGreen  = vec3(0.20, 0.66, 0.33);
+
+      float xFactor = fract(uv.x + phase + combinedWarp * 0.15);
+
+      float wBlue   = colorWeight(xFactor, 0.125);
+      float wRed    = colorWeight(xFactor, 0.375);
+      float wYellow = colorWeight(xFactor, 0.625);
+      float wGreen  = colorWeight(xFactor, 0.875);
+
+      float totalWeight = wBlue + wRed + wYellow + wGreen;
+      if (totalWeight > 0.0) {
+        wBlue   /= totalWeight;
+        wRed    /= totalWeight;
+        wYellow /= totalWeight;
+        wGreen  /= totalWeight;
+      }
+
+      vec3 colorMix =
+        colBlue   * wBlue +
+        colRed    * wRed +
+        colYellow * wYellow +
+        colGreen  * wGreen;
+
+      float baseHeight = mix(uLeftHeight, uRightHeight, uv.x);
+      float smoothBumps =
+        sin(uv.x * 4.5 + uTime * 1.1 + phase * 5.0) * 0.35 +
+        cos(uv.x * 10.0 - uTime * 1.8 + phase * 3.0) * 0.15 +
+        sin(uv.x * 18.0 + uTime * 2.5 + phase * 7.0) * 0.06;
+
+      float heightProfile =
+        (baseHeight + smoothBumps * uRandomness) * uGlow;
+      heightProfile = max(0.05, heightProfile);
+
+      float heightFalloff =
+        1.0 - smoothstep(0.0, 0.58 * heightProfile, uv.y);
+
+      float ambientGlow =
+        pow(max(0.0, 1.0 - uv.y), 2.5) * heightProfile;
+
+      float intensity =
+        heightFalloff * 0.85 +
+        ambientGlow * 0.15;
+
+      return colorMix * intensity;
+    }
+
+    void main() {
+      vec2 uv = vUv;
+
+      // The supplied CodePen renders one bottom fluid bar. Here the same
+      // shader language is rotated/mirrored onto all four viewport edges.
+      vec3 bottom = fluidEdge(vec2(uv.x, uv.y / 0.18), 0.00);
+      vec3 right  = fluidEdge(vec2(uv.y, (1.0 - uv.x) / 0.15), 0.25);
+      vec3 top    = fluidEdge(vec2(1.0 - uv.x, (1.0 - uv.y) / 0.18), 0.50);
+      vec3 left   = fluidEdge(vec2(1.0 - uv.y, uv.x / 0.15), 0.75);
+
+      vec3 finalColor = bottom + right + top + left;
+      finalColor = min(finalColor, vec3(1.0));
+
+      float luminance = max(finalColor.r, max(finalColor.g, finalColor.b));
+      float grain = fract(
+        sin(dot(uv.xy, vec2(12.9898, 78.233))) * 43758.5453
+      );
+      finalColor += vec3(grain * 0.012 * luminance);
+
+      float alpha = clamp(luminance * 1.18, 0.0, 1.0);
+      gl_FragColor = vec4(finalColor, alpha);
+    }
+  `;
+
+  let program = null;
+  let uniforms = null;
   let width = 0;
   let height = 0;
   let animationFrame = 0;
   let running = false;
-  let currentTime = reducedMotion ? REDUCED_TIME_MS : TEST_TIME_MS;
+  let currentTimeMs = reducedMotion ? REDUCED_TIME_MS : 0;
+  let lastFrameMs = null;
 
   function selectedLocale() {
     return html.lang.toLowerCase().startsWith('zh') ? 'zh' : 'en';
@@ -259,127 +406,141 @@
     return html.lang;
   }
 
-  function bloom(x, y, radiusX, radiusY, rgb, alpha) {
-    if (!context) return;
-    context.save();
-    context.translate(x, y);
-    context.scale(Math.max(1, radiusX), Math.max(1, radiusY));
-    const gradient = context.createRadialGradient(0, 0, 0, 0, 0, 1);
-    gradient.addColorStop(0, `rgba(${rgb},${alpha})`);
-    gradient.addColorStop(.22, `rgba(${rgb},${alpha * .72})`);
-    gradient.addColorStop(.55, `rgba(${rgb},${alpha * .25})`);
-    gradient.addColorStop(1, `rgba(${rgb},0)`);
-    context.fillStyle = gradient;
-    context.beginPath();
-    context.arc(0, 0, 1, 0, Math.PI * 2);
-    context.fill();
-    context.restore();
+  function createShader(type, source) {
+    if (!gl) return null;
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      console.warn('[mobile-fallback] WebGL shader compile failed:', gl.getShaderInfoLog(shader));
+      gl.deleteShader(shader);
+      return null;
+    }
+    return shader;
   }
 
-  function glowLine(x1, y1, x2, y2, gradient, shadowColor, alpha, widthPx) {
-    if (!context) return;
-    context.save();
-    context.globalAlpha = alpha;
-    context.strokeStyle = gradient;
-    context.lineWidth = widthPx;
-    context.lineCap = 'round';
-    context.shadowBlur = 34;
-    context.shadowColor = shadowColor;
-    context.beginPath();
-    context.moveTo(x1, y1);
-    context.lineTo(x2, y2);
-    context.stroke();
-    context.restore();
+  function initWebGL() {
+    if (!gl) return false;
+
+    const vertexShader = createShader(gl.VERTEX_SHADER, vertexShaderSource);
+    const fragmentShader = createShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
+    if (!vertexShader || !fragmentShader) return false;
+
+    program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.warn('[mobile-fallback] WebGL program link failed:', gl.getProgramInfoLog(program));
+      return false;
+    }
+
+    const vertices = new Float32Array([
+      -1, -1,
+       1, -1,
+      -1,  1,
+      -1,  1,
+       1, -1,
+       1,  1
+    ]);
+
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+    const position = gl.getAttribLocation(program, 'position');
+    gl.enableVertexAttribArray(position);
+    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+    uniforms = {
+      time: gl.getUniformLocation(program, 'uTime'),
+      speed: gl.getUniformLocation(program, 'uSpeed'),
+      leftHeight: gl.getUniformLocation(program, 'uLeftHeight'),
+      rightHeight: gl.getUniformLocation(program, 'uRightHeight'),
+      randomness: gl.getUniformLocation(program, 'uRandomness'),
+      density: gl.getUniformLocation(program, 'uDensity'),
+      glow: gl.getUniformLocation(program, 'uGlow')
+    };
+
+    gl.useProgram(program);
+    return true;
   }
 
-  function draw(t = 0) {
-    if (!context) return;
-    currentTime = Number(t) || 0;
-    context.clearRect(0, 0, width, height);
-    context.globalCompositeOperation = 'lighter';
+  const webglReady = initWebGL();
+  if (!webglReady) fallback.classList.add('webgl-fallback');
 
-    const topFlow = Math.sin(currentTime * .00062);
-    const sideFlow = Math.cos(currentTime * .00054 + 1.7);
-    const bottomFlow = Math.sin(currentTime * .00048 + 3.2);
-    const pulse = .86 + Math.sin(currentTime * .00105) * .14;
+  function copyBlur() {
+    if (!blurCtx || !blurCanvas || !canvas || !webglReady) return;
+    blurCtx.clearRect(0, 0, blurCanvas.width, blurCanvas.height);
+    blurCtx.drawImage(canvas, 0, 0, blurCanvas.width, blurCanvas.height);
+  }
 
-    // Broad bloom keeps the edge colour family coherent.
-    bloom(width * (.50 + topFlow * .18), height * -.015, width * .48, height * .15, '255,78,31', .46 * pulse);
-    bloom(width * -.01, height * (.48 + sideFlow * .18), width * .18, height * .34, '255,43,154', .40 * pulse);
-    bloom(width * (.62 + bottomFlow * .16), height * 1.01, width * .43, height * .16, '40,212,255', .44 * pulse);
-    bloom(width * 1.01, height * (.55 - sideFlow * .18), width * .18, height * .33, '62,255,185', .38 * pulse);
+  function draw(timeMs = 0) {
+    if (!gl || !program || !uniforms || !webglReady) return;
 
-    // Tighter hotspots visibly travel around the viewport edge in production.
-    bloom(width * (.50 + topFlow * .31), height * .005, width * .23, height * .075, '255,111,35', .95 * pulse);
-    bloom(width * .004, height * (.48 + sideFlow * .28), width * .075, height * .22, '214,54,255', .88 * pulse);
-    bloom(width * (.54 + bottomFlow * .32), height * .995, width * .24, height * .075, '47,216,255', .94 * pulse);
-    bloom(width * .996, height * (.54 - sideFlow * .27), width * .075, height * .22, '70,255,181', .82 * pulse);
+    currentTimeMs = Number(timeMs) || 0;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.useProgram(program);
 
-    const top = context.createLinearGradient(0, 0, width, 0);
-    top.addColorStop(0, 'rgba(255,47,156,0)');
-    top.addColorStop(.14, '#ff2f9c');
-    top.addColorStop(.42, '#ff5128');
-    top.addColorStop(.68, '#ff9b27');
-    top.addColorStop(.86, '#eaff59');
-    top.addColorStop(1, 'rgba(234,255,89,0)');
+    gl.uniform1f(uniforms.time, currentTimeMs * 0.001);
+    gl.uniform1f(uniforms.speed, shaderState.speed);
+    gl.uniform1f(uniforms.leftHeight, shaderState.leftHeight);
+    gl.uniform1f(uniforms.rightHeight, shaderState.rightHeight);
+    gl.uniform1f(uniforms.randomness, shaderState.randomness);
+    gl.uniform1f(uniforms.density, shaderState.density);
+    gl.uniform1f(uniforms.glow, shaderState.glow);
 
-    const bottom = context.createLinearGradient(0, 0, width, 0);
-    bottom.addColorStop(0, 'rgba(135,88,255,0)');
-    bottom.addColorStop(.16, '#8758ff');
-    bottom.addColorStop(.42, '#396eff');
-    bottom.addColorStop(.68, '#2fd9ff');
-    bottom.addColorStop(.87, '#61ffc3');
-    bottom.addColorStop(1, 'rgba(97,255,195,0)');
-
-    const left = context.createLinearGradient(0, 0, 0, height);
-    left.addColorStop(0, 'rgba(255,52,127,0)');
-    left.addColorStop(.18, '#ff347f');
-    left.addColorStop(.48, '#c536ff');
-    left.addColorStop(.76, '#6554ff');
-    left.addColorStop(1, 'rgba(54,200,255,0)');
-
-    const right = context.createLinearGradient(0, 0, 0, height);
-    right.addColorStop(0, 'rgba(238,255,103,0)');
-    right.addColorStop(.18, '#eeff67');
-    right.addColorStop(.45, '#64ffad');
-    right.addColorStop(.74, '#2dd9ff');
-    right.addColorStop(1, 'rgba(45,217,255,0)');
-
-    glowLine(0, 1.5, width, 1.5, top, 'rgba(255,91,40,.96)', .82 * pulse, 3.4);
-    glowLine(0, height - 1.5, width, height - 1.5, bottom, 'rgba(45,205,255,.96)', .82 * pulse, 3.4);
-    glowLine(1.5, 0, 1.5, height, left, 'rgba(211,54,255,.92)', .76 * pulse, 3.2);
-    glowLine(width - 1.5, 0, width - 1.5, height, right, 'rgba(58,238,198,.90)', .76 * pulse, 3.2);
-
-    context.globalCompositeOperation = 'source-over';
+    gl.drawArrays(gl.TRIANGLES, 0, 6);
+    copyBlur();
   }
 
   function resize() {
-    if (!canvas || !context) return;
     width = Math.max(1, window.innerWidth);
     height = Math.max(1, window.innerHeight);
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    context.setTransform(dpr, 0, 0, dpr, 0, 0);
-    draw(currentTime);
+
+    if (canvas) {
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+    }
+
+    if (blurCanvas) {
+      blurCanvas.width = Math.max(1, Math.round((width * dpr) / 8));
+      blurCanvas.height = Math.max(1, Math.round((height * dpr) / 8));
+      blurCanvas.style.width = `${width}px`;
+      blurCanvas.style.height = `${height}px`;
+    }
+
+    draw(currentTimeMs);
   }
 
   function animate(now) {
     if (!running) return;
-    draw(now);
+
+    if (lastFrameMs == null) lastFrameMs = now;
+    const delta = Math.min(50, Math.max(0, now - lastFrameMs));
+    lastFrameMs = now;
+    currentTimeMs += delta;
+
+    draw(currentTimeMs);
     animationFrame = requestAnimationFrame(animate);
   }
 
   function start() {
-    if (!context || reducedMotion || testMode || running) return getState();
+    if (!webglReady || reducedMotion || testMode || running) return getState();
     running = true;
+    lastFrameMs = null;
     animationFrame = requestAnimationFrame(animate);
     return getState();
   }
 
   function stop() {
     running = false;
+    lastFrameMs = null;
     if (animationFrame) cancelAnimationFrame(animationFrame);
     animationFrame = 0;
     return getState();
@@ -399,9 +560,10 @@
       reducedMotion,
       testMode,
       running,
-      timeMs: currentTime,
-      canvasAvailable: Boolean(context),
-      profileAsset: PROFILE_AVATAR,
+      timeMs: currentTimeMs,
+      canvasAvailable: Boolean(webglReady),
+      webglAvailable: Boolean(webglReady),
+      blurAvailable: Boolean(blurCtx),
       width: window.innerWidth,
       height: window.innerHeight
     };
@@ -417,8 +579,8 @@
     else if (!reducedMotion && !testMode) start();
   });
 
-  if (context) {
-    resize();
+  resize();
+  if (webglReady) {
     if (reducedMotion) setTime(REDUCED_TIME_MS);
     else if (testMode) setTime(TEST_TIME_MS);
     else start();
