@@ -2,89 +2,95 @@
 
 Issue: #7  
 Acceptance contract: #5 / `UI_UX_ACCEPTANCE_CONTRACT.md`  
-Checkpoint manifest: #12 / `UI_UX_BASELINE_MANIFEST.md`
+Checkpoint manifest: #12 / `UI_UX_BASELINE_MANIFEST.md`  
+Mobile presentation: #20
 
 ## Purpose
 
-This file documents the test-only browser control exposed by `ui-ux-test-control.js`.
+The test-only control lets Playwright request semantic rendered states without hard-coding page scroll pixels or duplicating production timeline constants.
 
-The control exists so later Playwright tests can ask for semantic UI states instead of hard-coding page-level scroll pixels or duplicating the portfolio timeline constants.
+The public browser contract remains:
 
-It is not a production UI feature and it does not own any animation implementation.
+```js
+window.__portfolioTest
+```
+
+The implementation behind that API now depends on the active presentation mode.
 
 ## Activation
 
-The test control is loaded only when the page URL contains:
+The control is created only when the page URL contains:
 
 ```text
 ?uiux-test=1
 ```
 
-Example:
+Ordinary visitors do not receive `window.__portfolioTest`.
+
+## Presentation routing
+
+`site-bootstrap.js` selects one control path from the viewport that owns the page at load time:
 
 ```text
-http://127.0.0.1:4173/?uiux-test=1
+> 760px
+  desktop portfolio runtimes
+  -> ui-ux-test-control.js
+
+<= 760px
+  mobile-fallback.js
+  -> ui-ux-mobile-test-control.js
 ```
 
-Without that query parameter, `site-bootstrap.js` does not request `ui-ux-test-control.js` and `window.__portfolioTest` is not created.
+Both expose the same high-level API shape where practical, but mobile intentionally does not expose desktop scene navigation.
 
-The control is loaded after the existing production runtimes:
-
-```text
-social-runtime.js
-commerce-integrated.js
-outro-heatmap.js
-typography-runtime.js
-evidence-readability.js
-experience-pacing.js
-ui-ux-test-control.js   <- test mode only
-```
-
-This ordering is intentional. The test layer observes the final effective UI rather than competing with runtime initialization.
+Crossing the 760px breakpoint reloads the page so presentation/runtime ownership is reconstructed cleanly rather than leaving desktop writers alive behind the mobile fallback.
 
 ## Browser-owned setup
 
-The Playwright caller remains responsible for configuration that must exist before page JavaScript runs:
+The caller must configure before navigation:
 
 - viewport size;
-- `prefers-reduced-motion` media preference;
+- `prefers-reduced-motion`;
 - browser/context settings.
 
-The page control owns semantic navigation after load.
-
-Example Playwright context intent:
+Example:
 
 ```js
+const context = await browser.newContext({
+  viewport: { width: 390, height: 844 },
+  reducedMotion: 'no-preference'
+});
 const page = await context.newPage();
-await page.setViewportSize({ width: 1440, height: 900 });
-await page.emulateMedia({ reducedMotion: 'no-preference' });
 await page.goto(`${baseUrl}/?uiux-test=1`);
-```
-
-For reduced motion:
-
-```js
-await page.emulateMedia({ reducedMotion: 'reduce' });
-await page.goto(`${baseUrl}/?uiux-test=1`);
-```
-
-Do not switch reduced-motion preference after the page has initialized and assume every runtime will reconstruct itself. Create/navigate the page with the intended media preference first.
-
-## Readiness
-
-Wait for the API to exist, then call `ready()`:
-
-```js
 await page.waitForFunction(() => Boolean(window.__portfolioTest));
-
 const state = await page.evaluate(() => window.__portfolioTest.ready());
 ```
 
-`ready()` waits for document fonts, checks visible image readiness, flushes animation frames, and returns the current test state.
+Do not switch reduced-motion preference after initialization and assume the runtime will reconstruct itself. Create the context with the intended preference first.
 
-A result with `assetsReady: false` is not suitable for approving a visual baseline.
+## Shared API
 
-`waitForAssets()` is also available independently if a test intentionally changes state and wants to re-check evidence loading before capture.
+The capture harness may rely on:
+
+```text
+ready()
+waitForAssets()
+setLanguage(locale)
+goToCheckpoint(checkpointId)
+waitForVisualSettle(...)
+getState()
+checkpointIds
+```
+
+Desktop additionally supports:
+
+```text
+goToScene(sceneId)
+setSceneProgress(sceneId, normalizedProgress)
+sceneIds
+```
+
+Calling desktop scene navigation from mobile fallback mode throws intentionally.
 
 ## Locale
 
@@ -93,43 +99,11 @@ await page.evaluate(() => window.__portfolioTest.setLanguage('en'));
 await page.evaluate(() => window.__portfolioTest.setLanguage('zh-TW'));
 ```
 
-The control uses the portfolio's existing language mechanism. It does not rewrite copy, line breaks, or typography rules.
+Both controls use the portfolio's existing language switch. They do not rewrite desktop copy or source-level line-break policy.
 
-Both EN and zh-TW must use the same checkpoint IDs for equivalent baseline coverage.
+## Desktop semantic checkpoints
 
-## Scene navigation
-
-Supported semantic scene IDs:
-
-```text
-intro
-commerce
-nocode
-social
-cuesheet
-dca
-outro
-```
-
-### Representative scene position
-
-```js
-await page.evaluate(() => window.__portfolioTest.goToScene('social'));
-```
-
-### Normalized visible-scene progress
-
-```js
-await page.evaluate(() => window.__portfolioTest.setSceneProgress('commerce', 0.35));
-```
-
-The normalized value is relative to the scene's discovered visible range. It is not a copied production timeline phase and must not be treated as a permanent motion specification.
-
-Use semantic checkpoints for golden visual tests whenever one exists.
-
-## Semantic checkpoints
-
-The current API exposes the checkpoint IDs defined by the baseline program, including:
+The desktop controller continues to expose the scene checkpoint program:
 
 ```text
 intro.settled
@@ -168,62 +142,49 @@ outro.settled
 outro.reduced
 ```
 
-Query the runtime list rather than maintaining another test-side copy when practical:
-
-```js
-const checkpointIds = await page.evaluate(
-  () => window.__portfolioTest.checkpointIds
-);
-```
-
-Navigate with:
-
-```js
-const result = await page.evaluate(
-  () => window.__portfolioTest.goToCheckpoint('social.database')
-);
-```
-
-For normal-motion checkpoints, the control:
-
-1. discovers the scene's actual visible range from the running production controller;
-2. searches only the relevant part of that range;
-3. scores observable rendered state such as phone/image/label/result visibility;
-4. includes parent scene visibility in scoring so a child cannot win while the scene is fading away;
-5. leaves the page at the best semantic state;
-6. waits for stable computed visual state.
+Normal-motion checkpoint resolution discovers actual scene visibility from the running implementation, searches the relevant semantic range, scores observable rendered state, and waits for stable computed visual state.
 
 The test harness does not contain the production `durations` array.
 
-## Reduced-motion checkpoints
+## Mobile semantic checkpoints
 
-Reduced checkpoint IDs require the page to have been initialized with `prefers-reduced-motion: reduce`.
+The mobile fallback controller exposes only:
 
-Example:
-
-```js
-await page.emulateMedia({ reducedMotion: 'reduce' });
-await page.goto(`${baseUrl}/?uiux-test=1`);
-await page.waitForFunction(() => Boolean(window.__portfolioTest));
-await page.evaluate(() => window.__portfolioTest.ready());
-await page.evaluate(() => window.__portfolioTest.goToCheckpoint('social.reduced'));
+```text
+mobile.fallback
+mobile.fallback.reduced
 ```
 
-Calling a `.reduced` checkpoint in normal-motion mode throws intentionally.
+### `mobile.fallback`
+
+Requires normal motion mode. In test mode the ambient Canvas is frozen at a fixed deterministic time (`mobile-fallback.js` test time) before capture. The user-facing production page still animates the edge-light field.
+
+### `mobile.fallback.reduced`
+
+Requires `prefers-reduced-motion: reduce`. The same composition is rendered with the ambient field frozen at the defined reduced-motion state.
+
+The mobile controller returns a completed settle result directly because it explicitly sets the Canvas to a deterministic frame rather than searching a desktop scroll timeline.
+
+## Readiness
+
+```js
+await page.waitForFunction(() => Boolean(window.__portfolioTest));
+const ready = await page.evaluate(() => window.__portfolioTest.ready());
+```
+
+`ready()` waits for document fonts, checks visible asset readiness, applies the presentation's deterministic test state, and returns diagnostic metadata.
+
+`assetsReady: false` is not suitable for a baseline candidate.
+
+In mobile mode, desktop evidence images are intentionally excluded from visible-asset readiness because the desktop experience is not part of the mobile product.
 
 ## Visual settling
 
-```js
-const settle = await page.evaluate(
-  () => window.__portfolioTest.waitForVisualSettle('cuesheet')
-);
-```
+Desktop settling observes stable computed-style signatures across frames.
 
-The settle detector observes computed styles on the relevant scene nodes across animation frames. It requires repeated stable signatures rather than relying on a fixed sleep as its primary synchronization mechanism.
+Mobile settling explicitly freezes the fallback Canvas at its semantic test frame and then flushes stable frames. No arbitrary long sleep defines readiness.
 
-The default bounded timeout is a failure guard, not the definition of readiness.
-
-A visual test should treat `settled: false` as a harness/test failure rather than capturing anyway.
+A capture must treat `settled: false` as a harness failure.
 
 ## State inspection
 
@@ -231,55 +192,28 @@ A visual test should treat `settled: false` as a harness/test failure rather tha
 const state = await page.evaluate(() => window.__portfolioTest.getState());
 ```
 
-Useful fields include:
+Shared useful fields include:
 
 ```text
 enabled
+presentation
 reducedMotion
 locale
 viewport
-documentProgress
-sceneOpacities
 checkpoints
 scrollBehaviorOverride
 ```
 
-This is diagnostic metadata. Tests should assert user-visible behavior rather than overfitting to these internal numbers.
+Desktop also reports document/scene state. Mobile reports the fallback state, including deterministic Canvas time.
 
 ## Production invariants
 
-#7 must preserve all of the following:
+The test-control layer must preserve:
 
 - no visible debug panel;
-- no new production animation writer;
-- no rewritten EN or zh-TW content;
-- no new language-specific wrap rule;
-- no change to accepted motion timing/curves;
-- no test-control network request in ordinary navigation;
-- no dependency on GitHub Actions.
-
-The only production bootstrap change is the conditional loader guarded by `?uiux-test=1`.
-
-## Relationship to #4 Stage 2
-
-The current control discovers production scene bounds and semantic state because the existing site still has multiple timeline/RAF owners.
-
-If #4 Stage 2 later produces a canonical timeline/state API, #7 should be simplified to consume that API. The semantic checkpoint IDs and consumer-facing test calls should remain stable even if the internal discovery implementation is replaced.
-
-## Relationship to #8
-
-#8 should consume this API rather than build its own navigation math.
-
-A typical visual test flow should be:
-
-```text
-create browser context with viewport/motion preference
--> navigate with ?uiux-test=1
--> ready()
--> setLanguage(locale)
--> goToCheckpoint(checkpointId)
--> verify settle/assets
--> capture/compare screenshot
-```
-
-No CI requirement is implied here. CI integration belongs to #10 after the local verification model is stable.
+- no test API without `?uiux-test=1`;
+- no test-side rewrite of accepted EN/zh-TW content;
+- no copied production animation timeline constants;
+- no GitHub Actions dependency;
+- no desktop scene runtime execution as part of the mobile fallback;
+- deterministic mobile Canvas state under test/reduced-motion modes.
