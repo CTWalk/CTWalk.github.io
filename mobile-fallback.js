@@ -12,13 +12,22 @@
 
   const copy = {
     en: {
-      title: 'Designed for\ndesktop.',
-      message: 'This portfolio is designed as a desktop-first interactive experience. For the full project walkthrough, please view it on a desktop browser.',
+      titleLines: ['Designed for', 'desktop.'],
+      messageLines: [
+        'This portfolio is designed as a',
+        'desktop-first interactive experience.',
+        'For the full project walkthrough,',
+        'please view it on a desktop browser.'
+      ],
       github: 'Open GitHub ↗'
     },
     zh: {
-      title: '為桌面互動\n而設計',
-      message: '此作品集以桌面互動體驗為主要呈現方式。建議使用電腦版瀏覽器，以完整查看專案流程、動態展示與設計細節。',
+      titleLines: ['為桌面互動', '而設計'],
+      messageLines: [
+        '此作品集以桌面互動體驗為主要呈現方式。',
+        '建議使用電腦版瀏覽器，以完整查看',
+        '專案流程、動態展示與設計細節。'
+      ],
       github: '查看 GitHub ↗'
     }
   };
@@ -46,21 +55,58 @@
     .mobile-fallback.webgl-fallback .mobile-wave-blur,.mobile-fallback.webgl-fallback .mobile-wave-canvas{display:none}
     .mobile-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at 50% 49%,rgba(5,6,9,.12) 0%,rgba(5,6,9,.08) 42%,rgba(5,6,9,.00) 74%)}
     .mobile-fallback-inner{position:relative;z-index:4;display:flex;flex-direction:column;width:100%;height:100%;padding:calc(70px + max(24px,env(safe-area-inset-top))) 22px max(30px,env(safe-area-inset-bottom))}
-    .mobile-title{margin:0;max-width:6.1ch;color:#f6eee3;font-size:clamp(4.3rem,20.6vw,6.15rem);font-weight:700;line-height:.84;letter-spacing:-.072em;white-space:pre-line;text-wrap:initial;text-shadow:0 16px 52px rgba(0,0,0,.34)}
+
+    .mobile-title{margin:0;max-width:6.3ch;color:#f6eee3;font-size:clamp(4.3rem,20.6vw,6.15rem);font-weight:700;line-height:.84;letter-spacing:-.028em;text-wrap:initial;text-shadow:0 16px 52px rgba(0,0,0,.34)}
+    .mobile-title-line,.mobile-message-line{display:block}
+
     .mobile-center{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;padding:20px 0 16px}
     .mobile-profile{display:block;width:112px;height:112px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 56px rgba(0,0,0,.46),0 0 0 1px rgba(255,255,255,.035);background:#0b0b0d}
     .mobile-github{width:max-content;color:#fff;text-decoration:none;font-size:1rem;font-weight:680;line-height:1.2;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.60)}
     .mobile-github:focus-visible{outline:2px solid #fff;outline-offset:6px}
-    .mobile-message{max-width:30ch;margin:0;color:rgba(248,242,234,.94);font-size:1rem;font-weight:590;line-height:1.44;letter-spacing:-.016em;text-wrap:pretty}
-    html[lang^="zh"] .mobile-title{max-width:6.1em;font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:clamp(3.65rem,17vw,5.1rem);font-weight:670;line-height:.97;letter-spacing:-.048em;word-break:keep-all}
-    html[lang^="zh"] .mobile-message{max-width:17em;font-size:1rem;font-weight:560;line-height:1.64;letter-spacing:.004em;line-break:strict}
-    @media(max-height:720px) and (max-width:760px){.mobile-fallback-inner{padding-top:80px;padding-bottom:20px}.mobile-title{font-size:clamp(3.75rem,18vw,5rem)}html[lang^="zh"] .mobile-title{font-size:clamp(3.15rem,15vw,4.2rem)}.mobile-center{gap:11px;padding:12px 0 10px}.mobile-profile{width:86px;height:86px}.mobile-message{font-size:.87rem;line-height:1.36}html[lang^="zh"] .mobile-message{font-size:.88rem;line-height:1.52}.mobile-github{font-size:.9rem}}
-    @media(max-width:350px){.mobile-fallback-inner{padding-inline:18px}.mobile-title{font-size:clamp(3.65rem,19vw,4.75rem)}html[lang^="zh"] .mobile-title{font-size:clamp(3rem,15.6vw,4rem)}.mobile-profile{width:96px;height:96px}.mobile-message{font-size:.9rem}}
+
+    .mobile-message{max-width:32ch;margin:0;color:rgba(248,242,234,.94);font-size:1.09rem;font-weight:570;line-height:1.50;letter-spacing:-.006em;text-wrap:pretty}
+
+    .mobile-copy-line{
+      opacity:0;
+      filter:blur(8px);
+      transform:translateY(7px);
+      animation:mobileCopyLineIn 1.08s cubic-bezier(.22,.72,.24,1) var(--line-delay,0ms) both;
+      will-change:opacity,filter,transform;
+    }
+    @keyframes mobileCopyLineIn{
+      0%{opacity:0;filter:blur(8px);transform:translateY(7px)}
+      46%{opacity:.38;filter:blur(3.5px);transform:translateY(3px)}
+      100%{opacity:1;filter:blur(0);transform:translateY(0)}
+    }
+    .mobile-fallback.copy-static .mobile-copy-line{opacity:1;filter:none;transform:none;animation:none;will-change:auto}
+
+    html[lang^="zh"] .mobile-title{max-width:6.3em;font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:clamp(3.65rem,17vw,5.1rem);font-weight:670;line-height:.97;letter-spacing:-.012em;word-break:keep-all}
+    html[lang^="zh"] .mobile-message{max-width:18em;font-size:1.09rem;font-weight:550;line-height:1.68;letter-spacing:.012em;line-break:strict}
+
+    @media(max-height:720px) and (max-width:760px){
+      .mobile-fallback-inner{padding-top:80px;padding-bottom:20px}
+      .mobile-title{font-size:clamp(3.75rem,18vw,5rem)}
+      html[lang^="zh"] .mobile-title{font-size:clamp(3.15rem,15vw,4.2rem)}
+      .mobile-center{gap:11px;padding:12px 0 10px}
+      .mobile-profile{width:86px;height:86px}
+      .mobile-message{font-size:.98rem;line-height:1.42}
+      html[lang^="zh"] .mobile-message{font-size:1rem;line-height:1.56}
+      .mobile-github{font-size:.9rem}
+    }
+    @media(max-width:350px){
+      .mobile-fallback-inner{padding-inline:18px}
+      .mobile-title{font-size:clamp(3.65rem,19vw,4.75rem)}
+      html[lang^="zh"] .mobile-title{font-size:clamp(3rem,15.6vw,4rem)}
+      .mobile-profile{width:96px;height:96px}
+      .mobile-message{font-size:1rem;line-height:1.46}
+      html[lang^="zh"] .mobile-message{font-size:1.02rem;line-height:1.58}
+    }
   `;
   document.head.appendChild(style);
 
   const fallback = document.createElement('section');
   fallback.className = 'mobile-fallback';
+  if (reducedMotion || testMode) fallback.classList.add('copy-static');
   fallback.id = 'mobile-fallback';
   fallback.setAttribute('aria-labelledby', 'mobile-fallback-title');
   fallback.innerHTML = `
@@ -69,12 +115,12 @@
     <div class="mobile-wave-fallback" aria-hidden="true"></div>
     <div class="mobile-vignette" aria-hidden="true"></div>
     <div class="mobile-fallback-inner">
-      <h1 class="mobile-title" id="mobile-fallback-title" data-mobile-copy="title"></h1>
+      <h1 class="mobile-title" id="mobile-fallback-title" data-mobile-lines="title"></h1>
       <div class="mobile-center">
         <img class="mobile-profile" src="${PROFILE_AVATAR}" alt="CTWalk GitHub profile" decoding="async" referrerpolicy="no-referrer">
         <a class="mobile-github" href="https://github.com/CTWalk" target="_blank" rel="noreferrer" data-mobile-copy="github"></a>
       </div>
-      <p class="mobile-message" data-mobile-copy="message"></p>
+      <p class="mobile-message" data-mobile-lines="message"></p>
     </div>`;
 
   const main = document.querySelector('main');
@@ -130,8 +176,6 @@
       vec2 uv=vUv;
       float t=uTime;
 
-      // No nearest-edge ownership and no conditionals: all four sides blend
-      // continuously, eliminating the diagonal seams previously visible from corners.
       float db=uv.y;
       float dr=1.-uv.x;
       float dt=1.-uv.y;
@@ -152,7 +196,6 @@
       float it=edgeLight(dt,et);
       float il=edgeLight(dl,el);
 
-      // Smooth union instead of max/branch ownership keeps corners continuous.
       float intensity=1.-(1.-clamp(ib,0.,.94))*(1.-clamp(ir,0.,.94))*(1.-clamp(it,0.,.94))*(1.-clamp(il,0.,.94));
 
       float nearest=min(min(db,dr),min(dt,dl));
@@ -160,8 +203,6 @@
       float inwardMist=(1.-smoothstep(.16,.50,nearest))*.055*pow(strongest,1.35);
       intensity=clamp(intensity+inwardMist,0.,1.);
 
-      // Edge brightness is intentionally dominant; the centre receives only a
-      // dim colour cast even while a crest extends inward.
       float edgeBoost=1.-smoothstep(0.,.14,nearest);
       float luminance=.34+.66*edgeBoost;
 
@@ -187,7 +228,28 @@
   let lastFrameMs=null;
 
   function selectedLocale(){return html.lang.toLowerCase().startsWith('zh')?'zh':'en';}
-  function syncLanguage(){const strings=copy[selectedLocale()];fallback.querySelectorAll('[data-mobile-copy]').forEach(node=>{const key=node.dataset.mobileCopy;if(strings[key])node.textContent=strings[key];});return html.lang;}
+
+  function renderLines(node,lines,startDelay,stepDelay,lineClass){
+    node.replaceChildren();
+    lines.forEach((line,index)=>{
+      const span=document.createElement('span');
+      span.className=`mobile-copy-line ${lineClass}`;
+      span.style.setProperty('--line-delay',`${startDelay+index*stepDelay}ms`);
+      span.textContent=line;
+      node.appendChild(span);
+    });
+  }
+
+  function syncLanguage(){
+    const strings=copy[selectedLocale()];
+    const title=fallback.querySelector('[data-mobile-lines="title"]');
+    const message=fallback.querySelector('[data-mobile-lines="message"]');
+    renderLines(title,strings.titleLines,120,145,'mobile-title-line');
+    renderLines(message,strings.messageLines,760,135,'mobile-message-line');
+    fallback.querySelector('[data-mobile-copy="github"]').textContent=strings.github;
+    return html.lang;
+  }
+
   function createShader(type,source){if(!gl)return null;const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS)){console.warn('[mobile-fallback] WebGL shader compile failed:',gl.getShaderInfoLog(shader));gl.deleteShader(shader);return null;}return shader;}
   function initWebGL(){
     if(!gl)return false;
