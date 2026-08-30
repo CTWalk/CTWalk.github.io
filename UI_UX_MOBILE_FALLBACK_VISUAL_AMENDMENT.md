@@ -1,8 +1,11 @@
 # Mobile Fallback Visual Amendment
 
-Status: **normative amendment to #5 / #20 mobile fallback presentation**
+Status: **normative amendment to #5 / #20 mobile fallback presentation**  
+Specification precedence: `UI_UX_SPEC_PRECEDENCE.md`
 
 This amendment records the post-deployment human review of the dedicated mobile fallback.
+
+When older #5/#6/#7/#12/capture wording conflicts with this document on mobile identity, composition, motion, rendering ownership or human acceptance, follow `UI_UX_SPEC_PRECEDENCE.md` and this amendment. Historical wording remains audit context rather than an active requirement.
 
 ## Accepted direction
 
