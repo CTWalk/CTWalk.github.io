@@ -2,6 +2,7 @@
 
 Issue: #5  
 Related architecture work: #4  
+Mobile presentation decision: #20  
 Reference implementation reviewed: `0a3f665131fe4774a8fac1e64d0cd8c08dcf6281`
 
 ## 1. Purpose
@@ -12,12 +13,29 @@ It is normative for **observable UX**, not for the current implementation struct
 
 The reference commit above is evidence of the current experience. It is not automatically correct merely because it is current. A baseline may only be frozen after the state is checked against this contract.
 
+### #20 responsive-scope amendment
+
+The portfolio is now intentionally split into two presentation modes:
+
+```text
+viewport > 760px
+  -> full desktop interactive portfolio
+  -> Scenes 0–6 and their choreography
+
+viewport <= 760px
+  -> dedicated mobile fallback
+  -> one full-screen desktop-first guidance composition
+  -> no project-scene parity requirement
+```
+
+This amendment supersedes the earlier assumption that every desktop scene must have a responsive mobile equivalent. Unless explicitly stated otherwise, the Scene 0–6 contracts below are now normative for the **desktop interactive presentation only**. Any older per-scene wording that says “mobile may…” is historical context and does not require those scenes to render at `<= 760px`.
+
 ## 2. Requirement classes
 
 Every requirement in this document belongs to one of these classes:
 
 - **INV — must remain invariant:** a regression unless the change is intentional, reviewed, and the acceptance contract/baseline is updated.
-- **RESP — intentional responsive or modality difference:** desktop/mobile, language, pointer, or reduced-motion variants may differ in presentation while preserving meaning.
+- **RESP — intentional responsive or modality difference:** desktop/mobile, language, pointer, or reduced-motion variants may differ in presentation while preserving the intended product decision.
 - **FREE — allowed implementation freedom:** implementation details may change without baseline approval when the observable contract is preserved.
 - **GAP — pre-freeze acceptance gap:** a current behavior that must be resolved or explicitly accepted before it can become a golden baseline.
 
@@ -27,7 +45,7 @@ The later verification suite must distinguish two kinds of checks.
 
 ### Mechanical checks
 
-Suitable for automation: selected locale, text content, visibility, geometry, wrapping, crop, image/state selection, ordering, reduced-motion state, and deterministic scene checkpoints.
+Suitable for automation: selected locale, text content, visibility, geometry, wrapping, crop, image/state selection, ordering, reduced-motion state, presentation mode, and deterministic checkpoints.
 
 ### Perceptual checks
 
@@ -39,7 +57,7 @@ Passing screenshots alone is not sufficient to declare an animated UX safe.
 
 ### G-01 — EN and zh-TW have equal acceptance status — INV
 
-EN and zh-TW are both first-class product surfaces. Both must be reviewed for content, hierarchy, wrapping, responsive layout, motion coexistence, and reduced-motion behavior. Neither language is a secondary fallback and neither receives weaker regression coverage by default.
+EN and zh-TW are both first-class product surfaces. Both must be reviewed for content, hierarchy, wrapping, presentation mode, motion coexistence, and reduced-motion behavior. Neither language is a secondary fallback and neither receives weaker regression coverage by default.
 
 ### G-02 — wording changes are intentional changes — INV
 
@@ -57,35 +75,57 @@ For regression purposes, the **rendered composition at a frozen checkpoint** is 
 
 ### G-04 — readable hierarchy — INV
 
-For every scene, the viewer must be able to identify the primary message without deliberate inspection. The title is the primary textual message; body copy is supporting explanation. Evidence graphics may be visually strong but must not make the text unreadable.
+For every active presentation, the viewer must be able to identify the primary message without deliberate inspection. The title is the primary textual message; body copy is supporting explanation. Evidence graphics may be visually strong but must not make the text unreadable.
 
-Decorative backgrounds, grids, blur layers, parallax, and ambient geometry must remain subordinate.
+Decorative backgrounds, grids, blur layers, parallax, ambient geometry, and the mobile ambient light field must remain subordinate to the message they frame.
 
-### G-05 — one dominant idea per scene — INV
+### G-05 — one dominant idea per scene/presentation — INV
 
-Each project scene communicates one main idea. Additional evidence supports that idea instead of introducing a second competing headline or success ceremony.
+Each desktop project scene communicates one main idea. The mobile fallback communicates one main idea: this portfolio is deliberately desktop-first and the full interactive walkthrough belongs on desktop.
+
+Additional evidence or decoration must support that idea instead of introducing a competing headline or success ceremony.
 
 ### G-06 — macro pacing includes silence — INV
 
-The accepted cross-scene rhythm is not continuous escalation. Quiet holds and decompression are part of the interaction design and must not be removed merely to make the page feel more active.
+The accepted desktop cross-scene rhythm is not continuous escalation. Quiet holds and decompression are part of the interaction design and must not be removed merely to make the page feel more active.
 
-### G-07 — mobile preserves meaning, not desktop geometry — RESP
+### G-07 — mobile is a dedicated fallback presentation — RESP / INV
 
-Mobile may reposition, resize, simplify, or hide secondary evidence. It must preserve the same project thesis, primary evidence, readable copy, and scene ordering. Desktop geometry is not itself an invariant on mobile.
+At `<= 760px`, the portfolio does **not** reproduce the desktop project scenes.
 
-### G-08 — reduced motion preserves meaning — RESP / INV
+Mobile must instead present one deliberately designed full-screen fallback that:
 
-With `prefers-reduced-motion: reduce`, scroll-driven choreography may become static and interactive motion may be removed. The user must still be able to understand the scene’s main claim and see a meaningful representative evidence state.
+- identifies CTWalk / QA / SDET;
+- retains EN / zh-TW language switching;
+- clearly states that the full interactive walkthrough is designed for desktop;
+- provides at least the GitHub navigation affordance;
+- uses a polished code-driven composition rather than a generic compatibility warning;
+- does not expose CommerceOps, noCodeE2E, SocialPlatform, CueSheet, DCA, Outro, or desktop scroll choreography;
+- does not use a generated image as the page substitute.
 
-Reduced motion must not merely disable animation while leaving essential evidence permanently hidden.
+The mobile fallback may use a restrained Hey-Siri-like ambient edge-light field. That field is decorative, deterministic under test mode, and the only intentional continuous mobile motion.
+
+Crossing the `760px` breakpoint must change presentation ownership. Desktop scene runtimes must not remain active behind the mobile fallback.
+
+### G-08 — reduced motion preserves the active presentation — RESP / INV
+
+For desktop, `prefers-reduced-motion: reduce` may replace scroll-driven choreography with static scene states, but each scene’s main claim and representative evidence must remain understandable.
+
+For mobile, reduced motion keeps the same dedicated fallback composition and freezes the ambient Canvas field into a deterministic static state.
+
+Reduced motion must never merely disable animation while leaving essential content permanently hidden.
 
 ### G-09 — evidence remains factual — INV
 
 Do not introduce fake dashboards, fabricated test results, invented deployment states, or visual language that implies evidence not present in the project. Existing factual contribution/issue titles in DCA must not be rewritten merely for stylistic consistency.
 
+The mobile fallback contains no fake project screenshot or generated-image proxy.
+
 ### G-10 — accessibility semantics survive refactors — INV
 
 Language selection must update the document language correctly. Meaningful images/containers must retain appropriate accessible names or alternative text. Decorative/ambient elements should remain hidden from assistive technology where appropriate. Keyboard-visible focus behavior and functional links must remain usable.
+
+The mobile ambient Canvas and static decorative framing are `aria-hidden`; the fallback title/message and GitHub link remain semantic content.
 
 ### G-11 — implementation structure is not frozen — FREE
 
@@ -97,7 +137,9 @@ A failing visual baseline is not permission to regenerate snapshots. Baselines a
 
 ---
 
-# 5. Scene contracts
+# 5. Desktop scene contracts
+
+The following Scene 0–6 contracts apply to the desktop interactive presentation (`> 760px`). They do not imply mobile scene parity after #20.
 
 ## Scene 0 — Intro
 
@@ -124,14 +166,13 @@ Current source-level zh-TW breaks are a baseline candidate, not a language-wide 
 - **INV:** the introductory title is the immediate focal point.
 - **INV:** the supporting paragraph remains readable without competing with the ambient background.
 - **INV:** the WebGL/network treatment is atmospheric, not information the user must inspect.
-- **RESP:** desktop may center the composition while mobile may use a left-aligned reading layout.
 - **FREE:** exact ambient geometry and small parallax offsets may change if perceived prominence remains equivalent.
 
 ### Motion
 
 - **INV:** intro motion remains restrained; it should establish atmosphere rather than behave like a product demo.
 - **INV:** the scroll cue is discoverable but secondary.
-- **RESP:** reduced motion hides the WebGL animation and presents a static readable section.
+- **RESP:** desktop reduced motion hides the WebGL animation and presents a static readable section.
 
 ### Review questions
 
@@ -157,14 +198,11 @@ Perceptual: can the role/value proposition be understood immediately, and does t
 - Title meaning/content: `用真的產品情境練習 再對照參考驗證流程`
 - Body: `CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。`
 
-The current source has more than one CommerceOps copy writer; #4 Stage 1 must remove that ownership defect before #6 freezes the baseline.
-
 ### Visual hierarchy
 
 - **INV:** the phone/product state is the primary visual evidence.
 - **INV:** oversized `CHECK OUT`, `EXPIRED PROMO`, and `UNAVAILABLE` words are transitional events, not persistent competing headlines.
 - **INV:** the orange transition language remains visually distinct from the neutral portfolio typography without obscuring the main title/body.
-- **RESP:** mobile may reposition/enlarge the phone relative to the available canvas while keeping copy readable.
 - **FREE:** exact phone pixel position or scale may be refactored if the approved visual baseline remains perceptually equivalent.
 
 ### Motion
@@ -174,7 +212,7 @@ The current source has more than one CommerceOps copy writer; #4 Stage 1 must re
 - **INV:** phone evidence changes correspond to the intended scenario rather than drifting out of sync with the transition word.
 - **INV:** final state settles without a reset or abrupt jump.
 - **FREE:** exact normalized timing constants may change if #9 confirms perceptual equivalence.
-- **RESP:** reduced motion removes the transition-word choreography and shows a meaningful static failure-state example.
+- **RESP:** desktop reduced motion removes the transition-word choreography and shows a meaningful static failure-state example.
 
 ### Review questions
 
@@ -205,7 +243,6 @@ Perceptual: is the quiet gap clearly felt, and do the large scenario words suppo
 - **INV:** the YAML/code plate is readable evidence, not decorative texture.
 - **INV:** the project title remains compact enough that it does not dominate the code example.
 - **INV:** the Playwright result is a final proof point, not the primary headline.
-- **RESP:** mobile may reduce code/runner scale but must keep the intended flow recognizable.
 
 ### Motion
 
@@ -214,11 +251,11 @@ Perceptual: is the quiet gap clearly felt, and do the large scenario words suppo
 - **INV:** the Playwright `passed` result arrives early enough to leave a deliberate final comprehension hold.
 - **INV:** the result should not disappear immediately at the scene boundary.
 - **FREE:** the exact highlight opacity/glow values and internal timing numbers may change if readability and hold duration remain equivalent.
-- **RESP:** reduced motion presents a readable static YAML/result state without requiring the sequential animation.
+- **RESP:** desktop reduced motion presents a readable static YAML/result state without requiring the sequential animation.
 
 ### Review questions
 
-Mechanical: code text is present and legible; runner/result appears at the final checkpoint; locale copy is correct; mobile does not clip the result.
+Mechanical: code text is present and legible; runner/result appears at the final checkpoint; locale copy is correct.
 
 Perceptual: can a viewer understand “readable intent → execution → result” without pausing the page manually?
 
@@ -245,10 +282,9 @@ Perceptual: can a viewer understand “readable intent → execution → result�
 - **INV:** the scene communicates one release moving through multiple verification layers.
 - **INV:** product evidence is the anchor; database and web representations are intermediate states, not separate dashboard products.
 - **INV:** `DATABASE` and `WEB UI` labels are structural wayfinding and remain visually restrained.
-- **INV:** the final mobile product evidence is the closing state.
+- **INV:** the final mobile product evidence is the closing state of the desktop scene.
 - **INV:** do not reintroduce green success badges/checks, `PASSED`, `Delivered`, a glowing signoff halo, or another celebratory success layer.
 - **INV:** do not fabricate CI/deployment/dashboard evidence that the scene does not actually prove.
-- **RESP:** mobile can simplify geometry/scale while preserving the same release-path meaning.
 
 ### Motion
 
@@ -257,11 +293,11 @@ Perceptual: can a viewer understand “readable intent → execution → result�
 - **INV:** the final phone receives a meaningful reading hold before the next scene.
 - **INV:** one neutral path/marker remains the conceptual through-line rather than a success-progress meter.
 - **FREE:** SVG geometry and interpolation internals may change if the same sequence and visual restraint remain.
-- **RESP:** reduced motion resolves to a meaningful final-product state with subdued structural context instead of replaying the full sequence.
+- **RESP:** desktop reduced motion resolves to a meaningful final-product state with subdued structural context instead of replaying the full sequence.
 
 ### Review questions
 
-Mechanical: correct final phone asset, correct DB/Web order, no removed success language returns, mobile final phone remains legible.
+Mechanical: correct final phone asset, correct DB/Web order, no removed success language returns.
 
 Perceptual: does the viewer read one release path rather than several unrelated test demos, and is the final phone held long enough to understand?
 
@@ -286,9 +322,8 @@ Perceptual: does the viewer read one release path rather than several unrelated 
 ### Visual hierarchy
 
 - **INV:** desktop scheduling evidence is the primary visual.
-- **INV:** mobile-device evidence is supporting context on desktop, not a second competing product story.
+- **INV:** mobile-device evidence inside this desktop scene is supporting context, not a second competing product story.
 - **INV:** the manager-phone evidence uses the accepted canonical Conflicts view when that phone is shown.
-- **RESP:** on mobile, supporting phones may be hidden and the desktop evidence may become the dominant full-width artifact.
 - **INV:** screenshots must remain understandable as real product evidence; they must not be shrunk until text becomes merely texture.
 
 ### Motion
@@ -298,11 +333,11 @@ Perceptual: does the viewer read one release path rather than several unrelated 
 - **INV:** CueSheet is a decompression scene; it should not acquire a loud success animation or rapid event cadence.
 - **INV:** the final/review state receives enough quiet exposure to understand the product behavior.
 - **FREE:** exact focus scale/damping values may change if the continuous calm behavior remains equivalent.
-- **RESP:** reduced motion presents the review/final evidence directly; sequential motion is not required.
+- **RESP:** desktop reduced motion presents the review/final evidence directly; sequential motion is not required.
 
 ### Review questions
 
-Mechanical: expected conflict/review assets, manager-phone source where visible, phones hidden where intentionally specified on mobile, no crop that removes essential UI.
+Mechanical: expected conflict/review assets, manager-phone source where visible, no crop that removes essential UI.
 
 Perceptual: does the section feel calmer than the preceding kinetic scene, and is the scheduling consequence understandable before exit?
 
@@ -333,7 +368,6 @@ Perceptual: does the section feel calmer than the preceding kinetic scene, and i
 - **INV:** the contribution history recedes before scanner/PASS becomes the focal mode.
 - **INV:** `PASS` remains restrained and must not turn into a celebratory product-success claim.
 - **INV:** the scene must not imply that Decision Contract Audit caused external contributions unless such causality is independently verified.
-- **RESP:** mobile may compress row geometry, but active-row text must still be readable at its intended checkpoint.
 
 ### Motion
 
@@ -342,7 +376,7 @@ Perceptual: does the section feel calmer than the preceding kinetic scene, and i
 - **INV:** scanner begins only after the history-reading phase has substantially completed.
 - **INV:** PASS follows the scan and then settles.
 - **FREE:** exact keyframe percentages may change if #9 confirms the same phrasing and perceptual rhythm.
-- **RESP:** reduced motion exposes the contribution history and PASS statically, with scanner motion removed.
+- **RESP:** desktop reduced motion exposes the contribution history and PASS statically, with scanner motion removed.
 
 ### Review questions
 
@@ -373,43 +407,44 @@ Perceptual: does the history feel phrased rather than mechanically stepped, and 
 - **INV:** the outro is a quiet exit and clear GitHub invitation, not another portfolio case study.
 - **INV:** the contribution heatmap is ambient context behind the CTA.
 - **INV:** the link remains clearly discoverable and usable.
-- **RESP:** mobile may crop/scale the heatmap differently while keeping the CTA dominant.
 
 ### Motion
 
 - **INV:** arrival remains quiet.
 - **INV:** the one-time discovery ripple/pointer response is secondary and must not loop as a constant attention demand.
 - **INV:** pointer interaction must not interfere with the link.
-- **RESP:** coarse-pointer/mobile does not require pointer-follow interaction.
-- **RESP:** reduced motion shows a subdued static heatmap.
+- **RESP:** desktop reduced motion shows a subdued static heatmap.
 
 ### Review questions
 
-Mechanical: GitHub link works; heatmap does not block pointer events; reduced/coarse-pointer mode is stable.
+Mechanical: GitHub link works; heatmap does not block pointer events; reduced mode is stable.
 
 Perceptual: does the experience clearly feel finished, with the CTA stronger than the decorative heatmap?
 
 ---
 
-# 6. Cross-scene responsive contract
+# 6. Cross-presentation responsive contract
 
-## Desktop / laptop
+## Desktop / laptop (`> 760px`)
 
 - **INV:** primary copy and primary evidence can coexist without overlap.
 - **INV:** the viewer should not need browser zoom to read intended evidence.
-- **FREE:** exact left/right offsets may change as long as the baseline composition remains equivalent.
+- **FREE:** exact left/right offsets may change as long as the accepted composition remains equivalent.
 
-## Mobile
+## Mobile fallback (`<= 760px`)
 
-- **INV:** no horizontal page overflow from title, evidence, or transition graphics.
-- **INV:** primary copy remains readable at normal device scale.
-- **INV:** each scene retains its semantic thesis and primary evidence.
-- **RESP:** secondary decorative/supporting elements may disappear.
-- **RESP:** centered desktop copy may become left aligned for reading.
+- **INV:** only the dedicated fallback is visible and reachable.
+- **INV:** no desktop project scene is reachable by scrolling.
+- **INV:** page does not horizontally or vertically scroll as a disguised continuation of the desktop portfolio.
+- **INV:** primary fallback title/message remain readable at normal device scale.
+- **INV:** GitHub navigation and language switching remain usable.
+- **INV:** the visual treatment reads as an intentional mobile entry, not an error/unsupported-browser warning.
+- **INV:** desktop RAF/parallax/scene-specific runtimes do not continue behind the fallback.
+- **RESP:** the fallback has its own composition and does not preserve desktop scene geometry, evidence, or ordering.
 
 ## Locale switching
 
-- **INV:** switching EN ↔ zh-TW after all runtimes initialize updates every translatable visible node consistently.
+- **INV:** switching EN ↔ zh-TW updates every translatable visible node consistently in the active presentation.
 - **INV:** switching away and back does not restore stale copy from another runtime writer.
 - **INV:** `html.lang`, document title, and description follow the selected locale.
 - **INV:** neither language produces nonsensical hard-break artifacts at approved viewports.
@@ -418,7 +453,9 @@ Perceptual: does the experience clearly feel finished, with the CTA stronger tha
 
 Reduced motion is a separate accepted presentation, not an animation failure mode.
 
-- **INV:** all scenes remain navigable as normal document sections.
+## Desktop
+
+- **INV:** all desktop scenes remain navigable as normal document sections.
 - **INV:** essential content/evidence is visible without waiting for scroll-driven animation state.
 - **INV:** no continuous RAF-driven choreography is required to understand a project.
 - **RESP:** CommerceOps may show one representative failure state without transition words.
@@ -427,6 +464,13 @@ Reduced motion is a separate accepted presentation, not an animation failure mod
 - **RESP:** CueSheet may show the final review state directly.
 - **RESP:** DCA may show readable contribution rows and PASS without scanner animation.
 - **RESP:** Outro may show a static subdued heatmap.
+
+## Mobile
+
+- **INV:** the dedicated fallback remains the only presentation.
+- **INV:** all fallback content and navigation remain present.
+- **INV:** the ambient edge-light Canvas is frozen at a deterministic static state.
+- **INV:** no continuous desktop or mobile animation is required for understanding.
 
 # 8. Allowed implementation freedom
 
@@ -446,19 +490,20 @@ A change to these is safe only when observable requirements above remain satisfi
 
 # 9. Pre-freeze conditions for #6
 
-Before #6 captures the golden baseline:
+Before #6 captures the final coherent golden baseline:
 
-1. #4 Stage 1 must establish deterministic copy/bootstrap ownership so the rendered language does not depend on last-writer-wins load order.
-2. EN and zh-TW title/body wrapping must receive the same manual readability review at the selected desktop, laptop, and mobile baseline widths.
-3. Current effective CommerceOps EN/zh-TW copy must be sourced from the canonical content owner after #4 Stage 1, not from a scene-runtime overwrite.
-4. Each scene must be viewed once in normal motion and once with reduced motion before its screenshot states are approved.
-5. Any mismatch between the implementation and this contract must be resolved or explicitly reclassified before snapshots become authoritative.
+1. Desktop copy/bootstrap ownership must remain deterministic so rendered language does not depend on last-writer-wins load order.
+2. EN and zh-TW desktop title/body wrapping must receive equal manual readability review at selected desktop/laptop checkpoints.
+3. The #20 mobile fallback must be implemented and reviewed in EN and zh-TW at the selected mobile viewport.
+4. Mobile normal and reduced-motion checkpoints must be deterministic and contain no desktop scene content.
+5. Desktop scenes must be viewed in normal motion and reduced motion before their screenshot states are approved.
+6. Any mismatch between implementation and this contract must be resolved or explicitly reclassified before snapshots become authoritative.
 
 # 10. Baseline approval rule
 
 The #6 freeze is approved only when a reviewer can answer both questions positively:
 
-1. **Mechanical:** Is this the correct locale, state, asset, responsive layout, and deterministic checkpoint?
+1. **Mechanical:** Is this the correct locale, state, asset, presentation mode, responsive layout, and deterministic checkpoint?
 2. **Perceptual:** Can the intended message be understood comfortably, with the accepted hierarchy and pacing?
 
 Only then may the rendered state become a golden visual baseline.

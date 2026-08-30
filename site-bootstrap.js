@@ -1,28 +1,9 @@
 (() => {
-  const style = document.createElement('style');
-  style.dataset.nocodeRunnerScale = 'true';
-  style.textContent = `
-    .nocode-runner{
-      grid-template-columns:52px auto;
-      gap:16px;
-      min-width:250px;
-      padding:17px 21px;
-      border-radius:18px;
-      box-shadow:0 24px 72px rgba(0,0,0,.48)
-    }
-    .nocode-runner svg{width:52px;height:52px}
-    .nocode-runner small{margin-bottom:5px;font-size:.7rem;letter-spacing:.09em}
-    .nocode-runner strong{gap:9px;font-size:1rem;line-height:1.15}
-    .nocode-runner .check{width:24px;height:24px;font-size:.86rem}
-    @media(max-width:760px){
-      .nocode-runner{grid-template-columns:44px auto;gap:13px;min-width:220px;padding:14px 17px;border-radius:16px}
-      .nocode-runner svg{width:44px;height:44px}
-      .nocode-runner small{font-size:.64rem}
-      .nocode-runner strong{font-size:.9rem}
-      .nocode-runner .check{width:22px;height:22px;font-size:.78rem}
-    }
-  `;
-  document.head.appendChild(style);
+  const MOBILE_QUERY = '(max-width: 760px)';
+  const mobileQuery = window.matchMedia(MOBILE_QUERY);
+  const presentationAtLoad = mobileQuery.matches ? 'mobile-fallback' : 'desktop';
+  const html = document.documentElement;
+  const params = new URLSearchParams(window.location.search);
 
   const load = src => new Promise((resolve, reject) => {
     const script = document.createElement('script');
@@ -42,10 +23,94 @@
     }
   };
 
+  // A breakpoint crossing changes presentation ownership. Reloading creates a
+  // clean runtime boundary: desktop scene writers never remain alive behind the
+  // mobile fallback, and returning to desktop reinitializes the full experience.
+  mobileQuery.addEventListener('change', event => {
+    const nextPresentation = event.matches ? 'mobile-fallback' : 'desktop';
+    if (nextPresentation !== presentationAtLoad) window.location.reload();
+  });
+
+  if (mobileQuery.matches) {
+    html.dataset.presentation = 'mobile-fallback';
+
+    // The main inline scene loop is scheduled before this bootstrap runs. It is
+    // a global lexical binding, so cancel it before the browser reaches its first
+    // paint. Desktop project scenes then remain inert and hidden on mobile.
+    try {
+      if (typeof raf !== 'undefined' && raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    } catch (error) {
+      console.error('[site-bootstrap] unable to stop desktop scene frame', error);
+    }
+
+    // The existing pointer listener was registered by the desktop script. A
+    // capture-phase guard prevents it from mutating desktop parallax state while
+    // the mobile presentation owns the viewport.
+    window.addEventListener('pointermove', event => event.stopImmediatePropagation(), {
+      capture: true,
+      passive: true
+    });
+
+    const experience = document.getElementById('experience');
+    if (experience) {
+      experience.hidden = true;
+      experience.setAttribute('aria-hidden', 'true');
+      // Baseline asset scanners inspect image display state directly. Mark every
+      // desktop evidence image as display:none so mobile verification cannot be
+      // blocked by assets that are intentionally outside the mobile product.
+      experience.querySelectorAll('img').forEach(image => {
+        image.style.display = 'none';
+      });
+    }
+
+    // The module script after this bootstrap only starts Three.js when #webgl
+    // exists. Remove that identifier in mobile mode so the import/render loop is
+    // never created.
+    const webgl = document.getElementById('webgl');
+    if (webgl) {
+      webgl.dataset.desktopWebglId = 'webgl';
+      webgl.removeAttribute('id');
+    }
+
+    (async () => {
+      const loaded = await loadSafely('./mobile-fallback.js');
+      if (!loaded) {
+        console.error('[site-bootstrap] mobile fallback failed to initialize');
+      }
+
+      if (params.get('uiux-test') === '1') {
+        await loadSafely('./ui-ux-mobile-test-control.js');
+      }
+    })();
+    return;
+  }
+
+  html.dataset.presentation = 'desktop';
+
+  const style = document.createElement('style');
+  style.dataset.nocodeRunnerScale = 'true';
+  style.textContent = `
+    .nocode-runner{
+      grid-template-columns:52px auto;
+      gap:16px;
+      min-width:250px;
+      padding:17px 21px;
+      border-radius:18px;
+      box-shadow:0 24px 72px rgba(0,0,0,.48)
+    }
+    .nocode-runner svg{width:52px;height:52px}
+    .nocode-runner small{margin-bottom:5px;font-size:.7rem;letter-spacing:.09em}
+    .nocode-runner strong{gap:9px;font-size:1rem;line-height:1.15}
+    .nocode-runner .check{width:24px;height:24px;font-size:.86rem}
+  `;
+  document.head.appendChild(style);
+
   (async () => {
-    // Preserve the existing initialization order so animation writer precedence
-    // does not change during the Stage 1 ownership cleanup. A failed optional
-    // runtime is isolated and no longer prevents later runtimes from loading.
+    // Preserve the established desktop initialization order so this ticket does
+    // not alter animation-writer precedence or the accepted wide-screen design.
     await loadSafely('./social-runtime.js');
     await loadSafely('./commerce-integrated.js');
     await loadSafely('./outro-heatmap.js');
@@ -53,9 +118,7 @@
     await loadSafely('./evidence-readability.js');
     await loadSafely('./experience-pacing.js');
 
-    // Test control is opt-in and loads only after all production runtimes have
-    // initialized. Normal visitors never request or execute this file.
-    if (new URLSearchParams(window.location.search).get('uiux-test') === '1') {
+    if (params.get('uiux-test') === '1') {
       await loadSafely('./ui-ux-test-control.js');
     }
   })();

@@ -3,7 +3,8 @@
 Issue: #6  
 Acceptance contract: #5 / `UI_UX_ACCEPTANCE_CONTRACT.md`  
 Checkpoint manifest: #12 / `UI_UX_BASELINE_MANIFEST.md`  
-Deterministic control: #7 / `UI_UX_TEST_CONTROL.md`
+Deterministic control: #7 / `UI_UX_TEST_CONTROL.md`  
+Mobile presentation: #20
 
 ## Purpose
 
@@ -15,16 +16,21 @@ The capture command generates candidate images only. A successful run never mean
 
 ## Runtime selection
 
-`npm run uiux:capture` is now a dispatcher rather than a hard dependency on one Playwright installation.
+`npm run uiux:capture` is a dispatcher rather than a hard dependency on one Playwright installation.
 
 It selects the first usable runtime in this order:
 
 1. Node Playwright, when the `playwright` package is installed locally;
 2. Python Playwright, when `python3` or `python` can import `playwright`.
 
-Both implementations consume the same `scripts/ui-ux-baseline-plan.json`, call the same #7 semantic checkpoint API, produce the same directory structure, and record which capture runtime was used in metadata.
+Both implementations consume the same `scripts/ui-ux-baseline-plan.json`, call the same public `window.__portfolioTest` contract, produce the same directory structure, and record which capture runtime was used in metadata.
 
-This prevents a missing npm package from blocking local baseline work when a usable Python Playwright environment already exists.
+The page chooses the internal controller from presentation mode:
+
+```text
+> 760px  -> desktop scene controller
+<= 760px -> mobile fallback controller
+```
 
 ## Setup: Node path
 
@@ -54,23 +60,16 @@ google-chrome
 google-chrome-stable
 ```
 
-That means a machine with Python Playwright plus an existing Chrome/Chromium installation does not need a separate Playwright browser download.
-
 If there is no system browser, install the Playwright Chromium build:
 
 ```bash
 python3 -m playwright install chromium
 ```
 
-You can force the Python runtime directly with:
+Force a runtime with:
 
 ```bash
 npm run uiux:capture:python
-```
-
-or the Node runtime with:
-
-```bash
 npm run uiux:capture:node
 ```
 
@@ -88,12 +87,65 @@ By default the selected runner:
 4. launches Chromium;
 5. loads the portfolio with `?uiux-test=1`;
 6. waits for `window.__portfolioTest`;
-7. uses `setLanguage()` and `goToCheckpoint()` from #7;
+7. uses `setLanguage()` and `goToCheckpoint()`;
 8. waits for semantic visual settle and visible assets;
 9. captures the viewport;
 10. writes candidate metadata beside the screenshots.
 
-No production `durations` array, page-level scroll pixel, arbitrary scene `step`, or fixed stabilization sleep exists in this capture path.
+No production `durations` array, page-level scroll pixel, arbitrary scene `step`, or fixed stabilization sleep defines capture readiness.
+
+## Active coverage
+
+The shared plan implements the current #12 matrix.
+
+### Desktop interactive presentation
+
+Normal motion:
+
+- desktop `1440x900`: 22 semantic states;
+- laptop `1280x800`: 8 tighter-desktop risk states.
+
+Reduced motion:
+
+- desktop `1440x900`: 7 representative static states.
+
+### Mobile fallback presentation
+
+At `390x844`, the seven desktop scenes are intentionally absent.
+
+Normal motion:
+
+```text
+mobile.fallback
+```
+
+Reduced motion:
+
+```text
+mobile.fallback.reduced
+```
+
+Both are captured in EN and zh-TW.
+
+### Total
+
+```text
+39 checkpoint/viewport/motion cells
+x 2 locales
+= 78 candidate screenshots
+```
+
+The previous 130-candidate run at source SHA `1c1990ef05dc764b8e2a1797f7fc41fbded4289f` remains historical review evidence. It is not the active final-freeze matrix after #20.
+
+## Mobile determinism
+
+The production mobile fallback uses a slow Canvas edge-light animation.
+
+Under `?uiux-test=1`, the mobile controller freezes that Canvas at a fixed semantic time before capture. Under `prefers-reduced-motion: reduce`, it uses a separate fixed reduced-motion state.
+
+The effect contains no uncontrolled random state.
+
+Desktop evidence images are hidden from the active mobile presentation and are excluded from mobile visible-asset readiness.
 
 ## Output
 
@@ -102,8 +154,6 @@ Default output:
 ```text
 baseline-candidates/<source-sha-short>/
 ```
-
-The directory is ignored by Git because candidate output is not automatically golden.
 
 Each record includes:
 
@@ -116,35 +166,20 @@ Each record includes:
 - motion preference;
 - asset status;
 - console errors;
-- semantic checkpoint resolution returned by #7;
+- semantic checkpoint resolution;
 - settle result;
 - screenshot path;
 - empty reviewer/review-notes fields for later acceptance.
 
-## Coverage
-
-The shared plan implements the current #12 capture matrix.
-
-Normal-motion coverage includes:
-
-- desktop `1440x900`;
-- laptop `1280x800` for tighter-desktop risk states;
-- mobile `390x844`;
-- both EN and zh-TW for every selected viewport/checkpoint.
-
-Reduced-motion coverage includes desktop and mobile in both locales for the representative reduced states required by #12.
-
-DCA locale composition uses `dca.early-contribution`. `dca.pass` is still captured separately as the restrained conclusion checkpoint.
-
 ## Environment overrides
 
-Use an already-running site instead of the built-in static server:
+Use an already-running site:
 
 ```bash
 BASELINE_BASE_URL=http://127.0.0.1:9000 npm run uiux:capture
 ```
 
-Choose a different local port:
+Choose a local port:
 
 ```bash
 BASELINE_PORT=9000 npm run uiux:capture
@@ -162,50 +197,53 @@ Use a specific Chromium/Chrome binary:
 BASELINE_BROWSER_EXECUTABLE=/path/to/chromium npm run uiux:capture
 ```
 
-Choose a specific Python executable for fallback probing:
+Choose a Python executable:
 
 ```bash
 BASELINE_PYTHON=/path/to/python3 npm run uiux:capture
 ```
 
-Override the recorded source SHA only when there is a specific reason:
+Override the recorded source SHA only for a specific controlled reason:
 
 ```bash
 BASELINE_SOURCE_SHA=<sha> npm run uiux:capture
 ```
 
-For non-authoritative experiments only, dirty-worktree protection can be bypassed:
+For non-authoritative experiments only:
 
 ```bash
 BASELINE_ALLOW_DIRTY=1 npm run uiux:capture
 ```
 
-Do not approve images from that mode as a frozen baseline.
+Do not approve images from dirty-worktree mode as a frozen baseline.
 
 ## Asset requirement
 
 Browser-runtime availability and evidence-asset availability are separate gates.
 
-A candidate cannot be approved when an expected image is missing. The runner therefore still fails if the externally hosted evidence required by the rendered portfolio cannot load. Do not replace those images with placeholders merely to make capture pass.
+A desktop candidate cannot be approved when an expected visible evidence image is missing. Do not replace missing evidence with placeholders merely to make capture pass.
+
+The mobile fallback contains no generated/raster project-evidence image, so intentionally hidden desktop assets are outside its readiness surface.
 
 ## Acceptance workflow
 
-A candidate becomes golden only after review against #5.
+A candidate becomes golden only after explicit review against #5.
 
 For each image verify:
 
 - correct semantic checkpoint;
 - expected EN/zh-TW content and natural rendered wrapping;
-- correct viewport/responsive composition;
-- expected evidence asset;
+- correct presentation mode and viewport composition;
+- expected visible evidence/decoration;
 - no clipping/overflow or missing UI;
 - correct reduced-motion meaning when applicable;
-- hierarchy and readability remain consistent with the scene contract.
+- hierarchy and readability remain consistent with the active contract;
+- deterministic repeatability.
 
 A visual difference must be classified before any baseline is replaced. Never solve a failing comparison by regenerating snapshots first.
 
 ## Relationship to #8
 
-#8 should reuse the same #7 navigation sequence, but replace candidate-only screenshots with visual assertions against the reviewed baseline set.
+#8 should reuse the same semantic navigation sequence but replace candidate-only screenshots with visual assertions against the reviewed final baseline set.
 
 The capture runners remain useful for proposing intentional new baselines; they are not the comparison engine and they do not approve images.

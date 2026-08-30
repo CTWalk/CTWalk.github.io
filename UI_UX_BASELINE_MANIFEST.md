@@ -3,87 +3,340 @@
 Issue: #12  
 Parent baseline ticket: #6  
 Acceptance contract: #5 / `UI_UX_ACCEPTANCE_CONTRACT.md`  
-Reference implementation: `a520491c119279753956bfaa81ee4722801dc305`
+Mobile presentation decision: #20
 
 ## 1. Purpose
 
 This manifest defines **which rendered UI states are worth freezing** before visual-regression automation is added.
 
-It does not declare any screenshot approved. A checkpoint becomes authoritative only after the rendered image has been reviewed against #5 and its status is changed from `candidate` to `approved` in the baseline record.
+A successful capture is never an approval. A checkpoint becomes authoritative only after the rendered state has been reviewed against the acceptance contract and explicitly accepted.
 
-The checkpoint ID is the stable contract. Current scroll percentages, RAF timing constants, CSS selectors, DOM structure, and source-level line breaks are implementation details and are not part of the baseline identity.
+The checkpoint ID is the stable contract. Scroll percentages, RAF timing constants, DOM structure, selector names, and source-level line breaks are implementation details.
 
-## 2. Status model
+## 2. Active presentation model
 
-Every captured baseline has one status:
+The portfolio now has two intentional presentation modes:
 
-- `candidate` — captured from the target SHA but not yet manually accepted.
-- `approved` — manually reviewed against #5 and accepted as the golden state.
+```text
+viewport > 760px
+  -> desktop interactive portfolio
+  -> project scenes / scroll choreography
+
+viewport <= 760px
+  -> dedicated mobile fallback
+  -> one full-screen composition
+  -> no desktop project scenes
+```
+
+This is an intentional product decision, not a temporary capture shortcut.
+
+### Historical #6 evidence
+
+The first full review at source SHA `1c1990ef05dc764b8e2a1797f7fc41fbded4289f` used the previous matrix and produced 130 candidates: 73 approved, 48 rejected, and 9 blocked.
+
+Those records remain valuable audit evidence for that SHA. They do **not** define the active future mobile baseline after #20. The final coherent golden baseline must be captured from one later accepted repository SHA using the active matrix below.
+
+## 3. Status model
+
+Every baseline record has one explicit status:
+
+- `candidate` — rendered from the target SHA but not yet accepted.
+- `approved` — explicitly reviewed and accepted as golden evidence.
+- `rejected` — deterministic/renderable, but does not satisfy the acceptance contract.
+- `blocked` — cannot be accepted or rejected reliably because state, assets, or determinism are unresolved.
 - `superseded` — previously approved but intentionally replaced by a later accepted UX change.
 
-Never silently overwrite an `approved` image. Preserve its traceability and mark it `superseded` when a replacement is accepted.
+Never silently overwrite an approved image. Preserve traceability and record the replacement relationship.
 
-## 3. Capture environments
+## 4. Capture environments
 
 ### Primary viewports
 
 | ID | Size | Purpose |
 | --- | --- | --- |
-| `desktop` | 1440×900 | Primary wide-screen composition and motion-state baseline |
-| `laptop` | 1280×800 | Guard against title/evidence collisions and tighter desktop wrapping |
-| `mobile` | 390×844 | Primary narrow responsive composition |
+| `desktop` | 1440×900 | Primary desktop composition and motion-state baseline |
+| `laptop` | 1280×800 | Tighter desktop collision/wrapping risk |
+| `mobile` | 390×844 | Dedicated mobile fallback composition |
 
-The exact CSS viewport size is part of capture metadata.
+The exact CSS viewport size is capture metadata.
 
 ### Locales
 
 - `en`
 - `zh-TW`
 
-**Normative locale-pairing rule:** whenever a checkpoint is selected for a viewport, capture that same checkpoint in both EN and zh-TW unless there is literally no localized visible content in the captured composition. The current portfolio scenes contain visible localized copy, so the checkpoints in this manifest are paired by locale.
-
-The baseline freezes the **accepted rendered composition**, not the presence or absence of source-level `\n` characters. Neither locale receives weaker visual coverage by default.
+Whenever a checkpoint is selected, both locales are captured. EN and zh-TW are equal acceptance surfaces.
 
 ### Motion modes
 
 - `normal`
 - `reduce`
 
-Reduced motion is a separate accepted presentation, not a broken version of the normal-motion scene.
+Reduced motion is a separate accepted presentation, not an animation failure mode.
 
-## 4. Coverage strategy
+## 5. Active matrix
 
-The matrix is deliberately selective by **viewport and checkpoint**, not by locale.
+The executable source of truth is `scripts/ui-ux-baseline-plan.json`.
 
-### Tier A — representative scene composition
+Current matrix size:
 
-Every scene gets one representative checkpoint at:
+```text
+normal desktop: 22 checkpoints
+normal laptop:   8 checkpoints
+normal mobile:   1 checkpoint
+reduce desktop:  7 checkpoints
+reduce mobile:   1 checkpoint
+--------------------------------
+39 checkpoint/viewport/motion cells
+x 2 locales
+= 78 candidate screenshots
+```
 
-- desktop, both locales;
-- mobile, both locales.
+## 6. Desktop checkpoint inventory
 
-### Tier B — intermediate motion states
+Scene contracts below apply to the desktop interactive presentation. Mobile does not reproduce these scenes.
 
-Distinct kinetic states are captured at desktop in both locales. Add mobile in both locales when the responsive implementation materially changes geometry, scale, evidence placement, or collision risk.
+### Scene 0 — Intro
 
-### Tier C — laptop risk checks
+#### `intro.settled`
 
-Use 1280×800 in both locales only for states with a realistic tighter-desktop risk:
+Initial settled portfolio introduction.
 
-- long/wide title composition;
-- large transitional graphics near copy;
-- dense evidence boards;
-- final evidence that nearly fills the stage.
+Must show the accepted role/title/body hierarchy and subdued ambient network treatment. In reduced motion, the message remains complete without WebGL animation.
 
-### Tier D — reduced motion
+**Coverage:** desktop normal, laptop normal, desktop reduced.
 
-Every animated scene gets at least one reduced-motion representative checkpoint at mobile in both locales. Add desktop in both locales when reduced-motion composition differs materially or contains dense evidence.
+---
 
-This keeps EN/zh-TW symmetric while avoiding a blind Cartesian product across viewports and every frame.
+### Scene 1 — CommerceOps
 
-## 5. Filename convention
+#### `commerce.checkout-event`
 
-Recommended path once images are captured:
+CHECK OUT is the active transition event while checkout evidence remains the phone state.
+
+**Coverage:** desktop, laptop.
+
+#### `commerce.quiet-after-checkout`
+
+CHECK OUT has cleared and EXPIRED PROMO has not begun. The intentionally designed quiet interval must be visible.
+
+**Coverage:** desktop.
+
+#### `commerce.expired-promo`
+
+EXPIRED PROMO is the active scenario event and corresponding phone evidence is transitioning/settled into the expired-coupon state.
+
+**Coverage:** desktop, laptop.
+
+#### `commerce.unavailable`
+
+UNAVAILABLE is the active scenario event with unavailable-variant evidence dominant.
+
+**Coverage:** desktop.
+
+#### `commerce.final-settled`
+
+Transition word has cleared; final unavailable phone state remains readable before scene exit.
+
+**Coverage:** desktop.
+
+#### `commerce.reduced`
+
+Representative static reduced-motion failure state with transition-word choreography removed.
+
+**Coverage:** desktop reduced.
+
+---
+
+### Scene 2 — noCodeE2E
+
+#### `nocode.yaml-readable`
+
+YAML/code evidence is readable before execution emphasis becomes the main event.
+
+**Coverage:** desktop.
+
+#### `nocode.execution`
+
+A middle execution step is the emphasized step while the whole YAML remains understandable as context.
+
+**Coverage:** desktop.
+
+#### `nocode.result-hold`
+
+Playwright result is fully visible with deliberate reading time remaining.
+
+**Coverage:** desktop, laptop.
+
+#### `nocode.reduced`
+
+Static readable YAML plus visible result without sequential choreography.
+
+**Coverage:** desktop reduced.
+
+---
+
+### Scene 3 — SocialPlatform
+
+#### `social.product`
+
+Initial product state before structural verification layers dominate.
+
+**Coverage:** desktop.
+
+#### `social.database`
+
+DATABASE is the active structural layer and DB evidence is readable as an intermediate state.
+
+Must not introduce fabricated success ceremony, green signoff language, `PASSED`, `Delivered`, or an invented CI dashboard.
+
+**Coverage:** desktop.
+
+#### `social.web`
+
+WEB UI is the active structural layer while one release path remains the through-line.
+
+**Coverage:** desktop.
+
+#### `social.final-phone`
+
+Final product evidence is fully established and held for reading.
+
+**Coverage:** desktop, laptop.
+
+#### `social.reduced`
+
+Meaningful reduced-motion representative state with sequential choreography removed.
+
+**Coverage:** desktop reduced.
+
+---
+
+### Scene 4 — CueSheet
+
+#### `cuesheet.workspace`
+
+Initial production workspace/context is the primary evidence.
+
+**Coverage:** desktop.
+
+#### `cuesheet.conflict`
+
+Conflict state is established and readable.
+
+**Coverage:** desktop.
+
+#### `cuesheet.review`
+
+Final/review evidence is established and held as the calm conclusion of the scene.
+
+**Coverage:** desktop, laptop.
+
+#### `cuesheet.reduced`
+
+Final/review evidence is presented directly without sequential choreography.
+
+**Coverage:** desktop reduced.
+
+---
+
+### Scene 5 — Decision Contract Audit
+
+#### `dca.early-contribution`
+
+Early contribution state with localized scene copy still visible. This remains the representative locale-composition checkpoint for DCA.
+
+**Coverage:** desktop.
+
+#### `dca.phrased-hold`
+
+Contribution traversal is in a deliberate reading hold rather than an equal-step metronome.
+
+**Coverage:** desktop.
+
+#### `dca.late-contribution`
+
+A later contribution state is emphasized before scanner handoff.
+
+**Coverage:** desktop.
+
+#### `dca.scanner-handoff`
+
+History-reading phase is receding and scanner becomes the focal transition.
+
+**Coverage:** desktop.
+
+#### `dca.pass`
+
+PASS is established as a restrained conclusion. It is not the representative locale-composition checkpoint because scene copy has already receded.
+
+**Coverage:** desktop, laptop.
+
+#### `dca.reduced`
+
+Contribution history and PASS remain understandable without scanner animation.
+
+**Coverage:** desktop reduced.
+
+---
+
+### Scene 6 — Outro
+
+#### `outro.settled`
+
+Quiet final CTA state with GitHub invitation dominant over ambient heatmap treatment.
+
+The state must be deterministic across valid entry paths before approval.
+
+**Coverage:** desktop, laptop.
+
+#### `outro.reduced`
+
+Static subdued outro without continuous motion.
+
+**Coverage:** desktop reduced.
+
+## 7. Mobile fallback checkpoints
+
+Mobile is no longer a compressed version of the seven desktop scenes.
+
+### `mobile.fallback`
+
+**Presentation:** normal-motion mobile fallback at 390×844.
+
+**Must show:**
+
+- CTWalk / QA / SDET identity;
+- EN or zh-TW language control;
+- oversized editorial desktop-first message;
+- the accepted desktop guidance copy;
+- intentionally dark poster-like composition;
+- code-rendered ambient edge light;
+- GitHub navigation;
+- no desktop scene content.
+
+**Must not show:**
+
+- CommerceOps, noCodeE2E, SocialPlatform, CueSheet, DCA, or Outro scene evidence;
+- scroll narrative or scene numbers from the desktop experience;
+- generated-image material used as the fallback page;
+- random/uncontrolled particle state.
+
+In `?uiux-test=1`, the Canvas field resolves to a fixed deterministic time so the screenshot is reproducible.
+
+**Coverage:** mobile normal, both locales.
+
+### `mobile.fallback.reduced`
+
+**Presentation:** reduced-motion mobile fallback.
+
+The same composition and message remain complete, but the ambient Canvas field is frozen at the defined reduced-motion state.
+
+**Coverage:** mobile reduced, both locales.
+
+## 8. Filename convention
+
+Recommended path:
 
 ```text
 ui-ux-baselines/
@@ -94,18 +347,17 @@ ui-ux-baselines/
           <checkpoint-id>.png
 ```
 
-Example:
+Examples:
 
 ```text
-ui-ux-baselines/a520491/desktop/en/normal/commerce.quiet-after-checkout.png
-ui-ux-baselines/a520491/desktop/zh-TW/normal/commerce.quiet-after-checkout.png
+ui-ux-baselines/<sha>/desktop/en/normal/commerce.final-settled.png
+ui-ux-baselines/<sha>/mobile/zh-TW/normal/mobile.fallback.png
+ui-ux-baselines/<sha>/mobile/en/reduce/mobile.fallback.reduced.png
 ```
 
-The later Playwright implementation may relocate files into its native snapshot directory, but it must preserve these semantic checkpoint IDs in test names/metadata.
+## 9. Required capture metadata
 
-## 6. Required capture metadata
-
-Every image record must contain:
+Every record must contain at least:
 
 ```text
 checkpoint_id
@@ -119,332 +371,51 @@ viewport_width
 viewport_height
 device_scale_factor
 locale
+html_lang
 motion_preference
 asset_load_status
+console_errors
+checkpoint_resolution
+settle
 reviewer
 review_notes
 supersedes (optional)
 ```
 
-If any expected external image failed to load, the capture cannot be approved unless the missing asset is itself the state under test.
+If an expected visible asset fails to load, the state cannot be approved unless the missing asset is intentionally under test.
 
-## 7. Checkpoint inventory
+For mobile fallback captures, hidden desktop evidence is outside the active presentation and must not participate in visible-asset readiness.
 
-Coverage below names **viewports only**. Both locales are required for every listed viewport by the locale-pairing rule above.
+## 10. Approval questions
 
-### Scene 0 — Intro
-
-#### `intro.settled`
-
-**State:** initial settled portfolio introduction.
-
-**Must show:** role label, accepted title/body, secondary scroll cue in normal motion, subdued ambient network treatment.
-
-**Must not become:** a product-demo animation or background-first composition.
-
-**Coverage:** desktop, mobile, laptop; reduced-motion mobile and desktop.
-
-**Contract anchors:** G-01, G-03, G-04, G-07, G-08; Scene 0 hierarchy/motion requirements.
-
----
-
-### Scene 1 — CommerceOps
-
-Current implementation reference only: CHECK OUT sweep occupies approximately scene phase `.03–.22`, EXPIRED PROMO `.29–.50`, UNAVAILABLE `.61–.84`; phone transitions toward expired around `.37–.45` and unavailable around `.68–.76`. These numbers help identify the current frame but are **not** the checkpoint contract.
-
-#### `commerce.checkout-event`
-
-**State:** CHECK OUT is the active oversized transition event while checkout evidence remains the phone state.
-
-**Must show:** CHECK OUT as a transient visual event, accepted title/body readable, phone dominant evidence.
-
-**Coverage:** desktop, mobile, laptop.
-
-#### `commerce.quiet-after-checkout`
-
-**State:** CHECK OUT has cleared and EXPIRED PROMO has not begun.
-
-**Must show:** a perceptible visual rest; phone remains readable; no replacement headline occupies the quiet interval.
-
-**Coverage:** desktop, mobile.
-
-**Reason to freeze:** this intentionally designed silence is easy to erase accidentally during timing refactors.
-
-#### `commerce.expired-promo`
-
-**State:** EXPIRED PROMO is the active scenario event and the phone is transitioning/settled into expired-coupon evidence.
-
-**Coverage:** desktop, mobile, laptop.
-
-#### `commerce.unavailable`
-
-**State:** UNAVAILABLE is the active scenario event and unavailable-variant evidence is dominant.
-
-**Coverage:** desktop, mobile.
-
-#### `commerce.final-settled`
-
-**State:** transition word has cleared; final unavailable phone state remains readable before scene exit.
-
-**Coverage:** desktop, mobile.
-
-#### `commerce.reduced`
-
-**State:** representative reduced-motion failure state with transition-word layer removed. Current implementation uses the expired-coupon phone.
-
-**Coverage:** mobile, desktop.
-
-**Contract anchors:** G-04, G-06, G-07, G-08; Scene 1 hierarchy and event-order requirements.
-
----
-
-### Scene 2 — noCodeE2E
-
-Current implementation reference only: step emphasis ranges approximately `.12–.38`, `.34–.62`, `.58–1.02`; Playwright result reveal begins around `.72` and finishes around `.82`.
-
-#### `nocode.yaml-readable`
-
-**State:** YAML/code plate exists quietly before execution emphasis becomes the main event.
-
-**Coverage:** desktop, mobile.
-
-#### `nocode.execution`
-
-**State:** a middle execution step is clearly emphasized while the whole test remains readable as context.
-
-**Coverage:** desktop, mobile.
-
-#### `nocode.result-hold`
-
-**State:** Playwright `passed` result is fully visible and there is still deliberate scene time remaining.
-
-**Must show:** compact accepted title, readable code evidence, result as proof rather than headline.
-
-**Coverage:** desktop, mobile, laptop.
-
-#### `nocode.reduced`
-
-**State:** static readable YAML plus visible result without sequential choreography.
-
-**Coverage:** mobile, desktop.
-
-**Contract anchors:** G-03, G-04, G-08; Scene 2 readable-evidence and final-hold requirements.
-
----
-
-### Scene 3 — SocialPlatform
-
-#### `social.product`
-
-**State:** initial product state before database/web transformation dominates.
-
-**Coverage:** desktop, mobile.
-
-#### `social.database`
-
-**State:** DATABASE is the active structural layer; DB representation is readable as an intermediate state, not a dashboard product.
-
-**Must not show:** green success badge/check, PASSED, Delivered, signoff halo, or fabricated CI dashboard.
-
-**Coverage:** desktop, mobile.
-
-#### `social.web`
-
-**State:** WEB UI is the active structural layer while the neutral release path remains the through-line.
-
-**Coverage:** desktop, mobile.
-
-#### `social.final-phone`
-
-**State:** final mobile product evidence is fully established and held for reading.
-
-**Must show:** moderation-rules phone as closing evidence; DB/Web structure receded; no success ceremony.
-
-**Coverage:** desktop, mobile, laptop.
-
-#### `social.reduced`
-
-**State:** final phone is directly visible with subdued structural context and no replayed transformation sequence.
-
-**Coverage:** mobile, desktop.
-
-**Contract anchors:** G-05, G-08, G-09; Scene 3 single-release-path, restrained-intermediate-state, and final-hold requirements.
-
----
-
-### Scene 4 — CueSheet
-
-#### `cuesheet.workspace`
-
-**State:** scheduling workspace/context is dominant before conflict/review focus.
-
-**Coverage:** desktop, mobile.
-
-#### `cuesheet.conflict`
-
-**State:** conflict evidence is dominant and understandable as the reason a schedule change is required.
-
-**Coverage:** desktop, mobile.
-
-#### `cuesheet.review`
-
-**State:** review/final evidence is dominant after the calm evidence-focus progression.
-
-**Must show:** canonical Conflicts manager-phone evidence when that supporting phone is visible; desktop schedule evidence remains primary; mobile may intentionally hide supporting phones.
-
-**Coverage:** desktop, mobile, laptop.
-
-#### `cuesheet.reduced`
-
-**State:** review/final evidence is shown directly; sequential camera/focus choreography is unnecessary.
-
-**Coverage:** mobile, desktop.
-
-**Contract anchors:** G-04, G-06, G-07, G-08; Scene 4 evidence readability and decompression requirements.
-
----
-
-### Scene 5 — Decision Contract Audit
-
-The factual contribution/issue titles are evidence and are not style-copy to be rewritten.
-
-#### `dca.early-contribution`
-
-**State:** early contribution row is the primary readable row; inactive history remains contextual. This is also the representative locale-composition checkpoint because the localized title/body are still intentionally visible here.
-
-**Coverage:** desktop, mobile.
-
-#### `dca.phrased-hold`
-
-**State:** representative punctuation/hold point in the deliberately non-uniform traversal.
-
-Current cadence contains two small punctuation regions; one static visual checkpoint is sufficient for visual geometry. #9 must protect both temporal holds.
-
-**Coverage:** desktop.
-
-#### `dca.late-contribution`
-
-**State:** late contribution is primary before history recedes for scanner mode.
-
-**Coverage:** desktop, mobile.
-
-#### `dca.scanner-handoff`
-
-**State:** history has substantially receded and scanner mode is visibly taking focus; PASS is not yet the settled conclusion.
-
-**Coverage:** desktop, mobile.
-
-#### `dca.pass`
-
-**State:** restrained PASS conclusion after scanning; contribution history remains background context rather than disappearing as fabricated proof.
-
-**Coverage:** desktop, mobile, laptop.
-
-**Representative-baseline note:** `dca.pass` is a conclusion checkpoint, not the DCA locale-composition checkpoint. The localized scene copy has intentionally receded by this state, so use `dca.early-contribution` when validating EN/zh-TW composition.
-
-#### `dca.reduced`
-
-**State:** contribution history and PASS are statically available; scanner motion removed.
-
-**Coverage:** mobile, desktop.
-
-**Contract anchors:** G-09; Scene 5 factual-row preservation, phrased cadence, scanner handoff, restrained PASS.
-
----
-
-### Scene 6 — Outro
-
-#### `outro.settled`
-
-**State:** quiet final GitHub invitation with heatmap as ambient context.
-
-**Must show:** CTA clearly stronger than the heatmap.
-
-**Coverage:** desktop, mobile, laptop.
-
-#### `outro.reduced`
-
-**State:** static subdued heatmap; no continuous/discovery motion required.
-
-**Coverage:** mobile, desktop.
-
-The pointer/ripple interaction is intentionally **not** a golden static checkpoint yet. #9 may define its behavioral/perceptual verification once it can be triggered reproducibly.
-
-**Contract anchors:** G-06, G-08; Scene 6 quiet-ending and CTA-priority requirements.
-
-## 8. Minimum representative matrix
-
-These are the minimum locale-responsive composition images that must exist before #6 can close:
-
-| Scene | Representative checkpoint | desktop EN | desktop zh-TW | mobile EN | mobile zh-TW |
-| --- | --- | ---: | ---: | ---: | ---: |
-| Intro | `intro.settled` | ✓ | ✓ | ✓ | ✓ |
-| CommerceOps | `commerce.final-settled` | ✓ | ✓ | ✓ | ✓ |
-| noCodeE2E | `nocode.result-hold` | ✓ | ✓ | ✓ | ✓ |
-| SocialPlatform | `social.final-phone` | ✓ | ✓ | ✓ | ✓ |
-| CueSheet | `cuesheet.review` | ✓ | ✓ | ✓ | ✓ |
-| DCA | `dca.early-contribution` | ✓ | ✓ | ✓ | ✓ |
-| Outro | `outro.settled` | ✓ | ✓ | ✓ | ✓ |
-
-This is 28 representative composition images. Every additional checkpoint selected above is also locale-paired for each listed viewport.
-
-## 9. Approval questions for every candidate
+Every candidate intended for a golden baseline must be explicitly reviewed.
 
 ### Mechanical
 
-- Is the source SHA correct?
-- Is the locale correct after all runtimes have initialized?
-- Is `html.lang` consistent with the selected locale?
-- Is the viewport exactly the recorded size?
-- Is the expected evidence asset loaded?
-- Is this the intended semantic checkpoint?
-- Is there horizontal overflow, clipping, accidental extra-line wrapping, or missing content?
-- Does reduced motion expose meaningful evidence rather than hidden animation state?
+- correct source SHA and environment;
+- correct viewport, locale, and motion mode;
+- correct semantic checkpoint;
+- no unexpected overflow, clipping, missing assets, or wrong presentation mode;
+- deterministic repeatability.
 
 ### Perceptual
 
-- Can the intended message be understood before deliberate inspection?
-- Is the visual hierarchy consistent with #5?
-- Is any supporting element unexpectedly louder than the primary message/evidence?
-- For kinetic states, does the still image correspond to a state that is actually readable during normal motion?
-- For both EN and zh-TW, are line breaks/automatic wraps natural in the rendered viewport?
+- intended message is immediately understandable;
+- hierarchy matches the acceptance contract;
+- evidence/motion is subordinate or dominant in the intended way;
+- no accidental visual noise or rushed/awkward state is being frozen.
 
-A candidate may be mechanically stable and still be rejected perceptually.
+A detector may triage candidates, but it cannot approve them.
 
-## 10. Relationship to later tickets
+## 11. Final freeze rule
 
-### #6
-
-Captures candidates using this manifest, records environment metadata, performs manual acceptance, and freezes approved images.
-
-### #7
-
-Provides deterministic ways to reach these exact checkpoint IDs. It may change how a checkpoint is reached, but not what the checkpoint means.
-
-### #8
-
-Uses the approved #6 images as golden snapshots and names tests with these checkpoint IDs.
-
-### #9
-
-Protects temporal relationships that a still manifest cannot prove, including both DCA punctuation holds, quiet intervals, plateaus, and final reading holds.
-
-### #10
-
-Moves the resulting visual/motion checks into a stable CI review workflow and decides whether Percy adds enough review value.
-
-## 11. Freeze rule
-
-The authoritative baseline is not “whatever screenshot was generated by the script.”
-
-A baseline is authoritative only when all of the following are recorded together:
+The final golden set must be coherent:
 
 ```text
-accepted checkpoint meaning (#5 + this manifest)
-+ exact source SHA
-+ exact capture environment
-+ rendered candidate image
-+ explicit manual approval
+one final accepted repository SHA
++ one controlled browser/runtime environment
++ active 78-image matrix
++ explicit review of every candidate
 ```
 
-Until then, the image remains a candidate.
+Do not assemble the final golden origin from a mixture of old source SHAs simply because individual historical images were previously approved.
