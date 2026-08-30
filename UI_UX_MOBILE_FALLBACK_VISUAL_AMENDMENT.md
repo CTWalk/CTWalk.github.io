@@ -2,11 +2,11 @@
 
 Status: **normative amendment to #5 / #20 mobile fallback presentation**
 
-This amendment records the post-deployment human review of the dedicated mobile fallback and supersedes the earlier micro-metadata styling assumptions.
+This amendment records the post-deployment human review of the dedicated mobile fallback.
 
 ## Accepted direction
 
-At `<= 760px`, the fallback should contain only the minimum content needed to communicate the desktop-first decision:
+At `<= 760px`, the fallback contains only:
 
 - one oversized primary headline;
 - one concise desktop-viewing guidance paragraph;
@@ -14,21 +14,9 @@ At `<= 760px`, the fallback should contain only the minimum content needed to co
 - the actual CTWalk GitHub profile avatar as the central visual focal point;
 - one clear `Open GitHub` navigation affordance directly beneath the avatar.
 
-Do **not** add small contextual or decorative copy simply to mimic the desktop portfolio language. In particular, the mobile fallback does not require:
-
-- QA / SDET eyebrow copy;
-- scene/index numbers;
-- `DESKTOP / FULL EXPERIENCE` mode labels;
-- CTWalk / QA / SDET footer metadata;
-- other small asymmetric side-context.
-
-Those elements belong to the desktop portfolio's information language and are intentionally absent from the mobile fallback.
-
-The GitHub avatar is not a fabricated product image or generated visual. It is the repository owner's actual public GitHub profile asset and provides a deliberate center focal point without reintroducing desktop scene language.
+Desktop-style eyebrow copy, scene numbers, mode labels, footer metadata, and other small side-context remain intentionally absent.
 
 ## Composition
-
-The intended hierarchy is:
 
 ```text
 oversized desktop-first headline
@@ -39,53 +27,63 @@ oversized desktop-first headline
 concise desktop-viewing guidance
 ```
 
-The center must not read as accidental empty space. The avatar/link pair should be visually centered and remain secondary to the headline while providing a clear identity/navigation anchor.
+The avatar/link pair fills the central compositional role without becoming a second headline.
 
-## Four-edge fluid-light requirement
+## Perimeter fluid-wave requirement
 
-The previous Canvas2D travelling hotspots / CSS luminous-rim implementation is superseded.
+The earlier multi-colour four-edge shader is superseded by a **single continuous perimeter wave field**.
 
-The mobile fallback now uses the supplied **Fluid Glow Bar** WebGL shader language as the authoritative effect. The original one-edge shader is adapted onto all four physical viewport edges by rotating/mirroring the local UV mapping while preserving its core behavior:
+The four physical viewport edges must read as one connected luminous system rather than four independent bars or four moving globes.
 
-```text
-wave fields
--> combined warp
--> blue / red / yellow / green weighted colour mix
--> height falloff
--> ambient glow
-```
+### Colour discipline
 
-The production implementation must apply that same fluid language to:
+At any given moment the perimeter uses **one coherent colour family**. The dominant hue may transition over time, but blue/red/yellow/green must not appear simultaneously as four competing zones.
 
-- top edge;
-- right edge;
-- bottom edge;
-- left edge.
+Allowed local colour variation is analogous/subtle: nearby hue shifts within the current family may follow the wave, but the whole frame must still read as one colour mood.
 
-Each edge may use a phase offset/orientation change so the four bands do not move as four mechanically synchronized copies. Corner overlap is acceptable when it reads as continuous fluid light around the viewport perimeter.
+The global hue transition itself should be smooth and ambient, similar to the supplied human-reference recording where the whole perimeter changes family together.
 
-### Required visual characteristics
+### Wave motion
 
-- fluid colour movement is visibly animated in normal-motion production mode;
-- the effect reads as four fluid light bands attached to the physical viewport edges, not as a static border or generic radial background;
-- the shader retains the supplied blue, red, yellow and green colour family unless a later human review explicitly changes it;
-- a blurred secondary canvas may extend the light inward, matching the supplied CodePen's crisp-fluid + blurred-glow layering;
-- the central reading field stays dark enough for the title, avatar, GitHub link and guidance to remain dominant;
-- no `lil-gui` or tuning UI is shipped in production;
-- no uncontrolled random particle system is introduced;
-- the earlier CSS/Canvas2D rim effect must not remain layered on top of the WebGL shader;
-- a static CSS edge treatment is allowed only as a WebGL-unavailable fallback, not as the normal production visual;
-- `?uiux-test=1` freezes the shader at a deterministic time;
+The travelling energy from the previous implementation remains useful, but visible circular/globe silhouettes are not acceptable.
+
+The motion must instead read as a **wave crest travelling around the perimeter**:
+
+- the crest is stretched longitudinally along the edge;
+- multiple low-frequency wave components deform its thickness and brightness;
+- the viewer should perceive flowing/waving light, not a ball moving along a track;
+- no discrete circular hotspot boundary should be obvious.
+
+### Inward penetration
+
+The wave crest must also control how far the colour reaches toward the center.
+
+When wave energy rises on one portion of the perimeter, that portion should temporarily produce a deeper, softer inward glow. This is intentional and prevents the middle of the mobile composition from reading as static dead space.
+
+The center must still preserve enough contrast for the avatar, CTA, headline, and guidance. The inward effect should behave like breathing ambient light, not an opaque colour wash.
+
+A low-resolution blurred secondary canvas remains appropriate for extending this wave energy inward.
+
+### Runtime constraints
+
+- WebGL is the normal production owner of the effect.
+- A static CSS treatment is allowed only when WebGL is unavailable.
+- No `lil-gui` or tuning UI is shipped.
+- No uncontrolled random particles are introduced.
+- `?uiux-test=1` freezes the same shader at a deterministic time.
 - `prefers-reduced-motion: reduce` freezes the same shader into a deterministic static state.
-
-The four-edge fluid light remains the sole decorative motion of the mobile presentation. No desktop scene effect, portal/mock desktop object, generated image, screenshot substitute, or secondary animated object is required.
+- The four-edge fluid wave remains the sole decorative mobile motion.
 
 ## Verification consequence
 
-Future #6 mobile human verification must judge the actual deployed website against this composition.
+Future #6 human verification must happen on the actual deployed website.
 
-In normal motion, the reviewer must be able to perceive fluid deformation / colour movement around the four physical edges during ordinary viewing. A result that looks like a static gradient, static border, or the previous hotspot/rim implementation is a failed perceptual result even if animation code is technically executing.
+Normal-motion acceptance requires all of the following to be perceptible during ordinary viewing:
 
-The GitHub avatar and `Open GitHub` pair must remain centered and must not be displaced by the edge effect.
+1. the frame reads as one coherent colour family at a time;
+2. energy travels around the perimeter as a wave rather than obvious moving globes;
+3. wave peaks visibly change edge thickness/intensity;
+4. wave peaks temporarily extend colour farther toward the center;
+5. the GitHub avatar and `Open GitHub` pair remain legible and visually centered.
 
-The absence of the removed micro-context is intentional and must not be reported as missing content.
+A technically animated shader that still reads as static, as four simultaneous colour zones, or as discrete balls rolling around the border fails perceptual acceptance.
