@@ -1,0 +1,43 @@
+                        flagged   clean  total
+REJECTED                     42       6     48
+BLOCKED                       0       9      9
+APPROVED                      8      65     73
+
+Recall on REJECTED: 42/48
+False-positive rate on APPROVED: 8/73
+
+--- per-detector precision (fired -> share REJECTED) ---
+D10_EVIDENCE_OVERCROPPED       fired  14  REJECTED   9  BLOCKED  0  APPROVED   5   precision 0.64
+D1_LIGHT_TEXT_ON_BRIGHT        fired  19  REJECTED  19  BLOCKED  0  APPROVED   0   precision 1.00
+D2_COPY_EVIDENCE_OVERLAP       fired  26  REJECTED  20  BLOCKED  0  APPROVED   6   precision 0.77
+D3_TEXT_ESCAPES_CONTAINER      fired   2  REJECTED   1  BLOCKED  0  APPROVED   1   precision 0.50
+D4_EDGE_CLIP                   fired   4  REJECTED   4  BLOCKED  0  APPROVED   0   precision 1.00
+D5_EVIDENCE_TOO_SMALL          fired   4  REJECTED   4  BLOCKED  0  APPROVED   0   precision 1.00
+D6_EMPTY_EVIDENCE              fired   8  REJECTED   8  BLOCKED  0  APPROVED   0   precision 1.00
+D7_SCENARIO_DESYNC             fired  10  REJECTED  10  BLOCKED  0  APPROVED   0   precision 1.00
+D8_STEP_NOT_MIDDLE             fired   4  REJECTED   4  BLOCKED  0  APPROVED   0   precision 1.00
+D9_SHORT_LAST_LINE             fired   3  REJECTED   3  BLOCKED  0  APPROVED   0   precision 1.00
+
+--- MISSES: rejected by eye, no detector fired (stays human-only) ---
+  desktop/zh-TW/reduce/outro.reduced
+      title runs flush to right viewport edge
+  mobile/en/normal/dca.early-contribution
+      active-row second description line escapes the row pill
+  mobile/en/normal/dca.scanner-handoff
+      dominant row text escapes its pill
+  mobile/en/reduce/dca.reduced
+      multiple rows clip their second line; RECENTLY label overlaps a row
+  mobile/zh-TW/normal/dca.scanner-handoff
+      row text escapes pill
+  mobile/zh-TW/reduce/dca.reduced
+      multiple rows clip their second description line; 最近在... label overlaps a row
+
+--- FALSE POSITIVES: approved by eye but flagged ---
+  desktop/en/normal/cuesheet.workspace: D10_EVIDENCE_OVERCROPPED,D2_COPY_EVIDENCE_OVERLAP
+  desktop/en/normal/dca.early-contribution: D2_COPY_EVIDENCE_OVERLAP
+  desktop/en/normal/dca.phrased-hold: D2_COPY_EVIDENCE_OVERLAP
+  desktop/zh-TW/normal/cuesheet.workspace: D10_EVIDENCE_OVERCROPPED,D2_COPY_EVIDENCE_OVERLAP
+  mobile/en/normal/cuesheet.conflict: D10_EVIDENCE_OVERCROPPED
+  mobile/en/reduce/cuesheet.reduced: D10_EVIDENCE_OVERCROPPED
+  mobile/zh-TW/normal/cuesheet.conflict: D10_EVIDENCE_OVERCROPPED
+  mobile/zh-TW/normal/dca.late-contribution: D3_TEXT_ESCAPES_CONTAINER
