@@ -12,7 +12,7 @@
 
   const copy = {
     en: {
-      titleLines: ['Designed for', 'desktop.'],
+      titleLines: ['Designed', 'for', 'desktop.'],
       messageLines: [
         'This portfolio is designed as a',
         'desktop-first interactive experience.',
@@ -64,7 +64,16 @@
     .mobile-github{width:max-content;color:#fff;text-decoration:none;font-size:1rem;font-weight:680;line-height:1.2;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.60)}
     .mobile-github:focus-visible{outline:2px solid #fff;outline-offset:6px}
 
-    .mobile-message{max-width:32ch;margin:0;color:rgba(248,242,234,.94);font-size:1.09rem;font-weight:570;line-height:1.50;letter-spacing:-.006em;text-wrap:pretty}
+    .mobile-message{
+      max-width:32ch;
+      margin:0 0 18px;
+      color:rgba(248,242,234,.94);
+      font-size:1.09rem;
+      font-weight:570;
+      line-height:1.50;
+      letter-spacing:-.006em;
+      text-wrap:pretty;
+    }
 
     .mobile-copy-line{
       opacity:0;
@@ -89,7 +98,7 @@
       html[lang^="zh"] .mobile-title{font-size:clamp(3.15rem,15vw,4.2rem)}
       .mobile-center{gap:11px;padding:12px 0 10px}
       .mobile-profile{width:86px;height:86px}
-      .mobile-message{font-size:.98rem;line-height:1.42}
+      .mobile-message{font-size:.98rem;line-height:1.42;margin:0 0 12px}
       html[lang^="zh"] .mobile-message{font-size:1rem;line-height:1.56}
       .mobile-github{font-size:.9rem}
     }
