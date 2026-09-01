@@ -108,16 +108,69 @@ viewport-specific or general? Confirmed at 1280x800 as well.
 ## 7. Visual review — incomplete at time of bundling
 
 22 of 78 candidates reviewed by eye. Deliberately **not** recorded as a verdict
-set; see `README.md`. Remaining work is a stratified blind-label pass followed by
-detector calibration, per `OPEN_QUESTIONS.md`.
+set; see `README.md`.
 
-## Cost observation for the skill
+A choice was then considered between:
+
+- detector-led triage of the remaining images; or
+- an exhaustive eye review of all remaining ~56 candidates.
+
+For ordinary project completion, detector-led triage with a fixed high-risk
+human-review floor would have been the cheaper option. For **skill-building**,
+however, that ordering was rejected because seeing detector output first would
+contaminate the human labels and make them unusable as an independent calibration
+set.
+
+The method direction was therefore changed to a **blind-first stratified review**:
+produce human labels without detector output, then measure detector agreement,
+inspect disagreements, and only then use the calibrated detectors for triage.
+The working target was ~22 stratified candidates across reduced motion, zh-TW
+representatives and normal-motion controls. Exact sample design remains open; the
+ordering does not.
+
+## 8. Cost observation for the skill
 
 Steps 1–6 are cheap and produce durable machine-readable evidence. Step 7 is by
-far the most expensive part of the work and does not scale linearly with value:
-in both runs the defects found by eye clustered in a small number of predictable
-surfaces (reduced motion, the narrower viewport, the non-Latin locale).
+far the most expensive part of the work and does not scale linearly with value.
+The session's rough observation was that opening ~22 full-resolution screenshots
+accounted for most context/token use; 1440×900-class images were estimated at
+roughly 1.5–2k tokens each. An unconditional sweep of the remaining ~56 images
+was therefore expected to cost on the order of 100k+ additional tokens while
+mostly confirming passes.
 
-This asymmetry is the practical argument for the triage protocol the skill should
-encode — and for doing the blind labelling **before** looking at detector output,
-so the labels stay usable as a calibration target.
+These numbers are session observations, **not a portable budget or threshold**.
+The portable finding is the asymmetry: structured mechanical evidence is cheap;
+per-image perceptual review is expensive. That strengthens the case for calibrated
+triage, but only after blind labels preserve an independent calibration target.
+
+## 9. Stop condition — `origin/main` moved
+
+Before the blind-first review/calibration stage was executed, a fresh remote check
+showed that `origin/main` had advanced from the captured candidate
+`b22da62f824c4903320a07af4311785c4f915b4b` to
+`f40e365829af05781cca597dcdb8d97b7c4576d0`.
+
+The branch push containing this bundle did not move `main`. The newer main history
+contained follow-on mobile-copy entrance work (including PRs #37/#42/#43/#47 and
+issues #38/#44). Files changed since the candidate included runtime/bootstrap
+material directly relevant to this run's assertions, notably `site-bootstrap.js`,
+`index.html`, `assets/js/mobile-fallback.js`, `package.json`, and new mobile
+entrance regression-test material.
+
+The explicit run rule therefore triggered:
+
+> If main has moved to a different SHA, stop and report it. Do not silently
+> capture or review a newer revision.
+
+No remaining blind labels, detector calibration, or complete verdict set were
+produced after this point.
+
+The existing capture remains honest evidence for `b22da62`; it simply is no
+longer evidence for current `main`. The next planning decision is whether to:
+
+1. finish calibration on `b22da62` strictly as historical method evidence;
+2. fresh-fetch/re-capture at `f40e365` and perform the blind-first protocol there;
+3. continue on `b22da62` only if that SHA is explicitly re-declared the intended
+   freeze candidate.
+
+See `../DECISION_HISTORY.md` for the reasoning and skill-level implications.
