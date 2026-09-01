@@ -2,9 +2,12 @@
 
 Status: **active maturity crosswalk for the pre-skill bundle; not a Skill recommendation.**
 
-Normative authority: `docs/ui-ux/REUSABLE_UI_UX_VERIFICATION_METHOD_V1.md`, especially §§9–12.
+Normative authority:
 
-Last prior-art/readiness audit: **2026-09-01**, after refreshing Chromatic baseline/mode docs, Playwright visual-comparison guidance, Applitools animation guidance, the WUICC/Beyond Pixel Diffs paper, and current QASkills visual-regression material.
+- `docs/ui-ux/REUSABLE_UI_UX_VERIFICATION_METHOD_V1.md`, especially §§9–12;
+- `docs/ui-ux/REUSABLE_UI_UX_VERIFICATION_METHOD_V1_HUMAN_VERIFICATION_AMENDMENT.md`, which adds an additional Skill-readiness hard gate with equal normative weight until folded into a later method revision.
+
+Last prior-art/readiness audit: **2026-09-01**, after refreshing Chromatic baseline/mode docs, Playwright visual-comparison guidance, Applitools animation guidance, the WUICC/Beyond Pixel Diffs paper, current QASkills visual-regression material, and the repository's human-verification amendment.
 
 ## The trigger we must not forget
 
@@ -15,12 +18,18 @@ Total score = 100 / 100
 AND
 Every readiness dimension = 10 / 10
 AND
-Every hard gate = PASS
+Every Method v1 hard gate = PASS
+AND
+The human-verification amendment hard gate = PASS
 ```
+
+The amendment gate is:
+
+> Human acceptance is evidenced on the actual website; isolated harnesses, screenshots, detector output, and reconstructed renders cannot substitute for website-level human verification.
 
 A strong idea, useful prior art gap, successful CTWalk run, measured token/effort savings, or high community-value estimate does **not** override this gate.
 
-This file exists because several useful method/history/research documents were added after the gate was written. Their evidence must feed the gate rather than accidentally becoming an informal replacement for it.
+This file exists because several useful method/history/research documents were added after the original gate was written. Their evidence must feed the gate rather than accidentally becoming an informal replacement for it.
 
 ## Current readiness crosswalk
 
@@ -33,9 +42,9 @@ This is **not yet a formal 0–100 scoring pass**. A dimension may contain stron
 | 3 | Capture reproducibility | `run-log/ENVIRONMENT.md`, `RUN_LOG.md`, capture metadata, clean-SHA discipline, browser-deviation disclosure, and the `b22da62 → f40e365` stop condition provide strong provenance evidence. Playwright explicitly warns that screenshot output varies by environment; Chromatic baseline history reinforces source-history freshness. | Re-run on the final intended candidate revision and evidence the same provenance discipline in reusable tooling rather than only CTWalk scripts. |
 | 4 | Mechanical audit portability | `tools/audit78.mjs` and `evidence/audit78.json` demonstrate total-matrix fact collection; `DECISION_HISTORY.md` distinguishes portable fact categories from project selectors. | Generic audit engine separated from CTWalk selectors/checkpoint semantics, with project adapter/configuration. The current probe is explicitly throwaway/project-specific. |
 | 5 | Determinism coverage | `repeat78.mjs`, same-route fresh-context comparison, alternate Outro paths, byte-vs-pixel classification, and the Intro RAF instability provide strong empirical material. External animation guidance supports intentional state control, but does not substitute for enumerating independent RAF/WebGL owners or path dependence. | Close known deterministic-control gaps for the final candidate and demonstrate reusable same-route + alternate-route machinery outside hidden CTWalk knowledge. |
-| 6 | Verdict governance | Method v1 and the human-verification amendment separate reviewer proposal from acceptance authority; APPROVED/REJECTED/BLOCKED is established; `DECISION_HISTORY.md` preserves why BLOCKED matters. Current mainstream visual-review material still centers on accepting/rejecting changes against an existing baseline, so it does not make this governance layer redundant. | A reusable verdict schema/workflow plus a complete authoritative run using it. `b22da62` deliberately has no complete verdict set. |
+| 6 | Verdict governance | Method v1 separates reviewer proposal from acceptance authority; APPROVED/REJECTED/BLOCKED is established; `DECISION_HISTORY.md` preserves why BLOCKED matters. The human-verification amendment further requires authoritative perceptual acceptance to occur on the actual website. Current mainstream visual-review material still centers on accepting/rejecting changes against an existing baseline, so it does not make this governance layer redundant. | A reusable verdict schema/workflow plus a complete authoritative run using it, including website-level human acceptance for the target revision. `b22da62` deliberately has no complete verdict set. |
 | 7 | Detector discipline | The 130-image v1 calibration exposed detector bugs; `DECISION_HISTORY.md` establishes **blind labels → detector run → disagreement analysis → validation/holdout → triage**; `OPEN_QUESTIONS.md` records threshold invalidation/reporting questions. The refreshed WUICC paper supports human-labelled evaluation and shows substantial-but-imperfect agreement (86/100 raw agreement; κ=0.722 on its 100-example double-annotated reliability subset). | The blind-first calibration was **not executed** on `b22da62`; no valid current-matrix calibration/holdout exists; the external paper does not determine our sample size, weighting, or thresholds. This hard gate remains unsatisfied. |
-| 8 | Baseline lifecycle | Candidate/approved/rejected/blocked/superseded semantics exist; historical 130-image evidence and the source-movement stop demonstrate why SHA identity and coherent freeze matter. Chromatic's branch/baseline model independently reinforces that stale baseline history creates review problems. | A final coherent active 78-candidate freeze from one accepted revision, with website-level human acceptance and durable records. |
+| 8 | Baseline lifecycle | Candidate/approved/rejected/blocked/superseded semantics exist; historical 130-image evidence and the source-movement stop demonstrate why SHA identity and coherent freeze matter. Chromatic's branch/baseline model independently reinforces that stale baseline history creates review problems. The human-verification amendment prevents screenshot-only promotion to final APPROVED. | A final coherent active 78-candidate freeze from one accepted revision, with website-level human acceptance for that revision and durable records. |
 | 9 | Golden-regression rigor | Method v1 defines strict comparison and tolerance discipline; repeatability probes provide renderer-noise vs visible-instability examples. Playwright, Chromatic and current agent skills confirm screenshot diffing/threshold mechanics are commodity capability rather than the missing layer. | The post-freeze regression layer must be implemented/proven against the final coherent baseline; #8/#10 work must not be assumed complete from capture/audit research. |
 | 10 | Independent reuse evidence | Refreshed prior art clarifies the likely reusable niche and `DECISION_HISTORY.md` explicitly warns against CTWalk-shaped extraction. | **No independent second-UI/isolated-adapter portability exercise has yet succeeded.** This hard gate remains unsatisfied. More CTWalk depth cannot satisfy it. |
 
@@ -48,6 +57,7 @@ The refreshed searches **do not require a new readiness dimension or a weaker/st
 - **Applitools animation guidance** reinforces intentional deterministic state control for dynamic UI → dimension **5**.
 - **Current QASkills visual-regression material** reinforces that agent tooling already covers baseline capture, determinism tactics, responsive screenshots and threshold comparison. It therefore strengthens the decision **not to rebuild commodity diff tooling**, but does not satisfy our governance dimensions by itself → primarily **1, 6, 9**.
 - **Beyond Pixel Diffs / WUICC-bench** reinforces human-labelled evaluation of visual-change methods and imperfect annotator agreement, but the earlier `κ≈0.722 = ~28% disagreement` interpretation was incorrect and has been removed. The paper's double-annotation reliability result is 86/100 raw agreement with κ=0.722 on a sampled 100-example subset → dimension **7**.
+- **The repository human-verification amendment** adds a normative requirement that no screenshot/isolated-harness review can independently produce authoritative human acceptance. This is not optional research context; it is an additional hard gate feeding primarily dimensions **6 and 8**.
 
 ### What the searches do *not* prove
 
@@ -65,12 +75,13 @@ Those remain empirical questions. In particular, **effort/token reduction and co
 
 ## Hard-gate consequences visible today
 
-The following Method v1 hard gates are clearly **not yet satisfied** from the current material:
+The following normative hard gates are clearly **not yet satisfied** from the current material:
 
 - generic engine contains no required CTWalk-specific selectors/checkpoint names — no finished generic engine yet;
 - project-specific thresholds live outside the reusable engine — architecture is specified, not yet fully demonstrated;
 - detector validation uses evidence not wholly reused from its calibration loop — current 78-matrix blind/holdout validation was stopped before execution;
 - final baseline can be produced coherently from one accepted source revision — active final 78-image freeze is not complete;
+- **human acceptance is evidenced on the actual website for the final target revision** — prior mobile human reviews are valuable history, but the final coherent baseline candidate has not yet completed this gate;
 - post-freeze comparison uses controlled environment/state and a justified strict tolerance model — final post-freeze regression evidence is not complete;
 - at least one independent reuse/portability exercise succeeds without hidden project knowledge — not yet performed.
 
@@ -112,20 +123,25 @@ Provides defect taxonomy and empirical evidence for dimensions **4 and 5**, incl
 
 These are research probes. Their useful ideas may inform dimensions **4, 5 and 7**, but the tools themselves must not be mistaken for the reusable engine because they contain project-specific assumptions.
 
+### Human-verification amendment
+
+Feeds dimensions **6 and 8** and adds a **separate hard gate**. A future formal readiness review must explicitly report this gate rather than assuming that a complete screenshot verdict set satisfies it.
+
 ## Required trigger sequence
 
-The authoritative sequence remains Method v1 §12:
+The authoritative sequence is Method v1 §12 **plus the human-verification amendment**:
 
 ```text
 script/method design
 → method-v1 conformance improves
 → repository UI defects resolved
 → final accepted repo revision
-→ authoritative baseline freeze
+→ authoritative mechanical/deterministic baseline capture
+→ website-level human acceptance for that same target revision
 → coherent golden path
 → strict visual regression all green
 → independent portability validation
-→ formal 100/100 Skill-readiness review
+→ formal 100/100 Skill-readiness review including all amendment gates
 → only then suggest Skill distillation
 ```
 
@@ -137,7 +153,7 @@ The token-cost/triage research changes **how we may gather evidence efficiently*
 recommend_skill_distillation: NO
 reason:
   valuable method evidence exists,
-  but the 100/100 + all-hard-gates trigger has not been fulfilled
+  but the 100/100 + all normative hard-gates trigger has not been fulfilled
 ```
 
-Until the formal maturity review returns 100/100 with every hard gate PASS, refer to this work as **method development / pre-skill evidence**, not as a buildable or ready-to-distil Skill.
+Until the formal maturity review returns 100/100 with every Method v1 and amendment hard gate PASS, refer to this work as **method development / pre-skill evidence**, not as a buildable or ready-to-distil Skill.
