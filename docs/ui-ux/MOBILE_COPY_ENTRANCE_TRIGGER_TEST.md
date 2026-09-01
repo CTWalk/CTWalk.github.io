@@ -77,8 +77,10 @@ npm run uiux:test:mobile-entrance
 
 The test uses Node's built-in `node:test`; no new package dependency is required.
 
-## Test-first status
+## Implementation status
 
-This regression test is intentionally introduced before the runtime repair. On the current buggy implementation it should fail because `.mobile-copy-line` starts `mobileCopyLineIn` immediately and there is no explicit `armCopyEntrance()` paint-boundary trigger yet.
+The production runtime on this branch now follows this contract. `.mobile-copy-line` is mounted in the hidden starting state without owning an animation. `armCopyEntrance()` waits through two `requestAnimationFrame` boundaries and then adds `.copy-enter`, which owns the unchanged `mobileCopyLineIn 1.08s` animation.
 
-That red state is expected. The subsequent runtime fix is complete only when this test turns green **without changing the accepted animation parameters or bypass rules**.
+Language changes rerender the localized lines and re-arm the same lifecycle. `prefers-reduced-motion: reduce` and `?uiux-test=1` continue to bypass entrance arming and remain settled immediately.
+
+The repair intentionally changes only trigger ownership/order. Accepted copy, typography, layout, WebGL treatment, easing, duration, per-line delays, blur values, and vertical travel are unchanged. The unit test should now be green; actual-device perceptual verification remains a separate human acceptance step.
