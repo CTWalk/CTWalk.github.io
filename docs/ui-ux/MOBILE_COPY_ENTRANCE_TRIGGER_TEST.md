@@ -1,97 +1,133 @@
-# Mobile Copy Entrance Trigger-Order Test
+# Mobile Copy Entrance Regression Contract
 
 ## Purpose
 
-This document describes the regression test for the mobile fallback copy entrance lifecycle.
+This document records the production contract and evidence for the mobile fallback copy entrance.
 
-The defect being protected against is **not** a typography, timing, or motion-design defect. The accepted entrance already exists in `assets/js/mobile-fallback.js`: headline and guidance lines begin dim/soft and resolve line-by-line through `mobileCopyLineIn`.
+The accepted visual behavior is unchanged: headline and guidance lines materialize line-by-line through `mobileCopyLineIn`, beginning dim/soft and slightly displaced before resolving to their final sharp state.
 
-## Evidence from real-device verification
+The historical filename `MOBILE_COPY_ENTRANCE_TRIGGER_TEST.md` and test command are retained for continuity, but **page-presentation trigger ordering is no longer part of the accepted contract**.
 
-Two distinct startup-order defects have now been observed:
+## Confirmed real-device root cause
 
-1. attaching the CSS animation directly to `.mobile-copy-line` allowed the animation clock to start during DOM construction;
-2. moving animation ownership behind two `requestAnimationFrame` callbacks was still insufficient on the actual iOS device, because those callbacks were still scheduled before the page had crossed a semantic presentation boundary.
+PR #43 added a query-only diagnostic after repeated reports that no entrance was visible on the actual iOS device. The probe produced this state:
 
-The second failure is important: the double-RAF hypothesis was structurally reasonable but **disproved by real-device evidence** after PR #37.
+```text
+readyState: complete
+visibility: visible
+reducedMotion: true
+uiuxTest: false
+copyStatic: true
+copyEnter: false
+lineCount: 6
+animationName: none
+animationPlayState: running
+animationDuration: 0s
+opacity: 1
+filter: none
+transform: none
+activeAnimations: []
+Replay blocked: copy-static is active
+```
 
-The repaired contract therefore separates two concerns:
+After iOS **Reduce Motion** was disabled, the accepted mobile copy entrance was visibly confirmed working on the same device.
 
-- **page presentation**: do not begin startup entrance scheduling until the document is being presented;
-- **animation arming**: after presentation, preserve two RAF boundaries before adding the class that owns the CSS animation.
+This establishes the root cause: Safari was correctly reporting `prefers-reduced-motion: reduce`, and the production runtime was correctly applying `copy-static`. The animation engine was not failing.
 
-## Required normal-motion order
+The raw probe trace is preserved in the PR #43 discussion. Issue #38 contains the final diagnosis that supersedes its original page-timing hypothesis.
 
-The regression contract is:
+## Superseded hypotheses
+
+PR #37 and PR #42 introduced progressively more startup machinery under the assumption that Safari was advancing the CSS animation before a perceptible first frame:
+
+- explicit `.copy-enter` ownership;
+- two `requestAnimationFrame` callbacks;
+- `pagereveal` / `pageshow` gating;
+- `copyPresentationReady` state.
+
+The real-device probe showed that this diagnosis was false for the observed failure. Those mechanisms therefore must not become permanent requirements merely because they existed in merged history.
+
+The earlier conclusion that direct line-owned animation had failed is also superseded: the device had reduced motion enabled, so the absence of an entrance was expected accessibility behavior rather than evidence against direct CSS animation ownership.
+
+## Current normal-motion contract
+
+Normal mobile rendering is intentionally simple:
 
 ```text
 create dedicated mobile fallback
         ↓
 render localized headline/guidance line spans
         ↓
-lines exist at the accepted hidden start state
-(opacity 0 / blur 8px / translateY 7px)
+each .mobile-copy-line owns mobileCopyLineIn
         ↓
-wait for page-presentation boundary
-  pagereveal when supported
-  pageshow as fallback / missed-reveal safety
+CSS applies the existing per-line delay
         ↓
-requestAnimationFrame #1
-        ↓
-requestAnimationFrame #2
-        ↓
-add .copy-enter
-        ↓
-existing mobileCopyLineIn animation begins
+line resolves from dim/soft/displaced to settled copy
 ```
 
-If `mobile-fallback.js` is inserted after `document.readyState === 'complete'`, the page has already crossed the load/presentation lifecycle and the runtime proceeds directly into the existing two-RAF arm path.
+The accepted motion values remain:
 
-`pagereveal` is preferred when available because it represents the first rendered frame of a newly loaded or activated document. `pageshow` remains registered as a fallback because it occurs after `load` during initial navigation and cannot be missed while the document is still incomplete.
+- duration: `1.08s`;
+- easing: `cubic-bezier(.22,.72,.24,1)`;
+- start: `opacity:0`, `blur(8px)`, `translateY(7px)`;
+- midpoint: `opacity:.38`, `blur(3.5px)`, `translateY(3px)`;
+- end: `opacity:1`, `blur(0)`, `translateY(0)`;
+- title delays: `120ms` start + `145ms` per line;
+- guidance delays: `760ms` start + `135ms` per line.
 
-The test is concerned with **ordering**, not arbitrary elapsed milliseconds. It must not be rewritten as a `setTimeout`, sleep, or timeout-inflation test.
+No `pagereveal`, `pageshow`, double-RAF, `copyPresentationReady`, or `.copy-enter` arming state is required.
 
 ## Language-change rule
 
-Language switching may replay the entrance, but only after the initial page-presentation boundary has been crossed.
+Language switching **may replay the entrance** in normal-motion mode.
 
-Before presentation, a mutation to `html.lang` may rerender the hidden localized spans, but it must **not** call `armCopyEntrance()` and bypass the initial presentation gate.
+`syncLanguage()` replaces the existing line elements through `renderLines()`. The replacement `.mobile-copy-line` elements own `mobileCopyLineIn`, so the new localized lines naturally begin the same entrance when they are inserted.
 
-## Static-mode exception
+This avoids a second animation scheduler or special language-switch timing path.
 
-The existing contract remains unchanged for:
+## Static-mode accessibility contract
 
-- `prefers-reduced-motion: reduce`
-- `?uiux-test=1`
+The behavior remains unchanged for:
 
-Those modes must keep `copy-static`, must not register entrance-trigger listeners, and must not arm `.copy-enter`. Their settled rendering is intentional and deterministic.
+- `prefers-reduced-motion: reduce`;
+- `?uiux-test=1`.
 
-## What the test asserts
+Before line rendering, either condition applies `copy-static` to the mobile fallback. The static selector must force:
 
-`scripts/tests/mobile-copy-entrance-trigger-order.test.mjs` checks the production source contract directly:
+```text
+opacity: 1
+filter: none
+transform: none
+animation: none
+```
 
-1. `.mobile-copy-line` owns only the hidden initial state and does **not** auto-start an animation;
-2. `.mobile-fallback.copy-enter .mobile-copy-line` owns the existing `mobileCopyLineIn 1.08s` animation;
-3. `armCopyEntrance()` still contains two `requestAnimationFrame` boundaries before adding `copy-enter`;
-4. `scheduleInitialCopyEntrance()` gates startup on `pagereveal` / `pageshow`, with a `document.readyState === 'complete'` late-load path;
-5. startup calls `syncLanguage()` before `scheduleInitialCopyEntrance()` and does not directly call `armCopyEntrance()`;
-6. language changes only re-arm after `copyPresentationReady` is true;
-7. reduced-motion and deterministic UI/UX test mode explicitly bypass both scheduling and arming.
+This is intentional product behavior, not a fallback defect. The real-device incident is now direct evidence that this accessibility path works.
 
-This test deliberately reads `assets/js/mobile-fallback.js` rather than a duplicate helper fixture. That keeps the assertion attached to the actual production runtime and prevents a test-only scheduler from passing while production regresses.
+## What the regression test asserts
+
+`scripts/tests/mobile-copy-entrance-trigger-order.test.mjs` reads the production source directly and protects the corrected contract:
+
+1. `.mobile-copy-line` directly owns the accepted `mobileCopyLineIn 1.08s` animation and hidden/soft start state;
+2. the accepted keyframe values remain unchanged;
+3. `copy-static` is applied for reduced-motion or deterministic test mode and overrides the animation with settled copy;
+4. `renderLines()` replaces line elements and preserves the accepted stagger calculation;
+5. the title and guidance start/step delays remain `120/145ms` and `760/135ms`;
+6. the language observer calls `syncLanguage`, so replacing localized line elements replays the entrance in normal-motion mode;
+7. the superseded page-presentation/arming tokens remain absent.
+
+The test is a source-level mechanical contract. It does not replace actual-device perceptual acceptance.
 
 ## What the test does not assert
 
-This is not a visual-regression or perceptual-acceptance test. It does not judge:
+It does not judge:
 
-- blur quality;
-- easing quality;
-- typography;
+- whether a user has enabled Reduce Motion at OS level;
+- subjective blur/easing quality;
+- typography or layout quality;
 - WebGL perimeter-wave appearance;
-- real-device compositor behavior;
-- whether the fade is perceptually strong enough.
+- real-device compositor quality.
 
-Those remain actual-site human-verification concerns under the mobile UI/UX acceptance contract.
+Those remain actual-site human-verification concerns.
 
 ## Running the test
 
@@ -103,10 +139,6 @@ npm run uiux:test:mobile-entrance
 
 The test uses Node's built-in `node:test`; no new package dependency is required.
 
-## Current implementation status
+## Evidence retention
 
-The production runtime on this branch now follows the page-presentation-gated contract. `.mobile-copy-line` is mounted in the hidden starting state without owning an animation. `scheduleInitialCopyEntrance()` waits for `pagereveal` when supported and keeps `pageshow` as fallback. Once presentation readiness is established, `armCopyEntrance()` waits through two RAF boundaries and adds `.copy-enter`, which owns the unchanged `mobileCopyLineIn 1.08s` animation.
-
-Language changes rerender localized lines and replay the same lifecycle only after presentation readiness. `prefers-reduced-motion: reduce` and `?uiux-test=1` continue to bypass entrance scheduling/arming and remain settled immediately.
-
-The repair intentionally changes only trigger ownership/order. Accepted copy, typography, layout, WebGL treatment, easing, duration, per-line delays, blur values, and vertical travel are unchanged. Actual-device perceptual verification remains authoritative for final acceptance.
+The temporary `?uiux-entrance-probe=1` production diagnostic is removed after completing its purpose. Its evidence is intentionally retained in Git history and the PR #43 / issue #38 discussions rather than leaving diagnostic UI in the shipped runtime.
