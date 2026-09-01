@@ -1,7 +1,16 @@
-# Open questions the skill must answer
+# Open questions the method must answer before Skill distillation
 
-Recorded now so the skill is written against real unknowns rather than a tidy
-retrospective.
+Recorded now so the future Skill is written against real unknowns rather than a
+tidy retrospective.
+
+These questions sit **under** the formal Skill-distillation gate in
+`docs/ui-ux/REUSABLE_UI_UX_VERIFICATION_METHOD_V1.md` §§9–12. They are not a
+parallel readiness system. See `SKILL_READINESS_CROSSWALK.md` for which Method v1
+dimensions/hard gates each unresolved area currently affects.
+
+Until the Method v1 review reaches **100/100, every dimension 10/10, and every
+hard gate PASS**, these remain method-development questions rather than Skill
+implementation decisions.
 
 Decisions already established during the run are explicitly marked as such so a
 future reader does not reopen them accidentally. See `DECISION_HISTORY.md` for
@@ -25,7 +34,7 @@ Undecided:
   bias the measured precision toward the hard cases and understate real-world
   accuracy?
 - Given κ ≈ 0.722 among trained annotators (see `RESEARCH_PRIOR_ART.md`), a
-  single labeller cannot be treated as truth. Should the skill require a
+  single labeller cannot be treated as truth. Should the method require a
   self-consistency check — relabel a held-out slice later, blind, and measure
   agreement with oneself — as a proxy for a second annotator?
 - Should the sample include a minimum number of known/expected clean controls so
@@ -34,7 +43,8 @@ Undecided:
 
 Historical note: this calibration stage was **not executed** on `b22da62`
 because `origin/main` moved to `f40e365` before review continued. The sample plan
-therefore remains a proposed design, not measured evidence.
+therefore remains a proposed design, not measured evidence. This directly blocks
+full evidence for Method v1 dimension 7 (Detector discipline).
 
 ## 2. How should detector quality be reported?
 
@@ -46,6 +56,8 @@ Open: adopt the two-number format, and what to do about detectors that fire
 rarely. A detector firing 3 times at 1.00 precision is not evidence of a good
 detector; it is 3 data points.
 
+Readiness bearing: dimension 7 — detector discipline and holdout validation.
+
 ## 3. When may a detector threshold be reused?
 
 Established: thresholds do not transfer across projects. Observed here: they do
@@ -54,7 +66,7 @@ not even transfer across a **matrix reshape within the same project** —
 from seven mirrored scenes to a two-checkpoint fallback and several desktop
 scenes were reworked.
 
-Open: what invalidation rule should the skill state? Candidate: any change to
+Open: what invalidation rule should the method state? Candidate: any change to
 the checkpoint inventory, viewport set, or a scene's composition voids
 calibration for the affected cells. Needs to be cheap to evaluate, or it will be
 skipped.
@@ -64,6 +76,9 @@ matrix itself is unchanged, which source-file changes should invalidate prior
 calibration or require a fresh sample? A likely rule is dependency-based rather
 than "any commit invalidates everything": changes to the presentation/runtime or
 assertion owners for a surface invalidate calibration for that surface.
+
+Readiness bearing: dimensions 3, 7 and 8 — provenance, detector discipline and
+baseline lifecycle.
 
 ## 4. How is a tolerance legitimised?
 
@@ -83,6 +98,8 @@ Open: is there a defensible numeric boundary, or must this stay a judgement with
 the measurement recorded? Current lean: keep it a judgement, mandate the
 measurement, and forbid a *global* tolerance setting entirely.
 
+Readiness bearing: dimensions 5 and 9 — determinism coverage and golden-regression rigor.
+
 ## 5. What is the minimum determinism contract for an animated product?
 
 The single most productive finding across both runs. Playwright's
@@ -94,10 +111,12 @@ This project now contains one of each:
 - mobile wave field — exposes `setTime()` / `testMode`, frozen deterministically, byte-identical
 - intro WebGL scene — no hook, measurably unstable at two viewports (I-1)
 
-Open: should the skill require an enumeration of every independent animation
+Open: should the method require an enumeration of every independent animation
 owner as **step zero**, before any capture? The evidence says yes — one
 unenumerated RAF loop silently invalidated a representative checkpoint at two
 viewports across two revisions.
+
+Readiness bearing: dimension 5 and the same-route/alternate-route hard gates.
 
 ## 6. Where does the mechanical/perceptual line actually fall?
 
@@ -108,13 +127,15 @@ Repeatedly observed classes that automation cannot settle:
 - whether a still frame corresponds to a state a human could perceive during normal motion
 - whether a quiet interval reads as intentional rest or as a stall
 
-Open: how the skill should express this. A named "human-only register" per
+Open: how the method should express this. A named "human-only register" per
 project, maintained alongside the detectors, so a clean detector run is never
 mistaken for approval?
 
 Established boundary: this calibration/triage question does **not** replace the
 normative website-level human acceptance gate. A calibrated detector can reduce
 review burden; it cannot become perceptual authority.
+
+Readiness bearing: dimensions 6 and 7 — verdict governance and detector discipline.
 
 ## 7. Cross-tool consistency of semantic identity
 
@@ -130,9 +151,11 @@ control's own `sceneIds` map.
 Established rule: **never infer semantic identity from rendered state.**
 
 Open: this is a rule about the *verification tooling*, not the product. Does the
-skill need a short self-audit checklist for its own probes — the way one would
+method need a short self-audit checklist for its own probes — the way one would
 lint a test helper? The second occurrence suggests a rule in prose is not
 sufficient.
+
+Readiness bearing: dimensions 2 and 4 — checkpoint portability and mechanical-audit portability.
 
 ## 8. What does the bundle owe the next run?
 
@@ -154,7 +177,10 @@ restart cost? Candidate mandatory contents:
 - explicit incomplete stages and stop reason;
 - whether the candidate is current, pinned intentionally, or historical only.
 
-Can the skill make producing this handoff mandatory rather than aspirational?
+Can the future reusable implementation make producing this handoff mandatory
+rather than aspirational?
+
+Readiness bearing: dimensions 3, 7 and 8.
 
 ## 9. What is the source-freshness invalidation rule?
 
@@ -167,7 +193,7 @@ Established from the `b22da62 → f40e365` event:
   revision decision;
 - historical evidence remains useful when clearly labelled.
 
-Open: how should a generic skill determine whether changed files are relevant
+Open: how should a generic method determine whether changed files are relevant
 enough to require re-capture? Possibilities include:
 
 1. always re-capture when the candidate SHA changes — safest, most expensive;
@@ -176,3 +202,24 @@ enough to require re-capture? Possibilities include:
 
 This needs a conservative rule that does not turn sunk capture cost into an
 excuse for stale approval.
+
+Readiness bearing: dimensions 3 and 8, plus the coherent-one-revision hard gate.
+
+## 10. What independent portability exercise is sufficient?
+
+Method v1 already makes independent reuse a 10-point readiness dimension and a
+hard gate. CTWalk cannot satisfy that gate by becoming more thoroughly verified.
+
+Open questions:
+
+- Must the validation use a second real repository, or can a deliberately isolated
+  adapter exercise count first?
+- What information may be supplied to the method without becoming "hidden project
+  knowledge"?
+- What minimum success criteria prove that contract discovery, checkpoints,
+  determinism, audit and verdict governance transferred rather than being
+  manually reconstructed for the second project?
+
+Readiness bearing: dimension 10 and the independent-reuse hard gate. Until this
+is satisfied, Skill distillation is forbidden regardless of CTWalk's internal
+quality.
