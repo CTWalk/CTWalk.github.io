@@ -80,8 +80,10 @@
       opacity:0;
       filter:blur(8px);
       transform:translateY(7px);
-      animation:mobileCopyLineIn 1.08s cubic-bezier(.22,.72,.24,1) var(--line-delay,0ms) both;
       will-change:opacity,filter,transform;
+    }
+    .mobile-fallback.copy-enter .mobile-copy-line{
+      animation:mobileCopyLineIn 1.08s cubic-bezier(.22,.72,.24,1) var(--line-delay,0ms) both;
     }
     @keyframes mobileCopyLineIn{
       0%{opacity:0;filter:blur(8px);transform:translateY(7px)}
@@ -236,6 +238,8 @@
   let running=false;
   let currentTimeMs=reducedMotion?REDUCED_TIME_MS:0;
   let lastFrameMs=null;
+  let copyEntranceFrame1=0;
+  let copyEntranceFrame2=0;
 
   function selectedLocale(){return html.lang.toLowerCase().startsWith('zh')?'zh':'en';}
 
@@ -258,6 +262,24 @@
     renderLines(message,strings.messageLines,760,135,'mobile-message-line');
     fallback.querySelector('[data-mobile-copy="github"]').textContent=strings.github;
     return html.lang;
+  }
+
+  function armCopyEntrance(){
+    if (reducedMotion || testMode) return;
+
+    if (copyEntranceFrame1) cancelAnimationFrame(copyEntranceFrame1);
+    if (copyEntranceFrame2) cancelAnimationFrame(copyEntranceFrame2);
+    copyEntranceFrame1=0;
+    copyEntranceFrame2=0;
+    fallback.classList.remove('copy-enter');
+
+    copyEntranceFrame1=requestAnimationFrame(()=>{
+      copyEntranceFrame1=0;
+      copyEntranceFrame2=requestAnimationFrame(()=>{
+        copyEntranceFrame2=0;
+        fallback.classList.add('copy-enter');
+      });
+    });
   }
 
   function createShader(type,source){if(!gl)return null;const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS)){console.warn('[mobile-fallback] WebGL shader compile failed:',gl.getShaderInfoLog(shader));gl.deleteShader(shader);return null;}return shader;}
@@ -287,7 +309,11 @@
   function getState(){return{active:true,presentation:'mobile-fallback',locale:html.lang,reducedMotion,testMode,running,timeMs:currentTimeMs,canvasAvailable:Boolean(webglReady),webglAvailable:Boolean(webglReady),blurAvailable:Boolean(blurCtx),width:window.innerWidth,height:window.innerHeight};}
 
   syncLanguage();
-  const languageObserver=new MutationObserver(syncLanguage);
+  armCopyEntrance();
+  const languageObserver=new MutationObserver(()=>{
+    syncLanguage();
+    armCopyEntrance();
+  });
   languageObserver.observe(html,{attributes:true,attributeFilter:['lang']});
   window.addEventListener('resize',resize,{passive:true});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else if(!reducedMotion&&!testMode)start();});
@@ -296,6 +322,11 @@
 
   const api=Object.freeze({syncLanguage,start,stop,setTime,getState,testTimeMs:TEST_TIME_MS,reducedTimeMs:REDUCED_TIME_MS});
   Object.defineProperty(window,'__mobileFallback',{configurable:false,enumerable:false,writable:false,value:api});
-  window.addEventListener('beforeunload',()=>{stop();languageObserver.disconnect();},{once:true});
+  window.addEventListener('beforeunload',()=>{
+    if(copyEntranceFrame1)cancelAnimationFrame(copyEntranceFrame1);
+    if(copyEntranceFrame2)cancelAnimationFrame(copyEntranceFrame2);
+    stop();
+    languageObserver.disconnect();
+  },{once:true});
   window.dispatchEvent(new CustomEvent('mobile-fallback-ready',{detail:getState()}));
 })();
