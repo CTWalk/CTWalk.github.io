@@ -65,6 +65,10 @@
         console.error('[site-bootstrap] mobile fallback failed to initialize');
       }
 
+      if (loaded && params.get('uiux-entrance-probe') === '1') {
+        await loadSafely('./scripts/diagnostics/mobile-copy-entrance-probe.js');
+      }
+
       if (params.get('uiux-test') === '1') {
         await loadSafely('./scripts/controls/ui-ux-mobile-test-control.js');
       }
