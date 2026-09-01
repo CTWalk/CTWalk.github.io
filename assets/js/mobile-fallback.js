@@ -240,6 +240,7 @@
   let lastFrameMs=null;
   let copyEntranceFrame1=0;
   let copyEntranceFrame2=0;
+  let copyPresentationReady=false;
 
   function selectedLocale(){return html.lang.toLowerCase().startsWith('zh')?'zh':'en';}
 
@@ -282,6 +283,28 @@
     });
   }
 
+  function scheduleInitialCopyEntrance(){
+    if (reducedMotion || testMode) return;
+
+    const startAfterPresentation=()=>{
+      if (copyPresentationReady) return;
+      copyPresentationReady=true;
+      if ('onpagereveal' in window) window.removeEventListener('pagereveal',startAfterPresentation);
+      window.removeEventListener('pageshow',startAfterPresentation);
+      armCopyEntrance();
+    };
+
+    if (document.readyState === 'complete') {
+      startAfterPresentation();
+      return;
+    }
+
+    if ('onpagereveal' in window) {
+      window.addEventListener('pagereveal',startAfterPresentation,{once:true});
+    }
+    window.addEventListener('pageshow',startAfterPresentation,{once:true});
+  }
+
   function createShader(type,source){if(!gl)return null;const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS)){console.warn('[mobile-fallback] WebGL shader compile failed:',gl.getShaderInfoLog(shader));gl.deleteShader(shader);return null;}return shader;}
   function initWebGL(){
     if(!gl)return false;
@@ -309,10 +332,10 @@
   function getState(){return{active:true,presentation:'mobile-fallback',locale:html.lang,reducedMotion,testMode,running,timeMs:currentTimeMs,canvasAvailable:Boolean(webglReady),webglAvailable:Boolean(webglReady),blurAvailable:Boolean(blurCtx),width:window.innerWidth,height:window.innerHeight};}
 
   syncLanguage();
-  armCopyEntrance();
+  scheduleInitialCopyEntrance();
   const languageObserver=new MutationObserver(()=>{
     syncLanguage();
-    armCopyEntrance();
+    if(copyPresentationReady)armCopyEntrance();
   });
   languageObserver.observe(html,{attributes:true,attributeFilter:['lang']});
   window.addEventListener('resize',resize,{passive:true});

@@ -61,7 +61,7 @@ test('animation is owned by an explicit armed state', () => {
   );
 });
 
-test('normal-motion trigger waits for two animation frames before arming copy entrance', () => {
+test('armed state still waits for two animation frames before starting copy entrance', () => {
   const body = functionBody('armCopyEntrance');
   const firstFrame = body.indexOf('requestAnimationFrame');
   assert.notEqual(firstFrame, -1, 'armCopyEntrance must wait for a first requestAnimationFrame');
@@ -74,13 +74,56 @@ test('normal-motion trigger waits for two animation frames before arming copy en
   assert.ok(secondFrame < arm, "'copy-enter' must be added only after both requestAnimationFrame boundaries");
 });
 
-test('startup renders localized lines before arming the entrance', () => {
-  const sync = source.lastIndexOf('syncLanguage();');
-  const arm = source.lastIndexOf('armCopyEntrance();');
+test('initial landing waits for a page-presentation boundary before arming', () => {
+  const body = functionBody('scheduleInitialCopyEntrance');
 
-  assert.notEqual(sync, -1, 'startup must call syncLanguage()');
-  assert.notEqual(arm, -1, 'startup must call armCopyEntrance()');
-  assert.ok(sync < arm, 'localized title/guidance lines must exist in their hidden initial state before entrance arming starts');
+  assert.match(
+    body,
+    /document\.readyState\s*===\s*'complete'/,
+    'late-loaded runtime must detect when the page is already complete and presented'
+  );
+  assert.match(
+    body,
+    /'onpagereveal'\s+in\s+window/,
+    'modern browsers must prefer the pagereveal presentation boundary when available'
+  );
+  assert.match(
+    body,
+    /addEventListener\('pagereveal'/,
+    'supported browsers must wait for pagereveal before initial entrance arming'
+  );
+  assert.match(
+    body,
+    /addEventListener\('pageshow'/,
+    'pageshow must remain as the non-missable fallback when pagereveal is unavailable or already passed'
+  );
+
+  const ready = body.indexOf('copyPresentationReady=true');
+  const arm = body.indexOf('armCopyEntrance()');
+  assert.notEqual(ready, -1, 'presentation readiness must be recorded explicitly');
+  assert.notEqual(arm, -1, 'the presentation boundary must eventually arm copy entrance');
+  assert.ok(ready < arm, 'presentation readiness must be established before armCopyEntrance runs');
+});
+
+test('startup renders localized lines then schedules presentation-gated entrance', () => {
+  assert.match(
+    source,
+    /syncLanguage\(\);\s*scheduleInitialCopyEntrance\(\);/,
+    'startup must render localized hidden lines before scheduling the presentation-gated entrance'
+  );
+  assert.doesNotMatch(
+    source,
+    /syncLanguage\(\);\s*armCopyEntrance\(\);\s*const languageObserver/,
+    'startup must not directly arm the entrance during document construction'
+  );
+});
+
+test('language changes cannot bypass the initial presentation gate', () => {
+  assert.match(
+    source,
+    /const languageObserver=new MutationObserver\(\(\)=>\{\s*syncLanguage\(\);\s*if\(copyPresentationReady\)armCopyEntrance\(\);/,
+    'language changes may replay the entrance only after the initial page-presentation boundary has been crossed'
+  );
 });
 
 test('reduced-motion and uiux-test mode remain settled instead of entering', () => {
@@ -90,10 +133,17 @@ test('reduced-motion and uiux-test mode remain settled instead of entering', () 
     'static modes must keep their existing settled-copy bypass'
   );
 
-  const body = functionBody('armCopyEntrance');
+  const armBody = functionBody('armCopyEntrance');
   assert.match(
-    body,
+    armBody,
     /if\s*\(reducedMotion\s*\|\|\s*testMode\)\s*return/,
-    'armCopyEntrance must not arm animation in reduced-motion or deterministic test mode'
+    'armCopyEntrance must not animate in reduced-motion or deterministic test mode'
+  );
+
+  const scheduleBody = functionBody('scheduleInitialCopyEntrance');
+  assert.match(
+    scheduleBody,
+    /if\s*\(reducedMotion\s*\|\|\s*testMode\)\s*return/,
+    'static modes must not register presentation-trigger listeners for copy entrance'
   );
 });
