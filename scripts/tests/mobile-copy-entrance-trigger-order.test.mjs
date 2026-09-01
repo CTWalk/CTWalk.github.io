@@ -38,112 +38,75 @@ function functionBody(name) {
   assert.fail(`Could not find closing brace for ${name}`);
 }
 
-test('normal-motion copy is mounted in a hidden pre-animation state', () => {
+test('normal-motion copy owns the accepted line entrance directly', () => {
   const block = cssBlock('.mobile-copy-line');
 
-  assert.match(block, /opacity\s*:\s*0\s*;/, 'copy must start invisible before the first paint');
-  assert.match(block, /filter\s*:\s*blur\(8px\)\s*;/, 'copy must start soft before the first paint');
-  assert.match(block, /transform\s*:\s*translateY\(7px\)\s*;/, 'copy must start slightly displaced before the first paint');
-  assert.doesNotMatch(
-    block,
-    /animation\s*:/,
-    'base .mobile-copy-line must not auto-start the entrance during DOM insertion; animation ownership belongs to the armed state'
-  );
-});
-
-test('animation is owned by an explicit armed state', () => {
-  const block = cssBlock('.mobile-fallback.copy-enter .mobile-copy-line');
-
+  assert.match(block, /opacity\s*:\s*0\s*;/, 'copy must start dim/invisible');
+  assert.match(block, /filter\s*:\s*blur\(8px\)\s*;/, 'copy must start soft');
+  assert.match(block, /transform\s*:\s*translateY\(7px\)\s*;/, 'copy must start slightly displaced');
   assert.match(
     block,
-    /animation\s*:\s*mobileCopyLineIn\s+1\.08s/,
-    'the existing mobileCopyLineIn timing must begin only after .copy-enter is armed'
+    /animation\s*:\s*mobileCopyLineIn\s+1\.08s\s+cubic-bezier\(\.22,\.72,\.24,1\)\s+var\(--line-delay,0ms\)\s+both\s*;/,
+    'normal-motion lines must own the accepted mobileCopyLineIn animation without a separate arming state'
   );
 });
 
-test('armed state still waits for two animation frames before starting copy entrance', () => {
-  const body = functionBody('armCopyEntrance');
-  const firstFrame = body.indexOf('requestAnimationFrame');
-  assert.notEqual(firstFrame, -1, 'armCopyEntrance must wait for a first requestAnimationFrame');
-
-  const secondFrame = body.indexOf('requestAnimationFrame', firstFrame + 1);
-  assert.notEqual(secondFrame, -1, 'armCopyEntrance must wait for a second requestAnimationFrame so the hidden state has a paint opportunity');
-
-  const arm = body.indexOf("fallback.classList.add('copy-enter')");
-  assert.notEqual(arm, -1, "armCopyEntrance must explicitly add 'copy-enter'");
-  assert.ok(secondFrame < arm, "'copy-enter' must be added only after both requestAnimationFrame boundaries");
-});
-
-test('initial landing waits for a page-presentation boundary before arming', () => {
-  const body = functionBody('scheduleInitialCopyEntrance');
-
-  assert.match(
-    body,
-    /document\.readyState\s*===\s*'complete'/,
-    'late-loaded runtime must detect when the page is already complete and presented'
-  );
-  assert.match(
-    body,
-    /'onpagereveal'\s+in\s+window/,
-    'modern browsers must prefer the pagereveal presentation boundary when available'
-  );
-  assert.match(
-    body,
-    /addEventListener\('pagereveal'/,
-    'supported browsers must wait for pagereveal before initial entrance arming'
-  );
-  assert.match(
-    body,
-    /addEventListener\('pageshow'/,
-    'pageshow must remain as the non-missable fallback when pagereveal is unavailable or already passed'
-  );
-
-  const ready = body.indexOf('copyPresentationReady=true');
-  const arm = body.indexOf('armCopyEntrance()');
-  assert.notEqual(ready, -1, 'presentation readiness must be recorded explicitly');
-  assert.notEqual(arm, -1, 'the presentation boundary must eventually arm copy entrance');
-  assert.ok(ready < arm, 'presentation readiness must be established before armCopyEntrance runs');
-});
-
-test('startup renders localized lines then schedules presentation-gated entrance', () => {
+test('accepted keyframe texture remains unchanged', () => {
   assert.match(
     source,
-    /syncLanguage\(\);\s*scheduleInitialCopyEntrance\(\);/,
-    'startup must render localized hidden lines before scheduling the presentation-gated entrance'
-  );
-  assert.doesNotMatch(
-    source,
-    /syncLanguage\(\);\s*armCopyEntrance\(\);\s*const languageObserver/,
-    'startup must not directly arm the entrance during document construction'
+    /@keyframes mobileCopyLineIn\{\s*0%\{opacity:0;filter:blur\(8px\);transform:translateY\(7px\)\}\s*46%\{opacity:\.38;filter:blur\(3\.5px\);transform:translateY\(3px\)\}\s*100%\{opacity:1;filter:blur\(0\);transform:translateY\(0\)\}\s*\}/,
+    'the accepted opacity/blur/vertical-travel keyframes must remain intact'
   );
 });
 
-test('language changes cannot bypass the initial presentation gate', () => {
-  assert.match(
-    source,
-    /const languageObserver=new MutationObserver\(\(\)=>\{\s*syncLanguage\(\);\s*if\(copyPresentationReady\)armCopyEntrance\(\);/,
-    'language changes may replay the entrance only after the initial page-presentation boundary has been crossed'
-  );
-});
-
-test('reduced-motion and uiux-test mode remain settled instead of entering', () => {
+test('reduced-motion and uiux-test mode settle copy immediately', () => {
   assert.match(
     source,
     /if\s*\(reducedMotion\s*\|\|\s*testMode\)\s*fallback\.classList\.add\('copy-static'\)/,
-    'static modes must keep their existing settled-copy bypass'
+    'reduced-motion and deterministic test mode must apply copy-static before copy lines are rendered'
   );
 
-  const armBody = functionBody('armCopyEntrance');
+  const block = cssBlock('.mobile-fallback.copy-static .mobile-copy-line');
+  assert.match(block, /opacity\s*:\s*1\s*;/, 'static copy must be fully visible');
+  assert.match(block, /filter\s*:\s*none\s*;/, 'static copy must not remain blurred');
+  assert.match(block, /transform\s*:\s*none\s*;/, 'static copy must not remain displaced');
+  assert.match(block, /animation\s*:\s*none\s*;/, 'static copy must not animate');
+});
+
+test('line rendering preserves the accepted stagger values', () => {
+  const renderBody = functionBody('renderLines');
+  assert.match(renderBody, /node\.replaceChildren\(\)/, 'language rendering must replace old line nodes');
+  assert.match(renderBody, /span\.className=`mobile-copy-line \$\{lineClass\}`/, 'each rendered line must receive the animation class');
   assert.match(
-    armBody,
-    /if\s*\(reducedMotion\s*\|\|\s*testMode\)\s*return/,
-    'armCopyEntrance must not animate in reduced-motion or deterministic test mode'
+    renderBody,
+    /--line-delay[^\n]*startDelay\+index\*stepDelay/,
+    'each rendered line must receive its staggered delay'
   );
 
-  const scheduleBody = functionBody('scheduleInitialCopyEntrance');
+  const syncBody = functionBody('syncLanguage');
+  assert.match(syncBody, /renderLines\(title,strings\.titleLines,120,145,'mobile-title-line'\)/, 'title stagger must remain 120ms + 145ms per line');
+  assert.match(syncBody, /renderLines\(message,strings\.messageLines,760,135,'mobile-message-line'\)/, 'guidance stagger must remain 760ms + 135ms per line');
+});
+
+test('language switching replays by replacing the animated line elements', () => {
   assert.match(
-    scheduleBody,
-    /if\s*\(reducedMotion\s*\|\|\s*testMode\)\s*return/,
-    'static modes must not register presentation-trigger listeners for copy entrance'
+    source,
+    /syncLanguage\(\);\s*const languageObserver=new MutationObserver\(syncLanguage\);\s*languageObserver\.observe\(html,\{attributes:true,attributeFilter:\['lang'\]\}\)/,
+    'startup must render once and language mutations must replace the line nodes through syncLanguage'
   );
+});
+
+test('disproven presentation-gating machinery is not part of the contract', () => {
+  for (const legacyToken of [
+    'scheduleInitialCopyEntrance',
+    'copyPresentationReady',
+    "addEventListener('pagereveal'",
+    "addEventListener('pageshow'",
+    'armCopyEntrance',
+    "classList.add('copy-enter')",
+    'copyEntranceFrame1',
+    'copyEntranceFrame2'
+  ]) {
+    assert.equal(source.includes(legacyToken), false, `Legacy entrance trigger token must stay removed: ${legacyToken}`);
+  }
 });
