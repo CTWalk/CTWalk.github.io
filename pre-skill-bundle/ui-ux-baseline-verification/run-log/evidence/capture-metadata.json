@@ -1,0 +1,3303 @@
+{
+  "generated_at": "2026-08-30T10:16:50.651Z",
+  "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+  "source_worktree_clean": true,
+  "baseline_status": "candidate",
+  "capture_contract": "#5 + #12 + #7",
+  "capture_runtime": "node-playwright",
+  "note": "Candidate capture only. Never promote by regenerating after a diff; every image requires explicit review against UI_UX_ACCEPTANCE_CONTRACT.md.",
+  "records": [
+    {
+      "checkpoint_id": "intro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "intro.settled",
+        "scene": "0",
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 60.299999713897705
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 60.299999713897705
+      },
+      "screenshot": "desktop/en/normal/intro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.checkout-event",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.checkout-event",
+        "scene": "1",
+        "sceneProgress": 0.18928571428571428,
+        "documentProgress": 0.07793747674851191,
+        "score": 0.58,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 92.59999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 92.59999990463257
+      },
+      "screenshot": "desktop/en/normal/commerce.checkout-event.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.quiet-after-checkout",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.quiet-after-checkout",
+        "scene": "1",
+        "sceneProgress": 0.29500000000000004,
+        "documentProgress": 0.09224951171875001,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 87.30000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 87.30000019073486
+      },
+      "screenshot": "desktop/en/normal/commerce.quiet-after-checkout.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.expired-promo",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.expired-promo",
+        "scene": "1",
+        "sceneProgress": 0.46142857142857147,
+        "documentProgress": 0.1147812965029762,
+        "score": 0.5786828199999999,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 97.09999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 97.09999990463257
+      },
+      "screenshot": "desktop/en/normal/commerce.expired-promo.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.unavailable",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.unavailable",
+        "scene": "1",
+        "sceneProgress": 0.71,
+        "documentProgress": 0.14843391927083333,
+        "score": 0.5799854999999999,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 182.60000038146973
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 182.60000038146973
+      },
+      "screenshot": "desktop/en/normal/commerce.unavailable.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.final-settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.final-settled",
+        "scene": "1",
+        "sceneProgress": 0.82,
+        "documentProgress": 0.16332617187499998,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 186.59999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 186.59999990463257
+      },
+      "screenshot": "desktop/en/normal/commerce.final-settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.yaml-readable",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.yaml-readable",
+        "scene": "2",
+        "sceneProgress": 0.14857142857142858,
+        "documentProgress": 0.19677473958333333,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 112.09999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 112.09999990463257
+      },
+      "screenshot": "desktop/en/normal/nocode.yaml-readable.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.execution",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.execution",
+        "scene": "2",
+        "sceneProgress": 0.375,
+        "documentProgress": 0.23407796223958333,
+        "score": 0.15,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 120.09999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 120.09999990463257
+      },
+      "screenshot": "desktop/en/normal/nocode.execution.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.result-hold",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.result-hold",
+        "scene": "2",
+        "sceneProgress": 0.7814285714285715,
+        "documentProgress": 0.3010354817708334,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 372.5
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 372.5
+      },
+      "screenshot": "desktop/en/normal/nocode.result-hold.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.product",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.product",
+        "scene": "3",
+        "sceneProgress": 0.18571428571428572,
+        "documentProgress": 0.3510226004464285,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 119.90000009536743
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 119.90000009536743
+      },
+      "screenshot": "desktop/en/normal/social.product.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.database",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.database",
+        "scene": "3",
+        "sceneProgress": 0.24,
+        "documentProgress": 0.3615598958333333,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 157.7000002861023
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 157.7000002861023
+      },
+      "screenshot": "desktop/en/normal/social.database.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.web",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.web",
+        "scene": "3",
+        "sceneProgress": 0.4585714285714286,
+        "documentProgress": 0.40398637462797615,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 152
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 152
+      },
+      "screenshot": "desktop/en/normal/social.web.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.final-phone",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.final-phone",
+        "scene": "3",
+        "sceneProgress": 0.8171428571428572,
+        "documentProgress": 0.47358798363095234,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 238.30000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 238.30000019073486
+      },
+      "screenshot": "desktop/en/normal/social.final-phone.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.workspace",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.workspace",
+        "scene": "4",
+        "sceneProgress": 0.21000000000000002,
+        "documentProgress": 0.5215244140625,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 657.3999996185303
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 657.3999996185303
+      },
+      "screenshot": "desktop/en/normal/cuesheet.workspace.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.conflict",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.conflict",
+        "scene": "4",
+        "sceneProgress": 0.47000000000000003,
+        "documentProgress": 0.5643753255208334,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 615.8000001907349
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 615.8000001907349
+      },
+      "screenshot": "desktop/en/normal/cuesheet.conflict.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.review",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.review",
+        "scene": "4",
+        "sceneProgress": 0.8521428571428571,
+        "documentProgress": 0.6273567475818453,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 221.59999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 221.59999990463257
+      },
+      "screenshot": "desktop/en/normal/cuesheet.review.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.early-contribution",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.early-contribution",
+        "scene": "5",
+        "sceneProgress": 0.33714285714285713,
+        "documentProgress": 0.7547898065476191,
+        "score": 0.998449,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 116.59999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 116.59999990463257
+      },
+      "screenshot": "desktop/en/normal/dca.early-contribution.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.phrased-hold",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.phrased-hold",
+        "scene": "5",
+        "sceneProgress": 0.3657142857142857,
+        "documentProgress": 0.7648344494047619,
+        "score": 0.988126,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 86.90000009536743
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 86.90000009536743
+      },
+      "screenshot": "desktop/en/normal/dca.phrased-hold.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.late-contribution",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.late-contribution",
+        "scene": "5",
+        "sceneProgress": 0.5014285714285714,
+        "documentProgress": 0.8125465029761905,
+        "score": 0.98707,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 62.80000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 62.80000019073486
+      },
+      "screenshot": "desktop/en/normal/dca.late-contribution.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.scanner-handoff",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.scanner-handoff",
+        "scene": "5",
+        "sceneProgress": 0.7057142857142857,
+        "documentProgress": 0.884365699404762,
+        "score": 0.967968,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 72
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 72
+      },
+      "screenshot": "desktop/en/normal/dca.scanner-handoff.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.pass",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.pass",
+        "scene": "5",
+        "sceneProgress": 0.8507142857142858,
+        "documentProgress": 0.9353422619047619,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 100
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 100
+      },
+      "screenshot": "desktop/en/normal/dca.pass.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "outro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "outro.settled",
+        "scene": "6",
+        "sceneProgress": 1,
+        "documentProgress": 1,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 55.5
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 55.5
+      },
+      "screenshot": "desktop/en/normal/outro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "intro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "intro.settled",
+        "scene": "0",
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 58
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58
+      },
+      "screenshot": "desktop/zh-TW/normal/intro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.checkout-event",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.checkout-event",
+        "scene": "1",
+        "sceneProgress": 0.18928571428571428,
+        "documentProgress": 0.07793747674851191,
+        "score": 0.58,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 108.2999997138977
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 108.2999997138977
+      },
+      "screenshot": "desktop/zh-TW/normal/commerce.checkout-event.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.quiet-after-checkout",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.quiet-after-checkout",
+        "scene": "1",
+        "sceneProgress": 0.29500000000000004,
+        "documentProgress": 0.09224951171875001,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 84.19999980926514
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 84.19999980926514
+      },
+      "screenshot": "desktop/zh-TW/normal/commerce.quiet-after-checkout.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.expired-promo",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.expired-promo",
+        "scene": "1",
+        "sceneProgress": 0.46142857142857147,
+        "documentProgress": 0.1147812965029762,
+        "score": 0.5786828199999999,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 92.2000002861023
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 92.2000002861023
+      },
+      "screenshot": "desktop/zh-TW/normal/commerce.expired-promo.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.unavailable",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.unavailable",
+        "scene": "1",
+        "sceneProgress": 0.71,
+        "documentProgress": 0.14843391927083333,
+        "score": 0.5799854999999999,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 249
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 249
+      },
+      "screenshot": "desktop/zh-TW/normal/commerce.unavailable.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.final-settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.final-settled",
+        "scene": "1",
+        "sceneProgress": 0.82,
+        "documentProgress": 0.16332617187499998,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 190
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 190
+      },
+      "screenshot": "desktop/zh-TW/normal/commerce.final-settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.yaml-readable",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.yaml-readable",
+        "scene": "2",
+        "sceneProgress": 0.14857142857142858,
+        "documentProgress": 0.19677473958333333,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 116.60000038146973
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 116.60000038146973
+      },
+      "screenshot": "desktop/zh-TW/normal/nocode.yaml-readable.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.execution",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.execution",
+        "scene": "2",
+        "sceneProgress": 0.375,
+        "documentProgress": 0.23407796223958333,
+        "score": 0.15,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 123.89999961853027
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 123.89999961853027
+      },
+      "screenshot": "desktop/zh-TW/normal/nocode.execution.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.result-hold",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.result-hold",
+        "scene": "2",
+        "sceneProgress": 0.7814285714285715,
+        "documentProgress": 0.3010354817708334,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 383.09999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 383.09999990463257
+      },
+      "screenshot": "desktop/zh-TW/normal/nocode.result-hold.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.product",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.product",
+        "scene": "3",
+        "sceneProgress": 0.18571428571428572,
+        "documentProgress": 0.3510226004464285,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 138.90000009536743
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 138.90000009536743
+      },
+      "screenshot": "desktop/zh-TW/normal/social.product.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.database",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.database",
+        "scene": "3",
+        "sceneProgress": 0.24,
+        "documentProgress": 0.3615598958333333,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 161.2000002861023
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 161.2000002861023
+      },
+      "screenshot": "desktop/zh-TW/normal/social.database.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.web",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.web",
+        "scene": "3",
+        "sceneProgress": 0.4585714285714286,
+        "documentProgress": 0.40398637462797615,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 142.90000009536743
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 142.90000009536743
+      },
+      "screenshot": "desktop/zh-TW/normal/social.web.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.final-phone",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "social.final-phone",
+        "scene": "3",
+        "sceneProgress": 0.8171428571428572,
+        "documentProgress": 0.47358798363095234,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 262.30000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 262.30000019073486
+      },
+      "screenshot": "desktop/zh-TW/normal/social.final-phone.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.workspace",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.workspace",
+        "scene": "4",
+        "sceneProgress": 0.21000000000000002,
+        "documentProgress": 0.5215244140625,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 695.5999999046326
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 695.5999999046326
+      },
+      "screenshot": "desktop/zh-TW/normal/cuesheet.workspace.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.conflict",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.conflict",
+        "scene": "4",
+        "sceneProgress": 0.47000000000000003,
+        "documentProgress": 0.5643753255208334,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 669.3000001907349
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 669.3000001907349
+      },
+      "screenshot": "desktop/zh-TW/normal/cuesheet.conflict.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.review",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.review",
+        "scene": "4",
+        "sceneProgress": 0.8521428571428571,
+        "documentProgress": 0.6273567475818453,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 156.69999980926514
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 156.69999980926514
+      },
+      "screenshot": "desktop/zh-TW/normal/cuesheet.review.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.early-contribution",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.early-contribution",
+        "scene": "5",
+        "sceneProgress": 0.33714285714285713,
+        "documentProgress": 0.7547898065476191,
+        "score": 0.998449,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 93.5
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 93.5
+      },
+      "screenshot": "desktop/zh-TW/normal/dca.early-contribution.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.phrased-hold",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.phrased-hold",
+        "scene": "5",
+        "sceneProgress": 0.3657142857142857,
+        "documentProgress": 0.7648344494047619,
+        "score": 0.988126,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 93.30000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 93.30000019073486
+      },
+      "screenshot": "desktop/zh-TW/normal/dca.phrased-hold.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.late-contribution",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.late-contribution",
+        "scene": "5",
+        "sceneProgress": 0.5014285714285714,
+        "documentProgress": 0.8125465029761905,
+        "score": 0.98707,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 73.7999997138977
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 73.7999997138977
+      },
+      "screenshot": "desktop/zh-TW/normal/dca.late-contribution.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.scanner-handoff",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.scanner-handoff",
+        "scene": "5",
+        "sceneProgress": 0.7057142857142857,
+        "documentProgress": 0.884365699404762,
+        "score": 0.967968,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 70.09999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 70.09999990463257
+      },
+      "screenshot": "desktop/zh-TW/normal/dca.scanner-handoff.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.pass",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.pass",
+        "scene": "5",
+        "sceneProgress": 0.8507142857142858,
+        "documentProgress": 0.9353422619047619,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 97.2000002861023
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 97.2000002861023
+      },
+      "screenshot": "desktop/zh-TW/normal/dca.pass.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "outro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "checkpoint_resolution": {
+        "checkpoint": "outro.settled",
+        "scene": "6",
+        "sceneProgress": 1,
+        "documentProgress": 1,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 50.30000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 50.30000019073486
+      },
+      "screenshot": "desktop/zh-TW/normal/outro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "intro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "intro.settled",
+        "scene": "0",
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 57.69999980926514
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.69999980926514
+      },
+      "screenshot": "laptop/en/normal/intro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.checkout-event",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.checkout-event",
+        "scene": "1",
+        "sceneProgress": 0.18928571428571428,
+        "documentProgress": 0.07791108630952381,
+        "score": 0.58,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 81.7999997138977
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 81.7999997138977
+      },
+      "screenshot": "laptop/en/normal/commerce.checkout-event.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.expired-promo",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.expired-promo",
+        "scene": "1",
+        "sceneProgress": 0.47357142857142864,
+        "documentProgress": 0.11640811011904764,
+        "score": 0.579268,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 74.59999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 74.59999990463257
+      },
+      "screenshot": "laptop/en/normal/commerce.expired-promo.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.result-hold",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.result-hold",
+        "scene": "2",
+        "sceneProgress": 0.7814285714285715,
+        "documentProgress": 0.3010212518601191,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 289.8999996185303
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 289.8999996185303
+      },
+      "screenshot": "laptop/en/normal/nocode.result-hold.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.final-phone",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "social.final-phone",
+        "scene": "3",
+        "sceneProgress": 0.8171428571428572,
+        "documentProgress": 0.47355543154761903,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 196.19999980926514
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 196.19999980926514
+      },
+      "screenshot": "laptop/en/normal/social.final-phone.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.review",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.review",
+        "scene": "4",
+        "sceneProgress": 0.8521428571428571,
+        "documentProgress": 0.6273060825892857,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 126.80000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 126.80000019073486
+      },
+      "screenshot": "laptop/en/normal/cuesheet.review.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.pass",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.pass",
+        "scene": "5",
+        "sceneProgress": 0.8507142857142858,
+        "documentProgress": 0.9353471214657738,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 78
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 78
+      },
+      "screenshot": "laptop/en/normal/dca.pass.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "outro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "outro.settled",
+        "scene": "6",
+        "sceneProgress": 1,
+        "documentProgress": 1,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 58.200000286102295
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.200000286102295
+      },
+      "screenshot": "laptop/en/normal/outro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "intro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "intro.settled",
+        "scene": "0",
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 57.19999980926514
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.19999980926514
+      },
+      "screenshot": "laptop/zh-TW/normal/intro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.checkout-event",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.checkout-event",
+        "scene": "1",
+        "sceneProgress": 0.18928571428571428,
+        "documentProgress": 0.07791108630952381,
+        "score": 0.58,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 82.7000002861023
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 82.7000002861023
+      },
+      "screenshot": "laptop/zh-TW/normal/commerce.checkout-event.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.expired-promo",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.expired-promo",
+        "scene": "1",
+        "sceneProgress": 0.47357142857142864,
+        "documentProgress": 0.11640811011904764,
+        "score": 0.579268,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 82.40000009536743
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 82.40000009536743
+      },
+      "screenshot": "laptop/zh-TW/normal/commerce.expired-promo.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.result-hold",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.result-hold",
+        "scene": "2",
+        "sceneProgress": 0.7814285714285715,
+        "documentProgress": 0.3010212518601191,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 319.59999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 319.59999990463257
+      },
+      "screenshot": "laptop/zh-TW/normal/nocode.result-hold.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.final-phone",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "social.final-phone",
+        "scene": "3",
+        "sceneProgress": 0.8171428571428572,
+        "documentProgress": 0.47355543154761903,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 203.39999961853027
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 203.39999961853027
+      },
+      "screenshot": "laptop/zh-TW/normal/social.final-phone.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.review",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.review",
+        "scene": "4",
+        "sceneProgress": 0.8521428571428571,
+        "documentProgress": 0.6273060825892857,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 134.90000009536743
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 134.90000009536743
+      },
+      "screenshot": "laptop/zh-TW/normal/cuesheet.review.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.pass",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.pass",
+        "scene": "5",
+        "sceneProgress": 0.8507142857142858,
+        "documentProgress": 0.9353471214657738,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 74.69999980926514
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 74.69999980926514
+      },
+      "screenshot": "laptop/zh-TW/normal/dca.pass.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "outro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "laptop",
+      "viewport_width": 1280,
+      "viewport_height": 800,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "outro.settled",
+        "scene": "6",
+        "sceneProgress": 1,
+        "documentProgress": 1,
+        "score": 1,
+        "settle": {
+          "settled": true,
+          "stableFrames": 4,
+          "elapsedMs": 57
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57
+      },
+      "screenshot": "laptop/zh-TW/normal/outro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "mobile.fallback",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "mobile",
+      "viewport_width": 390,
+      "viewport_height": 844,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 1,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "mobile.fallback",
+        "presentation": "mobile-fallback",
+        "scene": null,
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "reduced": false,
+        "fallbackTimeMs": 0,
+        "settle": {
+          "settled": true,
+          "stableFrames": 3,
+          "elapsedMs": 39.80000019073486
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 39.80000019073486
+      },
+      "screenshot": "mobile/en/normal/mobile.fallback.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "mobile.fallback",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "mobile",
+      "viewport_width": 390,
+      "viewport_height": 844,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "normal",
+      "asset_load_status": {
+        "total_images": 1,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "mobile.fallback",
+        "presentation": "mobile-fallback",
+        "scene": null,
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "reduced": false,
+        "fallbackTimeMs": 0,
+        "settle": {
+          "settled": true,
+          "stableFrames": 3,
+          "elapsedMs": 32.69999980926514
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 32.69999980926514
+      },
+      "screenshot": "mobile/zh-TW/normal/mobile.fallback.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "intro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "intro.settled",
+        "scene": "0",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.200000286102295
+      },
+      "screenshot": "desktop/en/reduce/intro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.reduced",
+        "scene": "1",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.5
+      },
+      "screenshot": "desktop/en/reduce/commerce.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.reduced",
+        "scene": "2",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 99.40000009536743
+      },
+      "screenshot": "desktop/en/reduce/nocode.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "social.reduced",
+        "scene": "3",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 80.30000019073486
+      },
+      "screenshot": "desktop/en/reduce/social.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.reduced",
+        "scene": "4",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.59999990463257
+      },
+      "screenshot": "desktop/en/reduce/cuesheet.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.reduced",
+        "scene": "5",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 98.5
+      },
+      "screenshot": "desktop/en/reduce/dca.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "outro.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "outro.reduced",
+        "scene": "6",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.5
+      },
+      "screenshot": "desktop/en/reduce/outro.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "intro.settled",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "intro.settled",
+        "scene": "0",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.19999980926514
+      },
+      "screenshot": "desktop/zh-TW/reduce/intro.settled.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "commerce.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "commerce.reduced",
+        "scene": "1",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.59999990463257
+      },
+      "screenshot": "desktop/zh-TW/reduce/commerce.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "nocode.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "nocode.reduced",
+        "scene": "2",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 124
+      },
+      "screenshot": "desktop/zh-TW/reduce/nocode.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "social.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "social.reduced",
+        "scene": "3",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.299999713897705
+      },
+      "screenshot": "desktop/zh-TW/reduce/social.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "cuesheet.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "cuesheet.reduced",
+        "scene": "4",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.59999990463257
+      },
+      "screenshot": "desktop/zh-TW/reduce/cuesheet.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "dca.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "dca.reduced",
+        "scene": "5",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 56.90000009536743
+      },
+      "screenshot": "desktop/zh-TW/reduce/dca.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "outro.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "desktop",
+      "viewport_width": 1440,
+      "viewport_height": 900,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 14,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "outro.reduced",
+        "scene": "6",
+        "progress": 0,
+        "reduced": true
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.799999713897705
+      },
+      "screenshot": "desktop/zh-TW/reduce/outro.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "mobile.fallback.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "mobile",
+      "viewport_width": 390,
+      "viewport_height": 844,
+      "device_scale_factor": 1,
+      "locale": "en",
+      "html_lang": "en",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 1,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "mobile.fallback.reduced",
+        "presentation": "mobile-fallback",
+        "scene": null,
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "reduced": true,
+        "fallbackTimeMs": 0,
+        "settle": {
+          "settled": true,
+          "stableFrames": 3,
+          "elapsedMs": 39.09999990463257
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 39.09999990463257
+      },
+      "screenshot": "mobile/en/reduce/mobile.fallback.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    },
+    {
+      "checkpoint_id": "mobile.fallback.reduced",
+      "source_sha": "b22da62f824c4903320a07af4311785c4f915b4b",
+      "status": "candidate",
+      "capture_runtime": "node-playwright",
+      "browser_name": "chromium",
+      "browser_version": "145.0.7632.6",
+      "viewport_id": "mobile",
+      "viewport_width": 390,
+      "viewport_height": 844,
+      "device_scale_factor": 1,
+      "locale": "zh-TW",
+      "html_lang": "zh-Hant-TW",
+      "motion_preference": "reduce",
+      "asset_load_status": {
+        "total_images": 1,
+        "failed": [],
+        "pending": [],
+        "ok": true
+      },
+      "console_errors": [],
+      "checkpoint_resolution": {
+        "checkpoint": "mobile.fallback.reduced",
+        "presentation": "mobile-fallback",
+        "scene": null,
+        "sceneProgress": 0,
+        "documentProgress": 0,
+        "score": 1,
+        "reduced": true,
+        "fallbackTimeMs": 0,
+        "settle": {
+          "settled": true,
+          "stableFrames": 3,
+          "elapsedMs": 31.5
+        }
+      },
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 31.5
+      },
+      "screenshot": "mobile/zh-TW/reduce/mobile.fallback.reduced.png",
+      "reviewer": null,
+      "review_notes": null
+    }
+  ]
+}

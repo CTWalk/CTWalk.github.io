@@ -1,0 +1,7507 @@
+[
+  {
+    "key": "desktop/en/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "intro.settled",
+      "scene": "0",
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 55.30000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "0",
+    "scene_opacity": 1,
+    "label_text": "QA / SDET · SOFTWARE ENGINEERING",
+    "title_text": "I test software from the UI to the database.",
+    "title_lines": [
+      {
+        "top": 318,
+        "left": 394.5,
+        "right": 1045.5,
+        "width": 651.1
+      },
+      {
+        "top": 403,
+        "left": 342.1,
+        "right": 1097.9,
+        "width": 755.7
+      }
+    ],
+    "body_text": "I automate web, API, database and mobile checks, then run them in CI. When one fails, I trace the failure before deciding whether the test or the product needs fixing.",
+    "body_lines": [
+      {
+        "top": 520,
+        "left": 475.6,
+        "right": 964.4,
+        "width": 488.8
+      },
+      {
+        "top": 551,
+        "left": 508.7,
+        "right": 931.3,
+        "width": 422.6
+      },
+      {
+        "top": 583,
+        "left": 497.4,
+        "right": 942.5,
+        "width": 445.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.checkout-event",
+      "scene": "1",
+      "sceneProgress": 0.18928571428571428,
+      "documentProgress": 0.07793747674851191,
+      "score": 0.58,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 93.09999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 505,
+        "left": 127.5,
+        "right": 561.3,
+        "width": 433.8
+      },
+      {
+        "top": 578,
+        "left": 127.5,
+        "right": 545.2,
+        "width": 417.6
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 680,
+        "left": 127.5,
+        "right": 618.9,
+        "width": 491.4
+      },
+      {
+        "top": 711,
+        "left": 127.5,
+        "right": 617.2,
+        "width": 489.7
+      },
+      {
+        "top": 743,
+        "left": 127.5,
+        "right": 213.5,
+        "width": 86
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1838.3,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-checkout",
+        "w": 300.7,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/commerce.quiet-after-checkout",
+    "checkpoint_id": "commerce.quiet-after-checkout",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.quiet-after-checkout",
+      "scene": "1",
+      "sceneProgress": 0.29500000000000004,
+      "documentProgress": 0.09224951171875001,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 84.40000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 506,
+        "left": 128.4,
+        "right": 562.1,
+        "width": 433.8
+      },
+      {
+        "top": 578,
+        "left": 128.4,
+        "right": 546,
+        "width": 417.6
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 681,
+        "left": 128.4,
+        "right": 619.8,
+        "width": 491.4
+      },
+      {
+        "top": 712,
+        "left": 128.4,
+        "right": 618.1,
+        "width": 489.7
+      },
+      {
+        "top": 743,
+        "left": 128.4,
+        "right": 214.3,
+        "width": 86
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1832.3,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-checkout",
+        "w": 293.4,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.expired-promo",
+      "scene": "1",
+      "sceneProgress": 0.46142857142857147,
+      "documentProgress": 0.1147812965029762,
+      "score": 0.5786828199999999,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 91.59999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 507,
+        "left": 129.7,
+        "right": 563.5,
+        "width": 433.8
+      },
+      {
+        "top": 579,
+        "left": 129.7,
+        "right": 547.3,
+        "width": 417.6
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 682,
+        "left": 129.7,
+        "right": 621.1,
+        "width": 491.4
+      },
+      {
+        "top": 713,
+        "left": 129.7,
+        "right": 619.4,
+        "width": 489.7
+      },
+      {
+        "top": 744,
+        "left": 129.7,
+        "right": 215.7,
+        "width": 86
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-expired",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-expired",
+        "o": 0.998
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0.998
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0.002
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1822.9,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-expired",
+        "w": 303.5,
+        "nw": 412,
+        "op": 0.998
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/commerce.unavailable",
+    "checkpoint_id": "commerce.unavailable",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.unavailable",
+      "scene": "1",
+      "sceneProgress": 0.71,
+      "documentProgress": 0.14843391927083333,
+      "score": 0.5799854999999999,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 206.19999980926514
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 508,
+        "left": 131.7,
+        "right": 565.4,
+        "width": 433.8
+      },
+      {
+        "top": 581,
+        "left": 131.7,
+        "right": 549.3,
+        "width": 417.6
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 683,
+        "left": 131.7,
+        "right": 623,
+        "width": 491.4
+      },
+      {
+        "top": 715,
+        "left": 131.7,
+        "right": 621.4,
+        "width": 489.7
+      },
+      {
+        "top": 746,
+        "left": 131.7,
+        "right": 217.6,
+        "width": 86
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-unavailable",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1832.6,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-unavailable",
+        "w": 302.6,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/commerce.final-settled",
+    "checkpoint_id": "commerce.final-settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.final-settled",
+      "scene": "1",
+      "sceneProgress": 0.82,
+      "documentProgress": 0.16332617187499998,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 182.7999997138977
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 509,
+        "left": 132.5,
+        "right": 566.3,
+        "width": 433.8
+      },
+      {
+        "top": 582,
+        "left": 132.5,
+        "right": 550.2,
+        "width": 417.6
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 684,
+        "left": 132.5,
+        "right": 623.9,
+        "width": 491.4
+      },
+      {
+        "top": 715,
+        "left": 132.5,
+        "right": 622.2,
+        "width": 489.7
+      },
+      {
+        "top": 747,
+        "left": 132.5,
+        "right": 218.5,
+        "width": 86
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1838.8,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-unavailable",
+        "w": 292,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/nocode.yaml-readable",
+    "checkpoint_id": "nocode.yaml-readable",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.yaml-readable",
+      "scene": "2",
+      "sceneProgress": 0.14857142857142858,
+      "documentProgress": 0.19677473958333333,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 117
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "I keep test steps readable.",
+    "title_lines": [
+      {
+        "top": 505,
+        "left": 702.5,
+        "right": 995.8,
+        "width": 293.3
+      },
+      {
+        "top": 577,
+        "left": 702.5,
+        "right": 1143,
+        "width": 440.5
+      }
+    ],
+    "body_text": "The YAML says what the test should do. Playwright executes it. I keep locators, failure output and CI config outside the YAML so UI changes are easier to update.",
+    "body_lines": [
+      {
+        "top": 680,
+        "left": 702.5,
+        "right": 1124.7,
+        "width": 422.2
+      },
+      {
+        "top": 711,
+        "left": 702.5,
+        "right": 1156.8,
+        "width": 454.3
+      },
+      {
+        "top": 743,
+        "left": 702.5,
+        "right": 1145.1,
+        "width": 442.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.04
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0
+      ],
+      "emphasisIndex": 0,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/nocode.execution",
+    "checkpoint_id": "nocode.execution",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.execution",
+      "scene": "2",
+      "sceneProgress": 0.375,
+      "documentProgress": 0.23407796223958333,
+      "score": 0.15,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 129.5
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "I keep test steps readable.",
+    "title_lines": [
+      {
+        "top": 507,
+        "left": 700.3,
+        "right": 993.7,
+        "width": 293.3
+      },
+      {
+        "top": 579,
+        "left": 700.3,
+        "right": 1140.8,
+        "width": 440.5
+      }
+    ],
+    "body_text": "The YAML says what the test should do. Playwright executes it. I keep locators, failure output and CI config outside the YAML so UI changes are easier to update.",
+    "body_lines": [
+      {
+        "top": 682,
+        "left": 700.3,
+        "right": 1122.5,
+        "width": 422.2
+      },
+      {
+        "top": 713,
+        "left": 700.3,
+        "right": 1154.7,
+        "width": 454.3
+      },
+      {
+        "top": 744,
+        "left": 700.3,
+        "right": 1143,
+        "width": 442.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.042
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0.15,
+        0
+      ],
+      "emphasisIndex": 1,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1581.3,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.result-hold",
+      "scene": "2",
+      "sceneProgress": 0.7814285714285715,
+      "documentProgress": 0.3010354817708334,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 340.40000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "I keep test steps readable.",
+    "title_lines": [
+      {
+        "top": 509,
+        "left": 697.5,
+        "right": 990.8,
+        "width": 293.3
+      },
+      {
+        "top": 582,
+        "left": 697.5,
+        "right": 1138,
+        "width": 440.5
+      }
+    ],
+    "body_text": "The YAML says what the test should do. Playwright executes it. I keep locators, failure output and CI config outside the YAML so UI changes are easier to update.",
+    "body_lines": [
+      {
+        "top": 684,
+        "left": 697.5,
+        "right": 1119.7,
+        "width": 422.2
+      },
+      {
+        "top": 715,
+        "left": 697.5,
+        "right": 1151.8,
+        "width": 454.3
+      },
+      {
+        "top": 747,
+        "left": 697.5,
+        "right": 1140.1,
+        "width": 442.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.037
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0.137
+      ],
+      "emphasisIndex": 2,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564.3,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/social.product",
+    "checkpoint_id": "social.product",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.product",
+      "scene": "3",
+      "sceneProgress": 0.18571428571428572,
+      "documentProgress": 0.3510226004464285,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 118.09999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "I run one release through all of these checks.",
+    "title_lines": [
+      {
+        "top": 464,
+        "left": 127.5,
+        "right": 595,
+        "width": 467.5
+      },
+      {
+        "top": 536,
+        "left": 127.5,
+        "right": 504.1,
+        "width": 376.5
+      },
+      {
+        "top": 609,
+        "left": 127.5,
+        "right": 526.4,
+        "width": 398.9
+      }
+    ],
+    "body_text": "Build, API, database, performance, web and mobile checks all run against the same version.",
+    "body_lines": [
+      {
+        "top": 711,
+        "left": 127.5,
+        "right": 612.9,
+        "width": 485.4
+      },
+      {
+        "top": 743,
+        "left": 127.5,
+        "right": 393.4,
+        "width": 265.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564.4,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "social-product-initial",
+        "w": 810.6,
+        "nw": 1280,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/social.database",
+    "checkpoint_id": "social.database",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.database",
+      "scene": "3",
+      "sceneProgress": 0.24,
+      "documentProgress": 0.3615598958333333,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 168.80000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "I run one release through all of these checks.",
+    "title_lines": [
+      {
+        "top": 464,
+        "left": 127.9,
+        "right": 595.4,
+        "width": 467.5
+      },
+      {
+        "top": 537,
+        "left": 127.9,
+        "right": 504.5,
+        "width": 376.5
+      },
+      {
+        "top": 609,
+        "left": 127.9,
+        "right": 526.8,
+        "width": 398.9
+      }
+    ],
+    "body_text": "Build, API, database, performance, web and mobile checks all run against the same version.",
+    "body_lines": [
+      {
+        "top": 712,
+        "left": 127.9,
+        "right": 613.3,
+        "width": 485.4
+      },
+      {
+        "top": 743,
+        "left": 127.9,
+        "right": 393.8,
+        "width": 265.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1567.7,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "social-product-initial",
+        "w": 740.2,
+        "nw": 1280,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/social.web",
+    "checkpoint_id": "social.web",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.web",
+      "scene": "3",
+      "sceneProgress": 0.4585714285714286,
+      "documentProgress": 0.40398637462797615,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 138
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "I run one release through all of these checks.",
+    "title_lines": [
+      {
+        "top": 466,
+        "left": 129.7,
+        "right": 597.2,
+        "width": 467.5
+      },
+      {
+        "top": 538,
+        "left": 129.7,
+        "right": 506.2,
+        "width": 376.5
+      },
+      {
+        "top": 611,
+        "left": 129.7,
+        "right": 528.5,
+        "width": 398.9
+      }
+    ],
+    "body_text": "Build, API, database, performance, web and mobile checks all run against the same version.",
+    "body_lines": [
+      {
+        "top": 713,
+        "left": 129.7,
+        "right": 615.1,
+        "width": 485.4
+      },
+      {
+        "top": 744,
+        "left": 129.7,
+        "right": 395.5,
+        "width": 265.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1581.4,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "social-product-initial",
+        "w": 737.9,
+        "nw": 1280,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.final-phone",
+      "scene": "3",
+      "sceneProgress": 0.8171428571428572,
+      "documentProgress": 0.47358798363095234,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 236.59999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "I run one release through all of these checks.",
+    "title_lines": [
+      {
+        "top": 468,
+        "left": 132.5,
+        "right": 600,
+        "width": 467.5
+      },
+      {
+        "top": 541,
+        "left": 132.5,
+        "right": 509.1,
+        "width": 376.5
+      },
+      {
+        "top": 613,
+        "left": 132.5,
+        "right": 531.4,
+        "width": 398.9
+      }
+    ],
+    "body_text": "Build, API, database, performance, web and mobile checks all run against the same version.",
+    "body_lines": [
+      {
+        "top": 715,
+        "left": 132.5,
+        "right": 617.9,
+        "width": 485.4
+      },
+      {
+        "top": 747,
+        "left": 132.5,
+        "right": 398.4,
+        "width": 265.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564.2,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 239.1,
+        "nw": 1081,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/cuesheet.workspace",
+    "checkpoint_id": "cuesheet.workspace",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.workspace",
+      "scene": "4",
+      "sceneProgress": 0.21000000000000002,
+      "documentProgress": 0.5215244140625,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 660.0999999046326
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "I also build my own products.",
+    "title_lines": [
+      {
+        "top": 401,
+        "left": 922.5,
+        "right": 1223.8,
+        "width": 301.2
+      },
+      {
+        "top": 474,
+        "left": 922.5,
+        "right": 1149.5,
+        "width": 227
+      },
+      {
+        "top": 546,
+        "left": 922.5,
+        "right": 1198,
+        "width": 275.4
+      }
+    ],
+    "body_text": "CueSheet is a rehearsal scheduler I built. If someone's availability changes, it can rebuild the schedule while trying to keep the existing plan intact.",
+    "body_lines": [
+      {
+        "top": 649,
+        "left": 922.5,
+        "right": 1274.7,
+        "width": 352.2
+      },
+      {
+        "top": 680,
+        "left": 922.5,
+        "right": 1295.6,
+        "width": 373.1
+      },
+      {
+        "top": 711,
+        "left": 922.5,
+        "right": 1295.9,
+        "width": 373.4
+      },
+      {
+        "top": 743,
+        "left": 922.5,
+        "right": 1014.3,
+        "width": 91.8
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1563.9,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-workspace",
+        "w": 708.9,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 190.5,
+        "nw": 390,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 190.5,
+        "nw": 390,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/cuesheet.conflict",
+    "checkpoint_id": "cuesheet.conflict",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.conflict",
+      "scene": "4",
+      "sceneProgress": 0.47000000000000003,
+      "documentProgress": 0.5643753255208334,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 611.0999999046326
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "I also build my own products.",
+    "title_lines": [
+      {
+        "top": 403,
+        "left": 920.8,
+        "right": 1222,
+        "width": 301.2
+      },
+      {
+        "top": 475,
+        "left": 920.8,
+        "right": 1147.8,
+        "width": 227
+      },
+      {
+        "top": 548,
+        "left": 920.8,
+        "right": 1196.2,
+        "width": 275.4
+      }
+    ],
+    "body_text": "CueSheet is a rehearsal scheduler I built. If someone's availability changes, it can rebuild the schedule while trying to keep the existing plan intact.",
+    "body_lines": [
+      {
+        "top": 650,
+        "left": 920.8,
+        "right": 1273,
+        "width": 352.2
+      },
+      {
+        "top": 681,
+        "left": 920.8,
+        "right": 1293.9,
+        "width": 373.1
+      },
+      {
+        "top": 713,
+        "left": 920.8,
+        "right": 1294.2,
+        "width": 373.4
+      },
+      {
+        "top": 744,
+        "left": 920.8,
+        "right": 1012.6,
+        "width": 91.8
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1577.7,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-conflict",
+        "w": 743.2,
+        "nw": 1440,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.review",
+      "scene": "4",
+      "sceneProgress": 0.8521428571428571,
+      "documentProgress": 0.6273567475818453,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 167.2000002861023
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "I also build my own products.",
+    "title_lines": [
+      {
+        "top": 405,
+        "left": 917.5,
+        "right": 1218.7,
+        "width": 301.2
+      },
+      {
+        "top": 478,
+        "left": 917.5,
+        "right": 1144.5,
+        "width": 227
+      },
+      {
+        "top": 550,
+        "left": 917.5,
+        "right": 1192.9,
+        "width": 275.4
+      }
+    ],
+    "body_text": "CueSheet is a rehearsal scheduler I built. If someone's availability changes, it can rebuild the schedule while trying to keep the existing plan intact.",
+    "body_lines": [
+      {
+        "top": 653,
+        "left": 917.5,
+        "right": 1269.7,
+        "width": 352.2
+      },
+      {
+        "top": 684,
+        "left": 917.5,
+        "right": 1290.5,
+        "width": 373.1
+      },
+      {
+        "top": 715,
+        "left": 917.5,
+        "right": 1290.8,
+        "width": 373.4
+      },
+      {
+        "top": 747,
+        "left": 917.5,
+        "right": 1009.3,
+        "width": 91.8
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-review",
+        "w": 794,
+        "nw": 1440,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/normal/dca.early-contribution",
+    "checkpoint_id": "dca.early-contribution",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.early-contribution",
+      "scene": "5",
+      "sceneProgress": 0.33714285714285713,
+      "documentProgress": 0.7547898065476191,
+      "score": 0.998449,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 96.90000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "Recently",
+    "title_text": "Lately I've been testing AI tooling too.",
+    "title_lines": [
+      {
+        "top": 508,
+        "left": 698.8,
+        "right": 1145.8,
+        "width": 447
+      },
+      {
+        "top": 581,
+        "left": 698.8,
+        "right": 1303.2,
+        "width": 604.4
+      }
+    ],
+    "body_text": "I check what was actually evaluated, what happens when input is missing, and whether a failure can be reproduced. It's a newer area of my QA work.",
+    "body_lines": [
+      {
+        "top": 683,
+        "left": 698.8,
+        "right": 1170.2,
+        "width": 471.4
+      },
+      {
+        "top": 714,
+        "left": 698.8,
+        "right": 1176.6,
+        "width": 477.8
+      },
+      {
+        "top": 746,
+        "left": 698.8,
+        "right": 965.4,
+        "width": 266.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.266
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/normal/dca.phrased-hold",
+    "checkpoint_id": "dca.phrased-hold",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.phrased-hold",
+      "scene": "5",
+      "sceneProgress": 0.3657142857142857,
+      "documentProgress": 0.7648344494047619,
+      "score": 0.988126,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 89
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "Recently",
+    "title_text": "Lately I've been testing AI tooling too.",
+    "title_lines": [
+      {
+        "top": 508,
+        "left": 698.6,
+        "right": 1145.6,
+        "width": 447
+      },
+      {
+        "top": 581,
+        "left": 698.6,
+        "right": 1303,
+        "width": 604.4
+      }
+    ],
+    "body_text": "I check what was actually evaluated, what happens when input is missing, and whether a failure can be reproduced. It's a newer area of my QA work.",
+    "body_lines": [
+      {
+        "top": 683,
+        "left": 698.6,
+        "right": 1169.9,
+        "width": 471.4
+      },
+      {
+        "top": 714,
+        "left": 698.6,
+        "right": 1176.3,
+        "width": 477.8
+      },
+      {
+        "top": 746,
+        "left": 698.6,
+        "right": 965.1,
+        "width": 266.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.266
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/normal/dca.late-contribution",
+    "checkpoint_id": "dca.late-contribution",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.late-contribution",
+      "scene": "5",
+      "sceneProgress": 0.5014285714285714,
+      "documentProgress": 0.8125465029761905,
+      "score": 0.98707,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 63.80000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "Recently",
+    "title_text": "Lately I've been testing AI tooling too.",
+    "title_lines": [
+      {
+        "top": 509,
+        "left": 697.4,
+        "right": 1144.5,
+        "width": 447
+      },
+      {
+        "top": 582,
+        "left": 697.4,
+        "right": 1301.9,
+        "width": 604.4
+      }
+    ],
+    "body_text": "I check what was actually evaluated, what happens when input is missing, and whether a failure can be reproduced. It's a newer area of my QA work.",
+    "body_lines": [
+      {
+        "top": 684,
+        "left": 697.4,
+        "right": 1168.8,
+        "width": 471.4
+      },
+      {
+        "top": 715,
+        "left": 697.4,
+        "right": 1175.2,
+        "width": 477.8
+      },
+      {
+        "top": 747,
+        "left": 697.4,
+        "right": 964,
+        "width": 266.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.27
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/normal/dca.scanner-handoff",
+    "checkpoint_id": "dca.scanner-handoff",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.scanner-handoff",
+      "scene": "5",
+      "sceneProgress": 0.7057142857142857,
+      "documentProgress": 0.884365699404762,
+      "score": 0.967968,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 76.7999997138977
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "Recently",
+    "title_text": "Lately I've been testing AI tooling too.",
+    "title_lines": [
+      {
+        "top": 511,
+        "left": 695.7,
+        "right": 1142.8,
+        "width": 447
+      },
+      {
+        "top": 583,
+        "left": 695.7,
+        "right": 1300.2,
+        "width": 604.4
+      }
+    ],
+    "body_text": "I check what was actually evaluated, what happens when input is missing, and whether a failure can be reproduced. It's a newer area of my QA work.",
+    "body_lines": [
+      {
+        "top": 685,
+        "left": 695.7,
+        "right": 1167.1,
+        "width": 471.4
+      },
+      {
+        "top": 717,
+        "left": 695.7,
+        "right": 1173.5,
+        "width": 477.8
+      },
+      {
+        "top": 748,
+        "left": 695.7,
+        "right": 962.3,
+        "width": 266.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.274
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.pass",
+      "scene": "5",
+      "sceneProgress": 0.8507142857142858,
+      "documentProgress": 0.9353422619047619,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 94.69999980926514
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "Recently",
+    "title_text": "Lately I've been testing AI tooling too.",
+    "title_lines": [
+      {
+        "top": 512,
+        "left": 694.5,
+        "right": 1141.6,
+        "width": 447
+      },
+      {
+        "top": 584,
+        "left": 694.5,
+        "right": 1299,
+        "width": 604.4
+      }
+    ],
+    "body_text": "I check what was actually evaluated, what happens when input is missing, and whether a failure can be reproduced. It's a newer area of my QA work.",
+    "body_lines": [
+      {
+        "top": 686,
+        "left": 694.5,
+        "right": 1165.9,
+        "width": 471.4
+      },
+      {
+        "top": 718,
+        "left": 694.5,
+        "right": 1172.3,
+        "width": 477.8
+      },
+      {
+        "top": 749,
+        "left": 694.5,
+        "right": 961.1,
+        "width": 266.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.278
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "outro.settled",
+      "scene": "6",
+      "sceneProgress": 1,
+      "documentProgress": 1,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 61.799999713897705
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "6",
+    "scene_opacity": 1,
+    "label_text": "CTWalk",
+    "title_text": "More of my work is on GitHub.",
+    "title_lines": [
+      {
+        "top": 367,
+        "left": 480.3,
+        "right": 959.7,
+        "width": 479.4
+      },
+      {
+        "top": 439,
+        "left": 537.7,
+        "right": 902.3,
+        "width": 364.6
+      }
+    ],
+    "body_text": null,
+    "body_lines": null,
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "intro.settled",
+      "scene": "0",
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 53.80000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "0",
+    "scene_opacity": 1,
+    "label_text": "QA / SDET · 軟體工程",
+    "title_text": "我是 QA\n從畫面一路驗證到 API、DB與Native",
+    "title_lines": [
+      {
+        "top": 271,
+        "left": 565.7,
+        "right": 874.3,
+        "width": 308.7
+      },
+      {
+        "top": 367,
+        "left": 395.5,
+        "right": 1044.5,
+        "width": 649
+      },
+      {
+        "top": 462,
+        "left": 391.9,
+        "right": 1048.1,
+        "width": 656.2
+      }
+    ],
+    "body_text": "除了自動化測試，也會一路追查失敗原因。\n如果問題不在測試，而在產品，我會直接修。",
+    "body_lines": [
+      {
+        "top": 592,
+        "left": 542.8,
+        "right": 897.2,
+        "width": 354.4
+      },
+      {
+        "top": 626,
+        "left": 533.5,
+        "right": 906.5,
+        "width": 373
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.checkout-event",
+      "scene": "1",
+      "sceneProgress": 0.18928571428571428,
+      "documentProgress": 0.07793747674851191,
+      "score": 0.58,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 90.80000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 474,
+        "left": 127.5,
+        "right": 745.8,
+        "width": 618.3
+      },
+      {
+        "top": 555,
+        "left": 127.5,
+        "right": 745.8,
+        "width": 618.3
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 668,
+        "left": 127.5,
+        "right": 657.4,
+        "width": 529.8
+      },
+      {
+        "top": 702,
+        "left": 127.5,
+        "right": 649.8,
+        "width": 522.2
+      },
+      {
+        "top": 735,
+        "left": 127.5,
+        "right": 276.8,
+        "width": 149.2
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1838.3,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-checkout",
+        "w": 300.7,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.quiet-after-checkout",
+    "checkpoint_id": "commerce.quiet-after-checkout",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.quiet-after-checkout",
+      "scene": "1",
+      "sceneProgress": 0.29500000000000004,
+      "documentProgress": 0.09224951171875001,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 90.19999980926514
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 475,
+        "left": 128.4,
+        "right": 746.6,
+        "width": 618.3
+      },
+      {
+        "top": 556,
+        "left": 128.4,
+        "right": 746.6,
+        "width": 618.3
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 669,
+        "left": 128.4,
+        "right": 658.2,
+        "width": 529.8
+      },
+      {
+        "top": 703,
+        "left": 128.4,
+        "right": 650.6,
+        "width": 522.2
+      },
+      {
+        "top": 736,
+        "left": 128.4,
+        "right": 277.6,
+        "width": 149.2
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1832.3,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-checkout",
+        "w": 293.4,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.expired-promo",
+      "scene": "1",
+      "sceneProgress": 0.46142857142857147,
+      "documentProgress": 0.1147812965029762,
+      "score": 0.5786828199999999,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 98.30000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 476,
+        "left": 129.7,
+        "right": 748,
+        "width": 618.3
+      },
+      {
+        "top": 557,
+        "left": 129.7,
+        "right": 748,
+        "width": 618.3
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 670,
+        "left": 129.7,
+        "right": 659.5,
+        "width": 529.8
+      },
+      {
+        "top": 704,
+        "left": 129.7,
+        "right": 651.9,
+        "width": 522.2
+      },
+      {
+        "top": 737,
+        "left": 129.7,
+        "right": 278.9,
+        "width": 149.2
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-expired",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-expired",
+        "o": 0.998
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0.998
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0.002
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1822.9,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-expired",
+        "w": 303.5,
+        "nw": 412,
+        "op": 0.998
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.unavailable",
+    "checkpoint_id": "commerce.unavailable",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.unavailable",
+      "scene": "1",
+      "sceneProgress": 0.71,
+      "documentProgress": 0.14843391927083333,
+      "score": 0.5799854999999999,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 238.09999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 477,
+        "left": 131.7,
+        "right": 749.9,
+        "width": 618.3
+      },
+      {
+        "top": 559,
+        "left": 131.7,
+        "right": 749.9,
+        "width": 618.3
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 672,
+        "left": 131.7,
+        "right": 661.5,
+        "width": 529.8
+      },
+      {
+        "top": 705,
+        "left": 131.7,
+        "right": 653.9,
+        "width": 522.2
+      },
+      {
+        "top": 739,
+        "left": 131.7,
+        "right": 280.9,
+        "width": 149.2
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-unavailable",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1832.6,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-unavailable",
+        "w": 302.6,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/commerce.final-settled",
+    "checkpoint_id": "commerce.final-settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.final-settled",
+      "scene": "1",
+      "sceneProgress": 0.82,
+      "documentProgress": 0.16332617187499998,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 182.7000002861023
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 478,
+        "left": 132.5,
+        "right": 750.8,
+        "width": 618.3
+      },
+      {
+        "top": 559,
+        "left": 132.5,
+        "right": 750.8,
+        "width": 618.3
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 672,
+        "left": 132.5,
+        "right": 662.3,
+        "width": 529.8
+      },
+      {
+        "top": 706,
+        "left": 132.5,
+        "right": 654.8,
+        "width": 522.2
+      },
+      {
+        "top": 740,
+        "left": 132.5,
+        "right": 281.7,
+        "width": 149.2
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-unavailable",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1838.8,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-unavailable",
+        "w": 292,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/nocode.yaml-readable",
+    "checkpoint_id": "nocode.yaml-readable",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.yaml-readable",
+      "scene": "2",
+      "sceneProgress": 0.14857142857142858,
+      "documentProgress": 0.19677473958333333,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 123.30000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "測試流程好讀\n定位方式也好維護",
+    "title_lines": [
+      {
+        "top": 507,
+        "left": 702.5,
+        "right": 1114.7,
+        "width": 412.2
+      },
+      {
+        "top": 589,
+        "left": 702.5,
+        "right": 1252.1,
+        "width": 549.6
+      }
+    ],
+    "body_text": "YAML 寫操作流程，Playwright 負責執行。\n定位、失敗證據與 CI 分開管理，換版時卡好維護。",
+    "body_lines": [
+      {
+        "top": 702,
+        "left": 702.5,
+        "right": 1063.6,
+        "width": 361
+      },
+      {
+        "top": 735,
+        "left": 702.5,
+        "right": 1125.1,
+        "width": 422.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.039
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0
+      ],
+      "emphasisIndex": 0,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/nocode.execution",
+    "checkpoint_id": "nocode.execution",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.execution",
+      "scene": "2",
+      "sceneProgress": 0.375,
+      "documentProgress": 0.23407796223958333,
+      "score": 0.15,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 120.2999997138977
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "測試流程好讀\n定位方式也好維護",
+    "title_lines": [
+      {
+        "top": 509,
+        "left": 700.3,
+        "right": 1112.5,
+        "width": 412.2
+      },
+      {
+        "top": 590,
+        "left": 700.3,
+        "right": 1249.9,
+        "width": 549.6
+      }
+    ],
+    "body_text": "YAML 寫操作流程，Playwright 負責執行。\n定位、失敗證據與 CI 分開管理，換版時卡好維護。",
+    "body_lines": [
+      {
+        "top": 704,
+        "left": 700.3,
+        "right": 1061.4,
+        "width": 361
+      },
+      {
+        "top": 737,
+        "left": 700.3,
+        "right": 1123,
+        "width": 422.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.041
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0.15,
+        0
+      ],
+      "emphasisIndex": 1,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1581.3,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.result-hold",
+      "scene": "2",
+      "sceneProgress": 0.7814285714285715,
+      "documentProgress": 0.3010354817708334,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 363.40000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "測試流程好讀\n定位方式也好維護",
+    "title_lines": [
+      {
+        "top": 512,
+        "left": 697.5,
+        "right": 1109.7,
+        "width": 412.2
+      },
+      {
+        "top": 593,
+        "left": 697.5,
+        "right": 1247.1,
+        "width": 549.6
+      }
+    ],
+    "body_text": "YAML 寫操作流程，Playwright 負責執行。\n定位、失敗證據與 CI 分開管理，換版時卡好維護。",
+    "body_lines": [
+      {
+        "top": 706,
+        "left": 697.5,
+        "right": 1058.5,
+        "width": 361
+      },
+      {
+        "top": 739,
+        "left": 697.5,
+        "right": 1120.1,
+        "width": 422.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.037
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0.137
+      ],
+      "emphasisIndex": 2,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564.3,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.product",
+    "checkpoint_id": "social.product",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.product",
+      "scene": "3",
+      "sceneProgress": 0.18571428571428572,
+      "documentProgress": 0.3510226004464285,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 127.40000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "不同層的檢查\n收進同一條交付流程",
+    "title_lines": [
+      {
+        "top": 507,
+        "left": 127.5,
+        "right": 539.7,
+        "width": 412.2
+      },
+      {
+        "top": 589,
+        "left": 127.5,
+        "right": 745.8,
+        "width": 618.3
+      }
+    ],
+    "body_text": "Build、API、DB、效能、網頁與手機端各自檢查。\n最後判斷這個版本能不能交付。",
+    "body_lines": [
+      {
+        "top": 702,
+        "left": 127.5,
+        "right": 543.3,
+        "width": 415.7
+      },
+      {
+        "top": 735,
+        "left": 127.5,
+        "right": 388.6,
+        "width": 261.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564.4,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "social-product-initial",
+        "w": 810.6,
+        "nw": 1280,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.database",
+    "checkpoint_id": "social.database",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.database",
+      "scene": "3",
+      "sceneProgress": 0.24,
+      "documentProgress": 0.3615598958333333,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 164
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "不同層的檢查\n收進同一條交付流程",
+    "title_lines": [
+      {
+        "top": 508,
+        "left": 127.9,
+        "right": 540.1,
+        "width": 412.2
+      },
+      {
+        "top": 589,
+        "left": 127.9,
+        "right": 746.2,
+        "width": 618.3
+      }
+    ],
+    "body_text": "Build、API、DB、效能、網頁與手機端各自檢查。\n最後判斷這個版本能不能交付。",
+    "body_lines": [
+      {
+        "top": 702,
+        "left": 127.9,
+        "right": 543.7,
+        "width": 415.7
+      },
+      {
+        "top": 736,
+        "left": 127.9,
+        "right": 389.1,
+        "width": 261.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1567.7,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "social-product-initial",
+        "w": 740.2,
+        "nw": 1280,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.web",
+    "checkpoint_id": "social.web",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.web",
+      "scene": "3",
+      "sceneProgress": 0.4585714285714286,
+      "documentProgress": 0.40398637462797615,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 140.5
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "不同層的檢查\n收進同一條交付流程",
+    "title_lines": [
+      {
+        "top": 509,
+        "left": 129.7,
+        "right": 541.8,
+        "width": 412.2
+      },
+      {
+        "top": 590,
+        "left": 129.7,
+        "right": 747.9,
+        "width": 618.3
+      }
+    ],
+    "body_text": "Build、API、DB、效能、網頁與手機端各自檢查。\n最後判斷這個版本能不能交付。",
+    "body_lines": [
+      {
+        "top": 704,
+        "left": 129.7,
+        "right": 545.4,
+        "width": 415.7
+      },
+      {
+        "top": 737,
+        "left": 129.7,
+        "right": 390.8,
+        "width": 261.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1581.4,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "social-product-initial",
+        "w": 737.9,
+        "nw": 1280,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.final-phone",
+      "scene": "3",
+      "sceneProgress": 0.8171428571428572,
+      "documentProgress": 0.47358798363095234,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 247.5
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "不同層的檢查\n收進同一條交付流程",
+    "title_lines": [
+      {
+        "top": 512,
+        "left": 132.5,
+        "right": 544.7,
+        "width": 412.2
+      },
+      {
+        "top": 593,
+        "left": 132.5,
+        "right": 750.8,
+        "width": 618.3
+      }
+    ],
+    "body_text": "Build、API、DB、效能、網頁與手機端各自檢查。\n最後判斷這個版本能不能交付。",
+    "body_lines": [
+      {
+        "top": 706,
+        "left": 132.5,
+        "right": 548.2,
+        "width": 415.7
+      },
+      {
+        "top": 740,
+        "left": 132.5,
+        "right": 393.6,
+        "width": 261.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564.2,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 239.1,
+        "nw": 1081,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/cuesheet.workspace",
+    "checkpoint_id": "cuesheet.workspace",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.workspace",
+      "scene": "4",
+      "sceneProgress": 0.21000000000000002,
+      "documentProgress": 0.5215244140625,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 670.0999999046326
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "我不只測產品\n也會做產品",
+    "title_lines": [
+      {
+        "top": 474,
+        "left": 922.5,
+        "right": 1334.7,
+        "width": 412.2
+      },
+      {
+        "top": 555,
+        "left": 922.5,
+        "right": 1266,
+        "width": 343.5
+      }
+    ],
+    "body_text": "CueSheet 是有正式部署的排練排程工具。\n若有人臨時不能來，系統會重排，同時盡量保留原本安排。",
+    "body_lines": [
+      {
+        "top": 668,
+        "left": 922.5,
+        "right": 1274.7,
+        "width": 352.1
+      },
+      {
+        "top": 702,
+        "left": 922.5,
+        "right": 1295.6,
+        "width": 373
+      },
+      {
+        "top": 735,
+        "left": 922.5,
+        "right": 1034.5,
+        "width": 111.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1563.9,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-workspace",
+        "w": 708.9,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 190.5,
+        "nw": 390,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 190.5,
+        "nw": 390,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/cuesheet.conflict",
+    "checkpoint_id": "cuesheet.conflict",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.conflict",
+      "scene": "4",
+      "sceneProgress": 0.47000000000000003,
+      "documentProgress": 0.5643753255208334,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 612
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "我不只測產品\n也會做產品",
+    "title_lines": [
+      {
+        "top": 475,
+        "left": 920.8,
+        "right": 1333,
+        "width": 412.2
+      },
+      {
+        "top": 556,
+        "left": 920.8,
+        "right": 1264.3,
+        "width": 343.5
+      }
+    ],
+    "body_text": "CueSheet 是有正式部署的排練排程工具。\n若有人臨時不能來，系統會重排，同時盡量保留原本安排。",
+    "body_lines": [
+      {
+        "top": 670,
+        "left": 920.8,
+        "right": 1272.9,
+        "width": 352.1
+      },
+      {
+        "top": 703,
+        "left": 920.8,
+        "right": 1293.8,
+        "width": 373
+      },
+      {
+        "top": 737,
+        "left": 920.8,
+        "right": 1032.7,
+        "width": 111.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1577.7,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-conflict",
+        "w": 743.2,
+        "nw": 1440,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.review",
+      "scene": "4",
+      "sceneProgress": 0.8521428571428571,
+      "documentProgress": 0.6273567475818453,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 151
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "我不只測產品\n也會做產品",
+    "title_lines": [
+      {
+        "top": 478,
+        "left": 917.5,
+        "right": 1329.6,
+        "width": 412.2
+      },
+      {
+        "top": 559,
+        "left": 917.5,
+        "right": 1261,
+        "width": 343.5
+      }
+    ],
+    "body_text": "CueSheet 是有正式部署的排練排程工具。\n若有人臨時不能來，系統會重排，同時盡量保留原本安排。",
+    "body_lines": [
+      {
+        "top": 672,
+        "left": 917.5,
+        "right": 1269.6,
+        "width": 352.1
+      },
+      {
+        "top": 706,
+        "left": 917.5,
+        "right": 1290.5,
+        "width": 373
+      },
+      {
+        "top": 740,
+        "left": 917.5,
+        "right": 1029.4,
+        "width": 111.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1564,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-review",
+        "w": 794,
+        "nw": 1440,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.early-contribution",
+    "checkpoint_id": "dca.early-contribution",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.early-contribution",
+      "scene": "5",
+      "sceneProgress": 0.33714285714285713,
+      "documentProgress": 0.7547898065476191,
+      "score": 0.998449,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 96.40000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "最近在...",
+    "title_text": "同一套 QA 邏輯\n也能用來檢查 AI 工具",
+    "title_lines": [
+      {
+        "top": 429,
+        "left": 698.8,
+        "right": 1189.8,
+        "width": 491
+      },
+      {
+        "top": 510,
+        "left": 698.8,
+        "right": 1199.9,
+        "width": 501.1
+      },
+      {
+        "top": 592,
+        "left": 698.8,
+        "right": 836.2,
+        "width": 137.4
+      }
+    ],
+    "body_text": "這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 思維的延伸。",
+    "body_lines": [
+      {
+        "top": 705,
+        "left": 698.8,
+        "right": 1185,
+        "width": 486.2
+      },
+      {
+        "top": 738,
+        "left": 698.8,
+        "right": 887.4,
+        "width": 188.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.281
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.phrased-hold",
+    "checkpoint_id": "dca.phrased-hold",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.phrased-hold",
+      "scene": "5",
+      "sceneProgress": 0.3657142857142857,
+      "documentProgress": 0.7648344494047619,
+      "score": 0.988126,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 93
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "最近在...",
+    "title_text": "同一套 QA 邏輯\n也能用來檢查 AI 工具",
+    "title_lines": [
+      {
+        "top": 429,
+        "left": 698.6,
+        "right": 1189.6,
+        "width": 491
+      },
+      {
+        "top": 511,
+        "left": 698.6,
+        "right": 1199.7,
+        "width": 501.1
+      },
+      {
+        "top": 592,
+        "left": 698.6,
+        "right": 836,
+        "width": 137.4
+      }
+    ],
+    "body_text": "這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 思維的延伸。",
+    "body_lines": [
+      {
+        "top": 705,
+        "left": 698.6,
+        "right": 1184.8,
+        "width": 486.2
+      },
+      {
+        "top": 739,
+        "left": 698.6,
+        "right": 887.2,
+        "width": 188.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.282
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.late-contribution",
+    "checkpoint_id": "dca.late-contribution",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.late-contribution",
+      "scene": "5",
+      "sceneProgress": 0.5014285714285714,
+      "documentProgress": 0.8125465029761905,
+      "score": 0.98707,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 65.19999980926514
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "最近在...",
+    "title_text": "同一套 QA 邏輯\n也能用來檢查 AI 工具",
+    "title_lines": [
+      {
+        "top": 430,
+        "left": 697.4,
+        "right": 1188.5,
+        "width": 491
+      },
+      {
+        "top": 512,
+        "left": 697.4,
+        "right": 1198.5,
+        "width": 501.1
+      },
+      {
+        "top": 593,
+        "left": 697.4,
+        "right": 834.8,
+        "width": 137.4
+      }
+    ],
+    "body_text": "這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 思維的延伸。",
+    "body_lines": [
+      {
+        "top": 706,
+        "left": 697.4,
+        "right": 1183.7,
+        "width": 486.2
+      },
+      {
+        "top": 740,
+        "left": 697.4,
+        "right": 886.1,
+        "width": 188.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.285
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.scanner-handoff",
+    "checkpoint_id": "dca.scanner-handoff",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.scanner-handoff",
+      "scene": "5",
+      "sceneProgress": 0.7057142857142857,
+      "documentProgress": 0.884365699404762,
+      "score": 0.967968,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 78.5
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "最近在...",
+    "title_text": "同一套 QA 邏輯\n也能用來檢查 AI 工具",
+    "title_lines": [
+      {
+        "top": 432,
+        "left": 695.7,
+        "right": 1186.8,
+        "width": 491
+      },
+      {
+        "top": 513,
+        "left": 695.7,
+        "right": 1196.8,
+        "width": 501.1
+      },
+      {
+        "top": 594,
+        "left": 695.7,
+        "right": 833.1,
+        "width": 137.4
+      }
+    ],
+    "body_text": "這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 思維的延伸。",
+    "body_lines": [
+      {
+        "top": 707,
+        "left": 695.7,
+        "right": 1182,
+        "width": 486.2
+      },
+      {
+        "top": 741,
+        "left": 695.7,
+        "right": 884.4,
+        "width": 188.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.29
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.pass",
+      "scene": "5",
+      "sceneProgress": 0.8507142857142858,
+      "documentProgress": 0.9353422619047619,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 97
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "最近在...",
+    "title_text": "同一套 QA 邏輯\n也能用來檢查 AI 工具",
+    "title_lines": [
+      {
+        "top": 433,
+        "left": 694.5,
+        "right": 1185.6,
+        "width": 491
+      },
+      {
+        "top": 514,
+        "left": 694.5,
+        "right": 1195.6,
+        "width": 501.1
+      },
+      {
+        "top": 595,
+        "left": 694.5,
+        "right": 831.9,
+        "width": 137.4
+      }
+    ],
+    "body_text": "這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 思維的延伸。",
+    "body_lines": [
+      {
+        "top": 708,
+        "left": 694.5,
+        "right": 1180.8,
+        "width": 486.2
+      },
+      {
+        "top": 742,
+        "left": 694.5,
+        "right": 883.2,
+        "width": 188.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.293
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "outro.settled",
+      "scene": "6",
+      "sceneProgress": 1,
+      "documentProgress": 1,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 56
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 13608,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "6",
+    "scene_opacity": 1,
+    "label_text": "CTWalk",
+    "title_text": "更多專案與實作紀錄\n都在 GitHub",
+    "title_lines": [
+      {
+        "top": 354,
+        "left": 410.9,
+        "right": 1029.1,
+        "width": 618.3
+      },
+      {
+        "top": 436,
+        "left": 524.4,
+        "right": 915.6,
+        "width": 391.3
+      }
+    ],
+    "body_text": null,
+    "body_lines": null,
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "__context__/desktop/normal",
+    "_console_errors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "_failed_requests": []
+  },
+  {
+    "key": "laptop/en/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "intro.settled",
+      "scene": "0",
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.799999713897705
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "0",
+    "scene_opacity": 1,
+    "label_text": "QA / SDET · SOFTWARE ENGINEERING",
+    "title_text": "I test software from the UI to the database.",
+    "title_lines": [
+      {
+        "top": 283,
+        "left": 349.3,
+        "right": 930.7,
+        "width": 581.4
+      },
+      {
+        "top": 359,
+        "left": 302.6,
+        "right": 977.4,
+        "width": 674.9
+      }
+    ],
+    "body_text": "I automate web, API, database and mobile checks, then run them in CI. When one fails, I trace the failure before deciding whether the test or the product needs fixing.",
+    "body_lines": [
+      {
+        "top": 465,
+        "left": 417,
+        "right": 863,
+        "width": 446
+      },
+      {
+        "top": 493,
+        "left": 447,
+        "right": 833,
+        "width": 386
+      },
+      {
+        "top": 522,
+        "left": 436.9,
+        "right": 843,
+        "width": 406.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "laptop/en/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.checkout-event",
+      "scene": "1",
+      "sceneProgress": 0.18928571428571428,
+      "documentProgress": 0.07791108630952381,
+      "score": 0.58,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 74.5
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 439,
+        "left": 48.7,
+        "right": 436,
+        "width": 387.2
+      },
+      {
+        "top": 504,
+        "left": 48.7,
+        "right": 421.4,
+        "width": 372.7
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 598,
+        "left": 48.7,
+        "right": 497.3,
+        "width": 448.6
+      },
+      {
+        "top": 626,
+        "left": 48.7,
+        "right": 495.6,
+        "width": 446.9
+      },
+      {
+        "top": 655,
+        "left": 48.7,
+        "right": 127.2,
+        "width": 78.4
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1634.1,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-checkout",
+        "w": 265.7,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/en/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.expired-promo",
+      "scene": "1",
+      "sceneProgress": 0.47357142857142864,
+      "documentProgress": 0.11640811011904764,
+      "score": 0.579268,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 86.5
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 441,
+        "left": 51,
+        "right": 438.2,
+        "width": 387.2
+      },
+      {
+        "top": 506,
+        "left": 51,
+        "right": 423.7,
+        "width": 372.7
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 600,
+        "left": 51,
+        "right": 499.6,
+        "width": 448.6
+      },
+      {
+        "top": 628,
+        "left": 51,
+        "right": 497.9,
+        "width": 446.9
+      },
+      {
+        "top": 657,
+        "left": 51,
+        "right": 129.4,
+        "width": 78.4
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-expired",
+        "o": 0.579
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0.579
+        },
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-expired",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1619.8,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-expired",
+        "w": 266.8,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/en/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.result-hold",
+      "scene": "2",
+      "sceneProgress": 0.7814285714285715,
+      "documentProgress": 0.3010212518601191,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 282.90000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "I keep test steps readable.",
+    "title_lines": [
+      {
+        "top": 443,
+        "left": 616.3,
+        "right": 878.2,
+        "width": 261.9
+      },
+      {
+        "top": 508,
+        "left": 616.3,
+        "right": 1009.4,
+        "width": 393.1
+      }
+    ],
+    "body_text": "The YAML says what the test should do. Playwright executes it. I keep locators, failure output and CI config outside the YAML so UI changes are easier to update.",
+    "body_lines": [
+      {
+        "top": 602,
+        "left": 616.3,
+        "right": 1001.3,
+        "width": 385
+      },
+      {
+        "top": 630,
+        "left": 616.3,
+        "right": 1031.1,
+        "width": 414.8
+      },
+      {
+        "top": 659,
+        "left": 616.3,
+        "right": 1020,
+        "width": 403.7
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.042
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0.137
+      ],
+      "emphasisIndex": 2,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1390.5,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/en/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.final-phone",
+      "scene": "3",
+      "sceneProgress": 0.8171428571428572,
+      "documentProgress": 0.47355543154761903,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 203.09999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "I run one release through all of these checks.",
+    "title_lines": [
+      {
+        "top": 407,
+        "left": 53.7,
+        "right": 471,
+        "width": 417.3
+      },
+      {
+        "top": 472,
+        "left": 53.7,
+        "right": 389.8,
+        "width": 336.2
+      },
+      {
+        "top": 536,
+        "left": 53.7,
+        "right": 409.6,
+        "width": 355.9
+      }
+    ],
+    "body_text": "Build, API, database, performance, web and mobile checks all run against the same version.",
+    "body_lines": [
+      {
+        "top": 630,
+        "left": 53.7,
+        "right": 496.6,
+        "width": 442.9
+      },
+      {
+        "top": 659,
+        "left": 53.7,
+        "right": 296.3,
+        "width": 242.6
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1390.4,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 211,
+        "nw": 1081,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/en/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.review",
+      "scene": "4",
+      "sceneProgress": 0.8521428571428571,
+      "documentProgress": 0.6273060825892857,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 127.7000002861023
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "I also build my own products.",
+    "title_lines": [
+      {
+        "top": 415,
+        "left": 836.3,
+        "right": 1196.7,
+        "width": 360.4
+      },
+      {
+        "top": 480,
+        "left": 836.3,
+        "right": 1203.8,
+        "width": 367.5
+      }
+    ],
+    "body_text": "CueSheet is a rehearsal scheduler I built. If someone's availability changes, it can rebuild the schedule while trying to keep the existing plan intact.",
+    "body_lines": [
+      {
+        "top": 574,
+        "left": 836.3,
+        "right": 1157.8,
+        "width": 321.5
+      },
+      {
+        "top": 602,
+        "left": 836.3,
+        "right": 1205.4,
+        "width": 369.1
+      },
+      {
+        "top": 631,
+        "left": 836.3,
+        "right": 1184.5,
+        "width": 348.2
+      },
+      {
+        "top": 659,
+        "left": 836.3,
+        "right": 883.7,
+        "width": 47.4
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1390.2,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-review",
+        "w": 719.7,
+        "nw": 1440,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/en/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.pass",
+      "scene": "5",
+      "sceneProgress": 0.8507142857142858,
+      "documentProgress": 0.9353471214657738,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 78.5
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "Recently",
+    "title_text": "Lately I've been testing AI tooling too.",
+    "title_lines": [
+      {
+        "top": 446,
+        "left": 613.3,
+        "right": 1012.4,
+        "width": 399
+      },
+      {
+        "top": 510,
+        "left": 613.3,
+        "right": 1153,
+        "width": 539.7
+      }
+    ],
+    "body_text": "I check what was actually evaluated, what happens when input is missing, and whether a failure can be reproduced. It's a newer area of my QA work.",
+    "body_lines": [
+      {
+        "top": 605,
+        "left": 613.3,
+        "right": 1043.2,
+        "width": 429.8
+      },
+      {
+        "top": 633,
+        "left": 613.3,
+        "right": 1049.4,
+        "width": 436
+      },
+      {
+        "top": 661,
+        "left": 613.3,
+        "right": 856.5,
+        "width": 243.2
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.187
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "laptop/en/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "outro.settled",
+      "scene": "6",
+      "sceneProgress": 1,
+      "documentProgress": 1,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 54.19999980926514
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "6",
+    "scene_opacity": 1,
+    "label_text": "CTWalk",
+    "title_text": "More of my work is on GitHub.",
+    "title_lines": [
+      {
+        "top": 357,
+        "left": 258.1,
+        "right": 1021.9,
+        "width": 763.8
+      }
+    ],
+    "body_text": null,
+    "body_lines": null,
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "laptop/zh-TW/normal/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "intro.settled",
+      "scene": "0",
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.09999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "0",
+    "scene_opacity": 1,
+    "label_text": "QA / SDET · 軟體工程",
+    "title_text": "我是 QA\n從畫面一路驗證到 API、DB與Native",
+    "title_lines": [
+      {
+        "top": 242,
+        "left": 502.8,
+        "right": 777.2,
+        "width": 274.4
+      },
+      {
+        "top": 327,
+        "left": 245,
+        "right": 1035,
+        "width": 789.9
+      },
+      {
+        "top": 412,
+        "left": 442.5,
+        "right": 837.5,
+        "width": 394.9
+      }
+    ],
+    "body_text": "除了自動化測試，也會一路追查失敗原因。\n如果問題不在測試，而在產品，我會直接修。",
+    "body_lines": [
+      {
+        "top": 530,
+        "left": 480,
+        "right": 800,
+        "width": 320
+      },
+      {
+        "top": 560,
+        "left": 471.6,
+        "right": 808.4,
+        "width": 336.8
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "laptop/zh-TW/normal/commerce.checkout-event",
+    "checkpoint_id": "commerce.checkout-event",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.checkout-event",
+      "scene": "1",
+      "sceneProgress": 0.18928571428571428,
+      "documentProgress": 0.07791108630952381,
+      "score": 0.58,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 82.09999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 412,
+        "left": 48.7,
+        "right": 598.3,
+        "width": 549.6
+      },
+      {
+        "top": 484,
+        "left": 48.7,
+        "right": 598.3,
+        "width": 549.6
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 587,
+        "left": 48.7,
+        "right": 527.1,
+        "width": 478.4
+      },
+      {
+        "top": 617,
+        "left": 48.7,
+        "right": 520.2,
+        "width": 471.5
+      },
+      {
+        "top": 648,
+        "left": 48.7,
+        "right": 183.5,
+        "width": 134.7
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0.58
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0.58
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-checkout",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1634.1,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-checkout",
+        "w": 265.7,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/zh-TW/normal/commerce.expired-promo",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.expired-promo",
+      "scene": "1",
+      "sceneProgress": 0.47357142857142864,
+      "documentProgress": 0.11640811011904764,
+      "score": 0.579268,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 78.80000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 414,
+        "left": 51,
+        "right": 600.5,
+        "width": 549.6
+      },
+      {
+        "top": 486,
+        "left": 51,
+        "right": 600.5,
+        "width": 549.6
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 589,
+        "left": 51,
+        "right": 529.3,
+        "width": 478.4
+      },
+      {
+        "top": 619,
+        "left": 51,
+        "right": 522.5,
+        "width": 471.5
+      },
+      {
+        "top": 650,
+        "left": 51,
+        "right": 185.7,
+        "width": 134.7
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-expired",
+        "o": 0.579
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0.579
+        },
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-expired",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1619.8,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-expired",
+        "w": 266.8,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/zh-TW/normal/nocode.result-hold",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.result-hold",
+      "scene": "2",
+      "sceneProgress": 0.7814285714285715,
+      "documentProgress": 0.3010212518601191,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 299.7999997138977
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "測試流程好讀\n定位方式也好維護",
+    "title_lines": [
+      {
+        "top": 446,
+        "left": 616.3,
+        "right": 982.7,
+        "width": 366.4
+      },
+      {
+        "top": 518,
+        "left": 616.3,
+        "right": 1104.8,
+        "width": 488.5
+      }
+    ],
+    "body_text": "YAML 寫操作流程，Playwright 負責執行。\n定位、失敗證據與 CI 分開管理，換版時卡好維護。",
+    "body_lines": [
+      {
+        "top": 621,
+        "left": 616.3,
+        "right": 942.3,
+        "width": 326
+      },
+      {
+        "top": 652,
+        "left": 616.3,
+        "right": 997.9,
+        "width": 381.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.041
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0.137
+      ],
+      "emphasisIndex": 2,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1390.5,
+        "nw": 1200,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/zh-TW/normal/social.final-phone",
+    "checkpoint_id": "social.final-phone",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.final-phone",
+      "scene": "3",
+      "sceneProgress": 0.8171428571428572,
+      "documentProgress": 0.47355543154761903,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 194.7999997138977
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "不同層的檢查\n收進同一條交付流程",
+    "title_lines": [
+      {
+        "top": 446,
+        "left": 53.7,
+        "right": 420.1,
+        "width": 366.4
+      },
+      {
+        "top": 518,
+        "left": 53.7,
+        "right": 603.3,
+        "width": 549.6
+      }
+    ],
+    "body_text": "Build、API、DB、效能、網頁與手機端各自檢查。\n最後判斷這個版本能不能交付。",
+    "body_lines": [
+      {
+        "top": 621,
+        "left": 53.7,
+        "right": 429.1,
+        "width": 375.4
+      },
+      {
+        "top": 652,
+        "left": 53.7,
+        "right": 289.5,
+        "width": 235.8
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1390.4,
+        "nw": 1200,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 211,
+        "nw": 1081,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/zh-TW/normal/cuesheet.review",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.review",
+      "scene": "4",
+      "sceneProgress": 0.8521428571428571,
+      "documentProgress": 0.6273060825892857,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 133.09999990463257
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "我不只測產品\n也會做產品",
+    "title_lines": [
+      {
+        "top": 416,
+        "left": 836.3,
+        "right": 1202.7,
+        "width": 366.4
+      },
+      {
+        "top": 488,
+        "left": 836.3,
+        "right": 1141.6,
+        "width": 305.3
+      }
+    ],
+    "body_text": "CueSheet 是有正式部署的排練排程工具。\n若有人臨時不能來，系統會重排，同時盡量保留原本安排。",
+    "body_lines": [
+      {
+        "top": 591,
+        "left": 836.3,
+        "right": 1154.2,
+        "width": 317.9
+      },
+      {
+        "top": 622,
+        "left": 836.3,
+        "right": 1223.6,
+        "width": 387.3
+      },
+      {
+        "top": 652,
+        "left": 836.3,
+        "right": 886.8,
+        "width": 50.5
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1390.2,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "cue-frame cue-review",
+        "w": 719.7,
+        "nw": 1440,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "laptop/zh-TW/normal/dca.pass",
+    "checkpoint_id": "dca.pass",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.pass",
+      "scene": "5",
+      "sceneProgress": 0.8507142857142858,
+      "documentProgress": 0.9353471214657738,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 78.80000019073486
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "最近在...",
+    "title_text": "同一套 QA 邏輯\n也能用來檢查 AI 工具",
+    "title_lines": [
+      {
+        "top": 449,
+        "left": 613.3,
+        "right": 1049.8,
+        "width": 436.5
+      },
+      {
+        "top": 521,
+        "left": 613.3,
+        "right": 1201.8,
+        "width": 588.5
+      }
+    ],
+    "body_text": "這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 思維的延伸。",
+    "body_lines": [
+      {
+        "top": 624,
+        "left": 613.3,
+        "right": 1052.3,
+        "width": 439
+      },
+      {
+        "top": 654,
+        "left": 613.3,
+        "right": 783.6,
+        "width": 170.3
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.187
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "laptop/zh-TW/normal/outro.settled",
+    "checkpoint_id": "outro.settled",
+    "viewport": {
+      "vw": 1280,
+      "vh": 800
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "outro.settled",
+      "scene": "6",
+      "sceneProgress": 1,
+      "documentProgress": 1,
+      "score": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 53.90000009536743
+      }
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1280,
+    "client_width": 1280,
+    "doc_scroll_height": 12096,
+    "inner_height": 800,
+    "broken_images": [],
+    "scene_index": "6",
+    "scene_opacity": 1,
+    "label_text": "CTWalk",
+    "title_text": "更多專案與實作紀錄\n都在 GitHub",
+    "title_lines": [
+      {
+        "top": 314,
+        "left": 365.2,
+        "right": 914.8,
+        "width": 549.6
+      },
+      {
+        "top": 387,
+        "left": 466.1,
+        "right": 813.9,
+        "width": 347.8
+      }
+    ],
+    "body_text": null,
+    "body_lines": null,
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "__context__/laptop/normal",
+    "_console_errors": [],
+    "_failed_requests": []
+  },
+  {
+    "key": "mobile/en/normal/mobile.fallback",
+    "checkpoint_id": "mobile.fallback",
+    "viewport": {
+      "vw": 390,
+      "vh": 844
+    },
+    "locale": "en",
+    "motion": "normal",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "mobile.fallback",
+      "presentation": "mobile-fallback",
+      "scene": null,
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "reduced": false,
+      "fallbackTimeMs": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 37
+      }
+    },
+    "presentation": "mobile-fallback",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 390,
+    "client_width": 390,
+    "doc_scroll_height": 844,
+    "inner_height": 844,
+    "broken_images": [],
+    "mobile": {
+      "fallback_present": true,
+      "title_text": "Designedfordesktop.",
+      "title_font_px": 80.34,
+      "title_lines": [
+        {
+          "top": 80,
+          "left": 22,
+          "right": 351.9,
+          "width": 329.9
+        },
+        {
+          "top": 94,
+          "left": 22,
+          "right": 353.9,
+          "width": 331.9
+        },
+        {
+          "top": 147,
+          "left": 22,
+          "right": 116.1,
+          "width": 94.1
+        },
+        {
+          "top": 161,
+          "left": 22,
+          "right": 353.9,
+          "width": 331.9
+        },
+        {
+          "top": 215,
+          "left": 22,
+          "right": 320.8,
+          "width": 298.8
+        },
+        {
+          "top": 229,
+          "left": 22,
+          "right": 353.9,
+          "width": 331.9
+        }
+      ],
+      "avatar_src": "https://avatars.githubusercontent.com/u/100585900?v=4",
+      "avatar_loaded": true,
+      "avatar_natural": [
+        460,
+        460
+      ],
+      "avatar_rendered": [
+        112,
+        112
+      ],
+      "avatar_centered": true,
+      "cta_text": "Open GitHub ↗",
+      "cta_href": "https://github.com/CTWalk",
+      "cta_below_avatar": true,
+      "guidance_text": "This portfolio is designed as adesktop-first interactive experience.For the full project walkthrough,please view it on a desktop browser.",
+      "guidance_lines": [
+        {
+          "top": 691,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 693,
+          "left": 22,
+          "right": 259.6,
+          "width": 237.6
+        },
+        {
+          "top": 718,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 720,
+          "left": 22,
+          "right": 313.1,
+          "width": 291.1
+        },
+        {
+          "top": 744,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 746,
+          "left": 22,
+          "right": 277.2,
+          "width": 255.2
+        },
+        {
+          "top": 770,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 772,
+          "left": 22,
+          "right": 310.2,
+          "width": 288.2
+        }
+      ],
+      "experience_hidden": true,
+      "visible_desktop_scenes": [],
+      "page_scrollable": false,
+      "webgl_id_removed": true,
+      "desktop_raf_alive": false,
+      "fallback_state": {
+        "active": true,
+        "presentation": "mobile-fallback",
+        "locale": "en",
+        "reducedMotion": false,
+        "testMode": true,
+        "running": false,
+        "timeMs": 0,
+        "canvasAvailable": false,
+        "webglAvailable": false,
+        "blurAvailable": true,
+        "width": 390,
+        "height": 844
+      },
+      "wave_running": false,
+      "wave_time_ms": 0,
+      "test_mode": true,
+      "substitute_page_image": []
+    }
+  },
+  {
+    "key": "mobile/zh-TW/normal/mobile.fallback",
+    "checkpoint_id": "mobile.fallback",
+    "viewport": {
+      "vw": 390,
+      "vh": 844
+    },
+    "locale": "zh-TW",
+    "motion": "normal",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "mobile.fallback",
+      "presentation": "mobile-fallback",
+      "scene": null,
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "reduced": false,
+      "fallbackTimeMs": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 22.700000286102295
+      }
+    },
+    "presentation": "mobile-fallback",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 390,
+    "client_width": 390,
+    "doc_scroll_height": 844,
+    "inner_height": 844,
+    "broken_images": [],
+    "mobile": {
+      "fallback_present": true,
+      "title_text": "為桌面互動而設計",
+      "title_font_px": 66.3,
+      "title_lines": [
+        {
+          "top": 79,
+          "left": 22,
+          "right": 349.5,
+          "width": 327.5
+        },
+        {
+          "top": 94,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 143,
+          "left": 22,
+          "right": 218.5,
+          "width": 196.5
+        },
+        {
+          "top": 158,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        }
+      ],
+      "avatar_src": "https://avatars.githubusercontent.com/u/100585900?v=4",
+      "avatar_loaded": true,
+      "avatar_natural": [
+        460,
+        460
+      ],
+      "avatar_rendered": [
+        112,
+        112
+      ],
+      "avatar_centered": true,
+      "cta_text": "查看 GitHub ↗",
+      "cta_href": "https://github.com/CTWalk",
+      "cta_below_avatar": true,
+      "guidance_text": "此作品集以桌面互動體驗為主要呈現方式。建議使用電腦版瀏覽器，以完整查看專案流程、動態展示與設計細節。",
+      "guidance_lines": [
+        {
+          "top": 679,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 681,
+          "left": 22,
+          "right": 216.2,
+          "width": 194.2
+        },
+        {
+          "top": 708,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 710,
+          "left": 22,
+          "right": 163.2,
+          "width": 141.2
+        },
+        {
+          "top": 737,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 739,
+          "left": 22,
+          "right": 304.4,
+          "width": 282.4
+        },
+        {
+          "top": 767,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 769,
+          "left": 22,
+          "right": 286.8,
+          "width": 264.8
+        }
+      ],
+      "experience_hidden": true,
+      "visible_desktop_scenes": [],
+      "page_scrollable": false,
+      "webgl_id_removed": true,
+      "desktop_raf_alive": false,
+      "fallback_state": {
+        "active": true,
+        "presentation": "mobile-fallback",
+        "locale": "zh-Hant-TW",
+        "reducedMotion": false,
+        "testMode": true,
+        "running": false,
+        "timeMs": 0,
+        "canvasAvailable": false,
+        "webglAvailable": false,
+        "blurAvailable": true,
+        "width": 390,
+        "height": 844
+      },
+      "wave_running": false,
+      "wave_time_ms": 0,
+      "test_mode": true,
+      "substitute_page_image": []
+    }
+  },
+  {
+    "key": "__context__/mobile/normal",
+    "_console_errors": [],
+    "_failed_requests": []
+  },
+  {
+    "key": "desktop/en/reduce/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "intro.settled",
+      "scene": "0",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "0",
+    "scene_opacity": 1,
+    "label_text": "QA / SDET · SOFTWARE ENGINEERING",
+    "title_text": "I test software from the UI to the database.",
+    "title_lines": [
+      {
+        "top": 158,
+        "left": 794.5,
+        "right": 1445.5,
+        "width": 651.1
+      },
+      {
+        "top": 243,
+        "left": 742.1,
+        "right": 1497.9,
+        "width": 755.7
+      }
+    ],
+    "body_text": "I automate web, API, database and mobile checks, then run them in CI. When one fails, I trace the failure before deciding whether the test or the product needs fixing.",
+    "body_lines": [
+      {
+        "top": 360,
+        "left": 875.6,
+        "right": 1364.4,
+        "width": 488.8
+      },
+      {
+        "top": 391,
+        "left": 908.7,
+        "right": 1331.3,
+        "width": 422.6
+      },
+      {
+        "top": 423,
+        "left": 897.4,
+        "right": 1342.5,
+        "width": 445.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/reduce/commerce.reduced",
+    "checkpoint_id": "commerce.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.reduced",
+      "scene": "1",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "I test the whole checkout flow.",
+    "title_lines": [
+      {
+        "top": 507,
+        "left": 130,
+        "right": 563.8,
+        "width": 433.8
+      },
+      {
+        "top": 580,
+        "left": 130,
+        "right": 547.6,
+        "width": 417.6
+      }
+    ],
+    "body_text": "For this demo, I follow a checkout through the browser, API, database, webhook and notification, and verify the result at each step.",
+    "body_lines": [
+      {
+        "top": 682,
+        "left": 130,
+        "right": 621.4,
+        "width": 491.4
+      },
+      {
+        "top": 713,
+        "left": 130,
+        "right": 619.7,
+        "width": 489.7
+      },
+      {
+        "top": 745,
+        "left": 130,
+        "right": 216,
+        "width": 86
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-expired",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1804,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-expired",
+        "w": 295.8,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/reduce/nocode.reduced",
+    "checkpoint_id": "nocode.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.reduced",
+      "scene": "2",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "I keep test steps readable.",
+    "title_lines": [
+      {
+        "top": 507,
+        "left": 700,
+        "right": 993.3,
+        "width": 293.3
+      },
+      {
+        "top": 580,
+        "left": 700,
+        "right": 1140.5,
+        "width": 440.5
+      }
+    ],
+    "body_text": "The YAML says what the test should do. Playwright executes it. I keep locators, failure output and CI config outside the YAML so UI changes are easier to update.",
+    "body_lines": [
+      {
+        "top": 682,
+        "left": 700,
+        "right": 1122.2,
+        "width": 422.2
+      },
+      {
+        "top": 713,
+        "left": 700,
+        "right": 1154.3,
+        "width": 454.3
+      },
+      {
+        "top": 745,
+        "left": 700,
+        "right": 1142.6,
+        "width": 442.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.042
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0.14
+      ],
+      "emphasisIndex": 2,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1639.4,
+        "nw": 1200,
+        "op": 0.62
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/reduce/social.reduced",
+    "checkpoint_id": "social.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.reduced",
+      "scene": "3",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "I run one release through all of these checks.",
+    "title_lines": [
+      {
+        "top": 466,
+        "left": 130,
+        "right": 597.5,
+        "width": 467.5
+      },
+      {
+        "top": 538,
+        "left": 130,
+        "right": 506.5,
+        "width": 376.5
+      },
+      {
+        "top": 611,
+        "left": 130,
+        "right": 528.9,
+        "width": 398.9
+      }
+    ],
+    "body_text": "Build, API, database, performance, web and mobile checks all run against the same version.",
+    "body_lines": [
+      {
+        "top": 713,
+        "left": 130,
+        "right": 615.4,
+        "width": 485.4
+      },
+      {
+        "top": 745,
+        "left": 130,
+        "right": 395.9,
+        "width": 265.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1639.4,
+        "nw": 1200,
+        "op": 0.68
+      },
+      {
+        "cls": "(none)",
+        "w": 242.1,
+        "nw": 1081,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/reduce/cuesheet.reduced",
+    "checkpoint_id": "cuesheet.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.reduced",
+      "scene": "4",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "I also build my own products.",
+    "title_lines": [
+      {
+        "top": 403,
+        "left": 920,
+        "right": 1221.2,
+        "width": 301.2
+      },
+      {
+        "top": 476,
+        "left": 920,
+        "right": 1147,
+        "width": 227
+      },
+      {
+        "top": 548,
+        "left": 920,
+        "right": 1195.4,
+        "width": 275.4
+      }
+    ],
+    "body_text": "CueSheet is a rehearsal scheduler I built. If someone's availability changes, it can rebuild the schedule while trying to keep the existing plan intact.",
+    "body_lines": [
+      {
+        "top": 651,
+        "left": 920,
+        "right": 1272.2,
+        "width": 352.2
+      },
+      {
+        "top": 682,
+        "left": 920,
+        "right": 1293.1,
+        "width": 373.1
+      },
+      {
+        "top": 713,
+        "left": 920,
+        "right": 1293.4,
+        "width": 373.4
+      },
+      {
+        "top": 745,
+        "left": 920,
+        "right": 1011.8,
+        "width": 91.8
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1639.4,
+        "nw": 1440,
+        "op": 0.82
+      },
+      {
+        "cls": "cue-frame cue-review",
+        "w": 775.4,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 193,
+        "nw": 390,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/en/reduce/dca.reduced",
+    "checkpoint_id": "dca.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.reduced",
+      "scene": "5",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "Recently",
+    "title_text": "Lately I've been testing AI tooling too.",
+    "title_lines": [
+      {
+        "top": 507,
+        "left": 700,
+        "right": 1147,
+        "width": 447
+      },
+      {
+        "top": 580,
+        "left": 700,
+        "right": 1304.4,
+        "width": 604.4
+      }
+    ],
+    "body_text": "I check what was actually evaluated, what happens when input is missing, and whether a failure can be reproduced. It's a newer area of my QA work.",
+    "body_lines": [
+      {
+        "top": 682,
+        "left": 700,
+        "right": 1171.4,
+        "width": 471.4
+      },
+      {
+        "top": 713,
+        "left": 700,
+        "right": 1177.8,
+        "width": 477.8
+      },
+      {
+        "top": 745,
+        "left": 700,
+        "right": 966.6,
+        "width": 266.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.263
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/en/reduce/outro.reduced",
+    "checkpoint_id": "outro.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "outro.reduced",
+      "scene": "6",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "6",
+    "scene_opacity": 1,
+    "label_text": "CTWalk",
+    "title_text": "More of my work is on GitHub.",
+    "title_lines": [
+      {
+        "top": 255,
+        "left": 880.3,
+        "right": 1359.7,
+        "width": 479.4
+      },
+      {
+        "top": 327,
+        "left": 937.7,
+        "right": 1302.3,
+        "width": 364.6
+      }
+    ],
+    "body_text": null,
+    "body_lines": null,
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/reduce/intro.settled",
+    "checkpoint_id": "intro.settled",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "intro.settled",
+      "scene": "0",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "0",
+    "scene_opacity": 1,
+    "label_text": "QA / SDET · 軟體工程",
+    "title_text": "我是 QA\n從畫面一路驗證到 API、DB與Native",
+    "title_lines": [
+      {
+        "top": 64,
+        "left": 965.7,
+        "right": 1274.3,
+        "width": 308.7
+      },
+      {
+        "top": 160,
+        "left": 795.5,
+        "right": 1444.5,
+        "width": 649
+      },
+      {
+        "top": 256,
+        "left": 791.9,
+        "right": 1448.1,
+        "width": 656.2
+      }
+    ],
+    "body_text": "除了自動化測試，也會一路追查失敗原因。\n如果問題不在測試，而在產品，我會直接修。",
+    "body_lines": [
+      {
+        "top": 386,
+        "left": 942.8,
+        "right": 1297.2,
+        "width": 354.4
+      },
+      {
+        "top": 419,
+        "left": 933.5,
+        "right": 1306.5,
+        "width": 373
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/reduce/commerce.reduced",
+    "checkpoint_id": "commerce.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "commerce.reduced",
+      "scene": "1",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "1",
+    "scene_opacity": 1,
+    "label_text": "CommerceOps QA Demo",
+    "title_text": "用真的產品情境練習\n再對照參考驗證流程",
+    "title_lines": [
+      {
+        "top": 476,
+        "left": 130,
+        "right": 748.3,
+        "width": 618.3
+      },
+      {
+        "top": 557,
+        "left": 130,
+        "right": 748.3,
+        "width": 618.3
+      }
+    ],
+    "body_text": "CommerceOps 是給初階 QA 練習的電商測試環境。先自己測結帳與各種失敗情境，再對照專案提供的參考驗證流程，看看有沒有漏掉重要檢查。",
+    "body_lines": [
+      {
+        "top": 670,
+        "left": 130,
+        "right": 659.8,
+        "width": 529.8
+      },
+      {
+        "top": 704,
+        "left": 130,
+        "right": 652.2,
+        "width": 522.2
+      },
+      {
+        "top": 737,
+        "left": 130,
+        "right": 279.2,
+        "width": 149.2
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": {
+      "loudestWord": {
+        "cls": "commerce-transition-checkout",
+        "o": 0
+      },
+      "words": [
+        {
+          "cls": "commerce-transition-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-expired",
+          "o": 0
+        },
+        {
+          "cls": "commerce-transition-unavailable",
+          "o": 0
+        }
+      ],
+      "loudestPhone": {
+        "cls": "commerce-phone-expired",
+        "o": 1
+      },
+      "phones": [
+        {
+          "cls": "commerce-phone-expired",
+          "o": 1
+        },
+        {
+          "cls": "commerce-phone-checkout",
+          "o": 0
+        },
+        {
+          "cls": "commerce-phone-unavailable",
+          "o": 0
+        }
+      ]
+    },
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-blur",
+        "w": 1804,
+        "nw": 412,
+        "op": 0.58
+      },
+      {
+        "cls": "commerce-phone-expired",
+        "w": 295.8,
+        "nw": 412,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/reduce/nocode.reduced",
+    "checkpoint_id": "nocode.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "nocode.reduced",
+      "scene": "2",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "2",
+    "scene_opacity": 1,
+    "label_text": "noCodeE2E",
+    "title_text": "測試流程好讀\n定位方式也好維護",
+    "title_lines": [
+      {
+        "top": 509,
+        "left": 700,
+        "right": 1112.2,
+        "width": 412.2
+      },
+      {
+        "top": 591,
+        "left": 700,
+        "right": 1249.6,
+        "width": 549.6
+      }
+    ],
+    "body_text": "YAML 寫操作流程，Playwright 負責執行。\n定位、失敗證據與 CI 分開管理，換版時卡好維護。",
+    "body_lines": [
+      {
+        "top": 704,
+        "left": 700,
+        "right": 1061,
+        "width": 361
+      },
+      {
+        "top": 737,
+        "left": 700,
+        "right": 1122.6,
+        "width": 422.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "plate code-plate scene-object",
+        "ratio": 0.042
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": {
+      "alphas": [
+        0,
+        0,
+        0.14
+      ],
+      "emphasisIndex": 2,
+      "stepAttr": [
+        "0",
+        "1",
+        "2"
+      ]
+    },
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1639.4,
+        "nw": 1200,
+        "op": 0.62
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/reduce/social.reduced",
+    "checkpoint_id": "social.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "social.reduced",
+      "scene": "3",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "3",
+    "scene_opacity": 1,
+    "label_text": "SocialPlatform",
+    "title_text": "不同層的檢查\n收進同一條交付流程",
+    "title_lines": [
+      {
+        "top": 509,
+        "left": 130,
+        "right": 542.2,
+        "width": 412.2
+      },
+      {
+        "top": 591,
+        "left": 130,
+        "right": 748.3,
+        "width": 618.3
+      }
+    ],
+    "body_text": "Build、API、DB、效能、網頁與手機端各自檢查。\n最後判斷這個版本能不能交付。",
+    "body_lines": [
+      {
+        "top": 704,
+        "left": 130,
+        "right": 545.7,
+        "width": 415.7
+      },
+      {
+        "top": 737,
+        "left": 130,
+        "right": 391.1,
+        "width": 261.1
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1639.4,
+        "nw": 1200,
+        "op": 0.68
+      },
+      {
+        "cls": "(none)",
+        "w": 242.1,
+        "nw": 1081,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/reduce/cuesheet.reduced",
+    "checkpoint_id": "cuesheet.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "cuesheet.reduced",
+      "scene": "4",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "4",
+    "scene_opacity": 1,
+    "label_text": "CueSheet",
+    "title_text": "我不只測產品\n也會做產品",
+    "title_lines": [
+      {
+        "top": 476,
+        "left": 920,
+        "right": 1332.2,
+        "width": 412.2
+      },
+      {
+        "top": 557,
+        "left": 920,
+        "right": 1263.5,
+        "width": 343.5
+      }
+    ],
+    "body_text": "CueSheet 是有正式部署的排練排程工具。\n若有人臨時不能來，系統會重排，同時盡量保留原本安排。",
+    "body_lines": [
+      {
+        "top": 670,
+        "left": 920,
+        "right": 1272.1,
+        "width": 352.1
+      },
+      {
+        "top": 704,
+        "left": 920,
+        "right": 1293,
+        "width": 373
+      },
+      {
+        "top": 737,
+        "left": 920,
+        "right": 1031.9,
+        "width": 111.9
+      }
+    ],
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": [
+      {
+        "cls": "scene-bg scene-object",
+        "w": 1639.4,
+        "nw": 1440,
+        "op": 0.82
+      },
+      {
+        "cls": "cue-frame cue-review",
+        "w": 775.4,
+        "nw": 1440,
+        "op": 1
+      },
+      {
+        "cls": "(none)",
+        "w": 193,
+        "nw": 390,
+        "op": 1
+      }
+    ]
+  },
+  {
+    "key": "desktop/zh-TW/reduce/dca.reduced",
+    "checkpoint_id": "dca.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "dca.reduced",
+      "scene": "5",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "5",
+    "scene_opacity": 1,
+    "label_text": "最近在...",
+    "title_text": "同一套 QA 邏輯\n也能用來檢查 AI 工具",
+    "title_lines": [
+      {
+        "top": 428,
+        "left": 700,
+        "right": 1191,
+        "width": 491
+      },
+      {
+        "top": 509,
+        "left": 700,
+        "right": 1201.1,
+        "width": 501.1
+      },
+      {
+        "top": 591,
+        "left": 700,
+        "right": 837.4,
+        "width": 137.4
+      }
+    ],
+    "body_text": "這個LLM在做什麼？缺資料會不會誤判？錯誤能不能重現？\n這是 QA 思維的延伸。",
+    "body_lines": [
+      {
+        "top": 704,
+        "left": 700,
+        "right": 1186.2,
+        "width": 486.2
+      },
+      {
+        "top": 737,
+        "left": 700,
+        "right": 888.6,
+        "width": 188.6
+      }
+    ],
+    "copy_evidence_overlap": [
+      {
+        "cls": "audit-board scene-object",
+        "ratio": 0.279
+      }
+    ],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "desktop/zh-TW/reduce/outro.reduced",
+    "checkpoint_id": "outro.reduced",
+    "viewport": {
+      "vw": 1440,
+      "vh": 900
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "outro.reduced",
+      "scene": "6",
+      "progress": 0,
+      "reduced": true
+    },
+    "presentation": "desktop",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 1440,
+    "client_width": 1440,
+    "doc_scroll_height": 6300,
+    "inner_height": 900,
+    "broken_images": [],
+    "scene_index": "6",
+    "scene_opacity": 1,
+    "label_text": "CTWalk",
+    "title_text": "更多專案與實作紀錄\n都在 GitHub",
+    "title_lines": [
+      {
+        "top": 230,
+        "left": 810.9,
+        "right": 1429.1,
+        "width": 618.3
+      },
+      {
+        "top": 311,
+        "left": 924.4,
+        "right": 1315.6,
+        "width": 391.3
+      }
+    ],
+    "body_text": null,
+    "body_lines": null,
+    "copy_evidence_overlap": [],
+    "commerce": null,
+    "nocode_steps": null,
+    "visible_evidence_images": []
+  },
+  {
+    "key": "__context__/desktop/reduce",
+    "_console_errors": [],
+    "_failed_requests": []
+  },
+  {
+    "key": "mobile/en/reduce/mobile.fallback.reduced",
+    "checkpoint_id": "mobile.fallback.reduced",
+    "viewport": {
+      "vw": 390,
+      "vh": 844
+    },
+    "locale": "en",
+    "motion": "reduce",
+    "requested_lang": "en",
+    "error": null,
+    "resolution": {
+      "checkpoint": "mobile.fallback.reduced",
+      "presentation": "mobile-fallback",
+      "scene": null,
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "reduced": true,
+      "fallbackTimeMs": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 38.30000019073486
+      }
+    },
+    "presentation": "mobile-fallback",
+    "html_lang": "en",
+    "document_title": "CTWalk | QA / SDET Engineer",
+    "horizontal_overflow": false,
+    "scroll_width": 390,
+    "client_width": 390,
+    "doc_scroll_height": 844,
+    "inner_height": 844,
+    "broken_images": [],
+    "mobile": {
+      "fallback_present": true,
+      "title_text": "Designedfordesktop.",
+      "title_font_px": 80.34,
+      "title_lines": [
+        {
+          "top": 80,
+          "left": 22,
+          "right": 351.9,
+          "width": 329.9
+        },
+        {
+          "top": 94,
+          "left": 22,
+          "right": 353.9,
+          "width": 331.9
+        },
+        {
+          "top": 147,
+          "left": 22,
+          "right": 116.1,
+          "width": 94.1
+        },
+        {
+          "top": 161,
+          "left": 22,
+          "right": 353.9,
+          "width": 331.9
+        },
+        {
+          "top": 215,
+          "left": 22,
+          "right": 320.8,
+          "width": 298.8
+        },
+        {
+          "top": 229,
+          "left": 22,
+          "right": 353.9,
+          "width": 331.9
+        }
+      ],
+      "avatar_src": "https://avatars.githubusercontent.com/u/100585900?v=4",
+      "avatar_loaded": true,
+      "avatar_natural": [
+        460,
+        460
+      ],
+      "avatar_rendered": [
+        112,
+        112
+      ],
+      "avatar_centered": true,
+      "cta_text": "Open GitHub ↗",
+      "cta_href": "https://github.com/CTWalk",
+      "cta_below_avatar": true,
+      "guidance_text": "This portfolio is designed as adesktop-first interactive experience.For the full project walkthrough,please view it on a desktop browser.",
+      "guidance_lines": [
+        {
+          "top": 691,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 693,
+          "left": 22,
+          "right": 259.6,
+          "width": 237.6
+        },
+        {
+          "top": 718,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 720,
+          "left": 22,
+          "right": 313.1,
+          "width": 291.1
+        },
+        {
+          "top": 744,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 746,
+          "left": 22,
+          "right": 277.2,
+          "width": 255.2
+        },
+        {
+          "top": 770,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 772,
+          "left": 22,
+          "right": 310.2,
+          "width": 288.2
+        }
+      ],
+      "experience_hidden": true,
+      "visible_desktop_scenes": [],
+      "page_scrollable": false,
+      "webgl_id_removed": true,
+      "desktop_raf_alive": false,
+      "fallback_state": {
+        "active": true,
+        "presentation": "mobile-fallback",
+        "locale": "en",
+        "reducedMotion": true,
+        "testMode": true,
+        "running": false,
+        "timeMs": 0,
+        "canvasAvailable": false,
+        "webglAvailable": false,
+        "blurAvailable": true,
+        "width": 390,
+        "height": 844
+      },
+      "wave_running": false,
+      "wave_time_ms": 0,
+      "test_mode": true,
+      "substitute_page_image": []
+    }
+  },
+  {
+    "key": "mobile/zh-TW/reduce/mobile.fallback.reduced",
+    "checkpoint_id": "mobile.fallback.reduced",
+    "viewport": {
+      "vw": 390,
+      "vh": 844
+    },
+    "locale": "zh-TW",
+    "motion": "reduce",
+    "requested_lang": "zh-Hant-TW",
+    "error": null,
+    "resolution": {
+      "checkpoint": "mobile.fallback.reduced",
+      "presentation": "mobile-fallback",
+      "scene": null,
+      "sceneProgress": 0,
+      "documentProgress": 0,
+      "score": 1,
+      "reduced": true,
+      "fallbackTimeMs": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 31.100000381469727
+      }
+    },
+    "presentation": "mobile-fallback",
+    "html_lang": "zh-Hant-TW",
+    "document_title": "CTWalk — QA / SDET",
+    "horizontal_overflow": false,
+    "scroll_width": 390,
+    "client_width": 390,
+    "doc_scroll_height": 844,
+    "inner_height": 844,
+    "broken_images": [],
+    "mobile": {
+      "fallback_present": true,
+      "title_text": "為桌面互動而設計",
+      "title_font_px": 66.3,
+      "title_lines": [
+        {
+          "top": 79,
+          "left": 22,
+          "right": 349.5,
+          "width": 327.5
+        },
+        {
+          "top": 94,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        },
+        {
+          "top": 143,
+          "left": 22,
+          "right": 218.5,
+          "width": 196.5
+        },
+        {
+          "top": 158,
+          "left": 22,
+          "right": 368,
+          "width": 346
+        }
+      ],
+      "avatar_src": "https://avatars.githubusercontent.com/u/100585900?v=4",
+      "avatar_loaded": true,
+      "avatar_natural": [
+        460,
+        460
+      ],
+      "avatar_rendered": [
+        112,
+        112
+      ],
+      "avatar_centered": true,
+      "cta_text": "查看 GitHub ↗",
+      "cta_href": "https://github.com/CTWalk",
+      "cta_below_avatar": true,
+      "guidance_text": "此作品集以桌面互動體驗為主要呈現方式。建議使用電腦版瀏覽器，以完整查看專案流程、動態展示與設計細節。",
+      "guidance_lines": [
+        {
+          "top": 679,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 681,
+          "left": 22,
+          "right": 216.2,
+          "width": 194.2
+        },
+        {
+          "top": 708,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 710,
+          "left": 22,
+          "right": 163.2,
+          "width": 141.2
+        },
+        {
+          "top": 737,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 739,
+          "left": 22,
+          "right": 304.4,
+          "width": 282.4
+        },
+        {
+          "top": 767,
+          "left": 22,
+          "right": 335.9,
+          "width": 313.9
+        },
+        {
+          "top": 769,
+          "left": 22,
+          "right": 286.8,
+          "width": 264.8
+        }
+      ],
+      "experience_hidden": true,
+      "visible_desktop_scenes": [],
+      "page_scrollable": false,
+      "webgl_id_removed": true,
+      "desktop_raf_alive": false,
+      "fallback_state": {
+        "active": true,
+        "presentation": "mobile-fallback",
+        "locale": "zh-Hant-TW",
+        "reducedMotion": true,
+        "testMode": true,
+        "running": false,
+        "timeMs": 0,
+        "canvasAvailable": false,
+        "webglAvailable": false,
+        "blurAvailable": true,
+        "width": 390,
+        "height": 844
+      },
+      "wave_running": false,
+      "wave_time_ms": 0,
+      "test_mode": true,
+      "substitute_page_image": []
+    }
+  },
+  {
+    "key": "__context__/mobile/reduce",
+    "_console_errors": [],
+    "_failed_requests": []
+  }
+]

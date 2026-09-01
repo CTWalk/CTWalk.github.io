@@ -1,0 +1,20 @@
+intro.settled            bytes differ -> px 32292 (2.49167%) maxD 28
+commerce.expired-promo   BYTE-IDENTICAL
+commerce.unavailable     BYTE-IDENTICAL
+commerce.final-settled   BYTE-IDENTICAL
+nocode.execution         BYTE-IDENTICAL
+nocode.result-hold       BYTE-IDENTICAL
+social.final-phone       BYTE-IDENTICAL
+cuesheet.review          BYTE-IDENTICAL
+dca.early-contribution   BYTE-IDENTICAL
+dca.pass                 BYTE-IDENTICAL
+outro.settled            BYTE-IDENTICAL
+mobile.fallback          bytes differ -> px 278 (0.08446%) maxD 1
+mobile.fallback.reduced  BYTE-IDENTICAL
+outro A-vs-B             BYTE-IDENTICAL
+outro A-vs-C             BYTE-IDENTICAL
+outro B-vs-C             BYTE-IDENTICAL
+
+wrote repeatability.json
+
+[exited with code 0]
