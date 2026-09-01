@@ -33,10 +33,15 @@ Undecided:
   and a few normal-motion controls. Is risk-weighting legitimate, or does it
   bias the measured precision toward the hard cases and understate real-world
   accuracy?
-- Given κ ≈ 0.722 among trained annotators (see `RESEARCH_PRIOR_ART.md`), a
-  single labeller cannot be treated as truth. Should the method require a
-  self-consistency check — relabel a held-out slice later, blind, and measure
-  agreement with oneself — as a proxy for a second annotator?
+- The external benchmark in `RESEARCH_PRIOR_ART.md` reports substantial but
+  imperfect human agreement: on its 100-example double-annotated reliability
+  subset, the two annotators agreed on 86 examples and Cohen's κ was 0.722.
+  That does **not** imply 28% raw disagreement, and it does not determine our
+  sample size. It does support treating a single labeller as a calibration
+  reference with uncertainty rather than unquestionable ground truth. Should the
+  method require a self-consistency check — relabel a held-out slice later,
+  blind, and measure agreement with oneself — as a practical proxy when a second
+  annotator is unavailable?
 - Should the sample include a minimum number of known/expected clean controls so
   false-positive behaviour is measurable rather than only detector recall on
   risky surfaces?
@@ -48,13 +53,14 @@ full evidence for Method v1 dimension 7 (Detector discipline).
 
 ## 2. How should detector quality be reported?
 
-v1 reported a single precision figure per detector. The arXiv work reports
-**noise suppression** and **true-change detection** separately, which is
-strictly more informative and harder to game.
+v1 reported a single precision figure per detector. The external research
+review strengthens the case for separating at least meaningful-change detection
+from noise-suppression behaviour rather than collapsing detector quality into a
+single convenient score.
 
-Open: adopt the two-number format, and what to do about detectors that fire
-rarely. A detector firing 3 times at 1.00 precision is not evidence of a good
-detector; it is 3 data points.
+Open: what exact reporting format should the method require, and what to do about
+detectors that fire rarely. A detector firing 3 times at 1.00 precision is not
+evidence of a good detector; it is 3 data points.
 
 Readiness bearing: dimension 7 — detector discipline and holdout validation.
 
@@ -102,9 +108,10 @@ Readiness bearing: dimensions 5 and 9 — determinism coverage and golden-regres
 
 ## 5. What is the minimum determinism contract for an animated product?
 
-The single most productive finding across both runs. Playwright's
-`animations:'disabled'` covers CSS animations/transitions and Web Animations —
-**not** a hand-rolled `requestAnimationFrame` loop.
+The single most productive finding across both runs. Screenshot tooling can
+control many CSS/WAAPI and volatile-rendering cases, but an independent hand-
+rolled `requestAnimationFrame`/WebGL owner can still require a product-level
+freeze hook.
 
 This project now contains one of each:
 
