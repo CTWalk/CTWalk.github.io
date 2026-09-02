@@ -188,7 +188,14 @@ async function inspectScene(page, sceneId, sceneProgress) {
       const bg = style.backgroundImage && style.backgroundImage !== 'none' ? style.backgroundImage : '';
       const semantic = node.getAttribute('aria-label') || node.getAttribute('alt') || node.getAttribute('data-state') || node.getAttribute('data-step') || '';
       const classes = typeof node.className === 'string' ? node.className.split(/\s+/).filter(Boolean).slice(0, 5).join('.') : '';
-      const key = node.id ? `#${node.id}` : classes ? `${node.tagName.toLowerCase()}.${classes}` : `${node.tagName.toLowerCase()}:${index}`;
+      const keyBase = node.id ? `#${node.id}` : classes ? `${node.tagName.toLowerCase()}.${classes}` : node.tagName.toLowerCase();
+      const dataIdentity = [...node.attributes]
+        .filter(attribute => attribute.name.startsWith('data-'))
+        .map(attribute => `${attribute.name}=${attribute.value}`)
+        .join('|');
+      // The DOM index is stable for this controlled page and prevents repeated
+      // elements such as audit rows from collapsing into a single Map key.
+      const key = `${keyBase}|${dataIdentity}|@${index}`;
       return {
         key,
         text: text.slice(0, 160),
