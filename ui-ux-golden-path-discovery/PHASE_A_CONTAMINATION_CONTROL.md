@@ -1,25 +1,41 @@
-# Phase A contamination control
+# Phase A Contamination Control — Parked Future-Validation Infrastructure
 
-Status: **normative for #48 Phase A execution.**
-Established: 2026-09-02, by scanning every tracked file on `phase1/verification-f40e365`.
+Status: **PARKED. Normative only when a frozen V1 enters formal blind validation.**
+Established: 2026-09-02 by scanning tracked files on `phase1/verification-f40e365`.
 
-## Finding: R1 as written is insufficient
+Current #48 execution is supervised V1 development. During the current stage, developers,
+the user and runtime LLMs **may read the known checkpoint reference** as a debugging oracle.
+This file must therefore **not** be used to restrict normal Stage-1/Stage-2 development.
 
-R1 forbids the blind reviewer from using:
+What remains active now is narrower:
+
+> The generic V1 discovery runner must not read or hard-code the reference inventory.
+
+The strict reviewer allowlist below becomes active only **after V1 freeze**, when the
+project deliberately starts an independent reconstruction experiment.
+
+---
+
+## 1. Why this file still matters
+
+The original blind-validation design used a denylist that named only:
 
 - `docs/ui-ux/UI_UX_BASELINE_MANIFEST.md`
 - `scripts/ui-ux-baseline-plan.json`
 - historical baseline-review material enumerating the desired checkpoint set
 
-A scan of all tracked files for desktop checkpoint identifiers found **13 files** carrying three or more, not two:
+A scan showed that this was insufficient. Multiple other files expose checkpoint IDs.
+That remains a real methodological finding for future validation.
 
-| File | Distinct checkpoint IDs | Severity |
+Tracked files carrying three or more desktop checkpoint IDs included:
+
+| File | Distinct checkpoint IDs | Future blind-review severity |
 | --- | ---: | --- |
-| `docs/ui-ux/UI_UX_BASELINE_MANIFEST.md` | 28 | named by R1 |
-| `scripts/ui-ux-baseline-plan.json` | 28 | named by R1 |
-| **`docs/ui-ux/UI_UX_TEST_CONTROL.md`** | **28** | **critical — the runbook directs the reviewer to this API** |
-| **`scripts/controls/ui-ux-test-control.js`** | **28** | **critical — the runner depends on this file** |
-| **`docs/ui-ux/UI_UX_GOLDEN_PATH_DISCOVERY_RESEARCH.md`** | **22** | **critical — #48 lists it first under "Research / decision base"** |
+| `docs/ui-ux/UI_UX_BASELINE_MANIFEST.md` | 28 | explicit reference |
+| `scripts/ui-ux-baseline-plan.json` | 28 | explicit reference |
+| `docs/ui-ux/UI_UX_TEST_CONTROL.md` | 28 | critical leakage |
+| `scripts/controls/ui-ux-test-control.js` | 28 | critical leakage |
+| `docs/ui-ux/UI_UX_GOLDEN_PATH_DISCOVERY_RESEARCH.md` | 22 | critical leakage |
 | `ui-ux-baselines/1c1990ef0/baseline-manifest.json` | 28 | high |
 | `scripts/review/ground-truth.json` | 28 | high |
 | `scripts/review/detectors.json` | 28 | high |
@@ -29,38 +45,59 @@ A scan of all tracked files for desktop checkpoint identifiers found **13 files*
 | `scripts/review/detectors.mjs` | 5 | medium |
 | `docs/ui-ux/UI_UX_REVIEW_METHOD.md` | 4 | low |
 
-The three marked critical are the problem. **#48 instructs the reviewer to read the research base, and that research base contains all 22 desktop normal-motion checkpoint IDs.** A reviewer following the ticket honestly is contaminated before sampling anything.
+A future reviewer following broad repository instructions could therefore become
+contaminated without deliberately cheating.
 
-`docs/ui-ux/UI_UX_TEST_CONTROL.md` is equally exposed: the runbook tells the reviewer to navigate via `setSceneProgress()` / `waitForVisualSettle()`, and the document teaching that API also lists the full inventory.
+---
 
-This is a specification defect in the experiment, not a defect in the V1 implementation.
+## 2. Current development-stage rule
 
-## What is clean
+During supervised development:
 
-Verified by scan:
+```text
+developer / runtime LLM
+    may read known 22-state reference
+    may read research and historical evidence
+    may compare V1 output to the reference
 
-- `scripts/discovery/golden-path-discovery-v1.mjs` — **0** checkpoint IDs
-- `scripts/discovery/augment-golden-path-review-packet-v1.mjs` — **0** checkpoint IDs
+V1 discovery runner
+    must not consume the reference as candidate truth
+```
 
-The runner derives scene identity from `data-scene` and `__portfolioTest.sceneIds`. `sceneIds` maps semantic scene names (`intro`, `commerce`, …) to DOM indices. **Scene names are not checkpoint names.** They are independently discoverable from the DOM and are already required to be declared as adapter knowledge under R3. Scene-level identity is therefore permitted; checkpoint-level identity is not.
+The current development authority is:
 
-## Blind-reviewer input allowlist
+- `V1_DEVELOPMENT_STAGE.md`
+- `V1_MATERIALS_ACCUMULATION_BRIEF.md`
+- Issue #48
+- `docs/ui-ux/GOLDEN_PATH_DISCOVERY_V1_RUNBOOK.md`
 
-The Phase A blind reviewer may read **only**:
+Do not call a development session "contaminated" merely because it read the reference.
+It is only contaminated **for the later blind-review role**.
+
+---
+
+## 3. Future blind-reviewer allowlist — activate only after V1 freeze
+
+When formal independent validation begins, the blind reviewer may read **only**:
 
 ```text
 ui-ux-golden-path-discovery/PHASE_A_BLIND_REVIEWER_BRIEF.md
-ui-ux-golden-path-discovery/ctwalk-desktop-v1/run-N/llm-review-packet.json
-ui-ux-golden-path-discovery/ctwalk-desktop-v1/run-N/candidate-images/**   (only those the packet references)
+<future frozen validation run>/llm-review-packet.json
+<future frozen validation run>/candidate-images/**
+    only images referenced by the packet
 ```
 
-Nothing else. Not the repository, not the docs tree, not the issue body, not the runbook.
+Nothing else: not the repository, docs tree, issue body/comments, runbook, test-control
+source, research record or historical evidence.
 
-Rationale: the reviewer's job is to reason over frozen evidence. Every additional file is contamination surface with no compensating benefit — the packet is designed to be self-contained.
+If the reviewer needs information outside the packet, it must request it explicitly rather
+than fetch it.
 
-## Quarantine list
+---
 
-Forbidden to the blind reviewer, in addition to R1's two files:
+## 4. Future quarantine list
+
+For a formal blind reviewer, quarantine at least:
 
 ```text
 docs/ui-ux/UI_UX_TEST_CONTROL.md
@@ -71,44 +108,72 @@ scripts/controls/ui-ux-test-control.js
 scripts/review/**
 ui-ux-baselines/**
 phase1-verification-evidence/**
-pre-skill-bundle/**                     (see note)
+pre-skill-bundle/**
 ui-ux-golden-path-discovery/COMPETITIVE_UNKNOWNS_AUDIT_48.md
 ui-ux-golden-path-discovery/EXECUTION_REVIEW_48.md
 ui-ux-golden-path-discovery/ISSUE_48_REVISION_DRAFT.md
 ui-ux-golden-path-discovery/HANDOFF.md
+ui-ux-golden-path-discovery/V1_DEVELOPMENT_STAGE.md
+ui-ux-golden-path-discovery/V1_MATERIALS_ACCUMULATION_BRIEF.md
 Issue #48 body and comments
 ```
 
-**`pre-skill-bundle/` note:** it lives on the separate branch
-`uiux/pre-skill-bundle-ui-ux-baseline-verification`. Its `run-log/FINDINGS_SO_FAR.md`
-and `tools/ground-truth.json` enumerate checkpoint IDs. It is quarantined for the blind
-reviewer, and it is not present on this branch, but a reviewer with repository-wide
-access could reach it.
+The exact list should be re-scanned when V1 freezes because new leakage files may have
+appeared.
 
-## Who may read what
+---
+
+## 5. Role/access model for future validation
 
 | Role | Access |
 | --- | --- |
-| **Blind reviewer** (produces `independent-proposal.json`) | The allowlist only. Never the repository. |
-| **Orchestrator** (runs the mechanism, freezes artifacts, does A3) | Everything. Must not relay quarantined content into the reviewer's context. |
-| **Human acceptance authority** | Everything. |
+| V1 developer | full repo/reference access |
+| Human/product authority | full repo/reference access |
+| Validation orchestrator | full access; must not relay hidden inventory to reviewer |
+| Blind reviewer | explicit allowlist only |
 
-## Machine enforcement
+The current user and existing runtime sessions already know the reference. They can continue
+working as developers/orchestrators, but cannot later produce the formal blind proposal.
 
-`npm run uiux:test:discovery-contract` now asserts that the blind reviewer brief contains
-no desktop checkpoint identifiers, and that the discovery/augment scripts contain none.
+---
 
-This is a lint, not a proof. It cannot detect a reviewer that was handed forbidden
-material out of band. Reviewer independence still has to be recorded honestly under R2.
+## 6. Machine enforcement
 
-## Recommended R1 amendment
+`npm run uiux:test:discovery-contract` currently checks both:
 
-> R1 — Manifest independence. The blind reviewer operates from an explicit input
-> allowlist, not a forbidden-file list. Any file enumerating the expected checkpoint
-> inventory is out of scope, including the test-control API documentation, the
-> test-control source, the golden-path research record, persisted baseline manifests,
-> and detector/calibration artifacts. See
-> `ui-ux-golden-path-discovery/PHASE_A_CONTAMINATION_CONTROL.md`.
+1. the useful **development boundary** — discovery/augmentation code does not embed known
+   checkpoint IDs or consume the manifest/plan;
+2. parked future-validation hygiene — the blind-reviewer brief contains no checkpoint IDs
+   and critical leakage vectors are documented.
 
-An allowlist is safer than a denylist here: the denylist has already been shown to miss
-files, and new files enumerating checkpoints will keep appearing.
+The second category is preserved so the future validation harness does not decay while V1
+is being built. It is not a current requirement that development agents themselves remain
+blind.
+
+---
+
+## 7. Future activation gate
+
+Do not activate the blind-review process until Stage 2 freezes a V1 implementation with:
+
+- pinned discovery code/input/output contract;
+- stable mechanical sampling;
+- explicit CTWalk adapter boundary;
+- known limitations / `not_covered`;
+- no further oracle-driven mechanism tuning during the validation attempt.
+
+Then re-scan contamination surfaces, freeze the validation evidence, and use the allowlist.
+
+The sequencing rule is now:
+
+```text
+supervised development
+→ V1 freeze
+→ blind validation
+```
+
+not:
+
+```text
+supervised development and blind validation simultaneously
+```
