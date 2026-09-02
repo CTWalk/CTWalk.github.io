@@ -46,3 +46,32 @@ test('V1 review handoff declares CTWalk adapter knowledge', () => {
   assert.match(augment, /__portfolioTest\.waitForVisualSettle/);
   assert.match(augment, /adapter_knowledge_must_be_reported/);
 });
+
+const briefPath = path.join(repoRoot, 'ui-ux-golden-path-discovery', 'PHASE_A_BLIND_REVIEWER_BRIEF.md');
+const controlPath = path.join(repoRoot, 'ui-ux-golden-path-discovery', 'PHASE_A_CONTAMINATION_CONTROL.md');
+
+// Any file the blind reviewer is allowed to read must not enumerate the expected
+// checkpoint inventory. R1's original two-file denylist was shown to miss 11 further
+// files, so the reviewer now works from an allowlist and the allowed files are linted.
+const CHECKPOINT_ID = /\b(?:commerce|nocode|social|cuesheet|dca|intro|outro)\.[a-z][a-z-]*\b/g;
+
+test('blind reviewer brief exists and leaks no checkpoint identifiers', async () => {
+  const brief = await fsp.readFile(briefPath, 'utf8');
+  assert.deepEqual(brief.match(CHECKPOINT_ID) ?? [], []);
+  assert.match(brief, /not_covered/);
+  assert.match(brief, /do not revise this file/i);
+});
+
+test('discovery and augment scripts leak no checkpoint identifiers', () => {
+  assert.deepEqual(discovery.match(CHECKPOINT_ID) ?? [], []);
+  assert.deepEqual(augment.match(CHECKPOINT_ID) ?? [], []);
+});
+
+test('contamination control names the critical leakage vectors', async () => {
+  const control = await fsp.readFile(controlPath, 'utf8');
+  for (const f of [
+    'docs/ui-ux/UI_UX_TEST_CONTROL.md',
+    'docs/ui-ux/UI_UX_GOLDEN_PATH_DISCOVERY_RESEARCH.md',
+    'scripts/controls/ui-ux-test-control.js'
+  ]) assert.ok(control.includes(f), `contamination control must quarantine ${f}`);
+});
