@@ -5,6 +5,7 @@
     "uiux:capture": "node scripts/run-ui-ux-baseline-capture.mjs",
     "uiux:capture:node": "node scripts/capture-ui-ux-baselines.mjs",
     "uiux:capture:python": "python3 scripts/capture-ui-ux-baselines.py",
+    "uiux:discover-golden-path": "node scripts/discovery/golden-path-discovery-v1.mjs",
     "uiux:test:mobile-entrance": "node --test scripts/tests/mobile-copy-entrance-trigger-order.test.mjs"
   },
   "devDependencies": {
