@@ -6,6 +6,8 @@
     "uiux:capture:node": "node scripts/capture-ui-ux-baselines.mjs",
     "uiux:capture:python": "python3 scripts/capture-ui-ux-baselines.py",
     "uiux:discover-golden-path": "node scripts/discovery/golden-path-discovery-v1.mjs && node scripts/discovery/augment-golden-path-review-packet-v1.mjs",
+    "uiux:diagnose-golden-path-v1": "node scripts/discovery/build-v1-development-diagnostic.mjs",
+    "uiux:develop-golden-path-v1": "npm run uiux:discover-golden-path && npm run uiux:diagnose-golden-path-v1",
     "uiux:test:discovery-contract": "node --test scripts/tests/golden-path-discovery-contract.test.mjs",
     "uiux:test:mobile-entrance": "node --test scripts/tests/mobile-copy-entrance-trigger-order.test.mjs"
   },
