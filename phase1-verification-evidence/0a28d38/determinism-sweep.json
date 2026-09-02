@@ -1,0 +1,652 @@
+[
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "intro.settled",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/intro.settled.pass1.png",
+      "sha": "27d91273eea61ab284d5168449e421766c6de7a256278b44f2792be8c52faa4e",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.200000286102295
+      },
+      "score": 1,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ]
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/intro.settled.pass2.png",
+      "sha": "27d91273eea61ab284d5168449e421766c6de7a256278b44f2792be8c52faa4e",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 56.90000009536743
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "intro.settled",
+    "viewport": "laptop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/intro.settled.pass1.png",
+      "sha": "809382e247ba12c973d26fcce9902b81bcd82c3b17efb7067ce3c5774388202c",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.5
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/intro.settled.pass2.png",
+      "sha": "809382e247ba12c973d26fcce9902b81bcd82c3b17efb7067ce3c5774388202c",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.19999980926514
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "intro.settled",
+    "viewport": "desktop",
+    "motion": "reduce",
+    "pass1": {
+      "path": "<probe>/final-determinism/intro.settled.pass1.png",
+      "sha": "878ccbba5efe6d5faeaa0459e55d847671ba2626ee0d8075cbd5f4760a2c9a67",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.5
+      },
+      "score": null,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/intro.settled.pass2.png",
+      "sha": "878ccbba5efe6d5faeaa0459e55d847671ba2626ee0d8075cbd5f4760a2c9a67",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.10000038146973
+      },
+      "score": null,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "commerce.expired-promo",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/commerce.expired-promo.pass1.png",
+      "sha": "d9bab955327eb49d3d08d2f1eb4acc4fab2b968b4580489a7c68dd7f36d814e5",
+      "documentProgress": 0.1147812965029762,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 89.5
+      },
+      "score": 0.5786828199999999,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/commerce.expired-promo.pass2.png",
+      "sha": "d9bab955327eb49d3d08d2f1eb4acc4fab2b968b4580489a7c68dd7f36d814e5",
+      "documentProgress": 0.1147812965029762,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 88
+      },
+      "score": 0.5786828199999999,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "commerce.unavailable",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/commerce.unavailable.pass1.png",
+      "sha": "f4e42496e078e77fb7a3932324c1f7dcc525daceaa486ccb5c0dcb3e8d7884a6",
+      "documentProgress": 0.14843391927083333,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 176.09999990463257
+      },
+      "score": 0.5799854999999999,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/commerce.unavailable.pass2.png",
+      "sha": "f4e42496e078e77fb7a3932324c1f7dcc525daceaa486ccb5c0dcb3e8d7884a6",
+      "documentProgress": 0.14843391927083333,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 193.5
+      },
+      "score": 0.5799854999999999,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "commerce.final-settled",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/commerce.final-settled.pass1.png",
+      "sha": "7dffff1881ffeff4b4c51defe903203eaa22ac27b34e23c3839c51b8f21a5265",
+      "documentProgress": 0.16332617187499998,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 177.80000019073486
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/commerce.final-settled.pass2.png",
+      "sha": "7dffff1881ffeff4b4c51defe903203eaa22ac27b34e23c3839c51b8f21a5265",
+      "documentProgress": 0.16332617187499998,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 190.19999980926514
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "commerce.reduced",
+    "viewport": "desktop",
+    "motion": "reduce",
+    "pass1": {
+      "path": "<probe>/final-determinism/commerce.reduced.pass1.png",
+      "sha": "2a2d58cc438d65e46e9fe66f7f96f91fd534847a62ef8ed9794be95d0ac40e0a",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 115.40000009536743
+      },
+      "score": null,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/commerce.reduced.pass2.png",
+      "sha": "2a2d58cc438d65e46e9fe66f7f96f91fd534847a62ef8ed9794be95d0ac40e0a",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 107.5
+      },
+      "score": null,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "nocode.execution",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/nocode.execution.pass1.png",
+      "sha": "fd7edfbcaabd116f140a7c422cffce1526d7474a872b2151a2a2a96c66a4a7c6",
+      "documentProgress": 0.23407796223958333,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 114.80000019073486
+      },
+      "score": 0.15,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/nocode.execution.pass2.png",
+      "sha": "fd7edfbcaabd116f140a7c422cffce1526d7474a872b2151a2a2a96c66a4a7c6",
+      "documentProgress": 0.23407796223958333,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 116
+      },
+      "score": 0.15,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "nocode.result-hold",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/nocode.result-hold.pass1.png",
+      "sha": "1de1c1c295f4b1ee70a8ebe87a9793c671ba18c78a266241541cef04c4b5a066",
+      "documentProgress": 0.3010354817708334,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 338.69999980926514
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/nocode.result-hold.pass2.png",
+      "sha": "1de1c1c295f4b1ee70a8ebe87a9793c671ba18c78a266241541cef04c4b5a066",
+      "documentProgress": 0.3010354817708334,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 334.90000009536743
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "social.final-phone",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/social.final-phone.pass1.png",
+      "sha": "fdbc8a1e5654fa39879ad878008ff1cbec943373f4744423efa6f181014c9762",
+      "documentProgress": 0.47358798363095234,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 232.19999980926514
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/social.final-phone.pass2.png",
+      "sha": "fdbc8a1e5654fa39879ad878008ff1cbec943373f4744423efa6f181014c9762",
+      "documentProgress": 0.47358798363095234,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 235.5
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/cuesheet.review.pass1.png",
+      "sha": "1ca7d1c2b21e59d7a4063cd083f97d60aecbbb02615bfa47aab8d3bd2c826c4e",
+      "documentProgress": 0.6273567475818453,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 157.7999997138977
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/cuesheet.review.pass2.png",
+      "sha": "1ca7d1c2b21e59d7a4063cd083f97d60aecbbb02615bfa47aab8d3bd2c826c4e",
+      "documentProgress": 0.6273567475818453,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 161.30000019073486
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "cuesheet.review",
+    "viewport": "laptop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/cuesheet.review.pass1.png",
+      "sha": "37ae9d16f27ee6a8463b440af34b8c0256c482d30db9c603977df06441ccd688",
+      "documentProgress": 0.6273060825892857,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 123.59999990463257
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/cuesheet.review.pass2.png",
+      "sha": "37ae9d16f27ee6a8463b440af34b8c0256c482d30db9c603977df06441ccd688",
+      "documentProgress": 0.6273060825892857,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 121.69999980926514
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "dca.early-contribution",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/dca.early-contribution.pass1.png",
+      "sha": "b5971e2f036745b98826d2e0e7d873539c62e88ec292b90add53bf530189b3e0",
+      "documentProgress": 0.7547898065476191,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 82.90000009536743
+      },
+      "score": 0.998449,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/dca.early-contribution.pass2.png",
+      "sha": "b5971e2f036745b98826d2e0e7d873539c62e88ec292b90add53bf530189b3e0",
+      "documentProgress": 0.7547898065476191,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 85.59999990463257
+      },
+      "score": 0.998449,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "dca.pass",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/dca.pass.pass1.png",
+      "sha": "ffd8c386a5715fb2603219cd709404f3ec8004f914c02c11afb6effdda6416f5",
+      "documentProgress": 0.9353422619047619,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 94.40000009536743
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/dca.pass.pass2.png",
+      "sha": "ffd8c386a5715fb2603219cd709404f3ec8004f914c02c11afb6effdda6416f5",
+      "documentProgress": 0.9353422619047619,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 91.30000019073486
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "dca.reduced",
+    "viewport": "desktop",
+    "motion": "reduce",
+    "pass1": {
+      "path": "<probe>/final-determinism/dca.reduced.pass1.png",
+      "sha": "b0b7130829f54f995f65dbbcdac1e7a0dff82977ac614a08dcabcde2a7067695",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 170.40000009536743
+      },
+      "score": null,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/dca.reduced.pass2.png",
+      "sha": "b0b7130829f54f995f65dbbcdac1e7a0dff82977ac614a08dcabcde2a7067695",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 166.69999980926514
+      },
+      "score": null,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "outro.settled",
+    "viewport": "desktop",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/outro.settled.pass1.png",
+      "sha": "5c45272614507aa763fe08c83c07baf39e9b2d4bcba0e8dbe1d3453de4bd6a40",
+      "documentProgress": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 58.09999990463257
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/outro.settled.pass2.png",
+      "sha": "5c45272614507aa763fe08c83c07baf39e9b2d4bcba0e8dbe1d3453de4bd6a40",
+      "documentProgress": 1,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 57.90000009536743
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "outro.reduced",
+    "viewport": "desktop",
+    "motion": "reduce",
+    "pass1": {
+      "path": "<probe>/final-determinism/outro.reduced.pass1.png",
+      "sha": "1a938cc60d9c361de6c8bbe6bc3c85afd5965bb024730ead20666d32cd2e174f",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 148.90000009536743
+      },
+      "score": null,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/outro.reduced.pass2.png",
+      "sha": "1a938cc60d9c361de6c8bbe6bc3c85afd5965bb024730ead20666d32cd2e174f",
+      "documentProgress": null,
+      "settle": {
+        "settled": true,
+        "stableFrames": 4,
+        "elapsedMs": 148.69999980926514
+      },
+      "score": null,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "mobile.fallback",
+    "viewport": "mobile",
+    "motion": "normal",
+    "pass1": {
+      "path": "<probe>/final-determinism/mobile.fallback.pass1.png",
+      "sha": "d4d86e60b83379f767d8b6f04eaaaae2094bd061d0c6b9acb4be1d275b178842",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 32.69999980926514
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/mobile.fallback.pass2.png",
+      "sha": "d4d86e60b83379f767d8b6f04eaaaae2094bd061d0c6b9acb4be1d275b178842",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 32.59999990463257
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "fresh-context-repeat",
+    "checkpoint_id": "mobile.fallback.reduced",
+    "viewport": "mobile",
+    "motion": "reduce",
+    "pass1": {
+      "path": "<probe>/final-determinism/mobile.fallback.reduced.pass1.png",
+      "sha": "d4d86e60b83379f767d8b6f04eaaaae2094bd061d0c6b9acb4be1d275b178842",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 32.69999980926514
+      },
+      "score": 1,
+      "errors": []
+    },
+    "pass2": {
+      "path": "<probe>/final-determinism/mobile.fallback.reduced.pass2.png",
+      "sha": "d4d86e60b83379f767d8b6f04eaaaae2094bd061d0c6b9acb4be1d275b178842",
+      "documentProgress": 0,
+      "settle": {
+        "settled": true,
+        "stableFrames": 3,
+        "elapsedMs": 32.700000286102295
+      },
+      "score": 1,
+      "errors": []
+    },
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "outro-path-independence",
+    "comparison": "A-vs-B",
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "outro-path-independence",
+    "comparison": "A-vs-C",
+    "diff": {
+      "identicalBytes": true
+    }
+  },
+  {
+    "kind": "outro-path-independence",
+    "comparison": "B-vs-C",
+    "diff": {
+      "identicalBytes": true
+    }
+  }
+]

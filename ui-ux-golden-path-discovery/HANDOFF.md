@@ -76,6 +76,9 @@ Two fixes on this branch made it deterministic:
 | `3e888aa` | Intro Three.js loop was free-running on the rAF timestamp; frozen at a fixed time under `?uiux-test=1` only | before: 2.17% differing px / Δ32 desktop, 0.78% / Δ11 laptop. after: byte-identical |
 | `0a28d38` | Reduced-motion `!important` collision positioned centered scene copy by its top-left corner, clipping the title | title extents `[794.5..1445.5]` → `[394.5..1045.5]` at vw 1440 |
 
+Evidence committed at `phase1-verification-evidence/0a28d38/` — quarantined from the
+blind reviewer, but verifiable by the orchestrator instead of taken on trust.
+
 **Full determinism sweep at `0a28d38`: 22/22 comparisons byte-identical** — 19 same-route
 checkpoints in torn-down fresh contexts, 3 alternate-route path comparisons. No tolerance
 invoked, no masks.
@@ -101,8 +104,12 @@ this is the part with evidence behind it.
 
 ### 4.3 Reusable probe techniques
 
-In `scripts/review/` (quarantined from the blind reviewer for ID leakage, but the
-*techniques* are reusable):
+Corrected probes are at `phase1-verification-evidence/0a28d38/tools/`. The older copies in
+`scripts/review/` predate three probe-level bug fixes documented in that directory's
+README — including the scene-identity-from-opacity bug that appeared in **two
+independently written tools**. Prefer the corrected copies.
+
+Techniques worth carrying:
 
 - pixel diff via the browser's own canvas — no image library dependency;
 - fresh-context repeatability — tear the context down, do not re-navigate;

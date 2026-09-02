@@ -70,6 +70,7 @@ docs/ui-ux/UI_UX_REVIEW_METHOD.md
 scripts/controls/ui-ux-test-control.js
 scripts/review/**
 ui-ux-baselines/**
+phase1-verification-evidence/**
 pre-skill-bundle/**                     (see note)
 ui-ux-golden-path-discovery/COMPETITIVE_UNKNOWNS_AUDIT_48.md
 ui-ux-golden-path-discovery/EXECUTION_REVIEW_48.md
