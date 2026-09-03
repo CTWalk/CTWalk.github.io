@@ -4,7 +4,10 @@
   "scripts": {
     "uiux:capture": "node scripts/run-ui-ux-baseline-capture.mjs",
     "uiux:capture:node": "node scripts/capture-ui-ux-baselines.mjs",
-    "uiux:capture:python": "python3 scripts/capture-ui-ux-baselines.py"
+    "uiux:capture:python": "python3 scripts/capture-ui-ux-baselines.py",
+    "uiux:test:mobile-entrance": "node --test scripts/tests/mobile-copy-entrance-trigger-order.test.mjs",
+    "uiux:test:presentation-ownership": "node --test scripts/tests/presentation-ownership-source.test.mjs",
+    "uiux:test:integration": "node --test scripts/tests/mobile-copy-entrance-trigger-order.test.mjs scripts/tests/presentation-ownership-source.test.mjs"
   },
   "devDependencies": {
     "playwright": "1.55.0"

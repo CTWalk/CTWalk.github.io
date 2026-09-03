@@ -40,7 +40,7 @@
     }
     @media(prefers-reduced-motion:reduce){
       .commerce-phone-screen img{opacity:0!important;transform:none!important;filter:none!important}
-      .commerce-phone-expired{opacity:1!important}
+      .commerce-phone-screen img.commerce-phone-expired{opacity:1!important}
       .commerce-transition-layer{display:none!important}
     }
   `;
