@@ -8,9 +8,9 @@
   if (!scene || !experience || !oldPlate) return;
 
   const assets = {
-    checkout: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/checkout-412x915.png',
-    expired: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/expired-coupon-412x915.png',
-    unavailable: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/assets/showcase/unavailable-variant-412x1000.png'
+    checkout: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/evidence/product/customer-checkout-android-api36.png',
+    expired: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/evidence/product/customer-coupon-rejected-android-api36.png',
+    unavailable: 'https://raw.githubusercontent.com/CTWalk/CommerceOps/main/evidence/product/customer-product-unavailable-android-api36.png'
   };
 
   const style = document.createElement('style');
