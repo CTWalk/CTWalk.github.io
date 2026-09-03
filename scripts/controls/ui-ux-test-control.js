@@ -12,6 +12,36 @@
   html.style.scrollBehavior = 'auto';
   html.dataset.uiuxTest = 'true';
 
+  // The production Outro heatmap intentionally responds to entry history and
+  // pointer discovery. Under ?uiux-test=1 its visible cells are pinned by an
+  // !important test-only layer so screenshot state is path-independent while
+  // the normal production runtime remains untouched.
+  if (!reduced) {
+    const deterministicStyle = document.createElement('style');
+    deterministicStyle.dataset.uiuxTestDeterminism = 'true';
+    deterministicStyle.textContent = `
+      html[data-uiux-test="true"] .outro-heatmap-cell{
+        background:rgb(16,20,17)!important;
+        border-color:rgba(255,255,255,.035)!important;
+        box-shadow:none!important
+      }
+      html[data-uiux-test="true"] .outro-heatmap-cell[data-uiux-test-heat="low"]{
+        background:rgb(22,48,29)!important;
+        border-color:rgba(156,241,170,.07)!important
+      }
+      html[data-uiux-test="true"] .outro-heatmap-cell[data-uiux-test-heat="mid"]{
+        background:rgb(27,78,39)!important;
+        border-color:rgba(156,241,170,.10)!important
+      }
+      html[data-uiux-test="true"] .outro-heatmap-cell[data-uiux-test-heat="peak"]{
+        background:rgb(37,112,52)!important;
+        border-color:rgba(156,241,170,.14)!important;
+        box-shadow:0 0 7px rgba(92,221,119,.08),inset 0 1px 0 rgba(255,255,255,.05)!important
+      }
+    `;
+    document.head.appendChild(deterministicStyle);
+  }
+
   const sceneIds = {
     intro: '0',
     commerce: '1',
@@ -60,6 +90,26 @@
     return color === 'transparent' ? 0 : 1;
   }
 
+  function applyOutroDeterministicState() {
+    if (reduced) return true;
+    const cells = [...document.querySelectorAll('.scene[data-scene="6"] .outro-heatmap-cell')];
+    if (!cells.length) return false;
+
+    const columns = 1 + Math.max(0, ...cells.map(cell => Number(cell.dataset.col) || 0));
+    const centerRow = 3;
+    const centerCol = Math.round((columns - 1) * .68);
+
+    cells.forEach(cell => {
+      const row = Number(cell.dataset.row) || 0;
+      const col = Number(cell.dataset.col) || 0;
+      const distance = Math.hypot((col - centerCol) * .82, row - centerRow);
+      const heat = distance < .75 ? 'peak' : distance < 1.65 ? 'mid' : distance < 2.8 ? 'low' : '';
+      if (heat) cell.dataset.uiuxTestHeat = heat;
+      else delete cell.dataset.uiuxTestHeat;
+    });
+    return true;
+  }
+
   function documentProgress() {
     if (reduced) return 0;
     const travel = Math.max(1, experience.offsetHeight - window.innerHeight);
@@ -72,6 +122,7 @@
     const travel = Math.max(1, experience.offsetHeight - window.innerHeight);
     window.scrollTo(0, travel * clamp(progress));
     await flushFrames(2);
+    applyOutroDeterministicState();
   }
 
   async function waitForAssets(timeoutMs = 8000) {
@@ -217,12 +268,20 @@
     'commerce.expired-promo': {
       scene: 'commerce',
       range: [0.34, 0.68],
-      score: scene => opacityOf(scene.querySelector('.commerce-transition-expired'))
+      score: scene => {
+        const word = opacityOf(scene.querySelector('.commerce-transition-expired'));
+        const phone = opacityOf(scene.querySelector('.commerce-phone-expired'));
+        return word * phone;
+      }
     },
     'commerce.unavailable': {
       scene: 'commerce',
       range: [0.58, 0.86],
-      score: scene => opacityOf(scene.querySelector('.commerce-transition-unavailable'))
+      score: scene => {
+        const word = opacityOf(scene.querySelector('.commerce-transition-unavailable'));
+        const phone = opacityOf(scene.querySelector('.commerce-phone-unavailable'));
+        return word * phone;
+      }
     },
     'commerce.final-settled': {
       scene: 'commerce',
@@ -250,10 +309,9 @@
     'nocode.execution': {
       scene: 'nocode',
       range: [0.30, 0.72],
-      score: scene => {
-        const steps = [...scene.querySelectorAll('.nocode-step')];
-        return Math.max(0, ...steps.map(backgroundAlpha));
-      }
+      score: scene => backgroundAlpha(
+        scene.querySelector('.nocode-step[data-nocode-step="1"]')
+      )
     },
     'nocode.result-hold': {
       scene: 'nocode',
@@ -449,6 +507,7 @@
     let stableFrames = 0;
     let previous = '';
 
+    applyOutroDeterministicState();
     await flushFrames(2);
 
     while (performance.now() - started < timeoutMs) {
@@ -467,6 +526,7 @@
 
   async function goToCheckpoint(checkpointId) {
     const normalized = normalizeCheckpoint(checkpointId);
+    applyOutroDeterministicState();
 
     if (normalized.endsWith('.reduced')) {
       const sceneName = normalized.slice(0, -'.reduced'.length);
@@ -511,6 +571,7 @@
   async function ready() {
     if (document.fonts?.ready) await document.fonts.ready;
     const assetsReady = await waitForAssets();
+    applyOutroDeterministicState();
     await flushFrames(4);
     return { assetsReady, ...getState() };
   }

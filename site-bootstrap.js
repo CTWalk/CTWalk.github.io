@@ -34,26 +34,10 @@
   if (mobileQuery.matches) {
     html.dataset.presentation = 'mobile-fallback';
 
-    // The main inline scene loop is scheduled before this bootstrap runs. It is
-    // a global lexical binding, so cancel it before the browser reaches its first
-    // paint. Desktop project scenes then remain inert and hidden on mobile.
-    try {
-      if (typeof raf !== 'undefined' && raf) {
-        cancelAnimationFrame(raf);
-        raf = 0;
-      }
-    } catch (error) {
-      console.error('[site-bootstrap] unable to stop desktop scene frame', error);
-    }
-
-    // The existing pointer listener was registered by the desktop script. A
-    // capture-phase guard prevents it from mutating desktop parallax state while
-    // the mobile presentation owns the viewport.
-    window.addEventListener('pointermove', event => event.stopImmediatePropagation(), {
-      capture: true,
-      passive: true
-    });
-
+    // Mobile first-paint and desktop-runtime ownership are decided directly by
+    // index.html before this bootstrap runs. This branch only finalizes the DOM
+    // isolation and loads the dedicated mobile runtime; it must not need to undo
+    // an already-running desktop controller.
     const experience = document.getElementById('experience');
     if (experience) {
       experience.hidden = true;
