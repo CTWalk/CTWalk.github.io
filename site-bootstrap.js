@@ -95,6 +95,7 @@
   (async () => {
     // Preserve the established desktop initialization order so this structural
     // cleanup does not alter animation-writer precedence or the accepted design.
+    await loadSafely('./english-copy.js');
     await loadSafely('./assets/js/social-runtime.js');
     await loadSafely('./assets/js/commerce-integrated.js');
     await loadSafely('./assets/js/outro-heatmap.js');
