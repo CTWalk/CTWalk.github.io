@@ -24,7 +24,9 @@
       text-wrap:initial
     }
     html[lang="en"] .scene-title[data-semantic-lines="true"] .semantic-title-group{
-      display:inline-block
+      display:inline-block;
+      min-width:100%;
+      width:max-content
     }
     html[lang="en"] .scene-title[data-semantic-lines="true"] .semantic-title-line{
       display:block;
