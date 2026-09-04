@@ -39,6 +39,31 @@ test('mobile CSS hides the desktop experience before runtime ownership settles',
   assert.match(indexSource, /html,body\{background:#050609\}/);
 });
 
+test('desktop starts non-paintable and reveals only after accepted runtime initialization', () => {
+  assert.match(indexSource, /<html lang="en" data-presentation="pending">/);
+  assert.match(
+    indexSource,
+    /html\[data-presentation="pending"\] \.experience\{visibility:hidden\}/,
+    'desktop static markup must be hidden before the first visible frame'
+  );
+  assertInOrder(
+    bootstrapSource,
+    [
+      "html.dataset.presentation = 'pending'",
+      "loadSafely('./english-copy.js')",
+      "loadSafely('./assets/js/social-runtime.js')",
+      "loadSafely('./assets/js/commerce-integrated.js')",
+      "loadSafely('./assets/js/outro-heatmap.js')",
+      "loadSafely('./assets/js/typography-runtime.js')",
+      "loadSafely('./assets/js/evidence-readability.js')",
+      "loadSafely('./assets/js/experience-pacing.js')",
+      "loadSafely('./scripts/controls/ui-ux-test-control.js')",
+      "html.dataset.presentation = 'desktop'"
+    ],
+    'desktop first-paint ownership'
+  );
+});
+
 test('desktop evidence is deferred on mobile and hydrated only for desktop presentation', () => {
   const deferredAssets = indexSource.match(/data-desktop-src=/g) || [];
   assert.ok(deferredAssets.length >= 10, 'expected desktop evidence assets to be deferred through data-desktop-src');
@@ -72,23 +97,6 @@ test('breakpoint crossing reloads to rebuild presentation ownership cleanly', ()
   assert.match(
     bootstrapSource,
     /mobileQuery\.addEventListener\('change', event => \{[\s\S]*?if \(nextPresentation !== presentationAtLoad\) window\.location\.reload\(\);[\s\S]*?\}\);/
-  );
-});
-
-test('desktop runtime initialization order remains the approved ff06 order', () => {
-  assertInOrder(
-    bootstrapSource,
-    [
-      "html.dataset.presentation = 'desktop'",
-      "loadSafely('./assets/js/social-runtime.js')",
-      "loadSafely('./assets/js/commerce-integrated.js')",
-      "loadSafely('./assets/js/outro-heatmap.js')",
-      "loadSafely('./assets/js/typography-runtime.js')",
-      "loadSafely('./assets/js/evidence-readability.js')",
-      "loadSafely('./assets/js/experience-pacing.js')",
-      "loadSafely('./scripts/controls/ui-ux-test-control.js')"
-    ],
-    'desktop runtime order'
   );
 });
 
