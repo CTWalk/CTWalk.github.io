@@ -4,68 +4,196 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CommerceOps Privacy Policy</title>
-  <meta name="description" content="Privacy Policy for the CommerceOps iOS practice and simulation application.">
+  <meta name="description" content="Privacy Policy for the CommerceOps iOS App Store release.">
   <style>
-    :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    body { margin: 0; background: Canvas; color: CanvasText; }
-    main { max-width: 760px; margin: 0 auto; padding: 48px 22px 72px; line-height: 1.65; }
-    h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 0 0 10px; }
-    h2 { margin-top: 2rem; font-size: 1.25rem; }
-    .meta { opacity: .72; margin-top: 0; }
-    .notice { border: 1px solid color-mix(in srgb, CanvasText 18%, transparent); border-radius: 12px; padding: 14px 16px; }
-    a { color: LinkText; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d0f;
+      --text: #ffffff;
+      --soft: rgba(255, 255, 255, 0.88);
+      --muted: rgba(255, 255, 255, 0.62);
+      --line: rgba(255, 255, 255, 0.16);
+      --accent: #c8d5ff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--bg); }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    main {
+      width: min(100% - 44px, 760px);
+      margin: 0 auto;
+      padding: 64px 0 88px;
+    }
+
+    header {
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 36px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      font-weight: 650;
+    }
+
+    .effective-date {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .intro {
+      margin: 0 0 36px;
+      color: var(--soft);
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    section { margin-top: 34px; }
+
+    h2 {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 1.18rem;
+      line-height: 1.35;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+
+    p, li {
+      color: var(--soft);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    p { margin: 0 0 14px; }
+
+    ul {
+      margin: 10px 0 16px;
+      padding-left: 1.35rem;
+    }
+
+    li + li { margin-top: 5px; }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 520px) {
+      main {
+        width: min(100% - 36px, 760px);
+        padding: 44px 0 64px;
+      }
+
+      header {
+        padding-bottom: 22px;
+        margin-bottom: 30px;
+      }
+
+      .intro {
+        font-size: 1.03rem;
+      }
+    }
   </style>
 </head>
 <body>
-<main>
-  <h1>CommerceOps Privacy Policy</h1>
-  <p class="meta">Effective: September 3, 2026</p>
+  <main>
+    <article>
+      <header>
+        <h1>CommerceOps Privacy Policy</h1>
+        <p class="effective-date"><strong>Effective Date:</strong> September 4, 2026</p>
+      </header>
 
-  <p class="notice"><strong>CommerceOps is a training and workflow-simulation application.</strong> The iOS App Store version is designed to run its commerce practice workflows locally on your device and does not require a CommerceOps production account or remote CommerceOps backend.</p>
+      <p class="intro">CommerceOps is a commerce workflow training and simulation application.</p>
 
-  <h2>Information stored by the app</h2>
-  <p>CommerceOps stores practice state locally on your device so that simulated workflows can continue between sessions. This can include the selected demo role/session, cart and order state, simulated returns and refunds, inventory and fulfillment changes, reward and store selections, manually entered store-search text, locally submitted practice feedback, and app-generated audit/event history.</p>
-  <p>The app includes bundled demo accounts and synthetic fixture information for training. These are not real customer accounts. CommerceOps does not provide public account registration in the iOS 1.0 release.</p>
+      <section aria-labelledby="data-collection">
+        <h2 id="data-collection">1. Data Collection</h2>
+        <p>CommerceOps does not collect, transmit, sell, or share personal data with the developer.</p>
+        <p>The App Store release is designed to operate primarily on-device. Practice state and simulated commerce data are stored locally on the user's device.</p>
+      </section>
 
-  <h2>CommerceOps Pro subscription</h2>
-  <p>CommerceOps Pro is an optional auto-renewable subscription sold through Apple's App Store. Apple handles the purchase, billing account, payment method, renewal, cancellation, and App Store transaction infrastructure.</p>
-  <p>The app uses Apple's StoreKit framework on the device to load the subscription product and localized price, initiate purchases or restores, and verify whether the Apple Account currently has an active CommerceOps Pro entitlement. That entitlement status is used only to unlock the Support, Supervisor, and Operations training workspaces and advanced multi-role scenarios. CommerceOps does not operate a billing server for the iOS 1.0 release and does not receive or store your full App Store payment-card information.</p>
-  <p>Apple may process purchase, account, device, and payment information under Apple's own privacy terms and App Store policies.</p>
+      <section aria-labelledby="local-data">
+        <h2 id="local-data">2. Local Application Data</h2>
+        <p>CommerceOps may store local application state such as:</p>
+        <ul>
+          <li>practice workflow progress</li>
+          <li>simulated orders</li>
+          <li>simulated inventory data</li>
+          <li>simulated refund state</li>
+          <li>application preferences</li>
+        </ul>
+        <p>This information remains on the device and is not transmitted to the developer.</p>
+      </section>
 
-  <h2>Payment simulation inside training workflows</h2>
-  <p>Commerce workflow checkout is simulated and is separate from the real CommerceOps Pro App Store subscription. The simulated checkout form may display fields for a cardholder name, card number, expiry date, and CVC, but CommerceOps does not read, save, or transmit the full values entered into those checkout fields. Completing the simulated payment records only a fixed practice payment result.</p>
-  <p>The separate practice payment-method feature can store a user-entered card label, card brand, last four digits, and expiry value locally on the device. Do not enter real payment credentials into CommerceOps. Full card numbers and CVC values are not required for saved practice payment methods.</p>
+      <section aria-labelledby="camera-location">
+        <h2 id="camera-location">3. Camera and Location</h2>
+        <p>CommerceOps may request access to device capabilities such as the camera or location for supported training workflows.</p>
+        <p>When used, this information is processed on-device for the relevant feature and is not transmitted to or stored by the developer.</p>
+      </section>
 
-  <h2>Camera</h2>
-  <p>Camera access is optional and is requested only when you choose the camera action on the item-scan screen. In the iOS 1.0 release, the camera is used for an on-screen preview. CommerceOps does not upload or retain camera images or video. Manual barcode entry remains available without camera access.</p>
+      <section aria-labelledby="simulated-commerce">
+        <h2 id="simulated-commerce">4. Simulated Commerce and Payment Information</h2>
+        <p>CommerceOps contains simulated shopping, checkout, payment, order, and refund workflows for training purposes.</p>
+        <p>Simulated commerce transactions are not real purchases.</p>
+        <p>The application does not collect, store, or transmit full payment card numbers or card security codes entered into simulated payment interfaces.</p>
+      </section>
 
-  <h2>Location</h2>
-  <p>Location access is optional and is requested only when you choose to use your current location while browsing practice stores. CommerceOps does not retain or transmit your latitude or longitude. The app records only the resulting local permission state for the practice workflow and uses a simulated local search result. Manual city/address search remains available without location access.</p>
+      <section aria-labelledby="pro-subscription">
+        <h2 id="pro-subscription">5. CommerceOps Pro Subscription</h2>
+        <p>CommerceOps Pro is an optional auto-renewable subscription processed through Apple's App Store and StoreKit.</p>
+        <p>Real subscription purchases, billing, payment processing, subscription status, cancellation, and related transaction information are handled by Apple.</p>
+        <p>The developer does not receive the user's full payment information.</p>
+        <p>Apple's own privacy policy applies to information processed by Apple.</p>
+      </section>
 
-  <h2>Network access, analytics, advertising, and tracking</h2>
-  <p>The CommerceOps iOS 1.0 practice runtime does not send its commerce workflow state to a CommerceOps server. It does not include first-party advertising, behavioral tracking, or an analytics service in the shipped application runtime.</p>
-  <p>Network access can occur when the app communicates with Apple's App Store services for CommerceOps Pro product information, purchase, restore, and entitlement verification, and when you open public CommerceOps privacy/support pages. CommerceOps does not add a first-party analytics or advertising layer to those interactions.</p>
-  <p>If you open this privacy page or the CommerceOps support page, those public pages are hosted by GitHub Pages. GitHub may process ordinary web-request information such as IP address, browser/device information, and service logs under GitHub's own privacy terms. CommerceOps does not add analytics or advertising scripts to these pages.</p>
+      <section aria-labelledby="external-links">
+        <h2 id="external-links">6. External Links</h2>
+        <p>CommerceOps may provide links to external services such as Apple subscription management, support resources, or policy pages.</p>
+        <p>Those external services are governed by their own privacy practices.</p>
+      </section>
 
-  <h2>Support email</h2>
-  <p>If you contact CommerceOps Support by email, your email provider and Google's Gmail service will process the address, message content, attachments, and related delivery metadata needed to send and receive that message. Please do not send passwords, full payment-card information, or other sensitive information. Support correspondence is used only to respond to the request and can be deleted on request when it is no longer required for the support conversation.</p>
+      <section aria-labelledby="analytics-advertising">
+        <h2 id="analytics-advertising">7. Analytics and Advertising</h2>
+        <p>CommerceOps does not currently include third-party advertising, behavioral tracking, or third-party analytics SDKs in the App Store release.</p>
+      </section>
 
-  <h2>Retention and deletion</h2>
-  <p>Local practice state remains on the device until it is reset or the app's local storage is cleared, such as by removing the app. The app's reset function restores the bundled deterministic practice state.</p>
-  <p>CommerceOps Pro subscription and transaction records are managed by Apple according to Apple's account, billing, legal, and retention requirements. Canceling a subscription stops future renewal but does not necessarily delete Apple's historical transaction records.</p>
-  <p>For support emails, you may request correction or deletion of information you sent by contacting the address below. Requests concerning data held by third-party services are also subject to those services' own policies and legal obligations.</p>
+      <section aria-labelledby="childrens-privacy">
+        <h2 id="childrens-privacy">8. Children's Privacy</h2>
+        <p>CommerceOps is not specifically designed for children and does not knowingly collect personal information from children.</p>
+      </section>
 
-  <h2>Your choices</h2>
-  <p>You can decline camera or location permission and continue using the corresponding manual alternatives. You can later review or revoke these permissions in iOS Settings.</p>
-  <p>You can use the customer-side CommerceOps training workflow without CommerceOps Pro. If you subscribe to Pro, you can manage or cancel the subscription through Apple's subscription settings. Pro access normally continues until the end of the current paid entitlement period after cancellation.</p>
+      <section aria-labelledby="policy-changes">
+        <h2 id="policy-changes">9. Changes to This Policy</h2>
+        <p>This Privacy Policy may be updated if CommerceOps functionality, data practices, or legal requirements change.</p>
+        <p>The latest version will remain available at this URL.</p>
+      </section>
 
-  <h2>Contact</h2>
-  <p>For privacy questions or requests, contact <a href="mailto:x3434390@gmail.com">x3434390@gmail.com</a>.</p>
-  <p>General support is available on the <a href="./support.html">CommerceOps Support page</a>.</p>
-
-  <h2>Changes to this policy</h2>
-  <p>If CommerceOps adds public accounts, a CommerceOps backend, analytics, advertising, tracking, or other material data handling in a future release, this policy will be updated before that behavior is distributed.</p>
-</main>
+      <section aria-labelledby="contact">
+        <h2 id="contact">10. Contact</h2>
+        <p>For privacy questions regarding CommerceOps:</p>
+        <p>Email: <a href="mailto:x3434390@gmail.com">x3434390@gmail.com</a></p>
+      </section>
+    </article>
+  </main>
 </body>
 </html>
