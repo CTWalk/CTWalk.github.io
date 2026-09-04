@@ -72,7 +72,10 @@
     return;
   }
 
-  html.dataset.presentation = 'desktop';
+  // Desktop begins in a non-paintable state established by index.html. Keep it
+  // pending until the accepted copy and production runtimes have all had a chance
+  // to initialize, so obsolete static evidence/copy cannot become a visible frame.
+  html.dataset.presentation = 'desktop-pending';
 
   const style = document.createElement('style');
   style.dataset.nocodeRunnerScale = 'true';
@@ -106,5 +109,10 @@
     if (params.get('uiux-test') === '1') {
       await loadSafely('./scripts/controls/ui-ux-test-control.js');
     }
+
+    // Do not wait for evidence images or the optional Three.js module. The gate
+    // protects presentation ownership only; network assets continue loading with
+    // the same timing they had before this fix.
+    html.dataset.presentation = 'desktop';
   })();
 })();
