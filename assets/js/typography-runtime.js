@@ -16,6 +16,29 @@
     html[lang="en"] .intro .scene-title{max-width:15ch}
     html[lang="en"] .scene.center:not(.intro) .scene-title{max-width:20ch}
 
+    /* Approved English hard breaks are semantic composition beats, not hints
+       for the browser to rebalance. Keep each authored line intact on desktop. */
+    html[lang="en"] .scene-title[data-semantic-lines="true"]{
+      max-width:none;
+      white-space:normal;
+      text-wrap:initial
+    }
+    html[lang="en"] .scene-title[data-semantic-lines="true"] .semantic-title-group{
+      display:inline-block;
+      min-width:100%;
+      width:max-content
+    }
+    html[lang="en"] .scene-title[data-semantic-lines="true"] .semantic-title-line{
+      display:block;
+      white-space:nowrap
+    }
+    html[lang="en"] .scene.right .scene-title[data-semantic-lines="true"]{
+      text-align:right
+    }
+    html[lang="en"] .scene.right .scene-title[data-semantic-lines="true"] .semantic-title-group{
+      text-align:left
+    }
+
     .scene-label{
       font-size:var(--text-small);
       letter-spacing:.085em
@@ -65,4 +88,41 @@
     }
   `;
   document.head.appendChild(style);
+
+  function syncSemanticHeadlineLines() {
+    const english = document.documentElement.lang === 'en';
+
+    document.querySelectorAll('.scene-title[data-i18n]').forEach(title => {
+      if (!english) {
+        delete title.dataset.semanticLines;
+        return;
+      }
+
+      const raw = title.textContent || '';
+      const lines = raw.split('\n').map(line => line.trim()).filter(Boolean);
+      if (lines.length < 2) {
+        delete title.dataset.semanticLines;
+        return;
+      }
+
+      const group = document.createElement('span');
+      group.className = 'semantic-title-group';
+
+      lines.forEach((line, index) => {
+        if (index) group.appendChild(document.createTextNode('\n'));
+        const span = document.createElement('span');
+        span.className = 'semantic-title-line';
+        span.textContent = line;
+        group.appendChild(span);
+      });
+
+      title.replaceChildren(group);
+      title.dataset.semanticLines = 'true';
+    });
+  }
+
+  syncSemanticHeadlineLines();
+  document.querySelectorAll('.lang-switch button').forEach(button => {
+    button.addEventListener('click', syncSemanticHeadlineLines);
+  });
 })();

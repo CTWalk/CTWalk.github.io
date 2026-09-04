@@ -7,7 +7,8 @@
     "uiux:capture:python": "python3 scripts/capture-ui-ux-baselines.py",
     "uiux:test:mobile-entrance": "node --test scripts/tests/mobile-copy-entrance-trigger-order.test.mjs",
     "uiux:test:presentation-ownership": "node --test scripts/tests/presentation-ownership-source.test.mjs",
-    "uiux:test:integration": "node --test scripts/tests/mobile-copy-entrance-trigger-order.test.mjs scripts/tests/presentation-ownership-source.test.mjs"
+    "uiux:test:desktop-composition": "node --test scripts/tests/desktop-semantic-composition-source.test.mjs",
+    "uiux:test:integration": "node --test scripts/tests/mobile-copy-entrance-trigger-order.test.mjs scripts/tests/presentation-ownership-source.test.mjs scripts/tests/desktop-semantic-composition-source.test.mjs"
   },
   "devDependencies": {
     "playwright": "1.55.0"
