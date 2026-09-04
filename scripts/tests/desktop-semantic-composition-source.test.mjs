@@ -24,7 +24,10 @@ test('desktop typography turns authored breaks into indivisible visual lines', (
 
   assert.match(source, /data-semantic-lines="true"/);
   assert.match(source, /semantic-title-line/);
+  assert.match(source, /min-width:100%/);
+  assert.match(source, /width:max-content/);
   assert.match(source, /white-space:nowrap/);
+  assert.match(source, /scene\.right \.scene-title\[data-semantic-lines="true"\]/);
   assert.match(source, /raw\.split\('\\n'\)/);
   assert.match(source, /button\.addEventListener\('click', syncSemanticHeadlineLines\)/);
 });
