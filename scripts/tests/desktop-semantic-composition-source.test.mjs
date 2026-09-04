@@ -8,7 +8,7 @@ test('approved English headlines keep their authored semantic breaks', () => {
   const source = read('english-copy.js');
   const expected = [
     "introTitle: 'I test software\\nFrom UI to DB'",
-    "commerceTitle: 'One flow\\nChecked all the way through'",
+    "commerceTitle: 'One flow\\nChecked all the way'",
     "nocodeTitle: 'Readable tests\\nMaintainable locators'",
     "socialTitle: 'One release path\\nEvidence at every layer'",
     "cueTitle: 'Replan the rehearsal\\nKeep it stable'",
@@ -17,6 +17,24 @@ test('approved English headlines keep their authored semantic breaks', () => {
   ];
 
   expected.forEach(text => assert.ok(source.includes(text), `missing approved copy: ${text}`));
+});
+
+test('approved English descriptions preserve project intent for interview use', () => {
+  const source = read('english-copy.js');
+  const expected = [
+    'trace it to the source—and fix the product when the test is not the problem',
+    'realistic commerce QA practice environment',
+    'compare the coverage with reference verification paths',
+    "UI changes don't rewrite the test intent",
+    'Together they form one release gate instead of isolated test suites',
+    'finds a new conflict-free plan while preserving as much of the published schedule as possible',
+    'replays frozen decisions against reliability contracts',
+    'missing data, zero checks or skipped cases should not quietly become a pass'
+  ];
+
+  expected.forEach(text => assert.ok(source.includes(text), `missing approved description intent: ${text}`));
+  assert.ok(!source.includes('Checked all the way through'));
+  assert.ok(!source.includes('For this demo, I follow a checkout through the browser'));
 });
 
 test('desktop typography turns authored breaks into indivisible visual lines', () => {
