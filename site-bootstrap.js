@@ -72,10 +72,11 @@
     return;
   }
 
-  // Desktop begins in a non-paintable state established by index.html. Keep it
-  // pending until the accepted copy and production runtimes have all had a chance
-  // to initialize, so obsolete static evidence/copy cannot become a visible frame.
-  html.dataset.presentation = 'desktop-pending';
+  // index.html establishes the desktop experience as non-paintable with the
+  // initial `pending` state. Keep that state until the accepted copy and runtime
+  // layers have initialized, so obsolete static evidence/copy never becomes a
+  // visible intermediate desktop frame.
+  html.dataset.presentation = 'pending';
 
   const style = document.createElement('style');
   style.dataset.nocodeRunnerScale = 'true';
