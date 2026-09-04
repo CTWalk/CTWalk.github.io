@@ -13,20 +13,56 @@ The repository contains several documents produced at different stages of the UI
 - Canvas as the production rendering owner;
 - screenshot/manual-review language written before the website-only human-verification hard gate.
 
-Those statements are preserved as history, but they are no longer active requirements where they conflict with the later accepted mobile design.
+Desktop design also evolved after the first acceptance contract. In particular, older material can treat source-level headline breaks as incidental and geometric copy/evidence overlap as automatically invalid. The current desktop direction instead uses approved semantic headline beats and controlled foreground-narration/evidence layering, with CueSheet as the canonical example.
+
+Those statements are preserved as history, but they are no longer active requirements where they conflict with later accepted design decisions.
 
 ## Normative precedence
 
 When two documents disagree, use this order for the affected subject:
 
 1. `REUSABLE_UI_UX_VERIFICATION_METHOD_V1_HUMAN_VERIFICATION_AMENDMENT.md` — human-acceptance authority and website-level verification.
-2. `UI_UX_MOBILE_FALLBACK_VISUAL_AMENDMENT.md` — current observable mobile fallback design and motion contract.
-3. `UI_UX_ACCEPTANCE_CONTRACT.md` — global and desktop observable UX contract where not superseded by item 2.
-4. `UI_UX_BASELINE_MANIFEST.md` — active checkpoint IDs, viewport/motion/locale matrix and baseline lifecycle where not superseded by items 1–2.
-5. `UI_UX_TEST_CONTROL.md` and `UI_UX_BASELINE_CAPTURE.md` — operational harness/capture guidance. Implementation-owner wording in these files does not override the accepted visual contract.
-6. Closed issues and historical baseline evidence — audit history only. They do not override later accepted product decisions.
+2. `../design/PORTFOLIO_SEMANTIC_COMPOSITION_AMENDMENT.md` — current desktop semantic headline, controlled-overlap, CueSheet layered-composition, and narration/evidence focus contract.
+3. `UI_UX_MOBILE_FALLBACK_VISUAL_AMENDMENT.md` — current observable mobile fallback design and motion contract.
+4. `UI_UX_ACCEPTANCE_CONTRACT.md` — global and desktop observable UX contract where not superseded by items 2–3.
+5. `UI_UX_BASELINE_MANIFEST.md` — active checkpoint IDs, viewport/motion/locale matrix and baseline lifecycle where not superseded by items 1–3.
+6. `UI_UX_TEST_CONTROL.md` and `UI_UX_BASELINE_CAPTURE.md` — operational harness/capture guidance. Implementation-owner wording in these files does not override the accepted visual contract.
+7. Closed issues and historical baseline evidence — audit history only. They do not override later accepted product decisions.
 
 The active mobile implementation must still satisfy the functional/runtime isolation contract even when visual details are superseded.
+
+## Resolved desktop semantic-composition conflicts
+
+### 1. Explicit English headline breaks
+
+Superseded general wording may treat every source-level `\n` as only a wrapping hint.
+
+Active rule:
+
+- the currently approved English two-line project headlines use their hard break as a semantic/compositional beat;
+- at ordinary desktop/laptop widths, the browser must not rebalance either authored line into an accidental third line;
+- fit problems should be solved through composition before rewriting approved copy;
+- the one-line outro intentionally remains a single thought.
+
+### 2. Copy/evidence overlap
+
+Superseded desktop wording may require primary copy and evidence to coexist with no geometric overlap.
+
+Active rule:
+
+- geometric overlap is not itself a regression;
+- controlled overlap is valid when foreground narration remains readable, evidence remains recognizable, and the scene preserves one dominant thesis;
+- human review judges perceptual competition, not rectangle intersection alone.
+
+### 3. CueSheet layered composition
+
+Active rule:
+
+- CueSheet uses the historical Pass 2 layered composition with the primary desktop evidence at `min(64vw, 880px)` by `min(74vh, 710px)`;
+- do not restore the later `53vw / 740px` evidence reduction or CueSheet-specific `390px` copy isolation as a generic anti-overlap fix;
+- evidence focus remains one continuous, damped workspace → conflict → review move;
+- supporting phone context yields while the headline stays as the stable interpretive anchor;
+- the existing soft scene readability treatment is preferred over a hard card/blackout. Add a CueSheet-specific feather only if website-level human review demonstrates an actual readability failure.
 
 ## Resolved mobile conflicts
 
