@@ -2,13 +2,13 @@
   if (typeof copy === 'undefined' || !copy.en || typeof applyLanguage !== 'function') return;
 
   Object.assign(copy.en, {
-    introTitle: 'I test software from the UI to the database.',
-    commerceTitle: 'One user flow.\nVerified across the stack.',
-    nocodeTitle: 'Write browser tests\nin YAML.',
-    socialTitle: 'One product.\nOne release-quality test bed.',
-    cueTitle: 'Replan the rehearsal.\nKeep the schedule stable.',
-    recentTitle: 'Find false passes.\nProve them upstream.',
-    outroTitle: 'More projects and engineering history\nlive on GitHub.'
+    introTitle: 'I test software\nFrom UI to DB',
+    commerceTitle: 'One flow\nChecked all the way through',
+    nocodeTitle: 'Readable tests\nMaintainable locators',
+    socialTitle: 'One release path\nEvidence at every layer',
+    cueTitle: 'Replan the rehearsal\nKeep it stable',
+    recentTitle: 'Same QA questions\nNewer kind of system',
+    outroTitle: 'More of my work is on GitHub'
   });
 
   const activeLanguage = document.querySelector('.lang-switch button[aria-pressed="true"]')?.dataset.lang
