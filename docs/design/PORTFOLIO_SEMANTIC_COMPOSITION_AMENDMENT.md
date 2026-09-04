@@ -21,7 +21,7 @@ I test software
 From UI to DB
 
 One flow
-Checked all the way through
+Checked all the way
 
 Readable tests
 Maintainable locators
@@ -154,7 +154,7 @@ From UI to DB
 
 CommerceOps
 One flow
-Checked all the way through
+Checked all the way
 
 noCodeE2E
 Readable tests
@@ -180,7 +180,61 @@ Older English headline examples in historical design/review material remain audi
 
 ---
 
-## 7. Regression guards
+## 7. Current accepted English description set
+
+The scene body copy should work both as portfolio explanation and as a compact interview talking point. Prefer **project intent + engineering decision + why it matters** over a flat list of technologies.
+
+Traditional Chinese copy remains independently tuned. The English descriptions below are not literal translations; they preserve the same project intent while using wording that reads naturally in an interview.
+
+### Intro
+
+```text
+I build automation across web, API, database, mobile and CI. When something fails, I trace it to the source—and fix the product when the test is not the problem.
+```
+
+### CommerceOps
+
+```text
+CommerceOps is a realistic commerce QA practice environment. Test checkout and failure cases first, then compare the coverage with reference verification paths to see what was missed.
+```
+
+The important point is the practice/coverage loop. Do not regress this back into only enumerating browser → API → database → webhook → notification; those layers are implementation evidence, not the repository's whole purpose.
+
+### noCodeE2E
+
+```text
+YAML describes the test flow. Playwright executes it. Locators, failure evidence and CI stay separate, so UI changes don't rewrite the test intent.
+```
+
+The point is maintainability through separation of intent from locator/runtime concerns, not simply that Playwright can execute YAML.
+
+### SocialPlatform
+
+```text
+Build, API, database, performance, web E2E and mobile smoke checks all verify the same role-based product. Together they form one release gate instead of isolated test suites.
+```
+
+The point is one release decision across several verification layers, not a framework inventory.
+
+### CueSheet
+
+```text
+CueSheet is a deployed rehearsal scheduler. When availability changes, it finds a new conflict-free plan while preserving as much of the published schedule as possible.
+```
+
+The point is valid replanning with minimal disruption. `deployed`, `conflict-free`, and preservation of the published schedule are useful interview-level distinctions and are supported by the project evidence.
+
+### Decision Contract Audit / Recently
+
+```text
+Decision Contract Audit replays frozen decisions against reliability contracts. I apply the same QA method upstream too: missing data, zero checks or skipped cases should not quietly become a pass.
+```
+
+The point is that the same QA reasoning extends into AI/evaluation systems and produces reproducible upstream findings. Do not flatten this into a generic claim that the project merely "tests AI".
+
+---
+
+## 8. Regression guards
 
 A future change fails this amendment if it:
 
@@ -191,6 +245,8 @@ A future change fails this amendment if it:
 - replaces CueSheet's continuous monotonic focus transfer with separate pulses;
 - removes the stable headline in order to create product focus;
 - adds a hard readability panel that visually turns the narration into a card;
-- changes mobile fallback ownership while solving this desktop composition problem.
+- changes mobile fallback ownership while solving this desktop composition problem;
+- rewrites a project description into a technology inventory when the project intent is more informative;
+- restores the older CommerceOps body that only narrates the transaction layers and loses the practice/reference-coverage loop.
 
-The final authority remains human review on the actual desktop website: verify the authored headline beats, CueSheet layered composition, evidence recognition, and calm transition from SocialPlatform as one continuous experience.
+The final authority remains human review on the actual desktop website: verify the authored headline beats, CueSheet layered composition, evidence recognition, description readability, and calm transition from SocialPlatform as one continuous experience.
