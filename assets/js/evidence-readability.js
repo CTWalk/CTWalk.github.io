@@ -17,23 +17,17 @@
   const style = document.createElement('style');
   style.dataset.evidenceReadability = 'true';
   style.textContent = `
-    /* Pass 2 refinement: keep CueSheet's continuous evidence focus while
-       SocialPlatform uses the restrained 92% -> 98% final-phone treatment. */
+    /* CueSheet restores the accepted layered Pass 2 composition: the primary
+       evidence can share the visual field with foreground narration while
+       focus transfers continuously from supporting context to product state. */
 
     .scene[data-scene="4"] .cuesheet-desktop{
       left:max(1vw,calc((100% - var(--content))/2));
       top:6.5%;
-      width:min(53vw,740px);
+      width:min(64vw,880px);
       height:min(74vh,710px);
       transform-origin:42% 46%;
       will-change:transform,scale,filter
-    }
-
-    /* CueSheet is a right-copy scene. Keep its copy column narrow enough that
-       the accepted product evidence and the reading column have separate
-       desktop/laptop ownership instead of painting through one another. */
-    .scene[data-scene="4"] .scene-content{
-      width:min(390px,calc(100% - 2*var(--pad)))
     }
 
     .scene[data-scene="4"] .cue-phone-manager,
@@ -61,9 +55,6 @@
         width:96vw;
         height:54vh;
         transform-origin:center top
-      }
-      .scene[data-scene="4"] .scene-content{
-        width:calc(100% - 2*var(--pad))
       }
       .scene[data-scene="4"] .cue-phone-manager,
       .scene[data-scene="4"] .cue-phone-cast{
